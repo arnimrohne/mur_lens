@@ -1,0 +1,14 @@
+# ADR-001
+
+## OCR
+
+Entscheidung
+
+Tesseract.js
+
+Grund
+
+- läuft lokal
+- kostenlos
+- keine API
+- Datenschutz
