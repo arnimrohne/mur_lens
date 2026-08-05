@@ -30,7 +30,8 @@ export function useCamera() {
         videoRef.current.srcObject = stream;
       }
       setState((s) => ({ ...s, isStreaming: true, error: null }));
-    } catch {
+    } catch (err) {
+      console.error('Camera access failed:', err);
       setState((s) => ({ ...s, error: 'Kamerazugriff verweigert.' }));
     }
   }, []);

@@ -1,4 +1,4 @@
-import CameraView from '@/components/CameraView';
+import CameraView from '@/components/camera-view';
 
 export default function ScanPage() {
   return (

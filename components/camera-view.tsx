@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useCamera } from '@/hooks/useCamera';
-import PhotoPreview from './PhotoPreview';
+import PhotoPreview from './photo-preview';
+import { useCamera } from '@/hooks/use-camera';
 
 export default function CameraView() {
   const { videoRef, capturedPhoto, isStreaming, error, startCamera, capturePhoto } =
@@ -37,7 +37,9 @@ export default function CameraView() {
 
       {isStreaming && (
         <button
+          type="button"
           onClick={capturePhoto}
+          aria-label="Foto aufnehmen"
           className="w-full max-w-lg py-6 bg-white text-black text-2xl font-bold rounded-2xl active:scale-95 transition-transform"
         >
           Foto aufnehmen
