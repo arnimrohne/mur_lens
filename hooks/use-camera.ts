@@ -1,8 +1,9 @@
 import { useRef, useState, useCallback, useEffect } from 'react';
 
+const MAX_CAPTURE_WIDTH = 1000;
+
 type CameraState = {
   isStreaming: boolean;
-  capturedPhoto: string | null;
   error: string | null;
 };
 
@@ -11,7 +12,6 @@ export function useCamera() {
   const streamRef = useRef<MediaStream | null>(null);
   const [state, setState] = useState<CameraState>({
     isStreaming: false,
-    capturedPhoto: null,
     error: null,
   });
 
@@ -30,8 +30,7 @@ export function useCamera() {
         videoRef.current.srcObject = stream;
       }
       setState((s) => ({ ...s, isStreaming: true, error: null }));
-    } catch (err) {
-      console.error('Camera access failed:', err);
+    } catch {
       setState((s) => ({ ...s, error: 'Kamerazugriff verweigert.' }));
     }
   }, []);
@@ -42,22 +41,29 @@ export function useCamera() {
     setState((s) => ({ ...s, isStreaming: false }));
   }, []);
 
-  const capturePhoto = useCallback((): Promise<Blob> => {
+  // Returns both the Blob (for OCR) and photoUrl (for ScanningView preview).
+  // Downscales to MAX_CAPTURE_WIDTH to keep OCR fast on high-res cameras.
+  const capturePhoto = useCallback((): Promise<{ blob: Blob; photoUrl: string }> => {
     return new Promise((resolve, reject) => {
       const video = videoRef.current;
       if (!video || video.videoWidth === 0) {
         reject(new Error('Camera not ready'));
         return;
       }
+      const scale = Math.min(1, MAX_CAPTURE_WIDTH / video.videoWidth);
       const canvas = document.createElement('canvas');
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      canvas.getContext('2d')?.drawImage(video, 0, 0);
-      setState((s) => ({ ...s, capturedPhoto: canvas.toDataURL('image/jpeg') }));
-      canvas.toBlob((blob) => {
-        if (blob) resolve(blob);
-        else reject(new Error('Blob capture failed'));
-      }, 'image/jpeg', 0.92);
+      canvas.width = Math.round(video.videoWidth * scale);
+      canvas.height = Math.round(video.videoHeight * scale);
+      canvas.getContext('2d')?.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const photoUrl = canvas.toDataURL('image/jpeg');
+      canvas.toBlob(
+        (blob) => {
+          if (blob) resolve({ blob, photoUrl });
+          else reject(new Error('Blob capture failed'));
+        },
+        'image/jpeg',
+        0.92,
+      );
     });
   }, []);
 

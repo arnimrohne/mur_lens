@@ -24,6 +24,10 @@ export class TesseractProvider implements RecognitionProvider {
     return createWorker('eng', OEM.LSTM_ONLY);
   }
 
+  async warmUp(): Promise<void> {
+    await this.getWorker();
+  }
+
   async recognize(image: Blob): Promise<RecognitionResult> {
     const worker = await this.getWorker();
     const start = performance.now();

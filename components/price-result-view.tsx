@@ -1,31 +1,24 @@
 'use client';
 
 import type { ConvertedPrice, Price } from '@/lib/domain/price';
-import type { RecognitionResult } from '@/lib/recognition/types';
-import { getTexts } from '@/lib/recognition/types';
 
 interface Props {
   price: Price;
   conversion: ConvertedPrice;
-  result: RecognitionResult;
+  processingTimeMs: number;
+  onReset: () => void;
 }
 
-export default function PriceResultView({ price, conversion, result }: Props) {
-  const texts = getTexts(result);
-  const avgConfidence =
-    texts.length > 0
-      ? texts.reduce((s, t) => s + t.confidence, 0) / texts.length
-      : 0;
-  const confidencePct = Math.round(avgConfidence * 100);
-
-  const murFormatted = price.amount.toLocaleString('de-DE');
+export default function PriceResultView({ price, conversion, processingTimeMs, onReset }: Props) {
+  // en-US matches Mauritius label format: 1,250 (comma as thousands separator)
+  const murFormatted = price.amount.toLocaleString('en-US');
   const eurFormatted = conversion.target.amount.toLocaleString('de-DE', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
 
   return (
-    <div className="mx-4 mt-4 space-y-2">
+    <div className="mx-4 mt-4 space-y-3">
       <div className="bg-gray-900 rounded-2xl p-6 text-center space-y-1">
         <p className="text-gray-400 text-sm uppercase tracking-widest">Erkannter Preis</p>
         <p className="text-white text-3xl font-bold tracking-tight">Rs {murFormatted}</p>
@@ -36,8 +29,7 @@ export default function PriceResultView({ price, conversion, result }: Props) {
 
       {([
         ['Wechselkurs', `1 EUR = ${conversion.rate} MUR`],
-        ['Konfidenz', `${confidencePct} %`],
-        ['Verarbeitung', `${result.processingTimeMs} ms`],
+        ['Verarbeitung', `${processingTimeMs} ms`],
       ] as const).map(([label, value]) => (
         <div
           key={label}
@@ -47,6 +39,14 @@ export default function PriceResultView({ price, conversion, result }: Props) {
           <span className="text-gray-200">{value}</span>
         </div>
       ))}
+
+      <button
+        type="button"
+        onClick={onReset}
+        className="w-full py-5 bg-gray-900 border border-gray-700 text-white text-xl font-semibold rounded-2xl active:scale-95 transition-transform"
+      >
+        Erneut scannen
+      </button>
     </div>
   );
 }
