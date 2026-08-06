@@ -1,16 +1,26 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import PhotoPreview from './photo-preview';
 import { useCamera } from '@/hooks/use-camera';
 
-export default function CameraView() {
+interface CameraViewProps {
+  onCapture: (blob: Blob) => void;
+  disabled?: boolean;
+}
+
+export default function CameraView({ onCapture, disabled = false }: CameraViewProps) {
   const { videoRef, capturedPhoto, isStreaming, error, startCamera, capturePhoto } =
     useCamera();
 
   useEffect(() => {
     startCamera();
   }, [startCamera]);
+
+  const handleCapture = useCallback(async () => {
+    const blob = await capturePhoto();
+    onCapture(blob);
+  }, [capturePhoto, onCapture]);
 
   return (
     <div className="flex flex-col items-center gap-6 p-4 pb-12">
@@ -38,9 +48,10 @@ export default function CameraView() {
       {isStreaming && (
         <button
           type="button"
-          onClick={capturePhoto}
+          onClick={handleCapture}
+          disabled={disabled}
           aria-label="Foto aufnehmen"
-          className="w-full max-w-lg py-6 bg-white text-black text-2xl font-bold rounded-2xl active:scale-95 transition-transform"
+          className="w-full max-w-lg py-6 bg-white text-black text-2xl font-bold rounded-2xl active:scale-95 transition-transform disabled:opacity-40 disabled:cursor-not-allowed"
         >
           Foto aufnehmen
         </button>

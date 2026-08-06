@@ -5,7 +5,7 @@ Sprint 1
 Kamera
 
 Sprint 2
-OCR
+Preis-Erkennung (Recognition Pipeline)
 
 Sprint 3
 Preisparser
@@ -14,7 +14,7 @@ Sprint 4
 Euro-Rechner
 
 Sprint 5
-Live OCR
+Live-Erkennung
 
 Sprint 6
 Offline

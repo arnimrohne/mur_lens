@@ -30,4 +30,11 @@ Architektur:
 
 Business Logic niemals in UI-Komponenten.
 
-Alle Preisberechnungen befinden sich ausschließlich unter /lib.
+Alle Business-Logik, Domain-Typen und Recognition-Interfaces befinden sich ausschließlich unter /lib.
+
+Recognition Pipeline (ADR-003):
+
+- /lib/recognition/types.ts – RecognitionProvider, RecognitionResult, RecognitionItem
+- /lib/domain/ – Domain-Entities (Price, Barcode, …)
+- Presentation kennt ausschließlich Domain-Objekte, niemals Provider-Implementierungen.
+- Provider-Implementierungen gehören nach /lib/recognition/providers/ (ab Sprint 2).

@@ -1,0 +1,24 @@
+{
+  "provider": "tesseract",
+  "processingTimeMs": 1421,
+  "items": [
+    {
+      "type": "text",
+      "value": "Rs",
+      "confidence": 0.89,
+      "boundingBox": { "x": 180, "y": 310, "width": 44, "height": 32 }
+    },
+    {
+      "type": "text",
+      "value": "1",
+      "confidence": 0.82,
+      "boundingBox": { "x": 234, "y": 310, "width": 18, "height": 32 }
+    },
+    {
+      "type": "text",
+      "value": "250",
+      "confidence": 0.84,
+      "boundingBox": { "x": 258, "y": 310, "width": 54, "height": 32 }
+    }
+  ]
+}

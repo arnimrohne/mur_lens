@@ -2,13 +2,13 @@
 
 Mauritius-Preise sofort in Euro umrechnen.
 
-Die App öffnet die Rückkamera, erkennt Preisschilder per OCR und zeigt den Eurobetrag in Echtzeit — vollständig lokal im Browser, ohne Cloud, ohne Backend.
+Die App öffnet die Rückkamera, erkennt Preisschilder und zeigt den Eurobetrag in Echtzeit — vollständig lokal im Browser, ohne Cloud, ohne Backend.
 
 ## Tech Stack
 
 - Next.js 15 · React 19 · TypeScript (strict)
 - Tailwind CSS · PWA
-- Tesseract.js (OCR, ab Sprint 2)
+- Tesseract.js (Texterkennung, ab Sprint 2)
 
 ---
 
@@ -85,6 +85,6 @@ Vercel erkennt Next.js automatisch. Die Standardeinstellungen sind korrekt:
 ## Architekturprinzipien
 
 - Mobile First · Offline First · Privacy First
-- Business-Logik ausschließlich in `lib/` und `hooks/`
+- Business-Logik und Recognition-Foundation ausschließlich in `lib/`
 - Keine Bilder verlassen das Gerät
 - Kein Backend · Keine Datenbank · Keine Cloud

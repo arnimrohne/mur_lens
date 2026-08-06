@@ -1,0 +1,430 @@
+# ADR-003 – Recognition Pipeline
+
+## Status
+
+Accepted (ersetzt die Version vom Sprint 1)
+
+Supersedes ADR-004 (OCR Provider Pattern)
+
+---
+
+## Motivation
+
+Die Anwendung wurde in Sprint 1 als Preis-Scanner konzipiert.
+
+Während der Planung hat sich die eigentliche Kernkompetenz geschärft:
+
+Die Anwendung extrahiert Informationen aus Kamerabildern und überführt sie in strukturierte Domänenobjekte.
+
+OCR ist eine mögliche Erkennungstechnologie – nicht der zentrale Baustein.
+
+Diese Erkenntnis macht eine grundlegende Neubewertung der Pipeline erforderlich, bevor Erkennungslogik implementiert wird.
+
+---
+
+## Kontext
+
+### Was bisher entschieden wurde
+
+ADR-001 legte Tesseract.js als OCR-Engine fest.
+
+ADR-004 definierte ein OCRProvider-Interface mit folgendem Rückgabewert:
+
+```ts
+interface OCRProvider {
+    recognize(image: Blob): Promise<string>;
+}
+```
+
+Beide Entscheidungen sind zu eng gefasst.
+
+Sie binden die Architektur an Text-Erkennung und an einen rohen String als Rückgabewert.
+
+### Anforderungen der nächsten Jahre
+
+Die Pipeline soll folgende Anwendungsfälle ohne strukturelles Refactoring unterstützen:
+
+- Texterkennung (OCR)
+- Preis- und Währungserkennung
+- Barcode-Erkennung (EAN, UPC)
+- QR-Code-Erkennung
+- Produkterkennung
+- Verpackungsgrößen
+- Mengenerkennung (500 g, 1 L)
+- KI-basierte Vision-Modelle
+
+### Erkenntnisse aus der Analyse
+
+**OCR ist kein gutes Zentrum einer generischen Pipeline.**
+
+Ein Barcode-Decoder gibt keinen Text zurück – er gibt Format und Wert zurück.
+
+Ein Vision-Modell gibt möglicherweise strukturierte JSON-Daten zurück.
+
+Ein Preis-Extraktor auf Basis von ML gibt direkt einen Währungsbetrag zurück.
+
+Die Pipeline muss Ergebnistypen kennen, nicht nur Strings.
+
+---
+
+## Entscheidung
+
+Die Bildverarbeitung wird als modulare Recognition Pipeline aufgebaut.
+
+```
+Input (Kamera, Galerie, Datei)
+        │
+        ▼
+Image Acquisition
+        │
+        ▼
+Recognition Provider         ← enthält optionales internes Preprocessing
+        │
+        ▼
+RecognitionResult            ← typisiert, strukturiert
+        │
+        ▼
+Domain Extractor             ← extrahiert Domänenobjekte aus dem Ergebnis
+        │
+        ▼
+Domain Services              ← Business-Logik (z. B. Währungsumrechnung)
+        │
+        ▼
+Presentation
+```
+
+---
+
+## Begründete Abweichung von der ursprünglichen Pipeline
+
+### Image Processing – kein eigenständiger Stage
+
+Der ursprüngliche Vorschlag enthielt Image Processing als eigenständige Pipeline-Stufe zwischen Acquisition und Recognition.
+
+Das ist problematisch.
+
+Tesseract.js profitiert stark von Graustufen und Kontrastanpassung.
+
+ZXing (Barcode) bevorzugt das Farbbild und übernimmt Preprocessing intern.
+
+Apple Vision und Google ML Kit sind Blackboxes – eigenes Preprocessing verschlechtert dort die Ergebnisse.
+
+Cloud-APIs (OpenAI Vision, Google Vision API) erwarten komprimiertes JPEG – kein Preprocessing nötig.
+
+**Entscheidung:** Image Processing ist nicht Teil der öffentlichen Pipeline-Schnittstelle. Jeder Provider übernimmt internes Preprocessing. Gemeinsam genutzte Hilfsfunktionen (z. B. JPEG-Kompression) sind als Utilities verfügbar, aber nicht als Pflicht-Stage.
+
+### Text Normalizer – kein eigenständiger Stage
+
+Der ursprüngliche Vorschlag sah einen globalen Normalizer vor.
+
+Text-Normalisierung ist jedoch OCR-spezifisch. Barcode-Ergebnisse sind bereits strukturiert. QR-Codes sind validierte Dekodierergebnisse. Für generische Ergebnistypen macht ein globaler Normalizer keinen Sinn.
+
+**Entscheidung:** Normalisierung ist eine interne Aufgabe des jeweiligen Domain Extractors.
+
+### Parser → Domain Extractor
+
+Der Begriff Parser ist zu eng. Er suggeriert Textverarbeitung.
+
+Domain Extractor trifft die Verantwortung besser: Er nimmt ein typisiertes RecognitionResult und extrahiert daraus Domänenobjekte.
+
+---
+
+## Verantwortlichkeiten
+
+### Image Acquisition
+
+- Kamerazugriff
+- Bildaufnahme
+- Bild als `Blob` bereitstellen
+
+Output: `Blob`
+
+---
+
+### Recognition Provider
+
+- Empfängt `Blob`
+- Führt intern optionales Preprocessing durch
+- Ruft die zugrunde liegende Erkennungstechnologie auf
+- Gibt ein typisiertes `RecognitionResult` zurück
+
+Output: `RecognitionResult`
+
+---
+
+### Domain Extractor
+
+- Empfängt `RecognitionResult`
+- Ist anwendungsfall-spezifisch (PriceExtractor, BarcodeExtractor, …)
+- Normalisiert intern typspezifische Rohdaten
+- Gibt strukturierte Domänenobjekte zurück
+
+Output: Domänenobjekte (z. B. `Price`, `Barcode`)
+
+---
+
+### Domain Services
+
+- Führt Business-Logik aus (z. B. Währungsumrechnung, Mengenberechnung)
+- Hat keine Kenntnis von Recognition-Technologien
+
+Output: berechnete Domänenobjekte
+
+---
+
+### Presentation
+
+- Stellt Domänenobjekte dar
+- Enthält keine Business-Logik
+
+---
+
+## Recognition Provider Interface
+
+ADR-004 wird durch dieses Interface ersetzt.
+
+```ts
+type RecognitionCapability =
+    | 'text'
+    | 'barcode'
+    | 'qrcode'
+    | 'product'
+    | 'price';
+
+interface RecognitionProvider {
+    readonly name: string;
+    readonly capabilities: RecognitionCapability[];
+    recognize(image: Blob): Promise<RecognitionResult>;
+}
+```
+
+Beispiel-Implementierungen:
+
+```
+TesseractProvider      → capabilities: ['text']
+ZXingProvider          → capabilities: ['barcode', 'qrcode']
+GoogleVisionProvider   → capabilities: ['text', 'barcode', 'product']
+OpenAIVisionProvider   → capabilities: ['text', 'product', 'price']
+AppleVisionProvider    → capabilities: ['text', 'barcode', 'qrcode']
+```
+
+`capabilities` erlaubt der Anwendungsschicht, zur Laufzeit den passenden Provider zu wählen, ohne konkrete Klassen zu kennen.
+
+---
+
+## RecognitionResult – Datenmodell
+
+`Promise<string>` aus ADR-004 wird ersetzt.
+
+### Bewertung des vorgeschlagenen Modells
+
+```ts
+interface RecognitionResult {
+    texts: RecognizedText[];
+    barcodes: BarcodeResult[];
+    products?: ProductCandidate[];
+    confidence: number;
+}
+```
+
+Dieses Modell hat zwei Probleme.
+
+Erstens: `confidence` auf oberster Ebene ist bedeutungslos. Konfidenz ist immer pro Ergebnis relevant, nicht für das Gesamtergebnis.
+
+Zweitens: Jeder neue Erkennungstyp erfordert eine Änderung des Interfaces (geschlossen für Erweiterung).
+
+### Empfohlenes Modell – Discriminated Union
+
+```ts
+type RecognitionItem =
+    | TextItem
+    | BarcodeItem
+    | QRCodeItem
+    | ProductItem;
+
+interface TextItem {
+    type: 'text';
+    value: string;
+    confidence: number;
+    boundingBox?: BoundingBox;
+}
+
+interface BarcodeItem {
+    type: 'barcode';
+    format: BarcodeFormat;
+    value: string;
+    confidence: number;
+    boundingBox?: BoundingBox;
+}
+
+interface QRCodeItem {
+    type: 'qrcode';
+    value: string;
+    confidence: number;
+    boundingBox?: BoundingBox;
+}
+
+interface ProductItem {
+    type: 'product';
+    name: string;
+    confidence: number;
+    candidates: string[];
+}
+
+interface RecognitionResult {
+    provider: string;
+    items: RecognitionItem[];
+    processingTimeMs: number;
+}
+
+interface BoundingBox {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+}
+
+type BarcodeFormat = 'EAN_13' | 'EAN_8' | 'UPC_A' | 'UPC_E' | 'CODE_128' | 'QR_CODE';
+```
+
+Vorteile des Discriminated Union:
+
+- Neue Typen werden durch Erweiterung der Union hinzugefügt – kein Interface-Bruch
+- TypeScript narrowt automatisch beim Switch auf `type`
+- Pro-Item-Konfidenz ist sinnvoll und präzise
+- `provider` und `processingTimeMs` erleichtern Debugging und Provider-Vergleiche
+
+Hilfsfunktionen für häufige Filteroperationen:
+
+```ts
+function getTexts(result: RecognitionResult): TextItem[] {
+    return result.items.filter((i): i is TextItem => i.type === 'text');
+}
+```
+
+---
+
+## Schichtenarchitektur
+
+```
+Presentation        (React-Komponenten, UI-Hooks)
+       │
+       ▼
+Application         (Use Cases, Pipeline-Orchestrierung, Provider-Auswahl)
+       │
+       ▼
+Domain              (Entities: Price, Barcode, Currency; Interfaces: RecognitionProvider)
+       │
+       ▼
+Infrastructure      (TesseractProvider, ZXingProvider, GoogleVisionProvider, …)
+```
+
+### Abhängigkeitsregeln
+
+Infrastructure kennt Domain.
+
+Domain kennt Infrastructure nicht.
+
+Application kennt Domain und definiert, welche Provider benötigt werden.
+
+Presentation kennt Application.
+
+Kein Layer kennt Presentation.
+
+### Abweichung von der vorgeschlagenen Struktur
+
+Der ursprüngliche Vorschlag enthielt `Recognition` als eigenen Layer zwischen Application und Infrastructure.
+
+Das führt zu einer Mehrdeutigkeit: Wo liegen die Provider-Interfaces? Wo die Extraktoren?
+
+Die klare Trennung Domain (Interfaces und Entities) / Infrastructure (Implementierungen) ist besser etabliert und vermeidet Verwechslung.
+
+---
+
+## Verzeichnisstruktur (Vorschlag)
+
+```
+lib/
+  domain/
+    price.ts              ← Price-Entity, Currency-Value-Object
+    barcode.ts            ← Barcode-Entity
+  recognition/
+    types.ts              ← RecognitionResult, RecognitionItem, RecognitionProvider
+    extractors/
+      price-extractor.ts  ← PriceExtractor: RecognitionResult → Price
+      barcode-extractor.ts
+  providers/
+    tesseract-provider.ts
+    zxing-provider.ts
+  services/
+    currency-service.ts
+    exchange-rate-api.ts
+```
+
+---
+
+## Konsequenzen
+
+### Vorteile
+
+- Provider austauschbar ohne Änderung an Extraktoren oder Services
+- Neue Erkennungstypen erweiterbar ohne Interface-Bruch
+- Jede Stufe isoliert testbar
+- Klare Verantwortlichkeiten – kein Stage kennt den nächsten
+- `capabilities` ermöglicht Provider-Auswahl zur Laufzeit
+- Discriminated Union ist TypeScript-nativ und sicher
+
+### Nachteile
+
+- Mehr Abstraktionsschichten als eine direkte Tesseract-Integration
+- `RecognitionResult` muss sorgfältig typisiert werden, da falsch typisierte Items zur Laufzeit unentdeckt bleiben können
+
+### Risiken
+
+**Risiko 1 – Zu frühe Generalisierung**
+
+Für Sprint 2 wird ausschließlich Texterkennung gebraucht. Die Discriminated Union enthält Typen, die erst in Monaten relevant werden.
+
+Mitigierung: Das Interface ist definiert, aber nur `TextItem` ist in Sprint 2 implementiert. Leere Union-Zweige kosten nichts.
+
+**Risiko 2 – Provider-Capability-Mismatch**
+
+Ein Provider, der `text` und `barcode` als Capabilities angibt, liefert möglicherweise für einen der Typen schlechte Ergebnisse.
+
+Mitigierung: Capabilities beschreiben technische Unterstützung, nicht Qualität. Die Qualität wird durch Integrationstests gemessen und dokumentiert.
+
+**Risiko 3 – Merge-Komplexität bei parallelen Providern**
+
+Wenn zwei Provider gleichzeitig laufen (z. B. ZXing für Barcodes + Tesseract für Text), müssen ihre Ergebnisse zusammengeführt werden.
+
+Mitigierung: Multi-Provider-Orchestrierung ist kein Sprint-2-Thema. Der Orchestrator wird erst implementiert, wenn ein konkreter Anwendungsfall es erfordert. Für Sprint 2 gibt es genau einen Provider.
+
+---
+
+## Begründung der Entscheidung
+
+Die alternative Entscheidung wäre, weiterhin eine OCR-zentrische Pipeline mit `Promise<string>` zu bauen und später zu refactoren.
+
+Das wird abgelehnt.
+
+Die Kernabstraktion (RecognitionProvider-Interface + RecognitionResult-Typ) ist einmalig zu bauen und danach stabil. Sie kostet wenig und verhindert ein strukturelles Refactoring sobald der erste Nicht-Text-Use-Case eintrifft.
+
+OCR-Provider-Spezifika (Tesseract-Initialisierung, Worker-Management) verbleiben in der Infrastructure-Schicht und sind damit vollständig isoliert.
+
+---
+
+## Vorgeschlagene Folge-ADRs
+
+### ADR-005 – Tesseract Provider
+
+Entscheidung zur konkreten Tesseract.js-Integration: Worker-Lifecycle, Initialisierungsstrategie, Language-Loading, Performance-Budget.
+
+ADR-001 (Tesseract als OCR-Engine) bleibt gültig. ADR-005 konkretisiert die Implementierung.
+
+### ADR-006 – Domain Extractor Pattern
+
+Wie Domain Extraktoren strukturiert werden: Fehlerbehandlung, Konfidenz-Schwellenwerte, Fallback-Verhalten, Testbarkeit.
+
+### ADR-007 – Image Preprocessing Strategy
+
+Wann und wie Preprocessing durchgeführt wird: Als interne Provider-Verantwortung, als gemeinsame Utility, oder als optionaler Pipeline-Hook. Entscheidung verschoben bis zwei unterschiedliche Provider implementiert sind und das Muster erkennbar ist.

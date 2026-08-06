@@ -105,7 +105,7 @@ Beispiele
 
 ```text
 useCamera
-useOCR
+useRecognition
 useExchangeRate
 useCurrency
 ```
@@ -129,8 +129,8 @@ Zum Beispiel
 ```text
 price-parser.ts
 currency.ts
-ocr.ts
-image-processing.ts
+recognition/types.ts
+recognition/providers/tesseract-provider.ts
 ```
 
 Utilities dürfen keine React-Abhängigkeiten besitzen.
@@ -294,7 +294,7 @@ i++
 Gut:
 
 ```ts
-// Einige OCR-Bibliotheken liefern Leerzeichen in Zahlen.
+// Einige Recognition Provider liefern Leerzeichen in Zahlen.
 // Diese werden vor dem Parsen entfernt.
 ```
 

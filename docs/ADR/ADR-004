@@ -1,0 +1,74 @@
+# ADR-004 – OCR Provider Pattern
+
+## Status
+
+Superseded by ADR-003
+
+---
+
+## Kontext
+
+Die Anwendung soll verschiedene OCR-Engines unterstützen.
+
+Beispiele
+
+- Tesseract.js
+- Apple Vision
+- Google ML Kit
+- Google Vision API
+- OpenAI Vision
+
+Die restliche Anwendung darf nicht wissen, welche Engine verwendet wird.
+
+---
+
+## Entscheidung
+
+OCR wird ausschließlich über ein Interface angesprochen.
+
+export interface OCRProvider {
+    recognize(image: Blob): Promise<string>;
+}
+
+Jede OCR-Engine implementiert dieses Interface.
+
+Beispiele
+
+- TesseractProvider
+- GoogleVisionProvider
+- AppleVisionProvider
+- OpenAIVisionProvider
+
+---
+
+## Architektur
+UI
+ │
+ ▼
+OCR Service
+ │
+ ▼
+OCRProvider
+ │
+ ├──────────────┐
+ ▼              ▼
+Tesseract   Apple Vision
+               ▼
+          Google Vision
+
+Die UI kennt ausschließlich OCRProvider.
+
+---
+
+## Konsequenzen
+
+Vorteile
+
+- Engines austauschbar
+- einfach testbar
+- keine Vendor-Abhängigkeit
+- spätere Migrationen ohne Refactoring
+
+Nachteile
+
+- zusätzliche Abstraktion

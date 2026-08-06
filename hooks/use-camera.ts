@@ -42,14 +42,23 @@ export function useCamera() {
     setState((s) => ({ ...s, isStreaming: false }));
   }, []);
 
-  const capturePhoto = useCallback(() => {
-    const video = videoRef.current;
-    if (!video || video.videoWidth === 0) return;
-    const canvas = document.createElement('canvas');
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    canvas.getContext('2d')?.drawImage(video, 0, 0);
-    setState((s) => ({ ...s, capturedPhoto: canvas.toDataURL('image/jpeg') }));
+  const capturePhoto = useCallback((): Promise<Blob> => {
+    return new Promise((resolve, reject) => {
+      const video = videoRef.current;
+      if (!video || video.videoWidth === 0) {
+        reject(new Error('Camera not ready'));
+        return;
+      }
+      const canvas = document.createElement('canvas');
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      canvas.getContext('2d')?.drawImage(video, 0, 0);
+      setState((s) => ({ ...s, capturedPhoto: canvas.toDataURL('image/jpeg') }));
+      canvas.toBlob((blob) => {
+        if (blob) resolve(blob);
+        else reject(new Error('Blob capture failed'));
+      }, 'image/jpeg', 0.92);
+    });
   }, []);
 
   useEffect(() => {

@@ -27,8 +27,7 @@ Die Verarbeitung erfolgt vollständig lokal im Browser.
 
 - Kamera öffnen
 - Foto aufnehmen
-- OCR
-- Preis erkennen
+- Preis erkennen (Recognition Pipeline)
 - Euro berechnen
 
 ---
@@ -59,5 +58,5 @@ Die Verarbeitung erfolgt vollständig lokal im Browser.
 - React 19
 - TypeScript
 - TailwindCSS
-- Tesseract.js
 - PWA
+- Tesseract.js (erster Recognition Provider, Sprint 2)

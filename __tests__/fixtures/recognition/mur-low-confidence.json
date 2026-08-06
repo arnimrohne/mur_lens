@@ -1,0 +1,18 @@
+{
+  "provider": "tesseract",
+  "processingTimeMs": 1673,
+  "items": [
+    {
+      "type": "text",
+      "value": "R3",
+      "confidence": 0.38,
+      "boundingBox": { "x": 201, "y": 318, "width": 40, "height": 34 }
+    },
+    {
+      "type": "text",
+      "value": "l.Z5O",
+      "confidence": 0.29,
+      "boundingBox": { "x": 249, "y": 318, "width": 104, "height": 34 }
+    }
+  ]
+}

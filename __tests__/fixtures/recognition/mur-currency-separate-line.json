@@ -1,0 +1,30 @@
+{
+  "provider": "tesseract",
+  "processingTimeMs": 1562,
+  "items": [
+    {
+      "type": "text",
+      "value": "PRICE",
+      "confidence": 0.94,
+      "boundingBox": { "x": 188, "y": 260, "width": 92, "height": 28 }
+    },
+    {
+      "type": "text",
+      "value": "Rs",
+      "confidence": 0.88,
+      "boundingBox": { "x": 188, "y": 310, "width": 44, "height": 38 }
+    },
+    {
+      "type": "text",
+      "value": "1,250",
+      "confidence": 0.85,
+      "boundingBox": { "x": 188, "y": 360, "width": 120, "height": 48 }
+    },
+    {
+      "type": "text",
+      "value": "MUR",
+      "confidence": 0.79,
+      "boundingBox": { "x": 318, "y": 370, "width": 58, "height": 30 }
+    }
+  ]
+}
