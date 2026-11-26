@@ -93,14 +93,15 @@ html:has(.gazet) { background: #fdfaf5; }
 .gz-wetter-sonne { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 10px; font-family: var(--f-mono); font-size: .76rem; color: var(--muted); }
 .gz-wetter-band-rahmen { min-width: 0; }
 .gz-wetter-band-kopf { display: flex; justify-content: space-between; gap: 12px; font-family: var(--f-mono); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
-.gz-wetter-band { list-style: none; margin: 0; padding: 0 0 4px; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: thin; overscroll-behavior-x: contain; }
+.gz-wetter-band { list-style: none; margin: 0; padding: 18px 0 4px; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: thin; overscroll-behavior-x: contain; }
 .gz-wetter-band li { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 50px; padding: 8px 4px; border-radius: var(--radius); background: var(--paper); border: 1px solid var(--line); font-family: var(--f-mono); font-size: .74rem; font-variant-numeric: tabular-nums; }
 .gz-wetter-band li.gz-band-nacht { background: var(--chip); }
 .gz-band-temp { font-family: var(--f-display); font-weight: 700; font-size: .95rem; }
 .gz-band-regen { color: var(--blue); font-size: .66rem; min-height: 1em; white-space: nowrap; }
-.gz-wetter-band li.gz-band-sonne { min-width: 0; padding: 0; gap: 3px; background: transparent; border: 0; border-radius: 0; font-size: .62rem; color: var(--yellow); align-self: stretch; }
+.gz-wetter-band li.gz-band-sonne { position: relative; flex: 0 0 2px; min-width: 0; width: 2px; margin: 0 -4px; padding: 0; background: transparent; border: 0; border-radius: 0; font-size: .62rem; color: var(--yellow); align-self: stretch; z-index: 1; }
+.gz-wetter-band li.gz-band-sonne time { position: absolute; top: -17px; left: 50%; transform: translateX(-50%); white-space: nowrap; line-height: 1; }
 .gz-wetter-band li.gz-band-unter { color: var(--red); }
-.gz-band-linie { flex: 1; width: 0; border-left: 2px dashed currentColor; }
+.gz-band-linie { flex: 1; width: 0; margin-top: -4px; border-left: 2px dashed currentColor; }
 .gz-nur-vorlesen { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .gz-wetter-quelle { margin: 6px 0 0; font-family: var(--f-mono); font-size: .66rem; color: var(--muted); }
 .gazet .gz-wetter-quelle a { color: var(--muted); }
