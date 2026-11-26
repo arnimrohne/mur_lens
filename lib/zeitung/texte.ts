@@ -37,6 +37,7 @@ export interface OberflaechenTexte {
   linkKopiert: string;
   linkFehler: string;
   zurAusgabe: string;
+  shop: { kennzeichnung: string; titel: string; text: string; knopf: string };
 }
 
 const de: OberflaechenTexte = {
@@ -83,6 +84,7 @@ const de: OberflaechenTexte = {
   linkKopiert: 'Link kopiert',
   linkFehler: 'Kopieren nicht möglich',
   zurAusgabe: '← Zur aktuellen Ausgabe',
+  shop: { kennzeichnung: 'Eigenwerbung', titel: 'Morisyen Shop', text: 'Entdecken Sie den Shop von Morisyen.', knopf: 'Zum Shop →' },
 };
 
 const fr: OberflaechenTexte = {
@@ -129,6 +131,7 @@ const fr: OberflaechenTexte = {
   linkKopiert: 'Lien copié',
   linkFehler: 'Copie impossible',
   zurAusgabe: "← Vers l'édition du jour",
+  shop: { kennzeichnung: 'Publicité', titel: 'Morisyen Shop', text: 'Découvrez la boutique Morisyen.', knopf: 'Vers la boutique →' },
 };
 
 const en: OberflaechenTexte = {
@@ -175,6 +178,7 @@ const en: OberflaechenTexte = {
   linkKopiert: 'Link copied',
   linkFehler: 'Could not copy',
   zurAusgabe: '← To the current edition',
+  shop: { kennzeichnung: 'Advertisement', titel: 'Morisyen Shop', text: 'Discover the Morisyen shop.', knopf: 'Visit the shop →' },
 };
 
 export const TEXTE: Record<Sprache, OberflaechenTexte> = { de, fr, en };

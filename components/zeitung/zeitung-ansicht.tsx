@@ -3,6 +3,7 @@
 import { useMemo } from 'react';
 
 import { RubrikAbschnitt } from './rubrik-abschnitt';
+import { ShopBanner } from './shop-banner';
 import { ThemenKarte } from './themen-karte';
 import { VideoAbschnitt } from './video-abschnitt';
 import { ZeitungKopf } from './zeitung-kopf';
@@ -76,6 +77,8 @@ export function ZeitungAnsicht({ daten }: ZeitungAnsichtProps) {
           </section>
         )}
       </main>
+
+      <ShopBanner texte={texte} />
 
       <footer className="gz-rahmen gz-fuss">
         {texte.fussnoten.map((absatz) => (

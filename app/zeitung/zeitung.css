@@ -147,6 +147,16 @@ html:has(.gazet) { background: #f5f8f9; }
 .gz-archiv summary::-webkit-details-marker { display: none; }
 .gz-archiv details[open] summary { margin-bottom: 12px; }
 
+.gz-shop { --shop-bg: #14232b; --shop-fg: #f5f8f9; --shop-akzent: #4cc3cf; background: var(--shop-bg); color: var(--shop-fg); margin-top: 32px; }
+@media (prefers-color-scheme: dark) { .gazet .gz-shop { --shop-bg: #1a2d36; } }
+.gz-shop-innen { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: 'marke marke' 'text knopf'; gap: 8px 24px; align-items: center; padding-block: 28px; }
+.gz-shop-kennzeichnung { grid-area: marke; font-family: var(--f-mono); font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; opacity: .65; }
+.gz-shop-text { grid-area: text; display: grid; gap: 4px; min-width: 0; }
+.gz-shop-text strong { font-family: var(--f-display); font-weight: 800; font-size: 1.6rem; letter-spacing: -.01em; line-height: 1.1; }
+.gz-shop-text span { font-size: 1rem; opacity: .85; }
+.gazet .gz-shop-knopf { grid-area: knopf; display: inline-flex; align-items: center; min-height: 44px; padding: 10px 20px; border-radius: 999px; background: var(--shop-akzent); color: var(--shop-bg); font-family: var(--f-display); font-weight: 700; text-decoration: none; white-space: nowrap; }
+.gazet .gz-shop-knopf:hover { filter: brightness(1.08); }
+@media (max-width: 560px) { .gz-shop-innen { grid-template-columns: 1fr; grid-template-areas: 'marke' 'text' 'knopf'; } .gazet .gz-shop-knopf { justify-content: center; } }
 .gz-fuss { padding-block: 26px 40px; font-size: .88rem; color: var(--muted); }
 .gz-fuss p { max-width: 70ch; margin: 0 0 .7em; }
 .gz-fuss-links { display: flex; gap: 18px; }

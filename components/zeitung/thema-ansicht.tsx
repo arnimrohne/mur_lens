@@ -1,5 +1,6 @@
 'use client';
 
+import { ShopBanner } from './shop-banner';
 import { ThemenKarte } from './themen-karte';
 import { ZeitungKopf } from './zeitung-kopf';
 import { useJetzt } from '@/hooks/use-jetzt';
@@ -40,6 +41,7 @@ export function ThemaAnsicht({ thema, stand }: ThemaAnsichtProps) {
           />
         </section>
       </main>
+      <ShopBanner texte={texte} />
       <footer className="gz-rahmen gz-fuss">
         <p>{texte.fussnoten[1]}</p>
         <p className="gz-fuss-links">
