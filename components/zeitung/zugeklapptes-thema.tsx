@@ -22,7 +22,10 @@ export function ZugeklapptesThema({ thema, sprache, texte, jetzt }: Zugeklapptes
     <details className="gz-zu">
       <summary>
         <span className="gz-zu-datum">{datum}</span>
-        <span className="gz-zu-titel">{meldungText(neueste, 'titel', sprache)}</span>
+        <span className="gz-zu-titel">
+          {thema.warTop && <span className="gz-marke gz-marke-top">{texte.aufmacher}</span>}
+          {meldungText(neueste, 'titel', sprache)}
+        </span>
       </summary>
       <ThemenKarte thema={thema} sprache={sprache} texte={texte} jetzt={jetzt} />
     </details>

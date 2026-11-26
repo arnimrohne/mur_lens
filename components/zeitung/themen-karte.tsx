@@ -39,6 +39,7 @@ export function ThemenKarte({ thema, sprache, texte, jetzt, oberzeile }: ThemenK
             sprache={sprache}
             texte={texte}
             marke={marke(thema, meldung, jetzt, texte)}
+            topMarke={!oberzeile && thema.warTop && meldung === thema.updates[0] ? texte.aufmacher : undefined}
           />
         ))}
       </div>

@@ -16,6 +16,7 @@ function thema(teil: Partial<Thema> & { id: string; aktualisiert: string }): The
     status: 'aktiv',
     erstellt: teil.aktualisiert,
     top: false,
+    warTop: false,
     updates: [
       { zeit: teil.aktualisiert, nurDatum: false, titel: 'Titel', text: 'Text', quellen: [], i18n: {} },
     ],
@@ -95,6 +96,23 @@ describe('Ausgabe', () => {
     const ids = ausgabe.rubriken.flatMap((b) => [...b.heute, ...b.vortage].map((t) => t.id));
     expect(ids).not.toContain('rodrigues-seebeben');
     expect(ausgabe.archiv.map((t) => t.id)).toContain('wasserkrise');
+  });
+
+  it('stellt ehemalige Top-Themen in ihrer Rubrik nach vorn', () => {
+    const t = (id: string, stunden: number, warTop = false) =>
+      thema({ id, rubrik: 'umwelt', warTop, aktualisiert: new Date(jetzt - stunden * STUNDE).toISOString() });
+    const daten = { stand: '', videos: [], themen: [t('neu', 1), t('ehemals-top', 30, true), t('alt', 40)] };
+    const ausgabe = baueAusgabe(daten, jetzt, 'Indian/Mauritius');
+    // Aufmacher ist das neueste Thema, danach führt das ehemalige Top-Thema die Rubrik an.
+    expect(ausgabe.aufmacher?.id).toBe('neu');
+    expect(ausgabe.rubriken[0].vortage.map((x) => x.id)).toEqual(['ehemals-top', 'alt']);
+  });
+
+  it('markiert das aktuelle Top-Thema auch als warTop', () => {
+    const daten = parseZeitungDaten({
+      topics: [{ id: 'x', rubrik: 'politik', top: true, updates: [{ zeit: '2026-11-26T10:00:00+04:00', titel: 'X' }] }],
+    });
+    expect(daten.themen[0].warTop).toBe(true);
   });
 });
 

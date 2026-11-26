@@ -74,7 +74,10 @@ export function baueAusgabe(
   const aufmacher = aktiv.find((t) => t.top) ?? aktiv[0];
 
   const rubriken = RUBRIK_IDS.flatMap((rubrik): RubrikBlock[] => {
-    const themen = aktiv.filter((t) => t.rubrik === rubrik && t !== aufmacher);
+    // Ehemalige Top-Themen zuerst, sonst neueste zuerst (stabile Sortierung).
+    const themen = aktiv
+      .filter((t) => t.rubrik === rubrik && t !== aufmacher)
+      .sort((a, b) => Number(b.warTop) - Number(a.warTop));
     if (themen.length === 0) return [];
     return [
       {

@@ -8,9 +8,11 @@ interface MeldungFolieProps {
   texte: OberflaechenTexte;
   /** Hinweis neben dem Datum, z. B. „Neu“ oder „Älterer Stand“. */
   marke?: { text: string; art: 'neu' | 'aktualisiert' | 'alt' };
+  /** Kennzeichnung als (ehemaliges) Top-Thema. */
+  topMarke?: string;
 }
 
-export function MeldungFolie({ meldung, sprache, texte, marke }: MeldungFolieProps) {
+export function MeldungFolie({ meldung, sprache, texte, marke, topMarke }: MeldungFolieProps) {
   const absaetze = meldungText(meldung, 'text', sprache)
     .split(/\n\s*\n/)
     .map((absatz) => absatz.trim())
@@ -19,6 +21,7 @@ export function MeldungFolie({ meldung, sprache, texte, marke }: MeldungFoliePro
   return (
     <div className={`gz-folie${marke?.art === 'alt' ? ' gz-folie-alt' : ''}`}>
       <div className="gz-stempel">
+        {topMarke && <span className="gz-marke gz-marke-top">{topMarke}</span>}
         {marke && <span className={`gz-marke gz-marke-${marke.art}`}>{marke.text}</span>}
         <time dateTime={meldung.zeit}>{meldungZeit(meldung, sprache)}</time>
         {fehltUebersetzung(meldung, sprache) && (
