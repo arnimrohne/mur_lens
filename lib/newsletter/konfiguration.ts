@@ -31,7 +31,7 @@ export const BREVO_LISTEN: Record<Versandzeit, number> = { morgen: 0, mittag: 0,
 /** Brevo-Vorlage für die Bestätigungsmail (Double-Opt-in). 0 = noch nicht eingerichtet. */
 export const BREVO_DOI_VORLAGE = 0;
 
-export const ABSENDER = { name: 'Gazet Morisyen', email: 'zeitung@morisyen.de' };
+export const ABSENDER = { name: 'Gazet Morisyen', email: 'gazet@morisyen.de' };
 
 export function istHaeufigkeit(wert: unknown): wert is Haeufigkeit {
   return wert === 1 || wert === 2 || wert === 3;
