@@ -7,6 +7,7 @@
 
 import { RUBRIK_IDS } from './types';
 import type {
+  Einleitung,
   Meldung,
   MeldungUebersetzung,
   Quelle,
@@ -139,11 +140,23 @@ function parseVideo(wert: unknown): Video | undefined {
   };
 }
 
+function parseEinleitung(wert: unknown): Einleitung | undefined {
+  if (!istObjekt(wert) || !istGueltigeZeit(wert.zeit)) return undefined;
+  const de = text(wert.de);
+  if (!de) return undefined;
+  return { zeit: wert.zeit, texte: { de, fr: text(wert.fr) ?? de, en: text(wert.en) ?? de } };
+}
+
 /** Wandelt beliebige JSON-Daten in gültige Zeitungsdaten um. */
 export function parseZeitungDaten(roh: unknown): ZeitungDaten {
   if (!istObjekt(roh)) return { stand: '', themen: [], videos: [] };
   const themen = Array.isArray(roh.topics) ? roh.topics.flatMap((t) => parseThema(t) ?? []) : [];
   const videos = Array.isArray(roh.videos) ? roh.videos.flatMap((v) => parseVideo(v) ?? []) : [];
   videos.sort((a, b) => a.reihenfolge - b.reihenfolge);
-  return { stand: istGueltigeZeit(roh.stand) ? roh.stand : '', themen, videos };
+  return {
+    stand: istGueltigeZeit(roh.stand) ? roh.stand : '',
+    einleitung: parseEinleitung(roh.einleitung),
+    themen,
+    videos,
+  };
 }

@@ -88,8 +88,15 @@ export interface Video {
   i18n: Partial<Record<Exclude<Sprache, 'de'>, VideoUebersetzung>>;
 }
 
+/** Kurze Einleitung „Das Wichtigste in Kürze“, vom automatischen Lauf geschrieben. */
+export interface Einleitung {
+  zeit: string;
+  texte: Record<Sprache, string>;
+}
+
 export interface ZeitungDaten {
   stand: string;
+  einleitung?: Einleitung;
   themen: Thema[];
   videos: Video[];
 }

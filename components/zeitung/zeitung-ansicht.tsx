@@ -3,6 +3,7 @@
 import { useMemo } from 'react';
 
 import { RubrikAbschnitt } from './rubrik-abschnitt';
+import { AnmeldeFormular } from '@/components/newsletter/anmelde-formular';
 import { ShopBanner } from './shop-banner';
 import { TopKacheln } from './top-kacheln';
 import { WetterLeiste } from './wetter-leiste';
@@ -20,9 +21,11 @@ interface ZeitungAnsichtProps {
   daten: ZeitungDaten;
   /** Fehlt, wenn der Wetterdienst nicht erreichbar war. */
   wetter?: Wetter;
+  /** Newsletter-Anmeldung freigeschaltet (Brevo und Impressum eingerichtet). */
+  newsletterBereit?: boolean;
 }
 
-export function ZeitungAnsicht({ daten, wetter }: ZeitungAnsichtProps) {
+export function ZeitungAnsicht({ daten, wetter, newsletterBereit = false }: ZeitungAnsichtProps) {
   const [sprache, waehleSprache] = useZeitungSprache();
   const { jetzt, zeitzone } = useJetzt(Date.parse(daten.stand) || 0);
   const ausgabe = useMemo(() => baueAusgabe(daten, jetzt, zeitzone), [daten, jetzt, zeitzone]);
@@ -73,6 +76,12 @@ export function ZeitungAnsicht({ daten, wetter }: ZeitungAnsichtProps) {
         )}
       </main>
 
+      {newsletterBereit && (
+        <div className="gz-rahmen">
+          <AnmeldeFormular sprache={sprache} bereit />
+        </div>
+      )}
+
       <ShopBanner texte={texte} />
 
       <footer className="gz-rahmen gz-fuss">
@@ -82,6 +91,7 @@ export function ZeitungAnsicht({ daten, wetter }: ZeitungAnsichtProps) {
         <p className="gz-fuss-links">
           <a href="/zeitung/impressum">{texte.impressum}</a>
           <a href="/zeitung/datenschutz">{texte.datenschutz}</a>
+          {newsletterBereit && <a href="/zeitung/newsletter">Newsletter</a>}
         </p>
       </footer>
     </>
