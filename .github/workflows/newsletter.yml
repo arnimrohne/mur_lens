@@ -46,4 +46,4 @@ jobs:
           if [ -z "$GEHEIMNIS" ]; then echo "Secret NEWSLETTER_GEHEIMNIS fehlt – kein Versand."; exit 0; fi
           curl --fail-with-body -sS -X POST \
             -H "Authorization: Bearer $GEHEIMNIS" \
-            "https://gazet.morisyen.de/api/newsletter/versand?zeit=$ZEIT"
+            "https://mur-lens.vercel.app/api/newsletter/versand?zeit=$ZEIT"

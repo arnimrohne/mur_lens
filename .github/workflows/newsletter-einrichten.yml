@@ -1,0 +1,39 @@
+# Einmalig (oder bei Bedarf erneut) ausführen: richtet in Brevo Felder, Listen
+# und die Bestätigungsmail ein und schickt optional eine Testausgabe.
+# Start: GitHub → Actions → „Newsletter einrichten“ → „Run workflow“.
+# Benötigt das Repository-Secret NEWSLETTER_GEHEIMNIS (gleicher Wert wie in Vercel).
+name: Newsletter einrichten
+
+on:
+  workflow_dispatch:
+    inputs:
+      testadresse:
+        description: 'Testausgabe an diese Adresse schicken (leer lassen = kein Test)'
+        required: false
+        default: ''
+
+permissions: {}
+
+jobs:
+  einrichten:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Brevo einrichten
+        env:
+          GEHEIMNIS: ${{ secrets.NEWSLETTER_GEHEIMNIS }}
+        run: |
+          if [ -z "$GEHEIMNIS" ]; then echo "Secret NEWSLETTER_GEHEIMNIS fehlt."; exit 1; fi
+          curl --fail-with-body -sS -X POST -H "Authorization: Bearer $GEHEIMNIS" \
+            "https://mur-lens.vercel.app/api/newsletter/einrichten"
+          echo
+      - name: Testausgabe verschicken
+        env:
+          GEHEIMNIS: ${{ secrets.NEWSLETTER_GEHEIMNIS }}
+          TESTADRESSE: ${{ github.event.inputs.testadresse }}
+        run: |
+          if [ -z "$TESTADRESSE" ]; then echo "Keine Testadresse angegeben – übersprungen."; exit 0; fi
+          curl --fail-with-body -sS -X POST -G -H "Authorization: Bearer $GEHEIMNIS" \
+            --data-urlencode "zeit=morgen" --data-urlencode "test=$TESTADRESSE" \
+            "https://mur-lens.vercel.app/api/newsletter/versand"
+          echo

@@ -25,12 +25,6 @@ export const ALLE_VERSANDZEITEN: readonly Versandzeit[] = ['morgen', 'mittag', '
 /** Zeitraum, den eine Ausgabe abdeckt (Stunden zurück). Morgens: Tagesüberblick. */
 export const FENSTER_STUNDEN: Record<Versandzeit, number> = { morgen: 24, mittag: 6, abend: 7 };
 
-/** Brevo-Listen je Versandzeit. 0 = noch nicht eingerichtet. */
-export const BREVO_LISTEN: Record<Versandzeit, number> = { morgen: 0, mittag: 0, abend: 0 };
-
-/** Brevo-Vorlage für die Bestätigungsmail (Double-Opt-in). 0 = noch nicht eingerichtet. */
-export const BREVO_DOI_VORLAGE = 0;
-
 export const ABSENDER = { name: 'Gazet Morisyen', email: 'gazet@morisyen.de' };
 
 export function istHaeufigkeit(wert: unknown): wert is Haeufigkeit {
@@ -50,16 +44,16 @@ export function newsletterGeheimnis(): string | undefined {
   return geheimnis && geheimnis.length >= 32 ? geheimnis : undefined;
 }
 
+/** Brevo-Schlüssel und Versand-Geheimnis sind in Vercel hinterlegt. */
+export function brevoVerbunden(): boolean {
+  return Boolean(brevoSchluessel()) && Boolean(newsletterGeheimnis());
+}
+
 /**
- * Anmeldung und Versand sind erst möglich, wenn Brevo eingerichtet ist
+ * Anmeldung und regulärer Versand sind erst möglich, wenn Brevo verbunden
  * und das Impressum vollständig ist (Pflichtangaben in jeder Mail).
+ * Ob Listen und Vorlage in Brevo existieren, wird beim Aufruf geprüft.
  */
 export function newsletterBereit(): boolean {
-  return (
-    Boolean(brevoSchluessel()) &&
-    Boolean(newsletterGeheimnis()) &&
-    Object.values(BREVO_LISTEN).every((id) => id > 0) &&
-    BREVO_DOI_VORLAGE > 0 &&
-    impressumVollstaendig()
-  );
+  return brevoVerbunden() && impressumVollstaendig();
 }
