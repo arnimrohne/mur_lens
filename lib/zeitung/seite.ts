@@ -25,10 +25,10 @@ export const SUCHBEGRIFFE = [
  * (noindex), damit kein öffentliches Angebot ohne Impressum entsteht.
  */
 export const IMPRESSUM = {
-  name: '',
-  anschrift: '',
-  email: '',
-  verantwortlich: '',
+  name: 'Arnim Rohne',
+  anschrift: 'Heinrich-von-Stein-Str. 118, 92342 Freystadt',
+  email: 'gazet@morisyen.de',
+  verantwortlich: 'Arnim Rohne, Heinrich-von-Stein-Str. 118, 92342 Freystadt',
 } as const;
 
 export function impressumVollstaendig(): boolean {

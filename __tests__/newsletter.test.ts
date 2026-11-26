@@ -33,7 +33,7 @@ describe('Newsletter: Häufigkeit', () => {
     expect(istHaeufigkeit(4)).toBe(false);
   });
 
-  it('bleibt gesperrt, solange Brevo und Impressum fehlen', () => {
+  it('bleibt gesperrt, solange der Brevo-Schlüssel fehlt', () => {
     expect(newsletterBereit()).toBe(false);
   });
 });
