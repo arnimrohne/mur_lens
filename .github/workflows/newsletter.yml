@@ -1,0 +1,49 @@
+# Verschickt den Newsletter von Gazet Morisyen zu festen Zeiten.
+# Uhrzeiten in UTC; Mauritius = UTC+4 (keine Sommerzeit):
+#   03:00 UTC = 07:00 Morgen, 08:00 UTC = 12:00 Mittag, 14:00 UTC = 18:00 Abend.
+# Benötigt das Repository-Secret NEWSLETTER_GEHEIMNIS (gleicher Wert wie in Vercel).
+name: Newsletter
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+    - cron: '0 8 * * *'
+    - cron: '0 14 * * *'
+  workflow_dispatch:
+    inputs:
+      zeit:
+        description: 'Versandzeit'
+        required: true
+        default: morgen
+        type: choice
+        options: [morgen, mittag, abend]
+
+permissions: {}
+
+jobs:
+  versand:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Versandzeit bestimmen
+        id: zeit
+        env:
+          EINGABE: ${{ github.event.inputs.zeit }}
+          ZEITPLAN: ${{ github.event.schedule }}
+        run: |
+          case "$EINGABE|$ZEITPLAN" in
+            morgen\|*|mittag\|*|abend\|*) zeit="${EINGABE}" ;;
+            *"|0 3 * * *") zeit=morgen ;;
+            *"|0 8 * * *") zeit=mittag ;;
+            *) zeit=abend ;;
+          esac
+          echo "zeit=$zeit" >> "$GITHUB_OUTPUT"
+      - name: Newsletter verschicken
+        env:
+          GEHEIMNIS: ${{ secrets.NEWSLETTER_GEHEIMNIS }}
+          ZEIT: ${{ steps.zeit.outputs.zeit }}
+        run: |
+          if [ -z "$GEHEIMNIS" ]; then echo "Secret NEWSLETTER_GEHEIMNIS fehlt – kein Versand."; exit 0; fi
+          curl --fail-with-body -sS -X POST \
+            -H "Authorization: Bearer $GEHEIMNIS" \
+            "https://mur-lens.vercel.app/api/newsletter/versand?zeit=$ZEIT"

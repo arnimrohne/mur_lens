@@ -42,6 +42,18 @@ export default function DatenschutzSeite() {
         übermittelt; Ihr Browser verbindet sich nicht mit dem Wetterdienst.
       </p>
 
+      <h2>Newsletter</h2>
+      <p>
+        Für den Newsletter verarbeiten wir Ihre E-Mail-Adresse sowie Ihre gewählte Sprache, Häufigkeit und,
+        falls angekreuzt, Ihre Einwilligung zu Hinweisen auf den Morisyen-Shop (Art. 6 Abs. 1 lit. a DSGVO).
+        Die Anmeldung erfolgt im Double-Opt-in-Verfahren: Erst nach Klick auf den Link in der Bestätigungsmail
+        sind Sie angemeldet. Versand und Verwaltung der Adressen übernimmt Sendinblue GmbH (Brevo),
+        Köpenicker Straße 126, 10179 Berlin, als Auftragsverarbeiter. Brevo protokolliert die Anmeldung und
+        Bestätigung (Zeitpunkt, IP-Adresse) als Nachweis der Einwilligung und kann Öffnungen und Klicks
+        statistisch auswerten. Sie können sich jederzeit über den Link in jeder Mail abmelden; Ihre Daten werden
+        dann aus der Empfängerliste gelöscht bzw. gesperrt, soweit keine Nachweispflichten entgegenstehen.
+      </p>
+
       <h2>Spracheinstellung</h2>
       <p>
         Wenn Sie eine Sprache wählen, wird diese Wahl ausschließlich in Ihrem Browser gespeichert

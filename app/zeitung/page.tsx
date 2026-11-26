@@ -1,4 +1,5 @@
 import { ZeitungAnsicht } from '@/components/zeitung/zeitung-ansicht';
+import { newsletterBereit } from '@/lib/newsletter/konfiguration';
 import { ladeZeitung } from '@/lib/zeitung/lade-daten';
 import { ladeWetter } from '@/lib/zeitung/lade-wetter';
 import { alsSkriptJson, strukturierteDaten } from '@/lib/zeitung/strukturierte-daten';
@@ -13,7 +14,7 @@ export default async function ZeitungSeite() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: alsSkriptJson(jsonLd) }} />
-      <ZeitungAnsicht daten={daten} wetter={wetter} />
+      <ZeitungAnsicht daten={daten} wetter={wetter} newsletterBereit={newsletterBereit()} />
     </>
   );
 }

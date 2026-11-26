@@ -195,6 +195,25 @@ html:has(.gazet) { background: #fdfaf5; }
 .gz-archiv summary::-webkit-details-marker { display: none; }
 .gz-archiv details[open] summary { margin-bottom: 12px; }
 
+.gz-newsletter { margin-top: 32px; padding: 22px 22px 18px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); }
+.gz-rechtstext .gz-newsletter { margin-top: 8px; padding: 0; background: transparent; border: 0; }
+.gz-newsletter h2 { font-family: var(--f-display); font-weight: 800; font-size: 1.5rem; margin: 0 0 4px; }
+.gz-newsletter > p { margin: 0 0 14px; color: var(--muted); }
+.gz-nl-form { display: grid; gap: 12px; }
+.gz-nl-zeile { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 12px; }
+@media (max-width: 560px) { .gz-nl-zeile { grid-template-columns: 1fr; } }
+.gz-nl-feld { display: grid; gap: 4px; min-width: 0; }
+.gz-nl-feld span { font-family: var(--f-mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.gz-nl-feld input, .gz-nl-feld select { font: inherit; font-size: 1rem; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; min-height: 44px; width: 100%; }
+.gz-nl-feld input:focus, .gz-nl-feld select:focus { outline: 2px solid var(--lagoon); outline-offset: 1px; }
+.gz-nl-check { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: start; font-size: .9rem; line-height: 1.45; }
+.gz-nl-check input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--lagoon); }
+.gz-nl-falle { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.gz-nl-knopf { justify-self: start; min-height: 44px; padding: 10px 22px; border-radius: 999px; background: var(--lagoon); color: var(--on-lagoon); font-family: var(--f-display); font-weight: 700; cursor: pointer; }
+.gz-nl-knopf:disabled { opacity: .6; cursor: default; }
+.gz-nl-erfolg { color: var(--lagoon); font-weight: 600; }
+.gz-nl-fehler { color: var(--red); }
+.gz-nl-hinweis { font-family: var(--f-mono); font-size: .85rem; color: var(--muted); }
 .gz-shop { --shop-bg: #0f6e5c; --shop-fg: #ffffff; --shop-knopf: #fdfaf5; --shop-knopf-text: #0f6e5c; background: var(--shop-bg); color: var(--shop-fg); margin-top: 32px; }
 @media (prefers-color-scheme: dark) { .gazet .gz-shop { --shop-bg: #1a1f26; --shop-fg: #eef1f4; --shop-knopf: #35c9a5; --shop-knopf-text: #0b1210; border-block: 1px solid #2a313b; } }
 .gz-shop-innen { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: 'marke marke' 'text knopf'; gap: 8px 24px; align-items: center; padding-block: 28px; }

@@ -31,6 +31,6 @@ export function middleware(anfrage: NextRequest): NextResponse {
 }
 
 export const config = {
-  // Next.js-Interna und Dateien mit Endung (außer robots.txt und sitemap.xml) auslassen.
-  matcher: ['/((?!_next/|favicon\\.ico|icon|apple-icon|manifest\\.json|icons/).*)'],
+  // Next.js-Interna, API-Routen und App-Dateien auslassen.
+  matcher: ['/((?!_next/|api/|favicon\\.ico|icon|apple-icon|manifest\\.json|icons/).*)'],
 };
