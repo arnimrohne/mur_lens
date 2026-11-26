@@ -1,0 +1,24 @@
+# ADR-005
+
+## Gazet Morisyen unter /zeitung
+
+Entscheidung
+
+- Die Zeitung „Gazet Morisyen“ lebt als eigener Bereich `/zeitung` in dieser App.
+- Auf dem Host `gazet.morisyen.de` liefert `middleware.ts` die Zeitung direkt unter `/` aus;
+  alle anderen Hosts (MUR Lens) bleiben unverändert.
+- Die Meldungen liegen als `daten.json` auf dem Branch `zeitung-daten`.
+  Ein automatischer Lauf (alle 4 Stunden) pflegt nur diese Datei.
+- Die Seite lädt die Datei per ISR (`revalidate = 600`). Ist sie nicht erreichbar,
+  gilt der mitgelieferte Stand in `data/zeitung/daten.json`.
+
+Grund
+
+- Keine Neu-Deployments und keine Daten-Commits auf `main` bei jeder Aktualisierung.
+- Seite bleibt statisch und schnell; Suchmaschinen sehen vollständiges HTML.
+- Fachlogik (Archiv-Regeln, Sprache, Datenprüfung) liegt testbar unter `lib/zeitung/`.
+
+Folgen
+
+- Solange das Impressum in `lib/zeitung/seite.ts` unvollständig ist,
+  ist die Zeitung für Suchmaschinen gesperrt (noindex, robots.txt Disallow).
