@@ -103,6 +103,12 @@ html:has(.gazet) { background: #f5f8f9; }
 .gz-punkte span { width: 7px; height: 7px; border-radius: 50%; background: var(--line); }
 .gz-punkte span.gz-an { background: var(--lagoon); }
 .gz-hinweis { margin-left: auto; }
+.gz-aktionen { display: flex; justify-content: flex-end; margin-top: 8px; }
+.gz-teilen { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: .76rem; color: var(--lagoon); padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; min-height: 32px; }
+.gz-teilen:hover { border-color: var(--lagoon); }
+.gz-einzel .gz-aufmacher { border-bottom: 0; }
+.gz-zurueck { margin: 20px 0 0; font-family: var(--f-mono); font-size: .8rem; }
+.gz-zurueck a { text-decoration: none; }
 
 .gz-zuliste { margin-top: 8px; border-top: 1px solid var(--line); }
 .gz-raster + .gz-zuliste { margin-top: 14px; }

@@ -1,6 +1,7 @@
 'use client';
 
 import { MeldungFolie } from './meldung-folie';
+import { TeilenKnopf } from './teilen-knopf';
 import { useWischStapel } from '@/hooks/use-wisch-stapel';
 import { istFrischAktualisiert, istNeu } from '@/lib/zeitung/ausgabe';
 import { meldungText } from '@/lib/zeitung/sprache';
@@ -61,6 +62,9 @@ export function ThemenKarte({ thema, sprache, texte, jetzt, oberzeile }: ThemenK
           </span>
         </div>
       )}
+      <div className="gz-aktionen">
+        <TeilenKnopf themaId={thema.id} titel={titel} texte={texte} />
+      </div>
     </article>
   );
 }

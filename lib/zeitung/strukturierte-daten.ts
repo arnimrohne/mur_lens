@@ -4,6 +4,7 @@
 
 import { baueAusgabe } from './ausgabe';
 import { SEITEN_BESCHREIBUNG, SEITEN_NAME, SEITEN_URL } from './seite';
+import { themaUrl } from './teilen';
 import type { Thema, ZeitungDaten } from './types';
 
 const MAX_ARTIKEL = 30;
@@ -17,11 +18,17 @@ function artikel(thema: Thema) {
     datePublished: thema.erstellt,
     dateModified: thema.aktualisiert,
     inLanguage: 'de',
-    url: `${SEITEN_URL}/#thema-${thema.id}`,
+    url: themaUrl(thema.id),
+    mainEntityOfPage: themaUrl(thema.id),
     isBasedOn: neueste.quellen.map((quelle) => quelle.url),
     publisher: { '@type': 'Organization', name: SEITEN_NAME, url: SEITEN_URL },
     contentLocation: { '@type': 'Place', name: thema.ort ?? 'Mauritius' },
   };
+}
+
+/** NewsArticle für die Seite eines einzelnen Themas. */
+export function artikelDaten(thema: Thema) {
+  return { '@context': 'https://schema.org', ...artikel(thema) };
 }
 
 export function strukturierteDaten(daten: ZeitungDaten, jetzt: number) {

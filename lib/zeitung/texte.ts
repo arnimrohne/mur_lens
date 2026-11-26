@@ -33,6 +33,10 @@ export interface OberflaechenTexte {
   fussnoten: string[];
   impressum: string;
   datenschutz: string;
+  teilen: string;
+  linkKopiert: string;
+  linkFehler: string;
+  zurAusgabe: string;
 }
 
 const de: OberflaechenTexte = {
@@ -75,6 +79,10 @@ const de: OberflaechenTexte = {
   ],
   impressum: 'Impressum',
   datenschutz: 'Datenschutz',
+  teilen: 'Teilen',
+  linkKopiert: 'Link kopiert',
+  linkFehler: 'Kopieren nicht möglich',
+  zurAusgabe: '← Zur aktuellen Ausgabe',
 };
 
 const fr: OberflaechenTexte = {
@@ -117,6 +125,10 @@ const fr: OberflaechenTexte = {
   ],
   impressum: 'Mentions légales',
   datenschutz: 'Confidentialité',
+  teilen: 'Partager',
+  linkKopiert: 'Lien copié',
+  linkFehler: 'Copie impossible',
+  zurAusgabe: "← Vers l'édition du jour",
 };
 
 const en: OberflaechenTexte = {
@@ -159,6 +171,10 @@ const en: OberflaechenTexte = {
   ],
   impressum: 'Legal notice',
   datenschutz: 'Privacy',
+  teilen: 'Share',
+  linkKopiert: 'Link copied',
+  linkFehler: 'Could not copy',
+  zurAusgabe: '← To the current edition',
 };
 
 export const TEXTE: Record<Sprache, OberflaechenTexte> = { de, fr, en };

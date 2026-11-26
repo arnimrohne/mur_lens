@@ -6,6 +6,7 @@ import { baueAusgabe, istAktiv, istVonHeute } from '@/lib/zeitung/ausgabe';
 import { parseZeitungDaten, sichereUrl } from '@/lib/zeitung/parse-daten';
 import { meldungText, meldungZeit, spracheAusBrowser } from '@/lib/zeitung/sprache';
 import { alsSkriptJson, strukturierteDaten } from '@/lib/zeitung/strukturierte-daten';
+import { findeThema, themaPfad, themaUrlFuerHost } from '@/lib/zeitung/teilen';
 import type { Thema } from '@/lib/zeitung/types';
 
 const STUNDE = 3_600_000;
@@ -152,5 +153,23 @@ describe('Strukturierte Daten', () => {
     const json = alsSkriptJson(ld);
     expect(json).toContain('"@type":"NewsArticle"');
     expect(alsSkriptJson({ x: '</script>' })).not.toContain('</script>');
+  });
+});
+
+describe('Teilen', () => {
+  it('baut kurze Adressen auf gazet.morisyen.de und /zeitung-Adressen anderswo', () => {
+    expect(themaPfad('rodrigues-seebeben')).toBe('/thema/rodrigues-seebeben');
+    expect(themaUrlFuerHost('wasserkrise', 'gazet.morisyen.de', 'https://gazet.morisyen.de')).toBe(
+      'https://gazet.morisyen.de/thema/wasserkrise',
+    );
+    expect(themaUrlFuerHost('wasserkrise', 'mur-lens.vercel.app', 'https://mur-lens.vercel.app')).toBe(
+      'https://mur-lens.vercel.app/zeitung/thema/wasserkrise',
+    );
+  });
+
+  it('findet Themen über ihre Kennung', () => {
+    const daten = parseZeitungDaten(mitgeliefert);
+    expect(findeThema(daten, 'world-knits')?.rubrik).toBe('soziales');
+    expect(findeThema(daten, 'gibt-es-nicht')).toBeUndefined();
   });
 });
