@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
-import mitgeliefert from '@/data/zeitung/daten.json';
+import mitgeliefert from './fixtures/zeitung/ausgabe-2026-11-26.json';
+import aktuellerStand from '@/data/zeitung/daten.json';
 import { baueAusgabe, istAktiv, istVonHeute } from '@/lib/zeitung/ausgabe';
 import { parseZeitungDaten, sichereUrl } from '@/lib/zeitung/parse-daten';
 import { meldungText, meldungZeit, spracheAusBrowser } from '@/lib/zeitung/sprache';
@@ -30,6 +31,12 @@ describe('parseZeitungDaten', () => {
     expect(daten.themen.length).toBe(26);
     expect(daten.videos.length).toBe(8);
     expect(daten.stand).toBe('2026-11-26T22:00:00+04:00');
+  });
+
+  it('liest den mitgelieferten Ersatzstand ohne Verluste', () => {
+    const daten = parseZeitungDaten(aktuellerStand);
+    expect(daten.themen.length).toBe(aktuellerStand.topics.length);
+    expect(daten.videos.length).toBe(aktuellerStand.videos.length);
   });
 
   it('verwirft ungültige Themen, Videos und unsichere Links', () => {

@@ -1,8 +1,44 @@
 {
  "schema": 1,
- "stand": "2026-11-26T22:00:00+04:00",
- "laeufe": 1,
+ "stand": "2026-11-27T00:20:00+04:00",
+ "laeufe": 2,
  "topics": [
+  {
+   "id": "3g-abschaltung",
+   "aktualisiert": "2026-11-26T12:00:00+04:00",
+   "erstellt": "2026-11-26T12:00:00+04:00",
+   "rubrik": "wirtschaft",
+   "status": "aktiv",
+   "titel": "Das 3G-Mobilfunknetz verschwindet bis spätestens 2028",
+   "updates": [
+    {
+     "i18n": {
+      "en": {
+       "text": "The regulator ICTA confirms that the 3G network will be phased out by the end of 2028 at the latest. Operators are already dismantling their networks at their own pace.\n\nDevices that only support 3G, such as older phones, vehicle GPS trackers or machine-to-machine modules, will then stop working. ICTA advises switching to 4G or 5G.",
+       "titel": "3G mobile network to disappear by 2028 at the latest"
+      },
+      "fr": {
+       "text": "Le régulateur ICTA le confirme : le réseau 3G sera arrêté progressivement, au plus tard fin 2028. Les opérateurs démantèlent déjà leurs réseaux, chacun à son rythme.\n\nLes appareils fonctionnant uniquement en 3G, comme d'anciens téléphones, des traceurs GPS de véhicules ou des modules entre machines, cesseront alors de marcher. L'ICTA recommande de passer à la 4G ou à la 5G.",
+       "titel": "Le réseau mobile 3G disparaîtra au plus tard en 2028"
+      }
+     },
+     "nurDatum": true,
+     "quellen": [
+      {
+       "name": "Défi Media",
+       "url": "https://defimedia.info/reseau-mobile-la-3g-appelee-disparaitre-dici-fin-2028"
+      },
+      {
+       "name": "ION News",
+       "url": "https://ionnews.mu/telecoms-la-fin-de-la-3g-a-maurice-actee-au-plus-tard-en-2028/"
+      }
+     ],
+     "text": "Die Regulierungsbehörde ICTA bestätigt: Das 3G-Netz wird schrittweise abgeschaltet, spätestens Ende 2028. Die Betreiber bauen ihre Netze bereits in eigenem Tempo ab.\n\nGeräte, die nur 3G können, etwa ältere Handys, GPS-Tracker in Fahrzeugen oder Maschinen-Module, funktionieren danach nicht mehr. Die ICTA rät zum Umstieg auf 4G oder 5G.",
+     "titel": "Das 3G-Mobilfunknetz verschwindet bis spätestens 2028",
+     "zeit": "2026-11-26T12:00:00+04:00"
+    }
+   ]
+  },
   {
    "id": "ausschreibungen",
    "aktualisiert": "2026-11-25T12:00:00+04:00",
@@ -12,6 +48,18 @@
    "titel": "46 öffentliche Ausschreibungen in Arbeit",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "The Central Procurement Board is currently handling 46 projects, 15 of them in infrastructure.",
+       "titel": "46 public tenders in progress",
+       "zeitText": "c. 25 Nov"
+      },
+      "fr": {
+       "text": "Le Central Procurement Board traite actuellement 46 projets, dont 15 concernent les infrastructures.",
+       "titel": "46 appels d'offres publics en cours",
+       "zeitText": "vers le 25/11"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -22,19 +70,7 @@
      "text": "Das Central Procurement Board bearbeitet derzeit 46 Projekte, 15 davon betreffen die Infrastruktur.",
      "titel": "46 öffentliche Ausschreibungen in Arbeit",
      "zeit": "2026-11-25T12:00:00+04:00",
-     "zeitText": "ca. 25.11.",
-     "i18n": {
-      "fr": {
-       "titel": "46 appels d'offres publics en cours",
-       "text": "Le Central Procurement Board traite actuellement 46 projets, dont 15 concernent les infrastructures.",
-       "zeitText": "vers le 25/11"
-      },
-      "en": {
-       "titel": "46 public tenders in progress",
-       "text": "The Central Procurement Board is currently handling 46 projects, 15 of them in infrastructure.",
-       "zeitText": "c. 25 Nov"
-      }
-     }
+     "zeitText": "ca. 25.11."
     }
    ]
   },
@@ -43,10 +79,20 @@
    "aktualisiert": "2026-11-23T12:00:00+04:00",
    "erstellt": "2026-11-23T12:00:00+04:00",
    "rubrik": "soziales",
-   "status": "aktiv",
+   "status": "archiv",
    "titel": "Jede zweite Person denkt ans Auswandern",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "According to Afrobarometer 2026, 52% of Mauritians have thought about emigrating, up from 26% in 2016. The population shrank by about 2,600 people in 2025.",
+       "titel": "Every second Mauritian has considered emigrating"
+      },
+      "fr": {
+       "text": "Selon l'Afrobaromètre 2026, 52 % des Mauriciens ont déjà envisagé d'émigrer, contre 26 % en 2016. La population a diminué d'environ 2 600 personnes en 2025.",
+       "titel": "Un Mauricien sur deux pense à émigrer"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -56,17 +102,75 @@
      ],
      "text": "Laut Afrobarometer 2026 haben 52 % der Mauritier schon einmal ans Auswandern gedacht, 2016 waren es 26 %. Die Bevölkerung schrumpfte 2025 um etwa 2.600 Menschen.",
      "titel": "Jede zweite Person denkt ans Auswandern",
-     "zeit": "2026-11-23T12:00:00+04:00",
+     "zeit": "2026-11-23T12:00:00+04:00"
+    }
+   ]
+  },
+  {
+   "id": "azor-adelaide",
+   "aktualisiert": "2026-11-26T12:00:00+04:00",
+   "erstellt": "2026-11-26T12:00:00+04:00",
+   "rubrik": "politik",
+   "status": "aktiv",
+   "titel": "MMM erinnert an Azor Adélaïde – 55 Jahre nach seinem Tod",
+   "updates": [
+    {
      "i18n": {
-      "fr": {
-       "titel": "Un Mauricien sur deux pense à émigrer",
-       "text": "Selon l'Afrobaromètre 2026, 52 % des Mauriciens ont déjà envisagé d'émigrer, contre 26 % en 2016. La population a diminué d'environ 2 600 personnes en 2025."
-      },
       "en": {
-       "titel": "Every second Mauritian has considered emigrating",
-       "text": "According to Afrobarometer 2026, 52% of Mauritians have thought about emigrating, up from 26% in 2016. The population shrank by about 2,600 people in 2025."
+       "text": "The MMM paid tribute to the activist Azor Adélaïde, who was killed in 1971, on the 55th anniversary of his death.",
+       "titel": "MMM honours Azor Adélaïde 55 years after his death"
+      },
+      "fr": {
+       "text": "Le MMM a honoré la mémoire du militant Azor Adélaïde, tué en 1971, à l'occasion du 55e anniversaire de sa mort.",
+       "titel": "Le MMM rend hommage à Azor Adélaïde, 55 ans après sa mort"
       }
-     }
+     },
+     "nurDatum": true,
+     "quellen": [
+      {
+       "name": "allAfrica / L'Express",
+       "url": "https://fr.allafrica.com/stories/202611260705.html"
+      },
+      {
+       "name": "L'Express",
+       "url": "https://lexpress.mu/s/55-ans-depuis-le-grand-depart-dazor-adelaide-565127"
+      }
+     ],
+     "text": "Der MMM gedachte des Aktivisten Azor Adélaïde, der 1971 getötet wurde. Anlass war der 55. Jahrestag seines Todes.",
+     "titel": "MMM erinnert an Azor Adélaïde – 55 Jahre nach seinem Tod",
+     "zeit": "2026-11-26T12:00:00+04:00"
+    }
+   ]
+  },
+  {
+   "id": "bodenversiegelung",
+   "aktualisiert": "2026-11-26T12:00:00+04:00",
+   "erstellt": "2026-11-26T12:00:00+04:00",
+   "rubrik": "umwelt",
+   "status": "aktiv",
+   "titel": "Bebaute Flächen sollen nicht über 24 % wachsen",
+   "updates": [
+    {
+     "i18n": {
+      "en": {
+       "text": "According to the Biennial Transparency Report 2024, around 21% of the country's land is built up. The national target is to keep this share to no more than 24% by 2030.",
+       "titel": "Built-up land to be capped at 24%"
+      },
+      "fr": {
+       "text": "Selon le Biennial Transparency Report 2024, environ 21 % du territoire est bâti. L'objectif national est de limiter cette part à 24 % au maximum d'ici 2030.",
+       "titel": "Les surfaces bâties ne doivent pas dépasser 24 %"
+      }
+     },
+     "nurDatum": true,
+     "quellen": [
+      {
+       "name": "allAfrica / L'Express",
+       "url": "https://fr.allafrica.com/stories/202611260627.html"
+      }
+     ],
+     "text": "Laut dem Biennial Transparency Report 2024 sind etwa 21 % der Landesfläche bebaut. Das nationale Ziel ist, diesen Anteil bis 2030 auf höchstens 24 % zu begrenzen.",
+     "titel": "Bebaute Flächen sollen nicht über 24 % wachsen",
+     "zeit": "2026-11-26T12:00:00+04:00"
     }
    ]
   },
@@ -79,6 +183,18 @@
    "titel": "Neue Busfahrpläne im Westen ab 1. Dezember",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "New bus times apply in the western region from 1 December.",
+       "titel": "New bus timetables in the West from 1 December",
+       "zeitText": "c. 25 Nov"
+      },
+      "fr": {
+       "text": "De nouveaux horaires de bus s'appliquent à la région Ouest à partir du 1er décembre.",
+       "titel": "Nouveaux horaires de bus dans l'Ouest dès le 1er décembre",
+       "zeitText": "vers le 25/11"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -89,19 +205,7 @@
      "text": "Für die Region West gelten ab 1. Dezember neue Busfahrzeiten.",
      "titel": "Neue Busfahrpläne im Westen ab 1. Dezember",
      "zeit": "2026-11-25T12:00:00+04:00",
-     "zeitText": "ca. 25.11.",
-     "i18n": {
-      "fr": {
-       "titel": "Nouveaux horaires de bus dans l'Ouest dès le 1er décembre",
-       "text": "De nouveaux horaires de bus s'appliquent à la région Ouest à partir du 1er décembre.",
-       "zeitText": "vers le 25/11"
-      },
-      "en": {
-       "titel": "New bus timetables in the West from 1 December",
-       "text": "New bus times apply in the western region from 1 December.",
-       "zeitText": "c. 25 Nov"
-      }
-     }
+     "zeitText": "ca. 25.11."
     }
    ]
   },
@@ -110,10 +214,22 @@
    "aktualisiert": "2026-11-01T12:00:00+04:00",
    "erstellt": "2026-11-01T12:00:00+04:00",
    "rubrik": "justiz",
-   "status": "aktiv",
+   "status": "archiv",
    "titel": "76 kg Cannabis am Flughafen",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "Three Malaysian nationals were arrested after the find at the airport.",
+       "titel": "76 kg of cannabis at the airport",
+       "zeitText": "date unclear"
+      },
+      "fr": {
+       "text": "Trois ressortissants malaisiens ont été arrêtés après la découverte à l'aéroport.",
+       "titel": "76 kg de cannabis à l'aéroport",
+       "zeitText": "date incertaine"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -124,19 +240,7 @@
      "text": "Drei Malaysier wurden nach dem Fund am Flughafen festgenommen.",
      "titel": "76 kg Cannabis am Flughafen",
      "zeit": "2026-11-01T12:00:00+04:00",
-     "zeitText": "Datum unklar",
-     "i18n": {
-      "fr": {
-       "titel": "76 kg de cannabis à l'aéroport",
-       "text": "Trois ressortissants malaisiens ont été arrêtés après la découverte à l'aéroport.",
-       "zeitText": "date incertaine"
-      },
-      "en": {
-       "titel": "76 kg of cannabis at the airport",
-       "text": "Three Malaysian nationals were arrested after the find at the airport.",
-       "zeitText": "date unclear"
-      }
-     }
+     "zeitText": "Datum unklar"
     }
    ]
   },
@@ -145,10 +249,20 @@
    "aktualisiert": "2026-11-23T12:00:00+04:00",
    "erstellt": "2026-11-06T12:00:00+04:00",
    "rubrik": "politik",
-   "status": "aktiv",
+   "status": "archiv",
    "titel": "Chagos: Kommentar zum festgefahrenen Vertrag",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "L'Express runs a commentary on the treaty, which remains blocked. The December deadline still stands.",
+       "titel": "Chagos: commentary on the stalled treaty"
+      },
+      "fr": {
+       "text": "L'Express consacre un commentaire au traité toujours bloqué. Le délai fixé à décembre court toujours.",
+       "titel": "Chagos : un commentaire sur le traité dans l'impasse"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -158,19 +272,21 @@
      ],
      "text": "L'Express widmet dem weiterhin blockierten Vertrag einen Kommentar. Die Frist bis Dezember läuft.",
      "titel": "Chagos: Kommentar zum festgefahrenen Vertrag",
-     "zeit": "2026-11-23T12:00:00+04:00",
-     "i18n": {
-      "fr": {
-       "titel": "Chagos : un commentaire sur le traité dans l'impasse",
-       "text": "L'Express consacre un commentaire au traité toujours bloqué. Le délai fixé à décembre court toujours."
-      },
-      "en": {
-       "titel": "Chagos: commentary on the stalled treaty",
-       "text": "L'Express runs a commentary on the treaty, which remains blocked. The December deadline still stands."
-      }
-     }
+     "zeit": "2026-11-23T12:00:00+04:00"
     },
     {
+     "i18n": {
+      "en": {
+       "text": "Prime Minister Navin Ramgoolam wants a clear roadmap for ratifying the May 2025 treaty by December. Otherwise Mauritius plans legal action in the new year. London paused the bill in April without US backing.",
+       "titel": "Chagos: Ramgoolam gives London a December deadline",
+       "zeitText": "mid-November"
+      },
+      "fr": {
+       "text": "Le Premier ministre Navin Ramgoolam exige d'ici décembre une feuille de route claire pour la ratification du traité de mai 2025. Sinon, Maurice veut engager une action en justice l'an prochain. Londres a gelé la loi en avril faute de soutien américain.",
+       "titel": "Chagos : Ramgoolam fixe à Londres un délai jusqu'en décembre",
+       "zeitText": "mi-novembre"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -185,21 +301,19 @@
      "text": "Premier Navin Ramgoolam verlangt bis Dezember einen klaren Fahrplan zur Ratifizierung des Chagos-Vertrags vom Mai 2025, sonst will Mauritius im neuen Jahr rechtlich vorgehen. London hatte das Gesetz im April auf Eis gelegt, weil die USA nicht mitziehen.",
      "titel": "Chagos: Ramgoolam setzt London eine Frist bis Dezember",
      "zeit": "2026-11-17T12:00:00+04:00",
-     "zeitText": "Mitte Nov.",
-     "i18n": {
-      "fr": {
-       "titel": "Chagos : Ramgoolam fixe à Londres un délai jusqu'en décembre",
-       "text": "Le Premier ministre Navin Ramgoolam exige d'ici décembre une feuille de route claire pour la ratification du traité de mai 2025. Sinon, Maurice veut engager une action en justice l'an prochain. Londres a gelé la loi en avril faute de soutien américain.",
-       "zeitText": "mi-novembre"
-      },
-      "en": {
-       "titel": "Chagos: Ramgoolam gives London a December deadline",
-       "text": "Prime Minister Navin Ramgoolam wants a clear roadmap for ratifying the May 2025 treaty by December. Otherwise Mauritius plans legal action in the new year. London paused the bill in April without US backing.",
-       "zeitText": "mid-November"
-      }
-     }
+     "zeitText": "Mitte Nov."
     },
     {
+     "i18n": {
+      "en": {
+       "text": "According to L'Express's front page, the prime minister wants to consult British lawyers, amid a stand-off with the Maldives.",
+       "titel": "Chagos: Ramgoolam turns to British lawyers"
+      },
+      "fr": {
+       "text": "Selon la une de L'Express, le Premier ministre veut consulter des juristes britanniques, sur fond de bras de fer avec les Maldives.",
+       "titel": "Chagos : Ramgoolam consulte des juristes britanniques"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -209,17 +323,39 @@
      ],
      "text": "Laut Titelseite von L'Express will der Premier britische Juristen konsultieren. Hintergrund ist auch ein Kräftemessen mit den Malediven.",
      "titel": "Chagos: Ramgoolam holt britische Rechtsberater",
-     "zeit": "2026-11-06T12:00:00+04:00",
+     "zeit": "2026-11-06T12:00:00+04:00"
+    }
+   ]
+  },
+  {
+   "id": "competition-amnestie",
+   "aktualisiert": "2026-11-26T12:00:00+04:00",
+   "erstellt": "2026-11-26T12:00:00+04:00",
+   "rubrik": "wirtschaft",
+   "status": "aktiv",
+   "titel": "Wettbewerbsbehörde verlängert Amnestie um drei Monate",
+   "updates": [
+    {
      "i18n": {
-      "fr": {
-       "titel": "Chagos : Ramgoolam consulte des juristes britanniques",
-       "text": "Selon la une de L'Express, le Premier ministre veut consulter des juristes britanniques, sur fond de bras de fer avec les Maldives."
-      },
       "en": {
-       "titel": "Chagos: Ramgoolam turns to British lawyers",
-       "text": "According to L'Express's front page, the prime minister wants to consult British lawyers, amid a stand-off with the Maldives."
+       "text": "The Competition Commission is giving trade associations three more months under its amnesty programme. The new deadline is 25 February 2027. Immunity remains subject to the conditions of the 2026 regulations.",
+       "titel": "Competition Commission extends amnesty by three months"
+      },
+      "fr": {
+       "text": "La Competition Commission accorde trois mois supplémentaires aux associations professionnelles pour son programme d'amnistie. La nouvelle échéance est fixée au 25 février 2027. L'immunité reste soumise aux conditions du règlement de 2026.",
+       "titel": "La Competition Commission prolonge son amnistie de trois mois"
       }
-     }
+     },
+     "nurDatum": true,
+     "quellen": [
+      {
+       "name": "allAfrica / L'Express",
+       "url": "https://fr.allafrica.com/stories/202611260559.html"
+      }
+     ],
+     "text": "Die Competition Commission gibt Berufsverbänden drei Monate mehr Zeit für ihr Amnestieprogramm. Die neue Frist ist der 25. Februar 2027. Straffreiheit gibt es weiterhin nur unter den Bedingungen der Vorschriften von 2026.",
+     "titel": "Wettbewerbsbehörde verlängert Amnestie um drei Monate",
+     "zeit": "2026-11-26T12:00:00+04:00"
     }
    ]
   },
@@ -232,6 +368,18 @@
    "titel": "Corsair feiert 20 Jahre Mauritius",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "Corsair CEO Pascal de Izaguirre called the island a “destination of the heart”. He spoke about new aircraft and more routes.",
+       "titel": "Corsair marks 20 years in Mauritius",
+       "zeitText": "c. 25 Nov"
+      },
+      "fr": {
+       "text": "Le PDG de Corsair, Pascal de Izaguirre, qualifie l'île de « destination de cœur ». Il a évoqué de nouveaux avions et davantage de liaisons.",
+       "titel": "Corsair fête 20 ans à Maurice",
+       "zeitText": "vers le 25/11"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -242,19 +390,7 @@
      "text": "Corsair-Chef Pascal de Izaguirre nennt die Insel eine „Herzensdestination“. Er sprach über neue Flugzeuge und mehr Verbindungen.",
      "titel": "Corsair feiert 20 Jahre Mauritius",
      "zeit": "2026-11-25T12:00:00+04:00",
-     "zeitText": "ca. 25.11.",
-     "i18n": {
-      "fr": {
-       "titel": "Corsair fête 20 ans à Maurice",
-       "text": "Le PDG de Corsair, Pascal de Izaguirre, qualifie l'île de « destination de cœur ». Il a évoqué de nouveaux avions et davantage de liaisons.",
-       "zeitText": "vers le 25/11"
-      },
-      "en": {
-       "titel": "Corsair marks 20 years in Mauritius",
-       "text": "Corsair CEO Pascal de Izaguirre called the island a “destination of the heart”. He spoke about new aircraft and more routes.",
-       "zeitText": "c. 25 Nov"
-      }
-     }
+     "zeitText": "ca. 25.11."
     }
    ]
   },
@@ -267,6 +403,16 @@
    "titel": "Quatre-Bornes: Drogen für Rs 400.000 sichergestellt",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "The anti-drug unit ADSU arrested a 33-year-old man. A search of his home turned up 20.5 grams of suspected heroin.",
+       "titel": "Quatre-Bornes: Rs 400,000 of drugs seized"
+      },
+      "fr": {
+       "text": "L'ADSU a arrêté un homme de 33 ans. La perquisition de son domicile a permis de saisir 20,5 grammes d'héroïne présumée.",
+       "titel": "Quatre-Bornes : Rs 400 000 de drogue saisies"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -276,17 +422,7 @@
      ],
      "text": "Die Drogenfahndung ADSU nahm einen 33-Jährigen fest. Bei der Hausdurchsuchung fand sie 20,5 Gramm mutmaßliches Heroin.",
      "titel": "Quatre-Bornes: Drogen für Rs 400.000 sichergestellt",
-     "zeit": "2026-11-26T12:00:00+04:00",
-     "i18n": {
-      "fr": {
-       "titel": "Quatre-Bornes : Rs 400 000 de drogue saisies",
-       "text": "L'ADSU a arrêté un homme de 33 ans. La perquisition de son domicile a permis de saisir 20,5 grammes d'héroïne présumée."
-      },
-      "en": {
-       "titel": "Quatre-Bornes: Rs 400,000 of drugs seized",
-       "text": "The anti-drug unit ADSU arrested a 33-year-old man. A search of his home turned up 20.5 grams of suspected heroin."
-      }
-     }
+     "zeit": "2026-11-26T12:00:00+04:00"
     }
    ]
   },
@@ -299,6 +435,16 @@
    "titel": "Eine Woche Wohn-Programm für 200 Jugendliche",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "200 teenagers are spending a week in a residential programme with workshops and leisure activities.",
+       "titel": "A residential week for 200 teenagers"
+      },
+      "fr": {
+       "text": "200 adolescents passent une semaine dans un programme résidentiel avec ateliers et loisirs.",
+       "titel": "Une semaine en résidence pour 200 adolescents"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -308,17 +454,76 @@
      ],
      "text": "200 Teenager verbringen eine Woche in einem Wohn-Programm mit Workshops und Freizeitangeboten.",
      "titel": "Eine Woche Wohn-Programm für 200 Jugendliche",
-     "zeit": "2026-11-25T12:00:00+04:00",
+     "zeit": "2026-11-25T12:00:00+04:00"
+    }
+   ]
+  },
+  {
+   "id": "festival-kreol-rodrig",
+   "aktualisiert": "2026-11-26T12:00:00+04:00",
+   "erstellt": "2026-11-26T12:00:00+04:00",
+   "ort": "Rodrigues",
+   "rubrik": "alltag",
+   "status": "aktiv",
+   "titel": "Rodrigues feiert zehn Tage lang Festival Kréol",
+   "updates": [
+    {
      "i18n": {
-      "fr": {
-       "titel": "Une semaine en résidence pour 200 adolescents",
-       "text": "200 adolescents passent une semaine dans un programme résidentiel avec ateliers et loisirs."
-      },
       "en": {
-       "titel": "A residential week for 200 teenagers",
-       "text": "200 teenagers are spending a week in a residential programme with workshops and leisure activities."
+       "text": "The 27th Festival Kréol Rodrig runs for ten days under the theme 'Ansanm Anou Sélébré Nou Kéolité'. The programme includes concerts, crafts, Creole cuisine and séga tambour.\n\nThe second edition of the Rodriguan Creole dictionary will be launched on 3 December, followed by a regatta on Sunday 6 December.",
+       "titel": "Rodrigues celebrates ten days of Festival Kréol"
+      },
+      "fr": {
+       "text": "La 27e édition du Festival Kréol Rodrig dure dix jours, sur le thème « Ansanm Anou Sélébré Nou Kéolité ». Au programme : concerts, artisanat, cuisine créole et séga tambour.\n\nLa deuxième édition du dictionnaire du créole rodriguais sera présentée le 3 décembre, et une régate aura lieu le dimanche 6 décembre.",
+       "titel": "Rodrigues fête le Festival Kréol pendant dix jours"
       }
-     }
+     },
+     "nurDatum": true,
+     "quellen": [
+      {
+       "name": "Le Mauricien",
+       "url": "https://www.lemauricien.com/actualites/societe/27e-edition-du-festival-kreol-rodrig-dix-jours-faire-rayonner-la-culture-et-lidentite-de-lile/724215/"
+      }
+     ],
+     "text": "Die 27. Ausgabe des Festival Kréol Rodrig dauert zehn Tage und steht unter dem Motto „Ansanm Anou Sélébré Nou Kéolité“. Geplant sind Konzerte, Handwerk, kreolische Küche und Séga Tambour.\n\nAm 3. Dezember wird die zweite Auflage des Wörterbuchs des Rodrigues-Kreols vorgestellt, am Sonntag, 6. Dezember, folgt eine Regatta.",
+     "titel": "Rodrigues feiert zehn Tage lang Festival Kréol",
+     "zeit": "2026-11-26T12:00:00+04:00"
+    }
+   ]
+  },
+  {
+   "id": "fuehrerschein-digital",
+   "aktualisiert": "2026-11-26T12:00:00+04:00",
+   "erstellt": "2026-11-26T12:00:00+04:00",
+   "rubrik": "alltag",
+   "status": "aktiv",
+   "titel": "Digitaler Führerschein: Gewerkschaft meldet Bedenken an",
+   "updates": [
+    {
+     "i18n": {
+      "en": {
+       "text": "From 1 January 2027 the digital driving licence, available through the KOREK! app, will be recognised. At checks only the original or the digital version will be accepted, no longer photocopies.\n\nHaniff Peerun, president of the Mauritius Labour Congress, is calling for changes. He criticises the reliance on the internet and wants the licence to be viewable offline.",
+       "titel": "Digital driving licence: union raises concerns"
+      },
+      "fr": {
+       "text": "À partir du 1er janvier 2027, le permis numérique, accessible via l'application KOREK!, sera reconnu. Lors des contrôles, seuls l'original ou la version numérique seront acceptés, plus les photocopies.\n\nHaniff Peerun, président du Mauritius Labour Congress, demande des ajustements. Il critique la dépendance à Internet et souhaite une consultation possible hors connexion.",
+       "titel": "Permis de conduire numérique : un syndicat émet des réserves"
+      }
+     },
+     "nurDatum": true,
+     "quellen": [
+      {
+       "name": "allAfrica / L'Express",
+       "url": "https://fr.allafrica.com/stories/202611260708.html"
+      },
+      {
+       "name": "Défi Media",
+       "url": "https://defimedia.info/permis-de-conduire-numerique-une-periode-de-transition-avant-lentree-en-vigueur-en-2027"
+      }
+     ],
+     "text": "Ab 1. Januar 2027 gilt der digitale Führerschein, abrufbar über die App KOREK!. Bei Kontrollen zählen dann nur noch das Original oder die digitale Fassung, keine Fotokopien.\n\nHaniff Peerun, Präsident des Mauritius Labour Congress, fordert Nachbesserungen. Er kritisiert die Abhängigkeit vom Internet und wünscht eine Abfrage auch ohne Verbindung.",
+     "titel": "Digitaler Führerschein: Gewerkschaft meldet Bedenken an",
+     "zeit": "2026-11-26T12:00:00+04:00"
     }
    ]
   },
@@ -331,6 +536,16 @@
    "titel": "16 Tage gegen Gewalt: Domestic Abuse Act im Mittelpunkt",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "The “16 Days of Activism” campaign (25 Nov–10 Dec) began in Port Louis. Minister Arianne Navarre-Marie highlighted the Domestic Abuse Act 2026, which also recognises psychological, economic and digital abuse.",
+       "titel": "16 days against violence: Domestic Abuse Act in focus"
+      },
+      "fr": {
+       "text": "À Port-Louis a démarré la campagne des « 16 jours d'activisme » (25/11–10/12). La ministre Arianne Navarre-Marie a mis en avant la Domestic Abuse Act 2026, qui reconnaît aussi les violences psychologiques, économiques et numériques.",
+       "titel": "16 jours contre la violence : la Domestic Abuse Act au centre"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -340,19 +555,41 @@
      ],
      "text": "In Port-Louis startete die Kampagne „16 Tage Aktivismus“ (25.11.–10.12.). Ministerin Arianne Navarre-Marie stellte den Domestic Abuse Act 2026 vor. Er erkennt auch psychische, wirtschaftliche und digitale Gewalt an.",
      "titel": "16 Tage gegen Gewalt: Domestic Abuse Act im Mittelpunkt",
-     "zeit": "2026-11-26T12:00:00+04:00",
-     "i18n": {
-      "fr": {
-       "titel": "16 jours contre la violence : la Domestic Abuse Act au centre",
-       "text": "À Port-Louis a démarré la campagne des « 16 jours d'activisme » (25/11–10/12). La ministre Arianne Navarre-Marie a mis en avant la Domestic Abuse Act 2026, qui reconnaît aussi les violences psychologiques, économiques et numériques."
-      },
-      "en": {
-       "titel": "16 days against violence: Domestic Abuse Act in focus",
-       "text": "The “16 Days of Activism” campaign (25 Nov–10 Dec) began in Port Louis. Minister Arianne Navarre-Marie highlighted the Domestic Abuse Act 2026, which also recognises psychological, economic and digital abuse."
-      }
-     }
+     "zeit": "2026-11-26T12:00:00+04:00"
     },
     {
+     "i18n": {
+      "en": {
+       "text": "Deputy Prime Minister Arianne Navarre-Marie warned about the scale of domestic violence. More than 6,000 cases were reported in Mauritius in 2025.",
+       "titel": "Navarre-Marie: more than 6,000 domestic violence cases in 2025"
+      },
+      "fr": {
+       "text": "La vice-Première ministre Arianne Navarre-Marie a alerté sur l'ampleur des violences domestiques. Plus de 6 000 cas ont été signalés à Maurice en 2025.",
+       "titel": "Navarre-Marie : plus de 6 000 cas de violence domestique en 2025"
+      }
+     },
+     "nurDatum": true,
+     "quellen": [
+      {
+       "name": "ION News",
+       "url": "https://ionnews.mu/arianne-navarre-marie-alerte-sur-lampleur-des-violences-domestiques"
+      }
+     ],
+     "text": "Vizepremierministerin Arianne Navarre-Marie warnte vor dem Ausmaß häuslicher Gewalt. Im Jahr 2025 wurden auf Mauritius mehr als 6.000 Fälle gemeldet.",
+     "titel": "Navarre-Marie: Mehr als 6.000 Fälle häuslicher Gewalt 2025",
+     "zeit": "2026-11-25T12:00:00+04:00"
+    },
+    {
+     "i18n": {
+      "en": {
+       "text": "A seven-day campaign runs from 23 to 29 November around the international day on 25 November.",
+       "titel": "Défi Media launches a week against violence towards women"
+      },
+      "fr": {
+       "text": "Du 23 au 29 novembre, une campagne de sept jours accompagne la journée internationale du 25 novembre.",
+       "titel": "Défi Media lance une semaine contre les violences faites aux femmes"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -362,29 +599,53 @@
      ],
      "text": "Vom 23. bis 29. November läuft eine siebentägige Kampagne rund um den internationalen Aktionstag am 25. November.",
      "titel": "Défi Media startet Woche gegen Gewalt an Frauen",
-     "zeit": "2026-11-23T12:00:00+04:00",
-     "i18n": {
-      "fr": {
-       "titel": "Défi Media lance une semaine contre les violences faites aux femmes",
-       "text": "Du 23 au 29 novembre, une campagne de sept jours accompagne la journée internationale du 25 novembre."
-      },
-      "en": {
-       "titel": "Défi Media launches a week against violence towards women",
-       "text": "A seven-day campaign runs from 23 to 29 November around the international day on 25 November."
-      }
-     }
+     "zeit": "2026-11-23T12:00:00+04:00"
     }
    ]
   },
   {
    "id": "handball-cccoi",
-   "aktualisiert": "2026-11-25T12:00:00+04:00",
+   "aktualisiert": "2026-11-26T12:00:00+04:00",
    "erstellt": "2026-11-25T12:00:00+04:00",
    "rubrik": "sport",
    "status": "aktiv",
-   "titel": "Handball-Clubpokal CCCOI: Schwarzer Tag",
+   "titel": "Handball-Clubpokal: Nur noch USBBRH im Halbfinale",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "At the 30th Indian Ocean club championship in Phoenix, the USBBRH men are the last Mauritian side in the final four. The club's women's team is out after three defeats.\n\nThird-place matches and finals are scheduled for Saturday 28 November.",
+       "titel": "Club handball cup: only USBBRH left in the semi-finals"
+      },
+      "fr": {
+       "text": "Lors de la 30e CCCOI à Phoenix, l'équipe masculine de l'USBBRH est le dernier club mauricien parmi les quatre derniers. Les joueuses du club sont éliminées après trois défaites.\n\nLes matchs pour la 3e place et les finales sont prévus le samedi 28 novembre.",
+       "titel": "Coupe des clubs de handball : seule l'USBBRH encore dans le dernier carré"
+      }
+     },
+     "nurDatum": true,
+     "quellen": [
+      {
+       "name": "Le Mauricien",
+       "url": "https://www.lemauricien.com/le-mauricien/handball-30e-cccoi-lusbbrh-dernier-rempart-mauricien-dans-le-dernier-carre/724229/"
+      }
+     ],
+     "text": "Bei der 30. Ausgabe des Clubwettbewerbs im Indischen Ozean in Phoenix sind die Männer der USBBRH die letzte mauritische Mannschaft unter den letzten vier. Die Frauen des Klubs sind nach drei Niederlagen ausgeschieden.\n\nSpiele um Platz drei und Finals stehen am Samstag, 28. November, an.",
+     "titel": "Handball-Clubpokal: Nur noch USBBRH im Halbfinale",
+     "zeit": "2026-11-26T12:00:00+04:00"
+    },
+    {
+     "i18n": {
+      "en": {
+       "text": "On matchday 4 of the Indian Ocean club competition, the Mauritian teams lost almost across the board.",
+       "titel": "CCCOI handball club cup: a dark day",
+       "zeitText": "c. 25 Nov"
+      },
+      "fr": {
+       "text": "Lors de la 4e journée de la compétition des clubs de l'océan Indien, les équipes mauriciennes ont presque toutes perdu.",
+       "titel": "Coupe des clubs CCCOI de handball : journée noire",
+       "zeitText": "vers le 25/11"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -395,19 +656,7 @@
      "text": "Am 4. Spieltag des Clubwettbewerbs im Indischen Ozean verloren die mauritischen Mannschaften fast durchweg.",
      "titel": "Handball-Clubpokal CCCOI: Schwarzer Tag",
      "zeit": "2026-11-25T12:00:00+04:00",
-     "zeitText": "ca. 25.11.",
-     "i18n": {
-      "fr": {
-       "titel": "Coupe des clubs CCCOI de handball : journée noire",
-       "text": "Lors de la 4e journée de la compétition des clubs de l'océan Indien, les équipes mauriciennes ont presque toutes perdu.",
-       "zeitText": "vers le 25/11"
-      },
-      "en": {
-       "titel": "CCCOI handball club cup: a dark day",
-       "text": "On matchday 4 of the Indian Ocean club competition, the Mauritian teams lost almost across the board.",
-       "zeitText": "c. 25 Nov"
-      }
-     }
+     "zeitText": "ca. 25.11."
     }
    ]
   },
@@ -420,6 +669,16 @@
    "titel": "Handelsdefizit wächst um 28,5 %",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "The goods trade deficit reached Rs 19.7 billion in September, well above a year earlier.",
+       "titel": "Trade deficit up 28.5%"
+      },
+      "fr": {
+       "text": "Le déficit de la balance commerciale des biens a atteint Rs 19,7 milliards en septembre, nettement plus qu'un an plus tôt.",
+       "titel": "Le déficit commercial bondit de 28,5 %"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -429,17 +688,7 @@
      ],
      "text": "Das Defizit der Warenhandelsbilanz erreichte im September Rs 19,7 Milliarden, deutlich mehr als ein Jahr zuvor.",
      "titel": "Handelsdefizit wächst um 28,5 %",
-     "zeit": "2026-11-24T12:00:00+04:00",
-     "i18n": {
-      "fr": {
-       "titel": "Le déficit commercial bondit de 28,5 %",
-       "text": "Le déficit de la balance commerciale des biens a atteint Rs 19,7 milliards en septembre, nettement plus qu'un an plus tôt."
-      },
-      "en": {
-       "titel": "Trade deficit up 28.5%",
-       "text": "The goods trade deficit reached Rs 19.7 billion in September, well above a year earlier."
-      }
-     }
+     "zeit": "2026-11-24T12:00:00+04:00"
     }
    ]
   },
@@ -452,6 +701,18 @@
    "titel": "150 Jahre Holy Trinity in Rose-Hill",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "The Anglican Holy Trinity church in Rose-Hill is celebrating its 150th anniversary.",
+       "titel": "Holy Trinity in Rose-Hill turns 150",
+       "zeitText": "c. 25 Nov"
+      },
+      "fr": {
+       "text": "L'église anglicane Holy Trinity de Rose-Hill fête ses 150 ans.",
+       "titel": "150 ans pour Holy Trinity à Rose-Hill",
+       "zeitText": "vers le 25/11"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -462,31 +723,58 @@
      "text": "Die anglikanische Kirche Holy Trinity in Rose-Hill feiert ihr 150-jähriges Bestehen.",
      "titel": "150 Jahre Holy Trinity in Rose-Hill",
      "zeit": "2026-11-25T12:00:00+04:00",
-     "zeitText": "ca. 25.11.",
-     "i18n": {
-      "fr": {
-       "titel": "150 ans pour Holy Trinity à Rose-Hill",
-       "text": "L'église anglicane Holy Trinity de Rose-Hill fête ses 150 ans.",
-       "zeitText": "vers le 25/11"
-      },
-      "en": {
-       "titel": "Holy Trinity in Rose-Hill turns 150",
-       "text": "The Anglican Holy Trinity church in Rose-Hill is celebrating its 150th anniversary.",
-       "zeitText": "c. 25 Nov"
-      }
-     }
+     "zeitText": "ca. 25.11."
     }
    ]
   },
   {
    "id": "inflation-zinsen",
-   "aktualisiert": "2026-11-25T12:00:00+04:00",
+   "aktualisiert": "2026-11-26T12:00:00+04:00",
    "erstellt": "2026-11-11T12:00:00+04:00",
    "rubrik": "wirtschaft",
    "status": "aktiv",
-   "titel": "Inflation 6,4 %: Keine Zinsdeckel für Hauskredite",
+   "titel": "Banken geben Leitzinserhöhung weiter",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "Following the increase in the key rate to 5.00%, banks are following suit. MCB's prime lending rate has been 7.15% since 23 November, and Absa's 7.95% since 18 November.\n\nPublic debt stood at Rs 700.61 billion at the end of September.",
+       "titel": "Banks pass on the key rate rise",
+       "zeitText": "c. 26 Nov"
+      },
+      "fr": {
+       "text": "Après le relèvement du taux directeur à 5,00 %, les banques suivent. À la MCB, le Prime Lending Rate est de 7,15 % depuis le 23 novembre ; chez Absa, il est de 7,95 % depuis le 18 novembre.\n\nLa dette publique atteignait Rs 700,61 milliards fin septembre.",
+       "titel": "Les banques répercutent la hausse du taux directeur",
+       "zeitText": "vers le 26/11"
+      }
+     },
+     "nurDatum": true,
+     "quellen": [
+      {
+       "name": "ION News",
+       "url": "https://ionnews.mu/les-clients-ressentiront-la-hausse-du-taux-dinteret-sur-les-prets-bancaires-a-la-fin-du-mois-de-novembre/"
+      },
+      {
+       "name": "ION News",
+       "url": "https://ionnews.mu/maurice-deviendra-t-elle-vraiment-un-pays-a-revenu-eleve-alors-que-la-dette-depasse-les-rs-700-milliards"
+      }
+     ],
+     "text": "Nach der Anhebung des Leitzinses auf 5,00 % ziehen die Banken nach. Bei der MCB gilt seit 23. November ein Prime Lending Rate von 7,15 %, bei Absa seit 18. November 7,95 %.\n\nDie Staatsschulden lagen Ende September bei Rs 700,61 Milliarden.",
+     "titel": "Banken geben Leitzinserhöhung weiter",
+     "zeit": "2026-11-26T12:00:00+04:00",
+     "zeitText": "ca. 26.11."
+    },
+    {
+     "i18n": {
+      "en": {
+       "text": "Inflation rose from 4.9% in August to 6.4% in October. The government still refuses to cap mortgage interest rates.",
+       "titel": "Inflation at 6.4%: no cap on mortgage rates"
+      },
+      "fr": {
+       "text": "L'inflation est passée de 4,9 % en août à 6,4 % en octobre. Le gouvernement refuse pourtant de plafonner les taux des prêts immobiliers.",
+       "titel": "Inflation à 6,4 % : pas de plafond pour les prêts immobiliers"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -496,19 +784,19 @@
      ],
      "text": "Die Teuerung stieg von 4,9 % im August auf 6,4 % im Oktober. Die Regierung lehnt es trotzdem ab, die Zinsen für Immobilienkredite zu begrenzen.",
      "titel": "Inflation 6,4 %: Keine Zinsdeckel für Hauskredite",
-     "zeit": "2026-11-25T12:00:00+04:00",
-     "i18n": {
-      "fr": {
-       "titel": "Inflation à 6,4 % : pas de plafond pour les prêts immobiliers",
-       "text": "L'inflation est passée de 4,9 % en août à 6,4 % en octobre. Le gouvernement refuse pourtant de plafonner les taux des prêts immobiliers."
-      },
-      "en": {
-       "titel": "Inflation at 6.4%: no cap on mortgage rates",
-       "text": "Inflation rose from 4.9% in August to 6.4% in October. The government still refuses to cap mortgage interest rates."
-      }
-     }
+     "zeit": "2026-11-25T12:00:00+04:00"
     },
     {
+     "i18n": {
+      "en": {
+       "text": "The Monetary Policy Committee unanimously raised the key rate from 4.75% to 5.00% to stop inflation becoming entrenched.",
+       "titel": "Bank of Mauritius raises key rate to 5.00%"
+      },
+      "fr": {
+       "text": "Le comité de politique monétaire a relevé à l'unanimité le taux directeur de 4,75 à 5,00 % pour éviter que l'inflation ne s'installe.",
+       "titel": "La Banque de Maurice relève son taux directeur à 5,00 %"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -522,17 +810,7 @@
      ],
      "text": "Der geldpolitische Ausschuss hob den Leitzins einstimmig von 4,75 auf 5,00 % an, um zu verhindern, dass sich die Inflation festsetzt.",
      "titel": "Bank of Mauritius erhöht Leitzins auf 5,00 %",
-     "zeit": "2026-11-11T12:00:00+04:00",
-     "i18n": {
-      "fr": {
-       "titel": "La Banque de Maurice relève son taux directeur à 5,00 %",
-       "text": "Le comité de politique monétaire a relevé à l'unanimité le taux directeur de 4,75 à 5,00 % pour éviter que l'inflation ne s'installe."
-      },
-      "en": {
-       "titel": "Bank of Mauritius raises key rate to 5.00%",
-       "text": "The Monetary Policy Committee unanimously raised the key rate from 4.75% to 5.00% to stop inflation becoming entrenched."
-      }
-     }
+     "zeit": "2026-11-11T12:00:00+04:00"
     }
    ]
   },
@@ -541,10 +819,22 @@
    "aktualisiert": "2026-11-21T12:00:00+04:00",
    "erstellt": "2026-11-21T12:00:00+04:00",
    "rubrik": "politik",
-   "status": "aktiv",
+   "status": "archiv",
    "titel": "Mauritius wieder im Rat der Fernmeldeunion ITU",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "At the meeting in Doha, Mauritius was re-elected to the International Telecommunication Union Council for 2027–2030.",
+       "titel": "Mauritius re-elected to the ITU Council",
+       "zeitText": "c. 20 Nov"
+      },
+      "fr": {
+       "text": "Lors de la réunion de Doha, Maurice a été réélue au Conseil de l'Union internationale des télécommunications pour 2027-2030.",
+       "titel": "Maurice réélue au Conseil de l'UIT",
+       "zeitText": "vers le 20/11"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -555,19 +845,83 @@
      "text": "Bei der Tagung in Doha wurde Mauritius für 2027–2030 erneut in den Rat der Internationalen Fernmeldeunion gewählt.",
      "titel": "Mauritius wieder im Rat der Fernmeldeunion ITU",
      "zeit": "2026-11-21T12:00:00+04:00",
-     "zeitText": "ca. 20.11.",
+     "zeitText": "ca. 20.11."
+    }
+   ]
+  },
+  {
+   "id": "jugenddelinquenz",
+   "aktualisiert": "2026-11-26T12:00:00+04:00",
+   "erstellt": "2026-11-26T12:00:00+04:00",
+   "ort": "Port-Louis",
+   "rubrik": "politik",
+   "status": "aktiv",
+   "titel": "Jugendkriminalität: Streit um Sonderausschuss und Strafmündigkeit",
+   "top": true,
+   "updates": [
+    {
      "i18n": {
-      "fr": {
-       "titel": "Maurice réélue au Conseil de l'UIT",
-       "text": "Lors de la réunion de Doha, Maurice a été réélue au Conseil de l'Union internationale des télécommunications pour 2027-2030.",
-       "zeitText": "vers le 20/11"
-      },
       "en": {
-       "titel": "Mauritius re-elected to the ITU Council",
-       "text": "At the meeting in Doha, Mauritius was re-elected to the International Telecommunication Union Council for 2027–2030.",
-       "zeitText": "c. 20 Nov"
+       "text": "The government majority backs a parliamentary select committee on juvenile delinquency. The FMP party refuses to take part.\n\nMinister Ashok Subron opposed lowering the age of criminal responsibility to 12. He favours prevention and points to the influence of social media and their algorithms.",
+       "titel": "Youth crime: row over select committee and age of criminal responsibility"
+      },
+      "fr": {
+       "text": "La majorité gouvernementale soutient la création d'une commission parlementaire spéciale (Select Committee) sur la délinquance juvénile. Le FMP refuse d'y participer.\n\nLe ministre Ashok Subron s'oppose à l'abaissement de l'âge de la responsabilité pénale à 12 ans. Il privilégie la prévention et souligne l'influence des réseaux sociaux et de leurs algorithmes.",
+       "titel": "Délinquance juvénile : le Select Committee et l'âge de la responsabilité pénale en débat"
       }
-     }
+     },
+     "nurDatum": true,
+     "quellen": [
+      {
+       "name": "allAfrica / L'Express",
+       "url": "https://fr.allafrica.com/stories/202611260628.html"
+      },
+      {
+       "name": "L'Express",
+       "url": "https://lexpress.mu/s/les-grands-titres-de-lexpress-de-ce-jeudi-26-novembre-2026-565148"
+      }
+     ],
+     "text": "Die Regierungsmehrheit unterstützt einen parlamentarischen Sonderausschuss (Select Committee) zur Jugendkriminalität. Die Partei FMP will sich daran nicht beteiligen.\n\nMinister Ashok Subron sprach sich dagegen aus, das Alter der Strafmündigkeit auf 12 Jahre zu senken. Er setzt auf Vorbeugung und verweist auf den Einfluss sozialer Netzwerke und ihrer Algorithmen.",
+     "titel": "Jugendkriminalität: Streit um Sonderausschuss und Strafmündigkeit",
+     "zeit": "2026-11-26T12:00:00+04:00"
+    }
+   ],
+   "warTop": true
+  },
+  {
+   "id": "le-morne",
+   "aktualisiert": "2026-11-26T12:00:00+04:00",
+   "erstellt": "2026-11-26T12:00:00+04:00",
+   "ort": "Le Morne",
+   "rubrik": "alltag",
+   "status": "aktiv",
+   "titel": "Le Morne: Rs 124 Millionen für Schutz von Berg und Besuchern",
+   "updates": [
+    {
+     "i18n": {
+      "en": {
+       "text": "Arts and Culture Minister Mahen Gondeea announced Rs 124 million over three financial years for the Le Morne World Heritage site. Plans include information boards on the history of the maroon slaves and on visitor conduct; a barrier around the cross is under consideration.\n\nAccess to the mountain remains restricted, and a specialist firm is to carry out a new risk assessment. More Special Mobile Force presence and cameras are being considered. Work on the open-air museum and access trail is due to start in early 2027.",
+       "titel": "Le Morne: Rs 124 million to protect the mountain and its visitors"
+      },
+      "fr": {
+       "text": "Le ministre des Arts et de la Culture, Mahen Gondeea, a annoncé Rs 124 millions sur trois exercices budgétaires pour le site du patrimoine mondial du Morne. Des panneaux sur l'histoire des esclaves marrons et sur les règles de conduite sont prévus ; une barrière autour de la croix est à l'étude.\n\nL'accès à la montagne reste limité et une entreprise spécialisée doit réévaluer les risques. Une présence accrue de la Special Mobile Force et des caméras sont envisagées. Les travaux du musée en plein air et du sentier d'accès doivent débuter début 2027.",
+       "titel": "Le Morne : Rs 124 millions pour protéger la montagne et ses visiteurs"
+      }
+     },
+     "nurDatum": true,
+     "quellen": [
+      {
+       "name": "L'Express",
+       "url": "https://lexpress.mu/s/le-morne-rs-124-millions-pour-mieux-proteger-la-montagne-et-ses-visiteurs-565172"
+      },
+      {
+       "name": "allAfrica / L'Express",
+       "url": "https://fr.allafrica.com/stories/202611260637.html"
+      }
+     ],
+     "text": "Kulturminister Mahen Gondeea kündigte Rs 124 Millionen über drei Haushaltsjahre für das Welterbe Le Morne an. Geplant sind Infotafeln zur Geschichte der entflohenen Sklaven und zu Verhaltensregeln; eine Absperrung um das Kreuz wird geprüft.\n\nDer Zugang zum Berg bleibt eingeschränkt, eine Fachfirma soll die Risiken neu bewerten. Mehr Präsenz der Special Mobile Force und Kameras sind im Gespräch. Die Arbeiten an Freilichtmuseum und Zugangsweg sollen Anfang 2027 beginnen.",
+     "titel": "Le Morne: Rs 124 Millionen für Schutz von Berg und Besuchern",
+     "zeit": "2026-11-26T12:00:00+04:00"
     }
    ]
   },
@@ -580,6 +934,18 @@
    "titel": "Maul- und Klauenseuche im Parlament",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "In the National Assembly, Baboolall and Boolell clashed over the handling of the outbreak.",
+       "titel": "Foot-and-mouth disease in Parliament",
+       "zeitText": "c. 25–26 Nov"
+      },
+      "fr": {
+       "text": "À l'Assemblée nationale, Baboolall et Boolell se sont opposés sur la gestion de l'épidémie.",
+       "titel": "La fièvre aphteuse au Parlement",
+       "zeitText": "vers le 25-26/11"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -590,21 +956,19 @@
      "text": "In der Nationalversammlung stritten Baboolall und Boolell über den Umgang mit der Seuche.",
      "titel": "Maul- und Klauenseuche im Parlament",
      "zeit": "2026-11-26T12:00:00+04:00",
-     "zeitText": "ca. 25./26.11.",
-     "i18n": {
-      "fr": {
-       "titel": "La fièvre aphteuse au Parlement",
-       "text": "À l'Assemblée nationale, Baboolall et Boolell se sont opposés sur la gestion de l'épidémie.",
-       "zeitText": "vers le 25-26/11"
-      },
-      "en": {
-       "titel": "Foot-and-mouth disease in Parliament",
-       "text": "In the National Assembly, Baboolall and Boolell clashed over the handling of the outbreak.",
-       "zeitText": "c. 25–26 Nov"
-      }
-     }
+     "zeitText": "ca. 25./26.11."
     },
     {
+     "i18n": {
+      "en": {
+       "text": "The World Reference Laboratory WRLFMD lists a new Mauritius report dated 18 November. The sources found give no case numbers.",
+       "titel": "Foot-and-mouth disease: new lab report"
+      },
+      "fr": {
+       "text": "Le laboratoire mondial de référence WRLFMD répertorie un nouveau rapport sur Maurice daté du 18 novembre. Les sources consultées ne donnent pas de nombre de cas.",
+       "titel": "Fièvre aphteuse : nouveau rapport de laboratoire"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -618,17 +982,40 @@
      ],
      "text": "Das Weltreferenzlabor WRLFMD führt einen neuen Mauritius-Bericht vom 18. November. Fallzahlen nennen die gefundenen Quellen nicht.",
      "titel": "Maul- und Klauenseuche: Neuer Laborbericht",
-     "zeit": "2026-11-18T12:00:00+04:00",
+     "zeit": "2026-11-18T12:00:00+04:00"
+    }
+   ]
+  },
+  {
+   "id": "mordprozess-supreme-court",
+   "aktualisiert": "2026-11-26T12:00:00+04:00",
+   "erstellt": "2026-11-26T12:00:00+04:00",
+   "ort": "Port-Louis",
+   "rubrik": "justiz",
+   "status": "aktiv",
+   "titel": "Mordprozess: Verteidigung zweifelt an Erstickungsbefund",
+   "updates": [
+    {
      "i18n": {
-      "fr": {
-       "titel": "Fièvre aphteuse : nouveau rapport de laboratoire",
-       "text": "Le laboratoire mondial de référence WRLFMD répertorie un nouveau rapport sur Maurice daté du 18 novembre. Les sources consultées ne donnent pas de nombre de cas."
-      },
       "en": {
-       "titel": "Foot-and-mouth disease: new lab report",
-       "text": "The World Reference Laboratory WRLFMD lists a new Mauritius report dated 18 November. The sources found give no case numbers."
+       "text": "A murder trial has resumed before the Supreme Court. The defence is challenging findings of the post-mortem and points to the absence of signs of suffocation.",
+       "titel": "Murder trial: defence questions suffocation finding"
+      },
+      "fr": {
+       "text": "Un procès pour meurtre a repris devant la Cour suprême. La défense de l'accusé conteste des conclusions de l'autopsie et relève l'absence de traces d'étouffement.",
+       "titel": "Procès pour meurtre : la défense doute de la thèse de l'étouffement"
       }
-     }
+     },
+     "nurDatum": true,
+     "quellen": [
+      {
+       "name": "allAfrica / L'Express",
+       "url": "https://fr.allafrica.com/stories/202611260556.html"
+      }
+     ],
+     "text": "Vor dem Supreme Court wurde ein Mordprozess fortgesetzt. Die Verteidigung des Angeklagten stellt Ergebnisse der Autopsie infrage. Sie verweist darauf, dass keine Spuren eines Erstickens gefunden worden seien.",
+     "titel": "Mordprozess: Verteidigung zweifelt an Erstickungsbefund",
+     "zeit": "2026-11-26T12:00:00+04:00"
     }
    ]
   },
@@ -641,6 +1028,16 @@
    "titel": "MyT: Schnelleres Glasfaser-Internet ohne Aufpreis",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "Mauritius Telecom CEO Veemal Gungadin announced in Ébène that residential fibre customers will get two to three times the speed with no price rise. The roll-out starts on Wednesday and should reach everyone within two weeks.",
+       "titel": "MyT: faster fibre at no extra cost"
+      },
+      "fr": {
+       "text": "Le CEO de Mauritius Telecom, Veemal Gungadin, a annoncé à Ébène que les abonnés résidentiels à la fibre auront un débit doublé, voire triplé, sans hausse de prix. Le déploiement commence mercredi et doit toucher tout le monde en deux semaines.",
+       "titel": "MyT : fibre plus rapide sans surcoût"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -654,17 +1051,7 @@
      ],
      "text": "Mauritius-Telecom-Chef Veemal Gungadin kündigte in Ébène an, dass Privatkunden mit Glasfaser die doppelte bis dreifache Geschwindigkeit bekommen, ohne höhere Gebühren. Die Umstellung beginnt am Mittwoch und soll in zwei Wochen alle erreichen.",
      "titel": "MyT: Schnelleres Glasfaser-Internet ohne Aufpreis",
-     "zeit": "2026-11-25T12:00:00+04:00",
-     "i18n": {
-      "fr": {
-       "titel": "MyT : fibre plus rapide sans surcoût",
-       "text": "Le CEO de Mauritius Telecom, Veemal Gungadin, a annoncé à Ébène que les abonnés résidentiels à la fibre auront un débit doublé, voire triplé, sans hausse de prix. Le déploiement commence mercredi et doit toucher tout le monde en deux semaines."
-      },
-      "en": {
-       "titel": "MyT: faster fibre at no extra cost",
-       "text": "Mauritius Telecom CEO Veemal Gungadin announced in Ébène that residential fibre customers will get two to three times the speed with no price rise. The roll-out starts on Wednesday and should reach everyone within two weeks."
-      }
-     }
+     "zeit": "2026-11-25T12:00:00+04:00"
     }
    ]
   },
@@ -677,6 +1064,16 @@
    "titel": "Oppositionsführer fordert „echten Dialog“",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "Francisco François (OPR) told the National Assembly that Mauritian society needs a real national dialogue.",
+       "titel": "Opposition leader calls for “genuine dialogue”"
+      },
+      "fr": {
+       "text": "Francisco François (OPR) a déclaré à l'Assemblée nationale que la société mauricienne avait besoin d'un vrai dialogue national.",
+       "titel": "Le leader de l'opposition réclame « un véritable dialogue »"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -686,17 +1083,40 @@
      ],
      "text": "Francisco François (OPR) sagte in der Nationalversammlung, die mauritische Gesellschaft brauche einen echten nationalen Dialog.",
      "titel": "Oppositionsführer fordert „echten Dialog“",
-     "zeit": "2026-11-26T12:00:00+04:00",
+     "zeit": "2026-11-26T12:00:00+04:00"
+    }
+   ]
+  },
+  {
+   "id": "roche-bois-station",
+   "aktualisiert": "2026-11-26T12:00:00+04:00",
+   "erstellt": "2026-11-26T12:00:00+04:00",
+   "ort": "Roche-Bois",
+   "rubrik": "umwelt",
+   "status": "aktiv",
+   "titel": "Müll-Umladestation Roche-Bois: Verlegung kommt nicht voran",
+   "updates": [
+    {
      "i18n": {
-      "fr": {
-       "titel": "Le leader de l'opposition réclame « un véritable dialogue »",
-       "text": "Francisco François (OPR) a déclaré à l'Assemblée nationale que la société mauricienne avait besoin d'un vrai dialogue national."
-      },
       "en": {
-       "titel": "Opposition leader calls for “genuine dialogue”",
-       "text": "Francisco François (OPR) told the National Assembly that Mauritian society needs a real national dialogue."
+       "text": "The Roche-Bois waste transfer station has been due to move since October 2022. It has still not happened because no suitable site has been found.",
+       "titel": "Roche-Bois waste transfer station: relocation stalls"
+      },
+      "fr": {
+       "text": "Le déplacement de la station de transfert des déchets de Roche-Bois est prévu depuis octobre 2022. Il n'a toujours pas eu lieu, faute de terrain adapté.",
+       "titel": "Station de transfert de Roche-Bois : le déménagement n'avance pas"
       }
-     }
+     },
+     "nurDatum": true,
+     "quellen": [
+      {
+       "name": "allAfrica / L'Express",
+       "url": "https://fr.allafrica.com/stories/202611260634.html"
+      }
+     ],
+     "text": "Seit Oktober 2022 soll die Müll-Umladestation in Roche-Bois verlegt werden. Bisher ist das nicht geschehen, weil kein geeignetes Grundstück gefunden wurde.",
+     "titel": "Müll-Umladestation Roche-Bois: Verlegung kommt nicht voran",
+     "zeit": "2026-11-26T12:00:00+04:00"
     }
    ]
   },
@@ -708,9 +1128,18 @@
    "rubrik": "umwelt",
    "status": "aktiv",
    "titel": "Entwarnung für Rodrigues: Tsunami-Wache aufgehoben",
-   "top": true,
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "Tide gauges at Port Mathurin showed no significant wave, and the 7:15 pm bulletin lifted the tsunami watch. No damage was reported. Nothing was felt on Réunion, about 1,200 km away, either. A researcher at the Piton de la Fournaise observatory said the type of quake did not produce a tsunami.",
+       "titel": "All clear for Rodrigues: tsunami watch lifted"
+      },
+      "fr": {
+       "text": "Les marégraphes de Port-Mathurin n'ont relevé aucune vague notable ; le bulletin de 19 h 15 a levé la veille au tsunami. Aucun dégât n'a été signalé. Rien n'a été ressenti non plus à La Réunion, à environ 1 200 km. Un chercheur de l'observatoire du Piton de la Fournaise a expliqué que la nature du séisme n'a pas généré de tsunami.",
+       "titel": "Fin de l'alerte pour Rodrigues : la veille au tsunami levée"
+      }
+     },
      "quellen": [
       {
        "name": "Défi Media",
@@ -723,19 +1152,19 @@
      ],
      "text": "Die Pegel in Port Mathurin zeigten keine nennenswerte Welle, das MMS-Bulletin von 19:15 Uhr hob die Tsunami-Wache auf. Schäden wurden nicht gemeldet. Auch auf La Réunion, rund 1.200 km entfernt, wurde nichts gespürt. Ein Forscher des Observatoriums am Piton de la Fournaise erklärte, die Art des Bebens habe keinen Tsunami erzeugt.",
      "titel": "Entwarnung für Rodrigues: Tsunami-Wache aufgehoben",
-     "zeit": "2026-11-24T19:15:00+04:00",
-     "i18n": {
-      "fr": {
-       "titel": "Fin de l'alerte pour Rodrigues : la veille au tsunami levée",
-       "text": "Les marégraphes de Port-Mathurin n'ont relevé aucune vague notable ; le bulletin de 19 h 15 a levé la veille au tsunami. Aucun dégât n'a été signalé. Rien n'a été ressenti non plus à La Réunion, à environ 1 200 km. Un chercheur de l'observatoire du Piton de la Fournaise a expliqué que la nature du séisme n'a pas généré de tsunami."
-      },
-      "en": {
-       "titel": "All clear for Rodrigues: tsunami watch lifted",
-       "text": "Tide gauges at Port Mathurin showed no significant wave, and the 7:15 pm bulletin lifted the tsunami watch. No damage was reported. Nothing was felt on Réunion, about 1,200 km away, either. A researcher at the Piton de la Fournaise observatory said the type of quake did not produce a tsunami."
-      }
-     }
+     "zeit": "2026-11-24T19:15:00+04:00"
     },
     {
+     "i18n": {
+      "en": {
+       "text": "At 3:06 pm the Vacoas station recorded a strong quake about 326 km north-east of Rodrigues, at a depth of only 10 km. The first bulletin and the USGS put it at magnitude 6.4, a revised bulletin at 6.6.\n\nAt 5:40 pm the Meteorological Services (MMS) put Rodrigues under a tsunami watch until 9 pm. Coastal residents and fishers were told to avoid beaches and stay off the sea. According to police, no shaking was felt on Rodrigues.",
+       "titel": "Undersea quake off Rodrigues: tsunami watch issued"
+      },
+      "fr": {
+       "text": "À 15 h 06, la station de Vacoas a enregistré un fort séisme à environ 326 km au nord-est de Rodrigues, à seulement 10 km de profondeur. Le premier bulletin et l'USGS ont indiqué une magnitude de 6,4, un bulletin révisé 6,6.\n\nÀ 17 h 40, les services météo (MMS) ont placé Rodrigues en « tsunami watch » jusqu'à 21 h. Riverains et pêcheurs devaient éviter les plages et ne pas prendre la mer. Selon la police, aucune secousse n'a été ressentie à Rodrigues.",
+       "titel": "Séisme au large de Rodrigues : veille au tsunami déclenchée"
+      }
+     },
      "quellen": [
       {
        "name": "Défi Media",
@@ -752,19 +1181,10 @@
      ],
      "text": "Um 15:06 Uhr registrierte die Wetterstation Vacoas ein starkes Beben rund 326 km nordöstlich von Rodrigues, in nur 10 km Tiefe. Das erste Bulletin und der USGS nannten Stärke 6,4, ein überarbeitetes Bulletin 6,6.\n\nUm 17:40 Uhr stellte der Wetterdienst MMS Rodrigues bis 21 Uhr unter „Tsunami Watch“. Küstenbewohner und Fischer sollten Strände meiden und nicht aufs Meer fahren. Auf Rodrigues wurde laut Polizei kein Erdstoß gespürt.",
      "titel": "Seebeben vor Rodrigues: Tsunami-Wache ausgerufen",
-     "zeit": "2026-11-24T17:40:00+04:00",
-     "i18n": {
-      "fr": {
-       "titel": "Séisme au large de Rodrigues : veille au tsunami déclenchée",
-       "text": "À 15 h 06, la station de Vacoas a enregistré un fort séisme à environ 326 km au nord-est de Rodrigues, à seulement 10 km de profondeur. Le premier bulletin et l'USGS ont indiqué une magnitude de 6,4, un bulletin révisé 6,6.\n\nÀ 17 h 40, les services météo (MMS) ont placé Rodrigues en « tsunami watch » jusqu'à 21 h. Riverains et pêcheurs devaient éviter les plages et ne pas prendre la mer. Selon la police, aucune secousse n'a été ressentie à Rodrigues."
-      },
-      "en": {
-       "titel": "Undersea quake off Rodrigues: tsunami watch issued",
-       "text": "At 3:06 pm the Vacoas station recorded a strong quake about 326 km north-east of Rodrigues, at a depth of only 10 km. The first bulletin and the USGS put it at magnitude 6.4, a revised bulletin at 6.6.\n\nAt 5:40 pm the Meteorological Services (MMS) put Rodrigues under a tsunami watch until 9 pm. Coastal residents and fishers were told to avoid beaches and stay off the sea. According to police, no shaking was felt on Rodrigues."
-      }
-     }
+     "zeit": "2026-11-24T17:40:00+04:00"
     }
-   ]
+   ],
+   "warTop": true
   },
   {
    "id": "seychellen-plateau",
@@ -775,6 +1195,16 @@
    "titel": "Ölsuche im Meer: Abkommen mit den Seychellen",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "Mauritius and Seychelles are having CGG (Viridien group) survey the seabed of their jointly managed zone on the Mascarene Plateau. With no drilling and no cost to either state, the study is meant to assess oil and gas potential.",
+       "titel": "Offshore oil search: agreement with Seychelles"
+      },
+      "fr": {
+       "text": "Maurice et les Seychelles font étudier les fonds marins de leur zone de gestion commune sur le plateau des Mascareignes par CGG (groupe Viridien). Sans forage et sans frais pour les deux États, l'étude doit évaluer le potentiel en pétrole et en gaz.",
+       "titel": "Recherche pétrolière en mer : accord avec les Seychelles"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -788,17 +1218,7 @@
      ],
      "text": "Mauritius und die Seychellen lassen den Meeresboden ihrer gemeinsam verwalteten Zone auf dem Mascarene-Plateau von CGG (Viridien-Gruppe) geologisch untersuchen. Gebohrt wird nicht, beide Staaten zahlen nichts. Ziel ist, das Potenzial an Öl und Gas abzuschätzen.",
      "titel": "Ölsuche im Meer: Abkommen mit den Seychellen",
-     "zeit": "2026-11-25T12:00:00+04:00",
-     "i18n": {
-      "fr": {
-       "titel": "Recherche pétrolière en mer : accord avec les Seychelles",
-       "text": "Maurice et les Seychelles font étudier les fonds marins de leur zone de gestion commune sur le plateau des Mascareignes par CGG (groupe Viridien). Sans forage et sans frais pour les deux États, l'étude doit évaluer le potentiel en pétrole et en gaz."
-      },
-      "en": {
-       "titel": "Offshore oil search: agreement with Seychelles",
-       "text": "Mauritius and Seychelles are having CGG (Viridien group) survey the seabed of their jointly managed zone on the Mascarene Plateau. With no drilling and no cost to either state, the study is meant to assess oil and gas potential."
-      }
-     }
+     "zeit": "2026-11-25T12:00:00+04:00"
     }
    ]
   },
@@ -811,6 +1231,18 @@
    "titel": "Fußball: Super League am 3. Spieltag",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "The MFA Super League 2026–27 has played its third matchday. Results were not available in the sources found.",
+       "titel": "Football: Super League completes matchday 3",
+       "zeitText": "c. 25 Nov"
+      },
+      "fr": {
+       "text": "La MFA Super League 2026-27 a disputé sa troisième journée. Les résultats n'étaient pas disponibles dans les sources consultées.",
+       "titel": "Football : la Super League à sa 3e journée",
+       "zeitText": "vers le 25/11"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -825,19 +1257,7 @@
      "text": "Die MFA Super League 2026/27 hat ihren dritten Spieltag hinter sich. Ergebnisse waren in den gefundenen Quellen nicht abrufbar.",
      "titel": "Fußball: Super League am 3. Spieltag",
      "zeit": "2026-11-25T12:00:00+04:00",
-     "zeitText": "ca. 25.11.",
-     "i18n": {
-      "fr": {
-       "titel": "Football : la Super League à sa 3e journée",
-       "text": "La MFA Super League 2026-27 a disputé sa troisième journée. Les résultats n'étaient pas disponibles dans les sources consultées.",
-       "zeitText": "vers le 25/11"
-      },
-      "en": {
-       "titel": "Football: Super League completes matchday 3",
-       "text": "The MFA Super League 2026–27 has played its third matchday. Results were not available in the sources found.",
-       "zeitText": "c. 25 Nov"
-      }
-     }
+     "zeitText": "ca. 25.11."
     }
    ]
   },
@@ -846,10 +1266,20 @@
    "aktualisiert": "2026-11-15T12:00:00+04:00",
    "erstellt": "2026-11-15T12:00:00+04:00",
    "rubrik": "sport",
-   "status": "aktiv",
+   "status": "archiv",
    "titel": "Straßenfußball-Finale in Olivia",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "The “Ti Lipie Grand Rev” tournament brought together 18 teams of children and young people (ages 8–12 and 13–20) from across the island.",
+       "titel": "Street football final in Olivia"
+      },
+      "fr": {
+       "text": "Le tournoi « Ti Lipie Grand Rev » a réuni 18 équipes d'enfants et de jeunes (8-12 et 13-20 ans) venues de toute l'île.",
+       "titel": "Finale de foot de quartier à Olivia"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -859,17 +1289,39 @@
      ],
      "text": "Das Turnier „Ti Lipie Grand Rev“ brachte 18 Teams mit Kindern und Jugendlichen (8–12 und 13–20 Jahre) aus der ganzen Insel zusammen.",
      "titel": "Straßenfußball-Finale in Olivia",
-     "zeit": "2026-11-15T12:00:00+04:00",
+     "zeit": "2026-11-15T12:00:00+04:00"
+    }
+   ]
+  },
+  {
+   "id": "tourismus-zahlen",
+   "aktualisiert": "2026-11-26T12:00:00+04:00",
+   "erstellt": "2026-11-26T12:00:00+04:00",
+   "rubrik": "wirtschaft",
+   "status": "aktiv",
+   "titel": "Tourismus: Über 1,26 Millionen Besucher bis Mitte November",
+   "updates": [
+    {
      "i18n": {
-      "fr": {
-       "titel": "Finale de foot de quartier à Olivia",
-       "text": "Le tournoi « Ti Lipie Grand Rev » a réuni 18 équipes d'enfants et de jeunes (8-12 et 13-20 ans) venues de toute l'île."
-      },
       "en": {
-       "titel": "Street football final in Olivia",
-       "text": "The “Ti Lipie Grand Rev” tournament brought together 18 teams of children and young people (ages 8–12 and 13–20) from across the island."
+       "text": "According to Statistics Mauritius, 1,261,099 visitors arrived between 1 January and 15 November 2026, around 4% more than in the same period a year earlier. France remains the largest source market.",
+       "titel": "Tourism: more than 1.26 million visitors by mid-November"
+      },
+      "fr": {
+       "text": "Selon Statistics Mauritius, 1 261 099 visiteurs sont arrivés dans l'île entre le 1er janvier et le 15 novembre 2026, soit environ 4 % de plus que sur la même période un an plus tôt. La France reste le premier marché émetteur.",
+       "titel": "Tourisme : plus de 1,26 million de visiteurs à la mi-novembre"
       }
-     }
+     },
+     "nurDatum": true,
+     "quellen": [
+      {
+       "name": "Défi Media",
+       "url": "https://defimedia.info/de-janvier-mi-novembre-tourisme-maurice-passe-le-cap-des-126-million-de-visiteurs"
+      }
+     ],
+     "text": "Laut Statistics Mauritius kamen vom 1. Januar bis 15. November 2026 1.261.099 Besucher auf die Insel. Das sind rund 4 % mehr als im Vorjahreszeitraum. Frankreich bleibt der wichtigste Herkunftsmarkt.",
+     "titel": "Tourismus: Über 1,26 Millionen Besucher bis Mitte November",
+     "zeit": "2026-11-26T12:00:00+04:00"
     }
    ]
   },
@@ -878,10 +1330,22 @@
    "aktualisiert": "2026-11-15T12:00:00+04:00",
    "erstellt": "2026-11-15T12:00:00+04:00",
    "rubrik": "soziales",
-   "status": "aktiv",
+   "status": "archiv",
    "titel": "Neue Regeln für Unwettertage",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "A bill would make the heavy-rain protocol binding and set out what then applies to work, pay and schools.",
+       "titel": "New rules for severe-weather days",
+       "zeitText": "November, date unclear"
+      },
+      "fr": {
+       "text": "Un projet de loi doit rendre obligatoire le protocole en cas de fortes pluies et préciser ce qui s'applique alors au travail, aux salaires et aux écoles.",
+       "titel": "De nouvelles règles pour les jours d'intempéries",
+       "zeitText": "novembre, date incertaine"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -892,19 +1356,7 @@
      "text": "Ein Gesetzentwurf soll das Protokoll für Starkregen verbindlich machen und regeln, was dann für Arbeit, Lohn und Schulen gilt.",
      "titel": "Neue Regeln für Unwettertage",
      "zeit": "2026-11-15T12:00:00+04:00",
-     "zeitText": "November, Datum unklar",
-     "i18n": {
-      "fr": {
-       "titel": "De nouvelles règles pour les jours d'intempéries",
-       "text": "Un projet de loi doit rendre obligatoire le protocole en cas de fortes pluies et préciser ce qui s'applique alors au travail, aux salaires et aux écoles.",
-       "zeitText": "novembre, date incertaine"
-      },
-      "en": {
-       "titel": "New rules for severe-weather days",
-       "text": "A bill would make the heavy-rain protocol binding and set out what then applies to work, pay and schools.",
-       "zeitText": "November, date unclear"
-      }
-     }
+     "zeitText": "November, Datum unklar"
     }
    ]
   },
@@ -913,10 +1365,20 @@
    "aktualisiert": "2026-11-23T12:00:00+04:00",
    "erstellt": "2026-11-23T12:00:00+04:00",
    "rubrik": "wirtschaft",
-   "status": "aktiv",
+   "status": "archiv",
    "titel": "In zwei Wochen: U.S.-Africa Business Summit auf Mauritius",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "From 6 to 9 December, Mauritius hosts the 18th U.S.-Africa Business Summit at the SVICC conference centre, with heads of state, investors and development banks. The summit was postponed from July. L'Express led with it on Monday.",
+       "titel": "In two weeks: U.S.-Africa Business Summit in Mauritius"
+      },
+      "fr": {
+       "text": "Du 6 au 9 décembre, Maurice accueille au centre de conférences SVICC le 18e U.S.-Africa Business Summit, avec chefs d'État, investisseurs et banques de développement. Le sommet avait été reporté de juillet. L'Express en a fait sa une lundi.",
+       "titel": "Dans deux semaines : le U.S.-Africa Business Summit à Maurice"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -934,29 +1396,87 @@
      ],
      "text": "Vom 6. bis 9. Dezember empfängt Mauritius im Konferenzzentrum SVICC den 18. U.S.-Africa Business Summit mit Staatschefs, Investoren und Entwicklungsbanken. Der Gipfel war von Juli verschoben worden. L'Express machte am Montag damit auf.",
      "titel": "In zwei Wochen: U.S.-Africa Business Summit auf Mauritius",
-     "zeit": "2026-11-23T12:00:00+04:00",
+     "zeit": "2026-11-23T12:00:00+04:00"
+    }
+   ]
+  },
+  {
+   "id": "vision-2050",
+   "aktualisiert": "2026-11-26T12:00:00+04:00",
+   "erstellt": "2026-11-26T12:00:00+04:00",
+   "rubrik": "politik",
+   "status": "aktiv",
+   "titel": "„Mauritius Vision 2050“: Entwicklungsplan soll 2027 fertig sein",
+   "updates": [
+    {
      "i18n": {
-      "fr": {
-       "titel": "Dans deux semaines : le U.S.-Africa Business Summit à Maurice",
-       "text": "Du 6 au 9 décembre, Maurice accueille au centre de conférences SVICC le 18e U.S.-Africa Business Summit, avec chefs d'État, investisseurs et banques de développement. Le sommet avait été reporté de juillet. L'Express en a fait sa une lundi."
-      },
       "en": {
-       "titel": "In two weeks: U.S.-Africa Business Summit in Mauritius",
-       "text": "From 6 to 9 December, Mauritius hosts the 18th U.S.-Africa Business Summit at the SVICC conference centre, with heads of state, investors and development banks. The summit was postponed from July. L'Express led with it on Monday."
+       "text": "The national development plan under 'Mauritius Vision 2050' is to be finalised in the first quarter of 2027. How it will be funded has not yet been decided.",
+       "titel": "'Mauritius Vision 2050': development plan due in 2027"
+      },
+      "fr": {
+       "text": "Le plan national de développement de « Mauritius Vision 2050 » doit être finalisé au premier trimestre 2027. Son financement n'est pas encore décidé.",
+       "titel": "« Mauritius Vision 2050 » : le plan de développement attendu en 2027"
       }
-     }
+     },
+     "nurDatum": true,
+     "quellen": [
+      {
+       "name": "allAfrica / L'Express",
+       "url": "https://fr.allafrica.com/stories/202611260629.html"
+      }
+     ],
+     "text": "Der nationale Entwicklungsplan im Rahmen von „Mauritius Vision 2050“ soll im ersten Quartal 2027 fertiggestellt werden. Wie er finanziert wird, ist noch nicht entschieden.",
+     "titel": "„Mauritius Vision 2050“: Entwicklungsplan soll 2027 fertig sein",
+     "zeit": "2026-11-26T12:00:00+04:00"
     }
    ]
   },
   {
    "id": "wasserkrise",
-   "aktualisiert": "2026-11-18T12:00:00+04:00",
+   "aktualisiert": "2026-11-25T12:00:00+04:00",
    "erstellt": "2026-11-12T12:00:00+04:00",
    "rubrik": "umwelt",
    "status": "aktiv",
-   "titel": "Ein Sommer unter Hochspannung: Wasser und Strom knapp",
+   "titel": "CWA: 60 % des Wassers bringen keine Einnahmen",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "In a series of articles in L'Express, specialists assess the state of the Central Water Authority. According to CWA reports, around 60% of the water produced is not billed, due to leaks, illegal connections or billing errors. A former CWA director even puts the figure at 62%.\n\nTariffs have not changed since 2012. The experts consider them too low but want better service first.",
+       "titel": "CWA: 60% of water brings in no revenue"
+      },
+      "fr": {
+       "text": "Dans une série d'articles de L'Express, des spécialistes évaluent la situation de la Central Water Authority. Selon les rapports de la CWA, environ 60 % de l'eau produite n'est pas facturée, en raison de fuites, de branchements illégaux ou d'erreurs de facturation. Un ancien directeur de la CWA avance même 62 %.\n\nLes tarifs n'ont pas changé depuis 2012. Les experts les jugent trop bas, mais réclament d'abord un meilleur service.",
+       "titel": "CWA : 60 % de l'eau ne rapporte rien"
+      }
+     },
+     "nurDatum": true,
+     "quellen": [
+      {
+       "name": "allAfrica / L'Express",
+       "url": "https://fr.allafrica.com/stories/202611260358.html"
+      },
+      {
+       "name": "L'Express",
+       "url": "https://lexpress.mu/s/eau-60-de-pertes-des-tarifs-trop-bas-le-verdict-des-specialistes-565115"
+      }
+     ],
+     "text": "Eine Artikelserie von L'Express lässt Fachleute die Lage der Central Water Authority bewerten. Laut CWA-Berichten werden rund 60 % des produzierten Wassers nicht abgerechnet – durch Lecks, illegale Anschlüsse oder Fehler bei der Abrechnung. Ein früherer CWA-Direktor nennt sogar 62 %.\n\nDie Tarife sind seit 2012 unverändert. Die Experten halten sie für zu niedrig, verlangen aber zuerst einen besseren Service.",
+     "titel": "CWA: 60 % des Wassers bringen keine Einnahmen",
+     "zeit": "2026-11-25T12:00:00+04:00"
+    },
+    {
+     "i18n": {
+      "en": {
+       "text": "Mare-aux-Vacoas is at 32.4%. In Vacoas, Phoenix, Curepipe, Floréal and nearby, water runs only every other day from 3 to 8 am, and the CWA is considering tighter restrictions. The plant can treat only about 70,000 m³ a day instead of 130,000. Electricity demand could reach 600 to 610 megawatts.",
+       "titel": "A summer under strain: water and power tight"
+      },
+      "fr": {
+       "text": "Mare-aux-Vacoas est à 32,4 %. À Vacoas, Phoenix, Curepipe, Floréal et alentours, l'eau ne coule qu'un jour sur deux, de 3 h à 8 h ; la CWA envisage de durcir les restrictions. L'usine ne traite plus qu'environ 70 000 m³ par jour au lieu de 130 000. La demande d'électricité pourrait atteindre 600 à 610 mégawatts.",
+       "titel": "Un été sous haute tension : eau et électricité sous pression"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -966,19 +1486,19 @@
      ],
      "text": "Mare-aux-Vacoas liegt bei 32,4 %. In Vacoas, Phoenix, Curepipe, Floréal und Umgebung fließt Wasser nur jeden zweiten Tag von 3 bis 8 Uhr, die CWA erwägt schärfere Einschränkungen. Das Werk kann statt 130.000 nur noch rund 70.000 m³ am Tag aufbereiten. Die Stromnachfrage könnte auf 600 bis 610 Megawatt steigen.",
      "titel": "Ein Sommer unter Hochspannung: Wasser und Strom knapp",
-     "zeit": "2026-11-18T12:00:00+04:00",
-     "i18n": {
-      "fr": {
-       "titel": "Un été sous haute tension : eau et électricité sous pression",
-       "text": "Mare-aux-Vacoas est à 32,4 %. À Vacoas, Phoenix, Curepipe, Floréal et alentours, l'eau ne coule qu'un jour sur deux, de 3 h à 8 h ; la CWA envisage de durcir les restrictions. L'usine ne traite plus qu'environ 70 000 m³ par jour au lieu de 130 000. La demande d'électricité pourrait atteindre 600 à 610 mégawatts."
-      },
-      "en": {
-       "titel": "A summer under strain: water and power tight",
-       "text": "Mare-aux-Vacoas is at 32.4%. In Vacoas, Phoenix, Curepipe, Floréal and nearby, water runs only every other day from 3 to 8 am, and the CWA is considering tighter restrictions. The plant can treat only about 70,000 m³ a day instead of 130,000. Electricity demand could reach 600 to 610 megawatts."
-      }
-     }
+     "zeit": "2026-11-18T12:00:00+04:00"
     },
     {
+     "i18n": {
+      "en": {
+       "text": "A year ago the reservoir stood at 74.3%. Aerial images show large areas that have dried out.",
+       "titel": "Mare-aux-Vacoas only 33% full"
+      },
+      "fr": {
+       "text": "Il y a un an, le réservoir était à 74,3 %. Des images aériennes montrent de vastes étendues asséchées.",
+       "titel": "Mare-aux-Vacoas remplie à 33 % seulement"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -992,17 +1512,7 @@
      ],
      "text": "Vor einem Jahr lag der Stausee bei 74,3 %. Luftbilder zeigen weite trockengefallene Flächen.",
      "titel": "Mare-aux-Vacoas nur noch zu 33 % gefüllt",
-     "zeit": "2026-11-12T12:00:00+04:00",
-     "i18n": {
-      "fr": {
-       "titel": "Mare-aux-Vacoas remplie à 33 % seulement",
-       "text": "Il y a un an, le réservoir était à 74,3 %. Des images aériennes montrent de vastes étendues asséchées."
-      },
-      "en": {
-       "titel": "Mare-aux-Vacoas only 33% full",
-       "text": "A year ago the reservoir stood at 74.3%. Aerial images show large areas that have dried out."
-      }
-     }
+     "zeit": "2026-11-12T12:00:00+04:00"
     }
    ]
   },
@@ -1015,6 +1525,16 @@
    "titel": "Jeetun: Mauritius kann „das Singapur Afrikas“ werden",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "Minister Jyoti Jeetun believes Mauritius can become for Africa what Singapore is for Asia.",
+       "titel": "Jeetun: Mauritius can become “the Singapore of Africa”"
+      },
+      "fr": {
+       "text": "Le ministre Jyoti Jeetun estime que Maurice peut devenir pour l'Afrique ce que Singapour est pour l'Asie.",
+       "titel": "Jeetun : Maurice peut devenir « le Singapour de l'Afrique »"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -1024,19 +1544,19 @@
      ],
      "text": "Minister Jyoti Jeetun sieht Mauritius in der Lage, für Afrika das zu werden, was Singapur für Asien ist.",
      "titel": "Jeetun: Mauritius kann „das Singapur Afrikas“ werden",
-     "zeit": "2026-11-26T12:00:00+04:00",
-     "i18n": {
-      "fr": {
-       "titel": "Jeetun : Maurice peut devenir « le Singapour de l'Afrique »",
-       "text": "Le ministre Jyoti Jeetun estime que Maurice peut devenir pour l'Afrique ce que Singapour est pour l'Asie."
-      },
-      "en": {
-       "titel": "Jeetun: Mauritius can become “the Singapore of Africa”",
-       "text": "Minister Jyoti Jeetun believes Mauritius can become for Africa what Singapore is for Asia."
-      }
-     }
+     "zeit": "2026-11-26T12:00:00+04:00"
     },
     {
+     "i18n": {
+      "en": {
+       "text": "L'Express analyses this year's ranking of the country's 100 largest companies.",
+       "titel": "What the 2026 Top 100 Companies show"
+      },
+      "fr": {
+       "text": "L'Express analyse le classement annuel des 100 plus grandes entreprises du pays.",
+       "titel": "Ce que révèle le Top 100 des entreprises 2026"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -1046,17 +1566,7 @@
      ],
      "text": "L'Express wertet die diesjährige Rangliste der 100 größten Unternehmen des Landes aus.",
      "titel": "Was die Top-100-Unternehmen 2026 zeigen",
-     "zeit": "2026-11-25T12:00:00+04:00",
-     "i18n": {
-      "fr": {
-       "titel": "Ce que révèle le Top 100 des entreprises 2026",
-       "text": "L'Express analyse le classement annuel des 100 plus grandes entreprises du pays."
-      },
-      "en": {
-       "titel": "What the 2026 Top 100 Companies show",
-       "text": "L'Express analyses this year's ranking of the country's 100 largest companies."
-      }
-     }
+     "zeit": "2026-11-25T12:00:00+04:00"
     }
    ]
   },
@@ -1069,6 +1579,16 @@
    "titel": "World Knits: Was wird aus 450 Familien?",
    "updates": [
     {
+     "i18n": {
+      "en": {
+       "text": "Défi Media devoted its programme “Au Cœur de l'Info” to the case, with Labour Minister Reza Uteem on the phone. The workers are still waiting for their wages.",
+       "titel": "World Knits: what future for 450 families?"
+      },
+      "fr": {
+       "text": "Défi Media a consacré au dossier son émission « Au Cœur de l'Info », avec le ministre du Travail Reza Uteem au téléphone. Les salariés attendent toujours leurs salaires.",
+       "titel": "World Knits : quel avenir pour 450 familles ?"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -1078,19 +1598,19 @@
      ],
      "text": "Défi Media widmete dem Fall seine Sendung „Au Cœur de l'Info“, mit Arbeitsminister Reza Uteem am Telefon. Die Beschäftigten warten weiter auf ihre Löhne.",
      "titel": "World Knits: Was wird aus 450 Familien?",
-     "zeit": "2026-11-25T12:00:00+04:00",
-     "i18n": {
-      "fr": {
-       "titel": "World Knits : quel avenir pour 450 familles ?",
-       "text": "Défi Media a consacré au dossier son émission « Au Cœur de l'Info », avec le ministre du Travail Reza Uteem au téléphone. Les salariés attendent toujours leurs salaires."
-      },
-      "en": {
-       "titel": "World Knits: what future for 450 families?",
-       "text": "Défi Media devoted its programme “Au Cœur de l'Info” to the case, with Labour Minister Reza Uteem on the phone. The workers are still waiting for their wages."
-      }
-     }
+     "zeit": "2026-11-25T12:00:00+04:00"
     },
     {
+     "i18n": {
+      "en": {
+       "text": "374 of 405 employees voted against liquidating the textile firm. They want guarantees for four to six months of unpaid wages. Rs 55 million has already gone on wages.",
+       "titel": "World Knits: staff vote against liquidation"
+      },
+      "fr": {
+       "text": "374 des 405 salariés ont voté contre la liquidation de l'entreprise textile. Ils réclament des garanties pour quatre à six mois d'arriérés de salaire. Rs 55 millions ont déjà servi à payer des salaires.",
+       "titel": "World Knits : les salariés votent contre la liquidation"
+      }
+     },
      "nurDatum": true,
      "quellen": [
       {
@@ -1100,17 +1620,7 @@
      ],
      "text": "374 von 405 Beschäftigten stimmten gegen die Liquidation der Textilfirma. Sie fordern Garantien für vier bis sechs Monatslöhne Rückstand. Rs 55 Millionen wurden bereits für Löhne aufgewendet.",
      "titel": "World Knits: Belegschaft stimmt gegen Liquidation",
-     "zeit": "2026-11-13T12:00:00+04:00",
-     "i18n": {
-      "fr": {
-       "titel": "World Knits : les salariés votent contre la liquidation",
-       "text": "374 des 405 salariés ont voté contre la liquidation de l'entreprise textile. Ils réclament des garanties pour quatre à six mois d'arriérés de salaire. Rs 55 millions ont déjà servi à payer des salaires."
-      },
-      "en": {
-       "titel": "World Knits: staff vote against liquidation",
-       "text": "374 of 405 employees voted against liquidating the textile firm. They want guarantees for four to six months of unpaid wages. Rs 55 million has already gone on wages."
-      }
-     }
+     "zeit": "2026-11-13T12:00:00+04:00"
     }
    ]
   }
@@ -1121,22 +1631,22 @@
    "beschreibung": "Welche Antworten gibt es? Zum Aktionstag am 25. November.",
    "datumText": "Sendewoche 23.–29.11.2026",
    "hinzugefuegt": "2026-11-26T22:00:00+04:00",
+   "i18n": {
+    "en": {
+     "beschreibung": "What responses are there? Around the 25 November day of action.",
+     "datumText": "week of 23–29 Nov 2026",
+     "titel": "Au Cœur de l'Info: violence against women"
+    },
+    "fr": {
+     "beschreibung": "Quelles réponses ? Autour de la journée du 25 novembre.",
+     "datumText": "semaine du 23 au 29/11/2026",
+     "titel": "Au Cœur de l'Info : violences faites aux femmes"
+    }
+   },
    "quelle": "Défi Media · Sendung",
    "reihenfolge": 2,
    "titel": "Au Cœur de l'Info: Gewalt an Frauen",
-   "url": "https://defimedia.info/au-coeur-de-linfo-quelles-reponses-aux-violences-faites-aux-femmes",
-   "i18n": {
-    "fr": {
-     "titel": "Au Cœur de l'Info : violences faites aux femmes",
-     "beschreibung": "Quelles réponses ? Autour de la journée du 25 novembre.",
-     "datumText": "semaine du 23 au 29/11/2026"
-    },
-    "en": {
-     "titel": "Au Cœur de l'Info: violence against women",
-     "beschreibung": "What responses are there? Around the 25 November day of action.",
-     "datumText": "week of 23–29 Nov 2026"
-    }
-   }
+   "url": "https://defimedia.info/au-coeur-de-linfo-quelles-reponses-aux-violences-faites-aux-femmes"
   },
   {
    "id": "defi-world-knits",
@@ -1144,22 +1654,22 @@
    "datum": "2026-11-25T12:00:00+04:00",
    "datumText": "25.11.2026",
    "hinzugefuegt": "2026-11-26T22:00:00+04:00",
+   "i18n": {
+    "en": {
+     "beschreibung": "What future for the 450 families affected?",
+     "datumText": "25 Nov 2026",
+     "titel": "Au Cœur de l'Info: World Knits"
+    },
+    "fr": {
+     "beschreibung": "Quel avenir pour les 450 familles concernées ?",
+     "datumText": "25/11/2026",
+     "titel": "Au Cœur de l'Info : World Knits"
+    }
+   },
    "quelle": "Défi Media · Sendung",
    "reihenfolge": 1,
    "titel": "Au Cœur de l'Info: World Knits",
-   "url": "https://defimedia.info/au-coeur-de-linfo-world-knits-quel-avenir-pour-les-familles-concernees",
-   "i18n": {
-    "fr": {
-     "titel": "Au Cœur de l'Info : World Knits",
-     "beschreibung": "Quel avenir pour les 450 familles concernées ?",
-     "datumText": "25/11/2026"
-    },
-    "en": {
-     "titel": "Au Cœur de l'Info: World Knits",
-     "beschreibung": "What future for the 450 families affected?",
-     "datumText": "25 Nov 2026"
-    }
-   }
+   "url": "https://defimedia.info/au-coeur-de-linfo-world-knits-quel-avenir-pour-les-familles-concernees"
   },
   {
    "id": "kanal-lexpress",
@@ -1167,22 +1677,22 @@
    "datumText": "Kanal · laufend aktualisiert",
    "dauerhaft": true,
    "hinzugefuegt": "2026-11-26T22:00:00+04:00",
+   "i18n": {
+    "en": {
+     "beschreibung": "Videos from the daily L'Express.",
+     "datumText": "Channel · continuously updated",
+     "titel": "l'express"
+    },
+    "fr": {
+     "beschreibung": "Les vidéos du quotidien L'Express.",
+     "datumText": "Chaîne · mise à jour continue",
+     "titel": "l'express"
+    }
+   },
    "quelle": "YouTube · Kanal",
    "reihenfolge": 7,
    "titel": "l'express",
-   "url": "https://www.youtube.com/@lexpressmu",
-   "i18n": {
-    "fr": {
-     "titel": "l'express",
-     "beschreibung": "Les vidéos du quotidien L'Express.",
-     "datumText": "Chaîne · mise à jour continue"
-    },
-    "en": {
-     "titel": "l'express",
-     "beschreibung": "Videos from the daily L'Express.",
-     "datumText": "Channel · continuously updated"
-    }
-   }
+   "url": "https://www.youtube.com/@lexpressmu"
   },
   {
    "id": "kanal-mbc",
@@ -1190,22 +1700,22 @@
    "datumText": "Kanal · laufend aktualisiert",
    "dauerhaft": true,
    "hinzugefuegt": "2026-11-26T22:00:00+04:00",
+   "i18n": {
+    "en": {
+     "beschreibung": "All MBC news programmes, also in Kreol.",
+     "datumText": "Channel · continuously updated",
+     "titel": "MBC Online"
+    },
+    "fr": {
+     "beschreibung": "Tous les journaux de la MBC, aussi en kreol.",
+     "datumText": "Chaîne · mise à jour continue",
+     "titel": "MBC Online"
+    }
+   },
    "quelle": "YouTube · Kanal",
    "reihenfolge": 6,
    "titel": "MBC Online",
-   "url": "https://www.youtube.com/@MBCOnlineMauritius/streams",
-   "i18n": {
-    "fr": {
-     "titel": "MBC Online",
-     "beschreibung": "Tous les journaux de la MBC, aussi en kreol.",
-     "datumText": "Chaîne · mise à jour continue"
-    },
-    "en": {
-     "titel": "MBC Online",
-     "beschreibung": "All MBC news programmes, also in Kreol.",
-     "datumText": "Channel · continuously updated"
-    }
-   }
+   "url": "https://www.youtube.com/@MBCOnlineMauritius/streams"
   },
   {
    "id": "mbc-19h30",
@@ -1213,88 +1723,88 @@
    "datum": "2026-11-25T19:30:00+04:00",
    "datumText": "25.11.2026, 19:30 Uhr",
    "hinzugefuegt": "2026-11-26T22:00:00+04:00",
+   "i18n": {
+    "en": {
+     "beschreibung": "The public broadcaster's evening news on replay.",
+     "datumText": "25 Nov 2026, 7:30 pm",
+     "titel": "The 7:30 pm news, 25 November"
+    },
+    "fr": {
+     "beschreibung": "Le journal du soir de la télévision publique en replay.",
+     "datumText": "25/11/2026, 19 h 30",
+     "titel": "Le 19h30 du 25 novembre"
+    }
+   },
    "quelle": "MBC · Replay",
    "reihenfolge": 0,
    "titel": "Le 19h30 vom 25. November",
-   "url": "https://mbcradio.tv/replay/JT",
-   "i18n": {
-    "fr": {
-     "titel": "Le 19h30 du 25 novembre",
-     "beschreibung": "Le journal du soir de la télévision publique en replay.",
-     "datumText": "25/11/2026, 19 h 30"
-    },
-    "en": {
-     "titel": "The 7:30 pm news, 25 November",
-     "beschreibung": "The public broadcaster's evening news on replay.",
-     "datumText": "25 Nov 2026, 7:30 pm"
-    }
-   }
+   "url": "https://mbcradio.tv/replay/JT"
   },
   {
    "id": "yt-chagos",
    "beschreibung": "Hintergrund vom Frühjahr, als der Deal mit London scheiterte.",
    "datumText": "ca. April 2026",
    "hinzugefuegt": "2026-11-26T22:00:00+04:00",
+   "i18n": {
+    "en": {
+     "beschreibung": "Background from the spring, when the deal with London collapsed.",
+     "datumText": "c. April 2026",
+     "titel": "Chagos: Mauritius won't give up"
+    },
+    "fr": {
+     "beschreibung": "Contexte du printemps, quand l'accord avec Londres a échoué.",
+     "datumText": "vers avril 2026",
+     "titel": "Chagos : Maurice ne renonce pas"
+    }
+   },
    "quelle": "YouTube · Hintergrund",
    "reihenfolge": 5,
    "titel": "Chagos: Mauritius gibt nicht auf",
-   "url": "https://www.youtube.com/watch?v=BEFnCuI-E_0",
-   "i18n": {
-    "fr": {
-     "titel": "Chagos : Maurice ne renonce pas",
-     "beschreibung": "Contexte du printemps, quand l'accord avec Londres a échoué.",
-     "datumText": "vers avril 2026"
-    },
-    "en": {
-     "titel": "Chagos: Mauritius won't give up",
-     "beschreibung": "Background from the spring, when the deal with London collapsed.",
-     "datumText": "c. April 2026"
-    }
-   }
+   "url": "https://www.youtube.com/watch?v=BEFnCuI-E_0"
   },
   {
    "id": "yt-unruhen",
    "beschreibung": "Hintergrund: Proteste nach Polizeischüssen im Oktober, auf Englisch.",
    "datumText": "Oktober 2026",
    "hinzugefuegt": "2026-11-26T22:00:00+04:00",
+   "i18n": {
+    "en": {
+     "beschreibung": "Background: protests after the police shooting in October, in English.",
+     "datumText": "October 2026",
+     "titel": "Curfew after the unrest"
+    },
+    "fr": {
+     "beschreibung": "Contexte : les manifestations après les tirs policiers d'octobre, en anglais.",
+     "datumText": "octobre 2026",
+     "titel": "Couvre-feu après les émeutes"
+    }
+   },
    "quelle": "YouTube · Hintergrund",
    "reihenfolge": 4,
    "titel": "Ausgangssperre nach Unruhen",
-   "url": "https://www.youtube.com/watch?v=v334Nl_s2CE",
-   "i18n": {
-    "fr": {
-     "titel": "Couvre-feu après les émeutes",
-     "beschreibung": "Contexte : les manifestations après les tirs policiers d'octobre, en anglais.",
-     "datumText": "octobre 2026"
-    },
-    "en": {
-     "titel": "Curfew after the unrest",
-     "beschreibung": "Background: protests after the police shooting in October, in English.",
-     "datumText": "October 2026"
-    }
-   }
+   "url": "https://www.youtube.com/watch?v=v334Nl_s2CE"
   },
   {
    "id": "yt-wasser",
    "beschreibung": "Wasser-Update Mauritius 2026, auf Englisch.",
    "datumText": "2026, genaues Datum unbekannt",
    "hinzugefuegt": "2026-11-26T22:00:00+04:00",
+   "i18n": {
+    "en": {
+     "beschreibung": "Mauritius water update 2026, in English.",
+     "datumText": "2026, exact date unknown",
+     "titel": "Reservoir levels dropping fast"
+    },
+    "fr": {
+     "beschreibung": "Point sur l'eau à Maurice en 2026, en anglais.",
+     "datumText": "2026, date exacte inconnue",
+     "titel": "Les réservoirs baissent vite"
+    }
+   },
    "quelle": "YouTube",
    "reihenfolge": 3,
    "titel": "Stauseen sinken schnell",
-   "url": "https://www.youtube.com/watch?v=5yUhl2hw30Y",
-   "i18n": {
-    "fr": {
-     "titel": "Les réservoirs baissent vite",
-     "beschreibung": "Point sur l'eau à Maurice en 2026, en anglais.",
-     "datumText": "2026, date exacte inconnue"
-    },
-    "en": {
-     "titel": "Reservoir levels dropping fast",
-     "beschreibung": "Mauritius water update 2026, in English.",
-     "datumText": "2026, exact date unknown"
-    }
-   }
+   "url": "https://www.youtube.com/watch?v=5yUhl2hw30Y"
   }
  ]
 }
