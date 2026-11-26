@@ -1,0 +1,36 @@
+/**
+ * Stammdaten der Website Gazet Morisyen.
+ */
+
+export const SEITEN_NAME = 'Gazet Morisyen';
+export const SEITEN_URL = 'https://gazet.morisyen.de';
+export const SEITEN_HOST = 'gazet.morisyen.de';
+
+export const SEITEN_BESCHREIBUNG =
+  'Nachrichten aus Mauritius auf Deutsch, Französisch und Englisch: Politik, Wirtschaft, Gesellschaft, Umwelt, Sport und Kultur, nach Themen gebündelt und alle vier Stunden aktualisiert.';
+
+export const SUCHBEGRIFFE = [
+  'Mauritius Nachrichten',
+  'Mauritius News',
+  'Actualités Maurice',
+  'Île Maurice',
+  'Rodrigues',
+  'Port-Louis',
+  'Mauritius Zeitung',
+];
+
+/**
+ * Angaben für das Impressum (§ 5 DDG, § 18 MStV).
+ * Solange hier etwas fehlt, bleibt die Seite für Suchmaschinen gesperrt
+ * (noindex), damit kein öffentliches Angebot ohne Impressum entsteht.
+ */
+export const IMPRESSUM = {
+  name: '',
+  anschrift: '',
+  email: '',
+  verantwortlich: '',
+} as const;
+
+export function impressumVollstaendig(): boolean {
+  return Object.values(IMPRESSUM).every((wert) => wert.trim() !== '');
+}
