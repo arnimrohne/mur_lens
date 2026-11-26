@@ -3,6 +3,7 @@
  */
 
 import type { RubrikId, Sprache } from './types';
+import type { WetterArt } from './wetter';
 
 export interface OberflaechenTexte {
   untertitel: string;
@@ -37,6 +38,18 @@ export interface OberflaechenTexte {
   linkKopiert: string;
   linkFehler: string;
   zurAusgabe: string;
+  wetter: {
+    titel: string;
+    gefuehlt: (grad: number) => string;
+    wind: (kmh: number) => string;
+    feuchte: (prozent: number) => string;
+    aufgang: string;
+    untergang: string;
+    band: string;
+    quelle: string;
+    ortszeit: string;
+    arten: Record<WetterArt, string>;
+  };
   topThemen: string;
   weiterlesen: string;
   vorherigesTop: string;
@@ -88,6 +101,18 @@ const de: OberflaechenTexte = {
   linkKopiert: 'Link kopiert',
   linkFehler: 'Kopieren nicht möglich',
   zurAusgabe: '← Zur aktuellen Ausgabe',
+  wetter: {
+    titel: 'Wetter in Port-Louis',
+    gefuehlt: (g) => `gefühlt ${g}°`,
+    wind: (v) => `Wind ${v} km/h`,
+    feuchte: (p) => `Luftfeuchte ${p} %`,
+    aufgang: 'Sonnenaufgang',
+    untergang: 'Sonnenuntergang',
+    band: 'Die nächsten 24 Stunden',
+    quelle: 'Wetterdaten: MET Norway',
+    ortszeit: 'Ortszeit Mauritius',
+    arten: { klar: 'Klar', heiter: 'Heiter', wolkig: 'Teils bewölkt', bedeckt: 'Bedeckt', nebel: 'Nebel', schauer: 'Schauer', regen: 'Regen', gewitter: 'Gewitter' },
+  },
   topThemen: 'Top-Themen',
   weiterlesen: 'Weiterlesen →',
   vorherigesTop: 'Vorheriges Top-Thema',
@@ -139,6 +164,18 @@ const fr: OberflaechenTexte = {
   linkKopiert: 'Lien copié',
   linkFehler: 'Copie impossible',
   zurAusgabe: "← Vers l'édition du jour",
+  wetter: {
+    titel: 'Météo à Port-Louis',
+    gefuehlt: (g) => `ressenti ${g}°`,
+    wind: (v) => `Vent ${v} km/h`,
+    feuchte: (p) => `Humidité ${p} %`,
+    aufgang: 'Lever du soleil',
+    untergang: 'Coucher du soleil',
+    band: 'Les prochaines 24 heures',
+    quelle: 'Données météo : MET Norway',
+    ortszeit: 'heure de Maurice',
+    arten: { klar: 'Dégagé', heiter: 'Beau temps', wolkig: 'Partiellement nuageux', bedeckt: 'Couvert', nebel: 'Brouillard', schauer: 'Averses', regen: 'Pluie', gewitter: 'Orage' },
+  },
   topThemen: 'À la une',
   weiterlesen: 'Lire la suite →',
   vorherigesTop: 'Sujet précédent',
@@ -190,6 +227,18 @@ const en: OberflaechenTexte = {
   linkKopiert: 'Link copied',
   linkFehler: 'Could not copy',
   zurAusgabe: '← To the current edition',
+  wetter: {
+    titel: 'Weather in Port Louis',
+    gefuehlt: (g) => `feels like ${g}°`,
+    wind: (v) => `Wind ${v} km/h`,
+    feuchte: (p) => `Humidity ${p}%`,
+    aufgang: 'Sunrise',
+    untergang: 'Sunset',
+    band: 'Next 24 hours',
+    quelle: 'Weather data: MET Norway',
+    ortszeit: 'Mauritius time',
+    arten: { klar: 'Clear', heiter: 'Fair', wolkig: 'Partly cloudy', bedeckt: 'Overcast', nebel: 'Fog', schauer: 'Showers', regen: 'Rain', gewitter: 'Thunderstorm' },
+  },
   topThemen: 'Top stories',
   weiterlesen: 'Read more →',
   vorherigesTop: 'Previous top story',
