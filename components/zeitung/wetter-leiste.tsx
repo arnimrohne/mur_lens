@@ -77,10 +77,13 @@ function BandZelle({ eintrag, sprache, texte }: { eintrag: BandEintrag; sprache:
   if (eintrag.typ !== 'stunde') {
     const auf = eintrag.typ === 'aufgang';
     return (
-      <li className={`gz-band-sonne ${auf ? 'gz-band-auf' : 'gz-band-unter'}`}>
+      <li
+        className={`gz-band-sonne ${auf ? 'gz-band-auf' : 'gz-band-unter'}`}
+        title={`${auf ? t.aufgang : t.untergang} ${uhrzeit(eintrag.zeit, sprache)}`}
+      >
         <time dateTime={eintrag.zeit}>{uhrzeit(eintrag.zeit, sprache)}</time>
-        <span className="gz-band-sonne-symbol" aria-hidden="true">{auf ? '↑' : '↓'}</span>
-        <span className="gz-band-sonne-text">{auf ? t.aufgang : t.untergang}</span>
+        <span className="gz-band-linie" aria-hidden="true" />
+        <span className="gz-nur-vorlesen">{auf ? t.aufgang : t.untergang}</span>
       </li>
     );
   }

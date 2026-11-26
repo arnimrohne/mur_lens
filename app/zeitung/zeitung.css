@@ -98,10 +98,10 @@ html:has(.gazet) { background: #fdfaf5; }
 .gz-wetter-band li.gz-band-nacht { background: var(--chip); }
 .gz-band-temp { font-family: var(--f-display); font-weight: 700; font-size: .95rem; }
 .gz-band-regen { color: var(--blue); font-size: .66rem; min-height: 1em; white-space: nowrap; }
-.gz-wetter-band li.gz-band-sonne { min-width: 74px; justify-content: center; background: transparent; border-style: dashed; border-color: var(--yellow); color: var(--fg); }
-.gz-band-sonne-symbol { font-size: 1.2rem; line-height: 1; color: var(--yellow); }
-.gz-band-unter .gz-band-sonne-symbol { color: var(--red); }
-.gz-band-sonne-text { font-size: .62rem; text-align: center; line-height: 1.2; color: var(--muted); }
+.gz-wetter-band li.gz-band-sonne { min-width: 0; padding: 0; gap: 3px; background: transparent; border: 0; border-radius: 0; font-size: .62rem; color: var(--yellow); align-self: stretch; }
+.gz-wetter-band li.gz-band-unter { color: var(--red); }
+.gz-band-linie { flex: 1; width: 0; border-left: 2px dashed currentColor; }
+.gz-nur-vorlesen { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .gz-wetter-quelle { margin: 6px 0 0; font-family: var(--f-mono); font-size: .66rem; color: var(--muted); }
 .gazet .gz-wetter-quelle a { color: var(--muted); }
 .gz-ws { flex: none; overflow: visible; }
