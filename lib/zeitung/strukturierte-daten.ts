@@ -34,7 +34,7 @@ export function artikelDaten(thema: Thema) {
 export function strukturierteDaten(daten: ZeitungDaten, jetzt: number) {
   const ausgabe = baueAusgabe(daten, jetzt);
   const aktuell = [
-    ...(ausgabe.aufmacher ? [ausgabe.aufmacher] : []),
+    ...ausgabe.topThemen,
     ...ausgabe.rubriken.flatMap((block) => [...block.heute, ...block.vortage]),
   ].slice(0, MAX_ARTIKEL);
 

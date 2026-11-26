@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 
 import { RubrikAbschnitt } from './rubrik-abschnitt';
 import { ShopBanner } from './shop-banner';
-import { ThemenKarte } from './themen-karte';
+import { TopKacheln } from './top-kacheln';
 import { VideoAbschnitt } from './video-abschnitt';
 import { ZeitungKopf } from './zeitung-kopf';
 import { ZugeklapptesThema } from './zugeklapptes-thema';
@@ -23,7 +23,7 @@ export function ZeitungAnsicht({ daten }: ZeitungAnsichtProps) {
   const { jetzt, zeitzone } = useJetzt(Date.parse(daten.stand) || 0);
   const ausgabe = useMemo(() => baueAusgabe(daten, jetzt, zeitzone), [daten, jetzt, zeitzone]);
   const texte = TEXTE[sprache];
-  const { aufmacher } = ausgabe;
+  const { topThemen } = ausgabe;
 
   return (
     <>
@@ -45,18 +45,8 @@ export function ZeitungAnsicht({ daten }: ZeitungAnsichtProps) {
       </nav>
 
       <main className="gz-rahmen">
-        {!aufmacher && ausgabe.archiv.length === 0 && <p className="gz-notiz">{texte.leer}</p>}
-        {aufmacher && (
-          <section className="gz-aufmacher">
-            <ThemenKarte
-              thema={aufmacher}
-              sprache={sprache}
-              texte={texte}
-              jetzt={jetzt}
-              oberzeile={`${texte.aufmacher} · ${aufmacher.ort ?? texte.rubriken[aufmacher.rubrik].kurz}`}
-            />
-          </section>
-        )}
+        {topThemen.length === 0 && ausgabe.archiv.length === 0 && <p className="gz-notiz">{texte.leer}</p>}
+        {topThemen.length > 0 && <TopKacheln themen={topThemen} sprache={sprache} texte={texte} />}
         {ausgabe.rubriken.map((block) => (
           <RubrikAbschnitt key={block.rubrik} block={block} sprache={sprache} texte={texte} jetzt={jetzt} />
         ))}

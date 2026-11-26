@@ -37,6 +37,10 @@ export interface OberflaechenTexte {
   linkKopiert: string;
   linkFehler: string;
   zurAusgabe: string;
+  topThemen: string;
+  weiterlesen: string;
+  vorherigesTop: string;
+  naechstesTop: string;
   shop: { kennzeichnung: string; titel: string; text: string; knopf: string };
 }
 
@@ -84,6 +88,10 @@ const de: OberflaechenTexte = {
   linkKopiert: 'Link kopiert',
   linkFehler: 'Kopieren nicht möglich',
   zurAusgabe: '← Zur aktuellen Ausgabe',
+  topThemen: 'Top-Themen',
+  weiterlesen: 'Weiterlesen →',
+  vorherigesTop: 'Vorheriges Top-Thema',
+  naechstesTop: 'Nächstes Top-Thema',
   shop: { kennzeichnung: 'Eigenwerbung', titel: 'Morisyen Shop', text: 'Made for Mauritius lovers: T-Shirts, Tassen und mehr mit Dodo, kreolischer Kultur und Inselflair.', knopf: 'Zum Shop →' },
 };
 
@@ -131,6 +139,10 @@ const fr: OberflaechenTexte = {
   linkKopiert: 'Lien copié',
   linkFehler: 'Copie impossible',
   zurAusgabe: "← Vers l'édition du jour",
+  topThemen: 'À la une',
+  weiterlesen: 'Lire la suite →',
+  vorherigesTop: 'Sujet précédent',
+  naechstesTop: 'Sujet suivant',
   shop: { kennzeichnung: 'Publicité', titel: 'Morisyen Shop', text: "Made for Mauritius lovers : t-shirts, mugs et plus encore, avec le dodo, la culture créole et l'esprit de l'île.", knopf: 'Vers la boutique →' },
 };
 
@@ -178,6 +190,10 @@ const en: OberflaechenTexte = {
   linkKopiert: 'Link copied',
   linkFehler: 'Could not copy',
   zurAusgabe: '← To the current edition',
+  topThemen: 'Top stories',
+  weiterlesen: 'Read more →',
+  vorherigesTop: 'Previous top story',
+  naechstesTop: 'Next top story',
   shop: { kennzeichnung: 'Advertisement', titel: 'Morisyen Shop', text: 'Made for Mauritius lovers: T-shirts, mugs and more celebrating the Dodo, Mauritian culture and island life.', knopf: 'Visit the shop →' },
 };
 

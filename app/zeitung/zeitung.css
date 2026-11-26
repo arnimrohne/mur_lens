@@ -65,6 +65,23 @@ html:has(.gazet) { background: #fdfaf5; }
 .gz-aufmacher p { font-size: 1.05rem; max-width: 64ch; }
 .gz-oberzeile { font-family: var(--f-mono); font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--red); font-weight: 500; margin-bottom: 6px; }
 
+.gz-top { padding-block: 22px 26px; border-bottom: 1px solid var(--line); }
+.gz-top-kopf { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.gz-top-kopf h2 { font-family: var(--f-mono); font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--red); font-weight: 500; margin: 0; }
+.gz-top-pfeile { margin-top: 0; }
+.gz-top-zaehler { font-variant-numeric: tabular-nums; min-width: 3.2em; text-align: center; }
+.gz-top-spur { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 16px) / 2); gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; padding-bottom: 4px; }
+.gz-top-spur::-webkit-scrollbar { display: none; }
+.gz-top-spur.gz-top-einzeln { grid-auto-columns: 100%; }
+@media (max-width: 760px) { .gz-top-spur { grid-auto-columns: 86%; } .gz-top-spur.gz-top-einzeln { grid-auto-columns: 100%; } }
+.gz-kachel { scroll-snap-align: start; min-width: 0; display: flex; flex-direction: column; gap: 4px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px 14px; }
+.gz-kachel-aktuell { border-color: var(--lagoon); box-shadow: inset 0 3px 0 var(--lagoon); }
+.gz-kachel h3 { font-family: var(--f-display); font-weight: 800; font-size: clamp(1.25rem, 2.6vw, 1.7rem); line-height: 1.12; letter-spacing: -.01em; margin: 2px 0 6px; text-wrap: balance; }
+.gazet .gz-kachel h3 a { color: var(--fg); text-decoration: none; }
+.gazet .gz-kachel h3 a:hover { color: var(--lagoon); }
+.gz-kachel p { margin: 0; font-size: 1rem; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+.gz-kachel-fuss { margin-top: auto; padding-top: 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.gz-kachel-fuss .gz-weiter { font-family: var(--f-display); font-weight: 700; text-decoration: none; }
 .gz-rubrik { padding-block: 30px 14px; border-bottom: 1px solid var(--line); scroll-margin-top: 60px; }
 .gz-rubrik-kopf { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; }
 .gz-rubrik-kopf h2 { font-family: var(--f-display); font-weight: 800; font-size: 1.6rem; margin: 0; letter-spacing: -.01em; }
