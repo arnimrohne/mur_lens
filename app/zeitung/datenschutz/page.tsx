@@ -35,6 +35,13 @@ export default function DatenschutzSeite() {
         Schriftarten werden von unserem eigenen Server geladen, nicht von Google.
       </p>
 
+      <h2>Wetterdaten</h2>
+      <p>
+        Die Wetteranzeige wird von unserem Server beim Norwegischen Meteorologischen Institut
+        (MET Norway, api.met.no) abgerufen. Dabei werden keine Daten der Besucherinnen und Besucher
+        übermittelt; Ihr Browser verbindet sich nicht mit dem Wetterdienst.
+      </p>
+
       <h2>Spracheinstellung</h2>
       <p>
         Wenn Sie eine Sprache wählen, wird diese Wahl ausschließlich in Ihrem Browser gespeichert

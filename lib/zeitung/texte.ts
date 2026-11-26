@@ -3,6 +3,7 @@
  */
 
 import type { RubrikId, Sprache } from './types';
+import type { WetterArt } from './wetter';
 
 export interface OberflaechenTexte {
   untertitel: string;
@@ -33,6 +34,27 @@ export interface OberflaechenTexte {
   fussnoten: string[];
   impressum: string;
   datenschutz: string;
+  teilen: string;
+  linkKopiert: string;
+  linkFehler: string;
+  zurAusgabe: string;
+  wetter: {
+    titel: string;
+    gefuehlt: (grad: number) => string;
+    wind: (kmh: number) => string;
+    feuchte: (prozent: number) => string;
+    aufgang: string;
+    untergang: string;
+    band: string;
+    quelle: string;
+    ortszeit: string;
+    arten: Record<WetterArt, string>;
+  };
+  topThemen: string;
+  weiterlesen: string;
+  vorherigesTop: string;
+  naechstesTop: string;
+  shop: { kennzeichnung: string; titel: string; text: string; knopf: string };
 }
 
 const de: OberflaechenTexte = {
@@ -75,6 +97,27 @@ const de: OberflaechenTexte = {
   ],
   impressum: 'Impressum',
   datenschutz: 'Datenschutz',
+  teilen: 'Teilen',
+  linkKopiert: 'Link kopiert',
+  linkFehler: 'Kopieren nicht möglich',
+  zurAusgabe: '← Zur aktuellen Ausgabe',
+  wetter: {
+    titel: 'Wetter in Port-Louis',
+    gefuehlt: (g) => `gefühlt ${g}°`,
+    wind: (v) => `Wind ${v} km/h`,
+    feuchte: (p) => `Luftfeuchte ${p} %`,
+    aufgang: 'Sonnenaufgang',
+    untergang: 'Sonnenuntergang',
+    band: 'Die nächsten 24 Stunden',
+    quelle: 'Wetterdaten: MET Norway',
+    ortszeit: 'Ortszeit Mauritius',
+    arten: { klar: 'Klar', heiter: 'Heiter', wolkig: 'Teils bewölkt', bedeckt: 'Bedeckt', nebel: 'Nebel', schauer: 'Schauer', regen: 'Regen', gewitter: 'Gewitter' },
+  },
+  topThemen: 'Top-Themen',
+  weiterlesen: 'Weiterlesen →',
+  vorherigesTop: 'Vorheriges Top-Thema',
+  naechstesTop: 'Nächstes Top-Thema',
+  shop: { kennzeichnung: 'Eigenwerbung', titel: 'Morisyen Shop', text: 'Made for Mauritius lovers: T-Shirts, Tassen und mehr mit Dodo, kreolischer Kultur und Inselflair.', knopf: 'Zum Shop →' },
 };
 
 const fr: OberflaechenTexte = {
@@ -117,6 +160,27 @@ const fr: OberflaechenTexte = {
   ],
   impressum: 'Mentions légales',
   datenschutz: 'Confidentialité',
+  teilen: 'Partager',
+  linkKopiert: 'Lien copié',
+  linkFehler: 'Copie impossible',
+  zurAusgabe: "← Vers l'édition du jour",
+  wetter: {
+    titel: 'Météo à Port-Louis',
+    gefuehlt: (g) => `ressenti ${g}°`,
+    wind: (v) => `Vent ${v} km/h`,
+    feuchte: (p) => `Humidité ${p} %`,
+    aufgang: 'Lever du soleil',
+    untergang: 'Coucher du soleil',
+    band: 'Les prochaines 24 heures',
+    quelle: 'Données météo : MET Norway',
+    ortszeit: 'heure de Maurice',
+    arten: { klar: 'Dégagé', heiter: 'Beau temps', wolkig: 'Partiellement nuageux', bedeckt: 'Couvert', nebel: 'Brouillard', schauer: 'Averses', regen: 'Pluie', gewitter: 'Orage' },
+  },
+  topThemen: 'À la une',
+  weiterlesen: 'Lire la suite →',
+  vorherigesTop: 'Sujet précédent',
+  naechstesTop: 'Sujet suivant',
+  shop: { kennzeichnung: 'Publicité', titel: 'Morisyen Shop', text: "Made for Mauritius lovers : t-shirts, mugs et plus encore, avec le dodo, la culture créole et l'esprit de l'île.", knopf: 'Vers la boutique →' },
 };
 
 const en: OberflaechenTexte = {
@@ -159,6 +223,27 @@ const en: OberflaechenTexte = {
   ],
   impressum: 'Legal notice',
   datenschutz: 'Privacy',
+  teilen: 'Share',
+  linkKopiert: 'Link copied',
+  linkFehler: 'Could not copy',
+  zurAusgabe: '← To the current edition',
+  wetter: {
+    titel: 'Weather in Port Louis',
+    gefuehlt: (g) => `feels like ${g}°`,
+    wind: (v) => `Wind ${v} km/h`,
+    feuchte: (p) => `Humidity ${p}%`,
+    aufgang: 'Sunrise',
+    untergang: 'Sunset',
+    band: 'Next 24 hours',
+    quelle: 'Weather data: MET Norway',
+    ortszeit: 'Mauritius time',
+    arten: { klar: 'Clear', heiter: 'Fair', wolkig: 'Partly cloudy', bedeckt: 'Overcast', nebel: 'Fog', schauer: 'Showers', regen: 'Rain', gewitter: 'Thunderstorm' },
+  },
+  topThemen: 'Top stories',
+  weiterlesen: 'Read more →',
+  vorherigesTop: 'Previous top story',
+  naechstesTop: 'Next top story',
+  shop: { kennzeichnung: 'Advertisement', titel: 'Morisyen Shop', text: 'Made for Mauritius lovers: T-shirts, mugs and more celebrating the Dodo, Mauritian culture and island life.', knopf: 'Visit the shop →' },
 };
 
 export const TEXTE: Record<Sprache, OberflaechenTexte> = { de, fr, en };

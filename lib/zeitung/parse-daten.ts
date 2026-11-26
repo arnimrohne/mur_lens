@@ -98,6 +98,7 @@ function parseThema(wert: unknown): Thema | undefined {
     aktualisiert: istGueltigeZeit(wert.aktualisiert) ? wert.aktualisiert : neueste.zeit,
     top: wert.top === true,
     warTop: wert.warTop === true || wert.top === true,
+    topSeit: istGueltigeZeit(wert.topSeit) ? wert.topSeit : undefined,
     ort: text(wert.ort),
     updates,
   };

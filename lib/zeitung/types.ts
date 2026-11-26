@@ -63,6 +63,8 @@ export interface Thema {
   top: boolean;
   /** War jemals Top-Thema; bleibt dauerhaft gekennzeichnet. */
   warTop: boolean;
+  /** Zeitpunkt, an dem das Thema (zuletzt) Top-Thema wurde. */
+  topSeit?: string;
   ort?: string;
   /** Neueste Meldung zuerst. */
   updates: Meldung[];

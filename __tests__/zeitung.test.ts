@@ -6,6 +6,7 @@ import { baueAusgabe, istAktiv, istVonHeute } from '@/lib/zeitung/ausgabe';
 import { parseZeitungDaten, sichereUrl } from '@/lib/zeitung/parse-daten';
 import { meldungText, meldungZeit, spracheAusBrowser } from '@/lib/zeitung/sprache';
 import { alsSkriptJson, strukturierteDaten } from '@/lib/zeitung/strukturierte-daten';
+import { findeThema, themaPfad, themaUrlFuerHost } from '@/lib/zeitung/teilen';
 import type { Thema } from '@/lib/zeitung/types';
 
 const STUNDE = 3_600_000;
@@ -99,7 +100,7 @@ describe('Ausgabe', () => {
 
   it('stellt das Top-Thema voran und verteilt den Rest auf Rubriken', () => {
     const ausgabe = baueAusgabe(parseZeitungDaten(mitgeliefert), jetzt);
-    expect(ausgabe.aufmacher?.id).toBe('rodrigues-seebeben');
+    expect(ausgabe.topThemen[0]?.id).toBe('rodrigues-seebeben');
     const ids = ausgabe.rubriken.flatMap((b) => [...b.heute, ...b.vortage].map((t) => t.id));
     expect(ids).not.toContain('rodrigues-seebeben');
     expect(ausgabe.archiv.map((t) => t.id)).toContain('wasserkrise');
@@ -111,7 +112,7 @@ describe('Ausgabe', () => {
     const daten = { stand: '', videos: [], themen: [t('neu', 1), t('ehemals-top', 30, true), t('alt', 40)] };
     const ausgabe = baueAusgabe(daten, jetzt, 'Indian/Mauritius');
     // Aufmacher ist das neueste Thema, danach führt das ehemalige Top-Thema die Rubrik an.
-    expect(ausgabe.aufmacher?.id).toBe('neu');
+    expect(ausgabe.topThemen.map((x) => x.id)).toEqual(['neu']);
     expect(ausgabe.rubriken[0].vortage.map((x) => x.id)).toEqual(['ehemals-top', 'alt']);
   });
 
@@ -152,5 +153,47 @@ describe('Strukturierte Daten', () => {
     const json = alsSkriptJson(ld);
     expect(json).toContain('"@type":"NewsArticle"');
     expect(alsSkriptJson({ x: '</script>' })).not.toContain('</script>');
+  });
+});
+
+describe('Teilen', () => {
+  it('baut kurze Adressen auf gazet.morisyen.de und /zeitung-Adressen anderswo', () => {
+    expect(themaPfad('rodrigues-seebeben')).toBe('/thema/rodrigues-seebeben');
+    expect(themaUrlFuerHost('wasserkrise', 'gazet.morisyen.de', 'https://gazet.morisyen.de')).toBe(
+      'https://gazet.morisyen.de/thema/wasserkrise',
+    );
+    expect(themaUrlFuerHost('wasserkrise', 'mur-lens.vercel.app', 'https://mur-lens.vercel.app')).toBe(
+      'https://mur-lens.vercel.app/zeitung/thema/wasserkrise',
+    );
+  });
+
+  it('findet Themen über ihre Kennung', () => {
+    const daten = parseZeitungDaten(mitgeliefert);
+    expect(findeThema(daten, 'world-knits')?.rubrik).toBe('soziales');
+    expect(findeThema(daten, 'gibt-es-nicht')).toBeUndefined();
+  });
+});
+
+describe('Top-Bereich', () => {
+  const jetzt = Date.parse('2026-11-27T12:00:00+04:00');
+  const t = (id: string, teil: Partial<Thema>) =>
+    thema({ id, aktualisiert: '2026-11-27T08:00:00+04:00', ...teil });
+
+  it('zeigt Top-Themen 24 Stunden lang, aktuelles zuerst', () => {
+    const daten = {
+      stand: '',
+      videos: [],
+      themen: [
+        t('frueher-top', { warTop: true, topSeit: '2026-11-26T20:00:00+04:00' }),
+        t('aktuell', { top: true, warTop: true, topSeit: '2026-11-27T10:00:00+04:00' }),
+        t('abgelaufen', { warTop: true, topSeit: '2026-11-26T08:00:00+04:00' }),
+        t('normal', {}),
+      ],
+    };
+    const ausgabe = baueAusgabe(daten, jetzt, 'Indian/Mauritius');
+    expect(ausgabe.topThemen.map((x) => x.id)).toEqual(['aktuell', 'frueher-top']);
+    const inRubriken = ausgabe.rubriken.flatMap((b) => [...b.heute, ...b.vortage].map((x) => x.id));
+    // Nach 24 Stunden zurück in der Rubrik, ehemalige Top-Themen zuerst.
+    expect(inRubriken).toEqual(['abgelaufen', 'normal']);
   });
 });

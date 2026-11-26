@@ -55,9 +55,23 @@ export interface RubrikBlock {
 }
 
 export interface Ausgabe {
-  aufmacher?: Thema;
+  /** Top-Themen der letzten 24 Stunden, aktuelles Top-Thema zuerst. */
+  topThemen: Thema[];
   rubriken: RubrikBlock[];
   archiv: Thema[];
+}
+
+/** So lange bleibt ein Thema im Top-Bereich, nachdem es Top-Thema wurde. */
+export const TOP_STUNDEN = 24;
+
+export function istImTopBereich(thema: Thema, jetzt: number): boolean {
+  if (thema.top) return true;
+  return thema.topSeit !== undefined && jetzt - Date.parse(thema.topSeit) < TOP_STUNDEN * STUNDE_MS;
+}
+
+function topReihenfolge(a: Thema, b: Thema): number {
+  if (a.top !== b.top) return Number(b.top) - Number(a.top);
+  return Date.parse(b.topSeit ?? b.aktualisiert) - Date.parse(a.topSeit ?? a.aktualisiert);
 }
 
 /** Ordnet alle Themen der Ausgabe zu. Neueste zuerst. */
@@ -69,14 +83,17 @@ export function baueAusgabe(
   const sortiert = [...daten.themen].sort(
     (a, b) => Date.parse(b.aktualisiert) - Date.parse(a.aktualisiert),
   );
-  const aktiv = sortiert.filter((t) => istAktiv(t, jetzt));
-  const archiv = sortiert.filter((t) => !istAktiv(t, jetzt));
-  const aufmacher = aktiv.find((t) => t.top) ?? aktiv[0];
+  let topThemen = sortiert.filter((t) => istImTopBereich(t, jetzt)).sort(topReihenfolge);
+  const uebrige = sortiert.filter((t) => !topThemen.includes(t));
+  const aktiv = uebrige.filter((t) => istAktiv(t, jetzt));
+  // Ohne markiertes Top-Thema rückt das neueste aktive Thema nach oben.
+  if (topThemen.length === 0 && aktiv.length > 0) topThemen = [aktiv[0]];
+  const archiv = uebrige.filter((t) => !istAktiv(t, jetzt));
 
   const rubriken = RUBRIK_IDS.flatMap((rubrik): RubrikBlock[] => {
     // Ehemalige Top-Themen zuerst, sonst neueste zuerst (stabile Sortierung).
     const themen = aktiv
-      .filter((t) => t.rubrik === rubrik && t !== aufmacher)
+      .filter((t) => t.rubrik === rubrik && !topThemen.includes(t))
       .sort((a, b) => Number(b.warTop) - Number(a.warTop));
     if (themen.length === 0) return [];
     return [
@@ -88,5 +105,5 @@ export function baueAusgabe(
     ];
   });
 
-  return { aufmacher, rubriken, archiv };
+  return { topThemen, rubriken, archiv };
 }

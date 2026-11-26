@@ -2,9 +2,10 @@
    Raster aus Themenkarten (Wisch-Stapel, neueste rechts), Videos, Archiv. */
 
 .gazet {
-  --bg: #f5f8f9; --paper: #ffffff; --fg: #14232b; --muted: #56656d; --line: #d7e1e5;
-  --lagoon: #0f7f8c; --red: #d1363f; --blue: #1f4fa3; --yellow: #b88705; --green: #1f8a4c;
-  --chip: #e6f1f3;
+  /* Farbwelt der Kreol-App (kreol.it-nettec.de); Flaggenfarben nur als Rubrik-Akzente */
+  --bg: #fdfaf5; --paper: #fffdf9; --fg: #14181f; --muted: #6b6357; --line: #ece3d7;
+  --lagoon: #0f6e5c; --on-lagoon: #ffffff; --red: #c8323c; --blue: #1f4fa3; --yellow: #a87c08; --green: #1f8a4c;
+  --chip: #f2ebe0; --radius: .75rem;
   --f-display: var(--font-gz-display), 'Segoe UI', system-ui, sans-serif;
   --f-body: var(--font-gz-body), Georgia, 'Times New Roman', serif;
   --f-mono: var(--font-gz-mono), ui-monospace, Menlo, Consolas, monospace;
@@ -18,14 +19,14 @@
 }
 @media (prefers-color-scheme: dark) {
   .gazet {
-    --bg: #0d171c; --paper: #132129; --fg: #e6eef1; --muted: #9aabb3; --line: #25363f;
-    --lagoon: #4cc3cf; --red: #ff6b72; --blue: #7fa6ff; --yellow: #f5c84a; --green: #5fcf8c;
-    --chip: #1a2d36;
+    --bg: #101418; --paper: #1a1f26; --fg: #eef1f4; --muted: #9aa4b2; --line: #2a313b;
+    --lagoon: #35c9a5; --on-lagoon: #0b1210; --red: #ff6b72; --blue: #7fa6ff; --yellow: #f5c84a; --green: #5fcf8c;
+    --chip: #222932;
     color-scheme: dark;
   }
-  html:has(.gazet) { background: #0d171c; }
+  html:has(.gazet) { background: #101418; }
 }
-html:has(.gazet) { background: #f5f8f9; }
+html:has(.gazet) { background: #fdfaf5; }
 
 .gazet a { color: var(--lagoon); }
 .gazet :focus-visible { outline: 2px solid var(--lagoon); outline-offset: 2px; border-radius: 3px; }
@@ -47,7 +48,7 @@ html:has(.gazet) { background: #f5f8f9; }
 .gz-kopf-rechts { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
 .gz-sprachen { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
 .gz-sprachen button { font-family: var(--f-mono); font-size: .78rem; letter-spacing: .06em; color: var(--muted); padding: 8px 13px; cursor: pointer; }
-.gz-sprachen button[aria-pressed='true'] { background: var(--fg); color: var(--bg); }
+.gz-sprachen button[aria-pressed='true'] { background: var(--lagoon); color: var(--on-lagoon); }
 .gz-datumszeile { font-family: var(--f-mono); font-size: .8rem; color: var(--muted); text-align: right; line-height: 1.6; }
 .gz-datumszeile b { color: var(--fg); font-weight: 500; }
 @media (max-width: 560px) { .gz-kopf-rechts { align-items: flex-start; } .gz-datumszeile { text-align: left; } }
@@ -64,6 +65,52 @@ html:has(.gazet) { background: #f5f8f9; }
 .gz-aufmacher p { font-size: 1.05rem; max-width: 64ch; }
 .gz-oberzeile { font-family: var(--f-mono); font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--red); font-weight: 500; margin-bottom: 6px; }
 
+.gz-top { padding-block: 22px 26px; border-bottom: 1px solid var(--line); }
+.gz-top-kopf { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.gz-top-kopf h2 { font-family: var(--f-mono); font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--red); font-weight: 500; margin: 0; }
+.gz-top-pfeile { margin-top: 0; }
+.gz-top-zaehler { font-variant-numeric: tabular-nums; min-width: 3.2em; text-align: center; }
+.gz-top-spur { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 16px) / 2); gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; padding-bottom: 4px; }
+.gz-top-spur::-webkit-scrollbar { display: none; }
+.gz-top-spur.gz-top-einzeln { grid-auto-columns: 100%; }
+@media (max-width: 760px) { .gz-top-spur { grid-auto-columns: 86%; } .gz-top-spur.gz-top-einzeln { grid-auto-columns: 100%; } }
+.gz-kachel { scroll-snap-align: start; min-width: 0; display: flex; flex-direction: column; gap: 4px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px 14px; }
+.gz-kachel-aktuell { border-color: var(--lagoon); box-shadow: inset 0 3px 0 var(--lagoon); }
+.gz-kachel h3 { font-family: var(--f-display); font-weight: 800; font-size: clamp(1.25rem, 2.6vw, 1.7rem); line-height: 1.12; letter-spacing: -.01em; margin: 2px 0 6px; text-wrap: balance; }
+.gazet .gz-kachel h3 a { color: var(--fg); text-decoration: none; }
+.gazet .gz-kachel h3 a:hover { color: var(--lagoon); }
+.gz-kachel p { margin: 0; font-size: 1rem; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+.gz-kachel-fuss { margin-top: auto; padding-top: 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.gz-kachel-fuss .gz-weiter { font-family: var(--f-display); font-weight: 700; text-decoration: none; }
+.gz-wetter { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 16px 28px; padding-block: 22px; border-bottom: 1px solid var(--line); align-items: start; }
+@media (max-width: 760px) { .gz-wetter { grid-template-columns: 1fr; } }
+.gz-wetter h2 { font-family: var(--f-mono); font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin: 0 0 8px; }
+.gz-wetter-haupt { display: flex; align-items: center; gap: 12px; }
+.gz-wetter-temp { font-family: var(--f-display); font-weight: 800; font-size: 3rem; line-height: 1; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.gz-wetter-lage { display: grid; gap: 2px; min-width: 0; }
+.gz-wetter-lage strong { font-family: var(--f-display); font-weight: 700; font-size: 1.05rem; }
+.gz-wetter-lage span { font-family: var(--f-mono); font-size: .74rem; color: var(--muted); }
+.gz-wetter-sonne { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 10px; font-family: var(--f-mono); font-size: .76rem; color: var(--muted); }
+.gz-wetter-band-rahmen { min-width: 0; }
+.gz-wetter-band-kopf { display: flex; justify-content: space-between; gap: 12px; font-family: var(--f-mono); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.gz-wetter-band { list-style: none; margin: 0; padding: 0 0 4px; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: thin; overscroll-behavior-x: contain; }
+.gz-wetter-band li { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 50px; padding: 8px 4px; border-radius: var(--radius); background: var(--paper); border: 1px solid var(--line); font-family: var(--f-mono); font-size: .74rem; font-variant-numeric: tabular-nums; }
+.gz-wetter-band li.gz-band-nacht { background: var(--chip); }
+.gz-band-temp { font-family: var(--f-display); font-weight: 700; font-size: .95rem; }
+.gz-band-regen { color: var(--blue); font-size: .66rem; min-height: 1em; white-space: nowrap; }
+.gz-wetter-band li.gz-band-sonne { min-width: 0; padding: 0; gap: 3px; background: transparent; border: 0; border-radius: 0; font-size: .62rem; color: var(--yellow); align-self: stretch; }
+.gz-wetter-band li.gz-band-unter { color: var(--red); }
+.gz-band-linie { flex: 1; width: 0; border-left: 2px dashed currentColor; }
+.gz-nur-vorlesen { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.gz-wetter-quelle { margin: 6px 0 0; font-family: var(--f-mono); font-size: .66rem; color: var(--muted); }
+.gazet .gz-wetter-quelle a { color: var(--muted); }
+.gz-ws { flex: none; overflow: visible; }
+.gz-ws-sonne circle { fill: var(--yellow); }
+.gz-ws-sonne path { stroke: var(--yellow); stroke-width: 1.6; stroke-linecap: round; fill: none; }
+.gz-ws-mond { fill: var(--muted); }
+.gz-ws-wolke { fill: var(--paper); stroke: var(--muted); stroke-width: 1.4; stroke-linejoin: round; stroke-linecap: round; }
+.gz-ws-regen { stroke: var(--blue); stroke-width: 1.6; stroke-linecap: round; fill: none; }
+.gz-ws-blitz { stroke: var(--yellow); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; fill: none; }
 .gz-rubrik { padding-block: 30px 14px; border-bottom: 1px solid var(--line); scroll-margin-top: 60px; }
 .gz-rubrik-kopf { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; }
 .gz-rubrik-kopf h2 { font-family: var(--f-display); font-weight: 800; font-size: 1.6rem; margin: 0; letter-spacing: -.01em; }
@@ -103,6 +150,12 @@ html:has(.gazet) { background: #f5f8f9; }
 .gz-punkte span { width: 7px; height: 7px; border-radius: 50%; background: var(--line); }
 .gz-punkte span.gz-an { background: var(--lagoon); }
 .gz-hinweis { margin-left: auto; }
+.gz-aktionen { display: flex; justify-content: flex-end; margin-top: 8px; }
+.gz-teilen { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: .76rem; color: var(--lagoon); padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; min-height: 32px; }
+.gz-teilen:hover { border-color: var(--lagoon); }
+.gz-einzel .gz-aufmacher { border-bottom: 0; }
+.gz-zurueck { margin: 20px 0 0; font-family: var(--f-mono); font-size: .8rem; }
+.gz-zurueck a { text-decoration: none; }
 
 .gz-zuliste { margin-top: 8px; border-top: 1px solid var(--line); }
 .gz-raster + .gz-zuliste { margin-top: 14px; }
@@ -120,7 +173,7 @@ html:has(.gazet) { background: #f5f8f9; }
 
 .gz-videos, .gz-archiv { padding-block: 30px; border-bottom: 1px solid var(--line); scroll-margin-top: 60px; }
 .gz-video-raster { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
-.gz-video { display: flex; flex-direction: column; text-decoration: none; color: var(--fg) !important; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; transition: transform .15s ease, border-color .15s ease; }
+.gz-video { display: flex; flex-direction: column; text-decoration: none; color: var(--fg) !important; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; transition: transform .15s ease, border-color .15s ease; }
 .gz-video:hover { transform: translateY(-2px); border-color: var(--lagoon); }
 .gz-video-flaeche { aspect-ratio: 16 / 9; position: relative; display: grid; place-items: center; }
 .gz-verlauf-0 { background: linear-gradient(135deg, var(--blue), var(--red)); }
@@ -141,6 +194,16 @@ html:has(.gazet) { background: #f5f8f9; }
 .gz-archiv summary::-webkit-details-marker { display: none; }
 .gz-archiv details[open] summary { margin-bottom: 12px; }
 
+.gz-shop { --shop-bg: #0f6e5c; --shop-fg: #ffffff; --shop-knopf: #fdfaf5; --shop-knopf-text: #0f6e5c; background: var(--shop-bg); color: var(--shop-fg); margin-top: 32px; }
+@media (prefers-color-scheme: dark) { .gazet .gz-shop { --shop-bg: #1a1f26; --shop-fg: #eef1f4; --shop-knopf: #35c9a5; --shop-knopf-text: #0b1210; border-block: 1px solid #2a313b; } }
+.gz-shop-innen { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: 'marke marke' 'text knopf'; gap: 8px 24px; align-items: center; padding-block: 28px; }
+.gz-shop-kennzeichnung { grid-area: marke; font-family: var(--f-mono); font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; opacity: .65; }
+.gz-shop-text { grid-area: text; display: grid; gap: 4px; min-width: 0; }
+.gz-shop-text strong { font-family: var(--f-display); font-weight: 800; font-size: 1.6rem; letter-spacing: -.01em; line-height: 1.1; }
+.gz-shop-text span { font-size: 1rem; opacity: .85; }
+.gazet .gz-shop-knopf { grid-area: knopf; display: inline-flex; align-items: center; min-height: 44px; padding: 10px 20px; border-radius: 999px; background: var(--shop-knopf); color: var(--shop-knopf-text); font-family: var(--f-display); font-weight: 700; text-decoration: none; white-space: nowrap; }
+.gazet .gz-shop-knopf:hover { filter: brightness(1.08); }
+@media (max-width: 560px) { .gz-shop-innen { grid-template-columns: 1fr; grid-template-areas: 'marke' 'text' 'knopf'; } .gazet .gz-shop-knopf { justify-content: center; } }
 .gz-fuss { padding-block: 26px 40px; font-size: .88rem; color: var(--muted); }
 .gz-fuss p { max-width: 70ch; margin: 0 0 .7em; }
 .gz-fuss-links { display: flex; gap: 18px; }

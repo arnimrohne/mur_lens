@@ -1,5 +1,6 @@
 import { ladeZeitung } from '@/lib/zeitung/lade-daten';
 import { SEITEN_URL } from '@/lib/zeitung/seite';
+import { themaPfad } from '@/lib/zeitung/teilen';
 
 export const revalidate = 600;
 
@@ -11,6 +12,12 @@ export async function GET(): Promise<Response> {
     { pfad: '/', geaendert: stand, haeufigkeit: 'hourly', prioritaet: '1.0' },
     { pfad: '/impressum', geaendert: stand, haeufigkeit: 'yearly', prioritaet: '0.1' },
     { pfad: '/datenschutz', geaendert: stand, haeufigkeit: 'yearly', prioritaet: '0.1' },
+    ...daten.themen.map((thema) => ({
+      pfad: themaPfad(thema.id),
+      geaendert: thema.aktualisiert,
+      haeufigkeit: 'daily',
+      prioritaet: thema.status === 'archiv' ? '0.4' : '0.7',
+    })),
   ];
   const xml = [
     '<?xml version="1.0" encoding="UTF-8"?>',

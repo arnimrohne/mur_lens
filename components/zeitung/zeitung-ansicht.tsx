@@ -3,7 +3,9 @@
 import { useMemo } from 'react';
 
 import { RubrikAbschnitt } from './rubrik-abschnitt';
-import { ThemenKarte } from './themen-karte';
+import { ShopBanner } from './shop-banner';
+import { TopKacheln } from './top-kacheln';
+import { WetterLeiste } from './wetter-leiste';
 import { VideoAbschnitt } from './video-abschnitt';
 import { ZeitungKopf } from './zeitung-kopf';
 import { ZugeklapptesThema } from './zugeklapptes-thema';
@@ -12,17 +14,20 @@ import { useZeitungSprache } from '@/hooks/use-zeitung-sprache';
 import { baueAusgabe } from '@/lib/zeitung/ausgabe';
 import { TEXTE } from '@/lib/zeitung/texte';
 import type { ZeitungDaten } from '@/lib/zeitung/types';
+import type { Wetter } from '@/lib/zeitung/wetter';
 
 interface ZeitungAnsichtProps {
   daten: ZeitungDaten;
+  /** Fehlt, wenn der Wetterdienst nicht erreichbar war. */
+  wetter?: Wetter;
 }
 
-export function ZeitungAnsicht({ daten }: ZeitungAnsichtProps) {
+export function ZeitungAnsicht({ daten, wetter }: ZeitungAnsichtProps) {
   const [sprache, waehleSprache] = useZeitungSprache();
   const { jetzt, zeitzone } = useJetzt(Date.parse(daten.stand) || 0);
   const ausgabe = useMemo(() => baueAusgabe(daten, jetzt, zeitzone), [daten, jetzt, zeitzone]);
   const texte = TEXTE[sprache];
-  const { aufmacher } = ausgabe;
+  const { topThemen } = ausgabe;
 
   return (
     <>
@@ -44,18 +49,9 @@ export function ZeitungAnsicht({ daten }: ZeitungAnsichtProps) {
       </nav>
 
       <main className="gz-rahmen">
-        {!aufmacher && ausgabe.archiv.length === 0 && <p className="gz-notiz">{texte.leer}</p>}
-        {aufmacher && (
-          <section className="gz-aufmacher">
-            <ThemenKarte
-              thema={aufmacher}
-              sprache={sprache}
-              texte={texte}
-              jetzt={jetzt}
-              oberzeile={`${texte.aufmacher} · ${aufmacher.ort ?? texte.rubriken[aufmacher.rubrik].kurz}`}
-            />
-          </section>
-        )}
+        {topThemen.length === 0 && ausgabe.archiv.length === 0 && <p className="gz-notiz">{texte.leer}</p>}
+        {topThemen.length > 0 && <TopKacheln themen={topThemen} sprache={sprache} texte={texte} />}
+        {wetter && <WetterLeiste wetter={wetter} sprache={sprache} texte={texte} jetzt={jetzt} />}
         {ausgabe.rubriken.map((block) => (
           <RubrikAbschnitt key={block.rubrik} block={block} sprache={sprache} texte={texte} jetzt={jetzt} />
         ))}
@@ -76,6 +72,8 @@ export function ZeitungAnsicht({ daten }: ZeitungAnsichtProps) {
           </section>
         )}
       </main>
+
+      <ShopBanner texte={texte} />
 
       <footer className="gz-rahmen gz-fuss">
         {texte.fussnoten.map((absatz) => (
