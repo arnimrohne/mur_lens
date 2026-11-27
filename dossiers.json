@@ -465,6 +465,108 @@
     "fr": "Maurice et le Royaume-Uni ont signé en mai 2025 un traité qui doit transférer la souveraineté sur l'archipel des Chagos à Maurice ; la base militaire de Diego Garcia reste louée au Royaume-Uni pour au moins 99 ans. Le traité n'est toujours pas ratifié, car les États-Unis ne le soutiennent pas. Maurice exige de Londres une feuille de route d'ici décembre 2026 et menace sinon d'engager des poursuites.",
     "en": "Mauritius and the United Kingdom signed a treaty in May 2025 that is meant to transfer sovereignty over the Chagos Archipelago to Mauritius, while the Diego Garcia military base stays leased to the UK for at least 99 years. The treaty has still not been ratified because the US does not back it. Mauritius is demanding a roadmap from London by December 2026 and otherwise threatens legal action."
    },
+   "karte": {
+    "titel": {
+     "de": "Lage der Chagos-Inseln",
+     "fr": "Situation des Chagos",
+     "en": "Where the Chagos Islands are"
+    },
+    "ausschnitt": [
+     42,
+     -25,
+     80,
+     7
+    ],
+    "orte": [
+     {
+      "name": {
+       "de": "Mauritius",
+       "fr": "Maurice",
+       "en": "Mauritius"
+      },
+      "lat": -20.2,
+      "lon": 57.55,
+      "seite": "oben"
+     },
+     {
+      "name": {
+       "de": "Diego Garcia",
+       "fr": "Diego Garcia",
+       "en": "Diego Garcia"
+      },
+      "lat": -7.31,
+      "lon": 72.41,
+      "hervor": true,
+      "seite": "rechts"
+     },
+     {
+      "name": {
+       "de": "Chagos-Archipel",
+       "fr": "Archipel des Chagos",
+       "en": "Chagos Archipelago"
+      },
+      "lat": -5.6,
+      "lon": 72.0,
+      "seite": "oben"
+     },
+     {
+      "name": {
+       "de": "Malediven",
+       "fr": "Maldives",
+       "en": "Maldives"
+      },
+      "lat": 4.18,
+      "lon": 73.51,
+      "seite": "links"
+     },
+     {
+      "name": {
+       "de": "Seychellen",
+       "fr": "Seychelles",
+       "en": "Seychelles"
+      },
+      "lat": -4.68,
+      "lon": 55.48,
+      "seite": "rechts"
+     },
+     {
+      "name": {
+       "de": "Rodrigues",
+       "fr": "Rodrigues",
+       "en": "Rodrigues"
+      },
+      "lat": -19.72,
+      "lon": 63.42,
+      "seite": "rechts"
+     },
+     {
+      "name": {
+       "de": "La Réunion",
+       "fr": "La Réunion",
+       "en": "Réunion"
+      },
+      "lat": -21.11,
+      "lon": 55.53,
+      "seite": "unten"
+     },
+     {
+      "name": {
+       "de": "Madagaskar",
+       "fr": "Madagascar",
+       "en": "Madagascar"
+      },
+      "lat": -18.9,
+      "lon": 47.5,
+      "seite": "oben"
+     }
+    ],
+    "linien": [
+     {
+      "von": 0,
+      "nach": 1
+     }
+    ]
+   },
    "warum": {
     "de": "Das Chagos-Archipel im Indischen Ozean wurde 1965 vor der Unabhängigkeit von Mauritius abgetrennt. Mauritius sieht darin einen Verstoß gegen das Recht auf Entkolonialisierung und verlangt seit Jahrzehnten die Rückgabe. Für Großbritannien und die USA ist vor allem die gemeinsam genutzte Militärbasis auf Diego Garcia wichtig.\n\nFür Mauritius geht es um Staatsgebiet, um Meeresflächen und um eine politische Frage, die das Land seit seiner Unabhängigkeit begleitet. Für die vertriebenen Chagossen geht es außerdem um die Rückkehr auf die Inseln. Das Thema steht deshalb auch in der mauritischen Innenpolitik regelmäßig im Mittelpunkt.",
     "fr": "L'archipel des Chagos, dans l'océan Indien, a été détaché de Maurice en 1965, avant l'indépendance. Maurice y voit une violation du droit à la décolonisation et en réclame la restitution depuis des décennies. Pour le Royaume-Uni et les États-Unis, c'est surtout la base militaire commune de Diego Garcia qui compte.\n\nPour Maurice, il s'agit d'un territoire, d'espaces maritimes et d'une question politique qui accompagne le pays depuis son indépendance. Pour les Chagossiens déplacés, il s'agit aussi du retour sur les îles. Le sujet revient donc régulièrement au cœur de la politique intérieure mauricienne.",
