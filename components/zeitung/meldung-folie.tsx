@@ -1,3 +1,4 @@
+import { GrafikBalken } from './grafik-balken';
 import { fehltUebersetzung, meldungText, meldungZeit } from '@/lib/zeitung/sprache';
 import type { OberflaechenTexte } from '@/lib/zeitung/texte';
 import type { Meldung, Sprache } from '@/lib/zeitung/types';
@@ -32,6 +33,7 @@ export function MeldungFolie({ meldung, sprache, texte, marke, topMarke }: Meldu
       {absaetze.map((absatz) => (
         <p key={absatz}>{absatz}</p>
       ))}
+      {meldung.grafik && <GrafikBalken grafik={meldung.grafik} sprache={sprache} />}
       {meldung.quellen.length > 0 && (
         <div className="gz-meta">
           <span>{texte.quellen}</span>
