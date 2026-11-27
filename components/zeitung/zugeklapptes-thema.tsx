@@ -1,6 +1,8 @@
 'use client';
 
+import { useDossiers } from './dossier-kontext';
 import { ThemenKarte } from './themen-karte';
+import { dossierFuerThema, dossierPfad } from '@/lib/zeitung/dossiers';
 import { meldungText, meldungZeit } from '@/lib/zeitung/sprache';
 import type { OberflaechenTexte } from '@/lib/zeitung/texte';
 import type { Sprache, Thema } from '@/lib/zeitung/types';
@@ -16,6 +18,7 @@ interface ZugeklapptesThemaProps {
 export function ZugeklapptesThema({ thema, sprache, texte, jetzt }: ZugeklapptesThemaProps) {
   const neueste = thema.updates[0];
   const anzahl = thema.updates.length;
+  const dossier = dossierFuerThema(thema, useDossiers());
   const datum = meldungZeit(neueste, sprache) + (anzahl > 1 ? ` · ${texte.staende(anzahl)}` : '');
 
   return (
@@ -25,6 +28,16 @@ export function ZugeklapptesThema({ thema, sprache, texte, jetzt }: Zugeklapptes
         <span className="gz-zu-titel">
           {thema.warTop && <span className="gz-marke gz-marke-top">{texte.aufmacher}</span>}
           {meldungText(neueste, 'titel', sprache)}
+          {dossier && (
+            <a
+              className="gz-marke gz-marke-dossier"
+              href={dossierPfad(dossier.id)}
+              title={dossier.titel[sprache]}
+              aria-label={`${texte.hintergrund}: ${dossier.titel[sprache]}`}
+            >
+              {texte.hintergrund}
+            </a>
+          )}
         </span>
       </summary>
       <ThemenKarte thema={thema} sprache={sprache} texte={texte} jetzt={jetzt} />
