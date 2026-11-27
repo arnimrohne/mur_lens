@@ -78,14 +78,6 @@ html:has(.gazet) { background: #fdfaf5; }
 .gz-insel { fill: var(--chip); stroke: var(--lagoon); stroke-width: 2.2; stroke-linejoin: round; }
 .gz-nadel path { fill: var(--red); }
 .gz-nadel circle { fill: #fff; }
-/* Variante „groß“: Karte rechts neben Datum und Schlagzeile, ohne Ortsname */
-.gazet.gz-karte-gross .gz-thema { position: relative; }
-.gazet.gz-karte-gross .gz-ortzeile { position: absolute; right: 0; top: 12px; margin: 0; z-index: 1; }
-.gazet.gz-karte-gross .gz-ortzeile span { display: none; }
-.gazet.gz-karte-gross .gz-inselkarte { width: 64px; height: 64px; }
-.gazet.gz-karte-gross .gz-insel { stroke-width: 1.8; }
-.gazet.gz-karte-gross .gz-thema:has(.gz-ortzeile) .gz-folie h3,
-.gazet.gz-karte-gross .gz-thema:has(.gz-ortzeile) .gz-stempel { padding-right: 78px; }
 .gz-oberzeile { font-family: var(--f-mono); font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--red); font-weight: 500; margin-bottom: 6px; }
 
 .gz-top { padding-block: 22px 26px; border-bottom: 1px solid var(--line); }
