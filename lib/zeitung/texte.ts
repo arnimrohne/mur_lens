@@ -13,6 +13,7 @@ export interface OberflaechenTexte {
   neu: string;
   aktualisiert: string;
   aelterStand: string;
+  bisherigeMeldungen: (anzahl: number) => string;
   quellen: string;
   nurDeutsch: string;
   stapelLabel: (titel: string) => string;
@@ -87,6 +88,7 @@ const de: OberflaechenTexte = {
   neu: 'Neu',
   aktualisiert: 'Aktualisiert',
   aelterStand: 'Älterer Stand',
+  bisherigeMeldungen: (n) => (n === 1 ? 'Vorherige Meldung' : `Bisherige Meldungen (${n})`),
   quellen: 'Quellen:',
   nurDeutsch: 'nur auf Deutsch',
   stapelLabel: (titel) => `Meldungen zu ${titel}, ältere links, neueste rechts`,
@@ -164,6 +166,7 @@ const fr: OberflaechenTexte = {
   neu: 'Nouveau',
   aktualisiert: 'Mis à jour',
   aelterStand: 'Version précédente',
+  bisherigeMeldungen: (n) => (n === 1 ? 'Article précédent' : `Articles précédents (${n})`),
   quellen: 'Sources :',
   nurDeutsch: 'en allemand uniquement',
   stapelLabel: (titel) => `Articles sur ${titel}, anciens à gauche, le plus récent à droite`,
@@ -241,6 +244,7 @@ const en: OberflaechenTexte = {
   neu: 'New',
   aktualisiert: 'Updated',
   aelterStand: 'Earlier update',
+  bisherigeMeldungen: (n) => (n === 1 ? 'Previous update' : `Earlier updates (${n})`),
   quellen: 'Sources:',
   nurDeutsch: 'German only',
   stapelLabel: (titel) => `Reports on ${titel}, older on the left, newest on the right`,

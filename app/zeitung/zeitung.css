@@ -372,3 +372,11 @@ html:has(.gazet) { background: #fdfaf5; }
 .gz-rk-linie line { stroke: var(--red); stroke-width: 2; stroke-dasharray: 6 5; }
 .gz-rk-linie text { font-family: var(--f-mono); font-size: 14px; fill: var(--red); paint-order: stroke; stroke: var(--paper); stroke-width: 4px; }
 .gz-regionalkarte .gz-grafik-quelle { font-family: var(--f-mono); font-size: .7rem; color: var(--muted); margin: 8px 0 0; }
+
+/* Themenseite: alle Stände untereinander */
+.gz-verlauf-kopf { margin: 28px 0 4px; font-family: var(--f-mono); font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--red); font-weight: 500; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+.gz-verlauf-liste { list-style: none; margin: 0; padding: 0 0 0 16px; border-left: 2px solid var(--line); }
+.gz-verlauf-liste > li { position: relative; padding: 14px 0 6px; border-bottom: 1px solid var(--line); }
+.gz-verlauf-liste > li:last-child { border-bottom: 0; }
+.gz-verlauf-liste > li::before { content: ''; position: absolute; left: -23px; top: 22px; width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 2px solid var(--muted); }
+.gz-verlauf-liste h3 { font-size: 1.15rem; }

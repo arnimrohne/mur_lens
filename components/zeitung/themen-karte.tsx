@@ -18,9 +18,11 @@ interface ThemenKarteProps {
   texte: OberflaechenTexte;
   jetzt: number;
   oberzeile?: string;
+  /** Alle Stände untereinander statt zum Wischen (Themenseite). */
+  liste?: boolean;
 }
 
-export function ThemenKarte({ thema, sprache, texte, jetzt, oberzeile }: ThemenKarteProps) {
+export function ThemenKarte({ thema, sprache, texte, jetzt, oberzeile, liste = false }: ThemenKarteProps) {
   const anzahl = thema.updates.length;
   const { spurRef, position, blaettern, beiTaste } = useWischStapel(anzahl);
   // Ältester Stand links, neuester rechts.
@@ -40,41 +42,67 @@ export function ThemenKarte({ thema, sprache, texte, jetzt, oberzeile }: ThemenK
           <span aria-hidden="true">{ortText}</span>
         </div>
       )}
-      <div
-        ref={spurRef}
-        className="gz-spur"
-        tabIndex={0}
-        aria-label={texte.stapelLabel(titel)}
-        onKeyDown={beiTaste}
-      >
-        {folien.map((meldung, index) => (
+      {liste ? (
+        <div className="gz-verlauf">
           <MeldungFolie
-            key={`${meldung.zeit}-${index}`}
-            meldung={meldung}
+            meldung={thema.updates[0]}
             sprache={sprache}
             texte={texte}
-            marke={marke(thema, meldung, jetzt, texte)}
-            topMarke={!oberzeile && thema.warTop && meldung === thema.updates[0] ? texte.aufmacher : undefined}
+            marke={marke(thema, thema.updates[0], jetzt, texte)}
+            topMarke={!oberzeile && thema.warTop ? texte.aufmacher : undefined}
           />
-        ))}
-      </div>
-      {anzahl > 1 && (
-        <div className="gz-blaettern">
-          <button type="button" aria-label={texte.aeltere} disabled={position <= 0} onClick={() => blaettern(-1)}>
-            ‹
-          </button>
-          <div className="gz-punkte" aria-hidden="true">
-            {folien.map((meldung, index) => (
-              <span key={`${meldung.zeit}-${index}`} className={index === position ? 'gz-an' : undefined} />
-            ))}
-          </div>
-          <button type="button" aria-label={texte.neuere} disabled={position >= anzahl - 1} onClick={() => blaettern(1)}>
-            ›
-          </button>
-          <span className="gz-hinweis">
-            {position === anzahl - 1 ? texte.hinweisEnde(anzahl - 1) : texte.hinweisPosition(position + 1, anzahl)}
-          </span>
+          {anzahl > 1 && (
+            <>
+              <h2 className="gz-verlauf-kopf">{texte.bisherigeMeldungen(anzahl - 1)}</h2>
+              <ol className="gz-verlauf-liste">
+                {thema.updates.slice(1).map((meldung, index) => (
+                  <li key={`${meldung.zeit}-${index}`}>
+                    <MeldungFolie meldung={meldung} sprache={sprache} texte={texte} />
+                  </li>
+                ))}
+              </ol>
+            </>
+          )}
         </div>
+      ) : (
+        <>
+        <div
+          ref={spurRef}
+          className="gz-spur"
+          tabIndex={0}
+          aria-label={texte.stapelLabel(titel)}
+          onKeyDown={beiTaste}
+        >
+          {folien.map((meldung, index) => (
+            <MeldungFolie
+              key={`${meldung.zeit}-${index}`}
+              meldung={meldung}
+              sprache={sprache}
+              texte={texte}
+              marke={marke(thema, meldung, jetzt, texte)}
+              topMarke={!oberzeile && thema.warTop && meldung === thema.updates[0] ? texte.aufmacher : undefined}
+            />
+          ))}
+        </div>
+        {anzahl > 1 && (
+          <div className="gz-blaettern">
+            <button type="button" aria-label={texte.aeltere} disabled={position <= 0} onClick={() => blaettern(-1)}>
+              ‹
+            </button>
+            <div className="gz-punkte" aria-hidden="true">
+              {folien.map((meldung, index) => (
+                <span key={`${meldung.zeit}-${index}`} className={index === position ? 'gz-an' : undefined} />
+              ))}
+            </div>
+            <button type="button" aria-label={texte.neuere} disabled={position >= anzahl - 1} onClick={() => blaettern(1)}>
+              ›
+            </button>
+            <span className="gz-hinweis">
+              {position === anzahl - 1 ? texte.hinweisEnde(anzahl - 1) : texte.hinweisPosition(position + 1, anzahl)}
+            </span>
+          </div>
+        )}
+        </>
       )}
       {dossier && (
         <a className="gz-dossier-link" href={dossierPfad(dossier.id)}>
