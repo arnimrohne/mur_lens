@@ -29,10 +29,27 @@ export default function DatenschutzSeite() {
         EU-US Data Privacy Framework bzw. von Standardvertragsklauseln.
       </p>
 
-      <h2>Keine Cookies, kein Tracking</h2>
+      <h2 id="analytics">Reichweitenmessung mit Google Analytics (nur mit Einwilligung)</h2>
       <p>
-        Diese Website setzt keine Cookies und verwendet keine Analyse- oder Werbedienste.
-        Schriftarten werden von unserem eigenen Server geladen, nicht von Google.
+        Wenn Sie im Hinweisfenster „Zustimmen“ wählen, nutzen wir Google Analytics 4, einen Dienst der
+        Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Wir sehen damit, welche Seiten
+        wie oft gelesen werden, aus welchen Ländern und mit welchen Gerätetypen. Dafür setzt Google Cookies
+        (_ga, _ga_…, Speicherdauer bis zu 2 Jahre) und verarbeitet Nutzungsdaten wie gekürzte IP-Adresse,
+        aufgerufene Seiten, Verweildauer, Browser und Gerät. Google kürzt IP-Adressen in der EU; eine Übermittlung
+        an Google LLC in den USA ist möglich und erfolgt auf Grundlage des EU-US Data Privacy Framework.
+        Google-Signale und Werbefunktionen sind abgeschaltet; die Daten werden nicht mit einem Google-Konto
+        verknüpft und von uns nach 14 Monaten gelöscht.
+      </p>
+      <p>
+        Rechtsgrundlage ist Ihre Einwilligung (§ 25 Abs. 1 TDDDG, Art. 6 Abs. 1 lit. a DSGVO). Ohne Zustimmung
+        wird Google Analytics nicht geladen. Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft
+        über „Cookie-Einstellungen“ unten auf jeder Seite widerrufen; die Analytics-Cookies werden dann gelöscht.
+        Weitere Informationen:{' '}
+        <a href="https://policies.google.com/privacy" rel="noopener">Datenschutzerklärung von Google</a>.
+      </p>
+      <p>
+        Darüber hinaus setzt diese Website keine Cookies und verwendet keine Werbedienste. Schriftarten werden
+        von unserem eigenen Server geladen, nicht von Google.
       </p>
 
       <h2>Wetterdaten</h2>
@@ -56,7 +73,7 @@ export default function DatenschutzSeite() {
 
       <h2>Spracheinstellung</h2>
       <p>
-        Wenn Sie eine Sprache wählen, wird diese Wahl ausschließlich in Ihrem Browser gespeichert
+        Wenn Sie eine Sprache wählen oder über Google Analytics entscheiden, wird diese Wahl ausschließlich in Ihrem Browser gespeichert
         (localStorage), damit die Seite beim nächsten Besuch in Ihrer Sprache erscheint. Diese Angabe
         wird nicht an uns übertragen und lässt sich über die Browser-Einstellungen löschen.
       </p>

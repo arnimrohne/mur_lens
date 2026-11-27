@@ -1,3 +1,4 @@
+import { ZustimmungLink } from './analyse';
 import { YOUTUBE_KANAL } from '@/lib/zeitung/seite';
 import type { OberflaechenTexte } from '@/lib/zeitung/texte';
 
@@ -23,6 +24,7 @@ export function FussLinks({ texte, newsletter = false }: FussLinksProps) {
       <a href="/zeitung/impressum">{texte.impressum}</a>
       <a href="/zeitung/datenschutz">{texte.datenschutz}</a>
       <a href="/zeitung/nutzungsbedingungen">{texte.nutzungsbedingungen}</a>
+      <ZustimmungLink text={texte.analyseEinstellungen} />
       {newsletter && <a href="/zeitung/newsletter">Newsletter</a>}
       {YOUTUBE_KANAL && (
         <a className="gz-yt-link" href={YOUTUBE_KANAL} rel="noopener">
