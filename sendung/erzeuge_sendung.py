@@ -544,11 +544,13 @@ def bild_vorschau(sprache: str, tag: dt.date, ziel: Path) -> None:
     for i, farbe in enumerate(FLAGGE):
         z.rectangle([round(i * w / 4), 0, round((i + 1) * w / 4), 22], fill=farbe)
         z.rectangle([round(i * w / 4), h - 22, round((i + 1) * w / 4), h], fill=farbe)
-    g = 400
-    bild.paste(logo(g), ((w - g) // 2, 60), logo(g))
-    f = titel_schrift(110)
+    g = 430
+    bild.paste(logo(g), ((w - g) // 2, 70), logo(g))
+    f = mono(46, True)
     text = datum_kurz(tag, sprache)
-    z.text(((w - z.textlength(text, font=f)) / 2, 480), text, font=f, fill=FG)
+    abstand = 46 * 0.14
+    breite = sum(z.textlength(c, font=f) + abstand for c in text) - abstand
+    gesperrt(z, (round((w - breite) / 2), 560), text, f, LAGOON, 0.14)
     bild.save(ziel)
 
 
