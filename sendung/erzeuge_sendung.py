@@ -464,16 +464,21 @@ def wortfugen_trennen(text: str) -> str:
     except ImportError:
         return text
 
+    ausnahmen = set(AUSSPRACHE.get('de', {}).get('nicht_trennen', []))
+
     def trenne(m: re.Match) -> str:
         wort = m.group(0)
+        if wort in ausnahmen:
+            return wort
         wert, links, rechts = char_split.split_compound(wort)[0]
-        if wert < _FUGE_SCHWELLE or len(links) < 3 or len(rechts) < 3:
+        schwelle = _FUGE_SCHWELLE if len(wort) >= 10 else 0.6  # kurze Wörter nur bei sicherer Trennung
+        if wert < schwelle or len(links) < 3 or len(rechts) < 3:
             return wort
         # Endung „s“ (Fugen-s) bleibt beim linken Teil
         return f'{wort[:len(links)]}-{wort[len(links):].lower()}' if wort.lower().startswith(links.lower()) else wort
 
     teile = re.split(r'(\[\[.*?\]\])', text)
-    return ''.join(t if t.startswith('[[') else re.sub(r'(?<![\w-])[A-ZÄÖÜ][a-zäöüß]{9,}(?![\w-])', trenne, t)
+    return ''.join(t if t.startswith('[[') else re.sub(r'(?<![\w-])[A-ZÄÖÜ][a-zäöüß]{6,}(?![\w-])', trenne, t)
                    for t in teile)
 
 

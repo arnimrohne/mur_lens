@@ -1,5 +1,5 @@
 {
-  "_hinweis": "Aussprache-Verzeichnis für die Sprecherstimmen. 'woerter': ganzes Wort → Sprechschreibung (nur im Ton, nie auf den Folien). 'muster': reguläre Ausdrücke (Python) für Zahlen, Uhrzeiten, Währungen. 'abkuerzungen_wortweise': Abkürzungen, die als Wort gesprochen werden; alle anderen aus 2–5 Großbuchstaben werden buchstabiert. Ein Wert in [[ … ]] ist Lautschrift (IPA wie bei espeak) und wird exakt so gesprochen. 'franzoesisch': Namen, die in allen Sprachen französisch gesprochen werden (Lautung wird von der französischen Stimme ermittelt).",
+  "_hinweis": "Aussprache-Verzeichnis für die Sprecherstimmen. 'woerter': ganzes Wort → Sprechschreibung (nur im Ton, nie auf den Folien). 'muster': reguläre Ausdrücke (Python) für Zahlen, Uhrzeiten, Währungen. 'abkuerzungen_wortweise': Abkürzungen, die als Wort gesprochen werden; alle anderen aus 2–5 Großbuchstaben werden buchstabiert. Ein Wert in [[ … ]] ist Lautschrift (IPA wie bei espeak) und wird exakt so gesprochen. 'franzoesisch': Namen, die in allen Sprachen französisch gesprochen werden (Lautung wird von der französischen Stimme ermittelt). 'nicht_trennen': deutsche Wörter, die nicht an einer Wortfuge getrennt werden sollen.",
   "de": {
     "woerter": {
       "Mauritius": "[[ maʊrˈiːtsiʊs ]]",
@@ -28,7 +28,8 @@
       "Reservoir": "[[ rezɛrvoˈaːr ]]",
       "Reservoirs": "[[ rezɛrvoˈaːrs ]]",
       "Reservoire": "[[ rezɛrvoˈaːrə ]]",
-      "Reservoiren": "[[ rezɛrvoˈaːrən ]]"
+      "Reservoiren": "[[ rezɛrvoˈaːrən ]]",
+      "Erdbeben": "[[ ˈeːɾtbeːbən ]]"
     },
     "muster": [
       [
@@ -93,6 +94,18 @@
       "CEB",
       "STC",
       "SMS"
+    ],
+    "nicht_trennen": [
+      "Rathaus",
+      "Kontrolle",
+      "Montag",
+      "Dienstag",
+      "Mittwoch",
+      "Donnerstag",
+      "Freitag",
+      "Samstag",
+      "Sonntag",
+      "Inselrat"
     ]
   },
   "fr": {
