@@ -6,6 +6,9 @@ export const SEITEN_NAME = 'Gazet Morisyen';
 export const SEITEN_URL = 'https://gazet.morisyen.de';
 export const SEITEN_HOST = 'gazet.morisyen.de';
 
+/** YouTube-Kanal mit der täglichen Sendung (leer = Link wird nicht angezeigt). */
+export const YOUTUBE_KANAL = 'https://www.youtube.com/channel/UCzsMl1rAgzyy3y2eb04BZPg';
+
 export const SEITEN_BESCHREIBUNG =
   'Nachrichten aus Mauritius auf Deutsch, Französisch und Englisch: Politik, Wirtschaft, Gesellschaft, Umwelt, Sport und Kultur, nach Themen gebündelt und alle vier Stunden aktualisiert.';
 

@@ -12,6 +12,7 @@ export async function GET(): Promise<Response> {
     { pfad: '/', geaendert: stand, haeufigkeit: 'hourly', prioritaet: '1.0' },
     { pfad: '/impressum', geaendert: stand, haeufigkeit: 'yearly', prioritaet: '0.1' },
     { pfad: '/datenschutz', geaendert: stand, haeufigkeit: 'yearly', prioritaet: '0.1' },
+    { pfad: '/nutzungsbedingungen', geaendert: stand, haeufigkeit: 'yearly', prioritaet: '0.1' },
     ...daten.themen.map((thema) => ({
       pfad: themaPfad(thema.id),
       geaendert: thema.aktualisiert,

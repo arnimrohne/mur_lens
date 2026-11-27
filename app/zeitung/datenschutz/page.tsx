@@ -68,6 +68,55 @@ export default function DatenschutzSeite() {
         dort gelten deren Datenschutzbestimmungen.
       </p>
 
+      <h2 id="youtube">YouTube-Kanal und YouTube API Services</h2>
+      <p>
+        Wir veröffentlichen eine tägliche Nachrichtensendung auf unserem YouTube-Kanal. Die Videos werden von
+        unserem Server automatisch über die YouTube API Services (ein Dienst von Google) hochgeladen und in
+        Playlists sortiert. Dabei verwenden wir ausschließlich den Zugang zu unserem eigenen Kanal. Daten von
+        Besucherinnen und Besuchern dieser Website oder von anderen YouTube-Nutzern werden über die API weder
+        abgerufen noch gespeichert oder weitergegeben. Gelesen wird nur die Liste unserer eigenen Uploads und
+        Playlists, um doppelte Uploads zu vermeiden; diese Angaben werden nach dem jeweiligen Lauf nicht
+        aufbewahrt.
+      </p>
+      <p>
+        Wer unsere Videos auf YouTube ansieht, nutzt YouTube. Es gelten die{' '}
+        <a href="https://www.youtube.com/t/terms" rel="noopener">Nutzungsbedingungen von YouTube</a> und die{' '}
+        <a href="https://policies.google.com/privacy" rel="noopener">Datenschutzerklärung von Google</a>.
+      </p>
+      <p>
+        <strong>Widerruf und Löschung:</strong> Der Zugriff unserer Anwendung auf ein Google-Konto lässt sich
+        jederzeit unter{' '}
+        <a href="https://security.google.com/settings/security/permissions" rel="noopener">
+          security.google.com/settings/security/permissions
+        </a>{' '}
+        widerrufen. Da wir über die API keine personenbezogenen Daten speichern, fallen keine Daten zur Löschung an;
+        Anfragen dazu beantworten wir unter {IMPRESSUM.email} innerhalb von 30 Tagen.
+      </p>
+
+      <section lang="en" aria-labelledby="youtube-en">
+        <h2 id="youtube-en">YouTube channel and YouTube API Services (English)</h2>
+        <p>
+          We publish a daily news bulletin on our YouTube channel. The videos are uploaded automatically by our
+          server using the YouTube API Services (a Google service) and added to playlists. We only use access to
+          our own channel. No data of visitors to this website or of other YouTube users is accessed, stored or
+          shared through the API. We only read the list of our own uploads and playlists to avoid duplicate
+          uploads; this information is not kept after each run.
+        </p>
+        <p>
+          By watching our videos on YouTube you use YouTube and agree to the{' '}
+          <a href="https://www.youtube.com/t/terms" rel="noopener">YouTube Terms of Service</a>; see also the{' '}
+          <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a>.
+        </p>
+        <p>
+          <strong>Revocation and deletion:</strong> Access granted to our application can be revoked at any time at{' '}
+          <a href="https://security.google.com/settings/security/permissions" rel="noopener">
+            security.google.com/settings/security/permissions
+          </a>
+          . As we store no personal data obtained through the API, there is no such data to delete; requests are
+          answered at {IMPRESSUM.email} within 30 days.
+        </p>
+      </section>
+
       <h2>Ihre Rechte</h2>
       <p>
         Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung,
