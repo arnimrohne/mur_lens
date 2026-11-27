@@ -49,6 +49,8 @@ FLAGGE = ['#c8323c', '#1f4fa3', '#e0a800', '#1f8a4c']
 
 MAX_THEMEN = 8
 PAUSE_S = 0.8  # Stille nach jedem Abschnitt
+SATZ_PAUSE_S = 0.45  # Pause zwischen zwei Sätzen
+KOMMA_PAUSE_S = 0.25  # Pause nach Doppelpunkt oder Semikolon
 
 STIMMEN = {
     'de': ('de_DE-thorsten-high', 'Thorsten-Voice (CC0)'),
@@ -147,9 +149,9 @@ GRUSS = {
         'wort': ['Nachrichten', 'Meldungen', 'Themen'],
         'satz': '{gruss} zu den {beiwort} {wort} aus Mauritius.',
         'abschied': [
-            'Das waren die {wort} für heute. Alle Meldungen mit Quellen finden Sie auf gazet punkt morisyen punkt de. Bis morgen.',
-            'So weit die {wort} aus Mauritius. Mehr dazu auf gazet punkt morisyen punkt de. Ich wünsche Ihnen einen schönen Tag.',
-            'Das war es für heute. Alle Quellen und weitere Meldungen auf gazet punkt morisyen punkt de. Auf Wiedersehen.',
+            'Das waren die {wort} für heute. Alle Meldungen mit Quellen finden Sie auf gazet punkt morisyen punkt D E. Bis morgen.',
+            'So weit die {wort} aus Mauritius. Mehr dazu auf gazet punkt morisyen punkt D E. Ich wünsche Ihnen einen schönen Tag.',
+            'Das war es für heute. Alle Quellen und weitere Meldungen auf gazet punkt morisyen punkt D E. Auf Wiedersehen.',
         ],
     },
     'fr': {
@@ -158,9 +160,9 @@ GRUSS = {
         'wort': ['nouvelles', 'informations', 'actualités'],
         'satz': '{gruss}. Voici les {beiwort} {wort} de Maurice.',
         'abschied': [
-            "C'est tout pour aujourd'hui. Retrouvez toutes les {wort} et leurs sources sur gazet point morisyen point de. À demain.",
-            "Voilà pour les {wort} de Maurice. Plus de détails sur gazet point morisyen point de. Bonne journée.",
-            "C'était l'essentiel du jour. Toutes les sources sur gazet point morisyen point de. Au revoir.",
+            "C'est tout pour aujourd'hui. Retrouvez toutes les {wort} et leurs sources sur gazet point morisyen point D E. À demain.",
+            "Voilà pour les {wort} de Maurice. Plus de détails sur gazet point morisyen point D E. Bonne journée.",
+            "C'était l'essentiel du jour. Toutes les sources sur gazet point morisyen point D E. Au revoir.",
         ],
     },
     'en': {
@@ -169,9 +171,9 @@ GRUSS = {
         'wort': ['news', 'headlines', 'stories'],
         'satz': '{gruss} to {beiwort} {wort} from Mauritius.',
         'abschied': [
-            "That's all for today. You'll find every story and its sources at gazet dot morisyen dot de. See you tomorrow.",
-            'And those were the {wort} from Mauritius. More at gazet dot morisyen dot de. Have a good day.',
-            "That's it for now. All sources at gazet dot morisyen dot de. Goodbye.",
+            "That's all for today. You'll find every story and its sources at gazet dot morisyen dot D E. See you tomorrow.",
+            'And those were the {wort} from Mauritius. More at gazet dot morisyen dot D E. Have a good day.',
+            "That's it for now. All sources at gazet dot morisyen dot D E. Goodbye.",
         ],
     },
 }
@@ -453,6 +455,39 @@ def zahlen_sprechen(text: str, sprache: str) -> str:
     return text
 
 
+_FUGE_SCHWELLE = 0.45
+# Vorsilben sind keine Wortfugen: „Zurückhaltung“, „Aufnahme“, „Vorbereitung“ bleiben ganz.
+_VORSILBEN = {'zurück', 'aus', 'auf', 'ab', 'an', 'ein', 'vor', 'nach', 'über', 'unter', 'durch', 'mit', 'bei',
+              'gegen', 'um', 'weg', 'her', 'hin', 'fort', 'los', 'wieder', 'zusammen', 'voran', 'heraus', 'hinaus',
+              'herein', 'hinein', 'vorbei', 'entgegen', 'miss', 'zer', 'ver', 'ent', 'emp'}
+
+
+def wortfugen_trennen(text: str) -> str:
+    """Trennt lange deutsche Zusammensetzungen an der Wortfuge („Sonderausschuss“ → „Sonder Ausschuss“),
+    damit die Stimme die Teile nicht falsch zerlegt. Nur bei sicherer Trennung; Lautschrift bleibt unberührt."""
+    try:
+        from compound_split import char_split
+    except ImportError:
+        return text
+
+    ausnahmen = set(AUSSPRACHE.get('de', {}).get('nicht_trennen', []))
+
+    def trenne(m: re.Match) -> str:
+        wort = m.group(0)
+        if wort in ausnahmen:
+            return wort
+        wert, links, rechts = char_split.split_compound(wort)[0]
+        schwelle = _FUGE_SCHWELLE if len(wort) >= 10 else 0.6  # kurze Wörter nur bei sicherer Trennung
+        if wert < schwelle or len(links) < 3 or len(rechts) < 3 or links.lower() in _VORSILBEN:
+            return wort
+        # Endung „s“ (Fugen-s) bleibt beim linken Teil
+        return f'{wort[:len(links)]} {wort[len(links):].capitalize()}' if wort.lower().startswith(links.lower()) else wort
+
+    teile = re.split(r'(\[\[.*?\]\])', text)
+    return ''.join(t if t.startswith('[[') else re.sub(r'(?<![\w-])[A-ZÄÖÜ][a-zäöüß]{6,}(?![\w-])', trenne, t)
+                   for t in teile)
+
+
 def aussprache(text: str, sprache: str) -> str:
     """Wendet das Aussprache-Verzeichnis an (nur für den Ton)."""
     regeln = AUSSPRACHE.get(sprache, {})
@@ -465,6 +500,8 @@ def aussprache(text: str, sprache: str) -> str:
         text = re.sub(rf'(?<!\w){re.escape(wort)}(?![\w-])', lambda _m, w=wort: woerter[w], text)
         if sprache == 'de' and woerter[wort].startswith('[['):  # auch am Anfang von Zusammensetzungen: „Heroinhandel“
             text = re.sub(rf'(?<!\w){re.escape(wort)}(?=[a-zäöüß]{{3,}})', lambda _m, w=wort: woerter[w] + ' ', text)
+    if sprache == 'de':
+        text = wortfugen_trennen(text)
     wortweise = set(regeln.get('abkuerzungen_wortweise', []))
 
     def buchstabiere(m: re.Match) -> str:
@@ -493,9 +530,20 @@ class Sprecher:
         self.rate = self.stimme.config.sample_rate
 
     def sprich(self, text: str, ziel: Path, mindestens: float = 0.0) -> float:
+        # Satz für Satz sprechen und Pausen selbst setzen: Endet ein Satz mit Lautschrift ([[ … ]]),
+        # verliert Piper sonst den Satzpunkt und zieht zwei Sätze ohne Pause zusammen.
+        saetze_ = [x for x in re.split(r'(?<=[.!?…:;])\s+', sprechtext(text, self.sprache)) if x.strip()]
         with wave.open(str(ziel), 'wb') as datei:
-            self.stimme.synthesize_wav(sprechtext(text, self.sprache), datei, syn_config=self.konfig)
-            # Stille anhängen
+            datei.setnchannels(1)
+            datei.setsampwidth(2)
+            datei.setframerate(self.rate)
+            for i, satz in enumerate(saetze_):
+                for stueck in self.stimme.synthesize(satz, syn_config=self.konfig):
+                    datei.writeframes(stueck.audio_int16_bytes)
+                pause = SATZ_PAUSE_S if satz.rstrip()[-1:] in '.!?…' else KOMMA_PAUSE_S
+                if i < len(saetze_) - 1:
+                    datei.writeframes(b'\x00\x00' * int(self.rate * pause))
+            # Stille am Ende des Abschnitts
             datei.writeframes(b'\x00\x00' * int(self.rate * PAUSE_S))
         with wave.open(str(ziel), 'rb') as datei:
             dauer = datei.getnframes() / datei.getframerate()
