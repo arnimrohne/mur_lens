@@ -453,6 +453,30 @@ def zahlen_sprechen(text: str, sprache: str) -> str:
     return text
 
 
+_FUGE_SCHWELLE = 0.45
+
+
+def wortfugen_trennen(text: str) -> str:
+    """Trennt lange deutsche Zusammensetzungen an der Wortfuge („Sonderausschuss“ → „Sonder-ausschuss“),
+    damit die Stimme die Teile nicht falsch zerlegt. Nur bei sicherer Trennung; Lautschrift bleibt unberührt."""
+    try:
+        from compound_split import char_split
+    except ImportError:
+        return text
+
+    def trenne(m: re.Match) -> str:
+        wort = m.group(0)
+        wert, links, rechts = char_split.split_compound(wort)[0]
+        if wert < _FUGE_SCHWELLE or len(links) < 3 or len(rechts) < 3:
+            return wort
+        # Endung „s“ (Fugen-s) bleibt beim linken Teil
+        return f'{wort[:len(links)]}-{wort[len(links):].lower()}' if wort.lower().startswith(links.lower()) else wort
+
+    teile = re.split(r'(\[\[.*?\]\])', text)
+    return ''.join(t if t.startswith('[[') else re.sub(r'(?<![\w-])[A-ZÄÖÜ][a-zäöüß]{9,}(?![\w-])', trenne, t)
+                   for t in teile)
+
+
 def aussprache(text: str, sprache: str) -> str:
     """Wendet das Aussprache-Verzeichnis an (nur für den Ton)."""
     regeln = AUSSPRACHE.get(sprache, {})
@@ -465,6 +489,8 @@ def aussprache(text: str, sprache: str) -> str:
         text = re.sub(rf'(?<!\w){re.escape(wort)}(?![\w-])', lambda _m, w=wort: woerter[w], text)
         if sprache == 'de' and woerter[wort].startswith('[['):  # auch am Anfang von Zusammensetzungen: „Heroinhandel“
             text = re.sub(rf'(?<!\w){re.escape(wort)}(?=[a-zäöüß]{{3,}})', lambda _m, w=wort: woerter[w] + ' ', text)
+    if sprache == 'de':
+        text = wortfugen_trennen(text)
     wortweise = set(regeln.get('abkuerzungen_wortweise', []))
 
     def buchstabiere(m: re.Match) -> str:
