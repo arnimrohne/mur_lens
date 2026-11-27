@@ -1,9 +1,11 @@
 'use client';
 
+import { InselKarte } from './insel-karte';
 import { MeldungFolie } from './meldung-folie';
 import { TeilenKnopf } from './teilen-knopf';
 import { useWischStapel } from '@/hooks/use-wisch-stapel';
 import { istFrischAktualisiert, istNeu } from '@/lib/zeitung/ausgabe';
+import { kartenort } from '@/lib/zeitung/karte';
 import { meldungText } from '@/lib/zeitung/sprache';
 import type { OberflaechenTexte } from '@/lib/zeitung/texte';
 import type { Meldung, Sprache, Thema } from '@/lib/zeitung/types';
@@ -22,10 +24,19 @@ export function ThemenKarte({ thema, sprache, texte, jetzt, oberzeile }: ThemenK
   // Ältester Stand links, neuester rechts.
   const folien = [...thema.updates].reverse();
   const titel = meldungText(thema.updates[0], 'titel', sprache);
+  const ort = kartenort(thema);
+  const inselName = ort ? texte.inseln[ort.insel] : '';
+  const ortText = ort ? (ort.name && ort.name !== inselName ? `${ort.name} · ${inselName}` : inselName) : '';
 
   return (
     <article className="gz-thema" id={`thema-${thema.id}`}>
       {oberzeile && <div className="gz-oberzeile">{oberzeile}</div>}
+      {ort && (
+        <div className="gz-ortzeile">
+          <InselKarte ort={ort} label={ortText} />
+          <span aria-hidden="true">{ortText}</span>
+        </div>
+      )}
       <div
         ref={spurRef}
         className="gz-spur"
