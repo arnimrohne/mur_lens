@@ -13,7 +13,11 @@
       "Select Committee": "Selekt Kommitti",
       "Supreme Court": "Suprihm Kort",
       "Bail Act": "Bäil Äkt",
-      "Budget": "Büdschee"
+      "Budget": "Büdschee",
+      "Kréol": "[[ kreː ʔˈoːl ]]",
+      "Kreol": "[[ kreː ʔˈoːl ]]",
+      "Rupien": "[[ ruː pˈiː ʔɛn ]]",
+      "Bulletin": "[[ bˈʊlət ʔɪn ]]"
     },
     "muster": [
       [
@@ -129,7 +133,8 @@
   },
   "en": {
     "woerter": {
-      "Chagos": "Chah-goss"
+      "Chagos": "Chah-goss",
+      "Kréol": "[[ kɹeɪ ˈɒl ]]"
     },
     "muster": [
       [
@@ -214,7 +219,6 @@
     "Défi Media",
     "L'Express",
     "Le Mauricien",
-    "Kréol",
     "Morisyen",
     "Morisien",
     "Assemblée nationale",

@@ -377,7 +377,7 @@ def aussprache(text: str, sprache: str) -> str:
         text = re.sub(muster, ersatz, text)
     woerter = {**_FR_NAMEN.get(sprache, {}), **regeln.get('woerter', {})}
     for wort in sorted(woerter, key=len, reverse=True):
-        text = re.sub(rf'(?<![\w-]){re.escape(wort)}(?![\w-])', lambda _m, w=wort: woerter[w], text)
+        text = re.sub(rf'(?<!\w){re.escape(wort)}(?![\w-])', lambda _m, w=wort: woerter[w], text)
     wortweise = set(regeln.get('abkuerzungen_wortweise', []))
 
     def buchstabiere(m: re.Match) -> str:
