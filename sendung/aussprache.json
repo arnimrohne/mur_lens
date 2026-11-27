@@ -16,10 +16,15 @@
       "Budget": "Büdschee",
       "Kréol": "[[ kreːˈoːl ]]",
       "Kreol": "[[ kreːˈoːl ]]",
-      "Rupien": "[[ ruːpˈiːjə ]]",
-      "Bulletin": "[[ bˈʊlət ʔɪn ]]"
+      "Rupien": "[[ ruːpˈiːjən ]]",
+      "Bulletin": "[[ bˈʊlət ʔɪn ]]",
+      "Rupie": "[[ ruːpˈiːjə ]]"
     },
     "muster": [
+      [
+        "\\bRs\\.?\\s?1(?![\\d.,])",
+        "eine Rupie"
+      ],
       [
         "\\bRs\\.?\\s?([\\d](?:[\\d.,]*\\d)?)\\s?(Mio\\.|Millionen)",
         "\\1 Millionen Rupien"
