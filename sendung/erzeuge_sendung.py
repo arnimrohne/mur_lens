@@ -416,8 +416,11 @@ def zahlen_sprechen(text: str, sprache: str) -> str:
     def ersetze(m: re.Match) -> str:
         ganz = int(re.sub(f'[{re.escape(tausender)}]', '', m.group(1)))
         nachkomma = m.group(2)
-        if sprache == 'en' and not nachkomma and 1900 <= ganz <= 2099 and len(m.group(1)) == 4:
-            return num2words(ganz, lang='en', to='year')
+        if not nachkomma and len(m.group(1)) == 4 and 1100 <= ganz <= 2099:  # Jahreszahl (ohne Tausenderpunkt)
+            if sprache == 'en':
+                return num2words(ganz, lang='en', to='year')
+            if sprache == 'de':  # „neunzehnhunderteinundsiebzig“, nicht „tausendneunhundert…“
+                return num2words(ganz, lang='de', to='year')
         wort = num2words(ganz, lang=sprache)
         if sprache == 'de':  # „tausendzweihundert“ statt „eintausendzweihundert“
             wort = re.sub(r'^ein(tausend|hundert)', r'\1', wort)
