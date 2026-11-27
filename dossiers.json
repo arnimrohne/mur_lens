@@ -579,6 +579,84 @@
    },
    "chronik": [
     {
+     "datum": "23. Sept. 1965",
+     "datumI18n": {
+      "fr": "23 sept. 1965",
+      "en": "23 Sep 1965"
+     },
+     "text": {
+      "de": "Bei Gesprächen im Londoner Lancaster House stimmen Vertreter der damaligen Kolonie Mauritius zu, das Chagos-Archipel für eine Militäranlage abzutrennen. Der Internationale Gerichtshof stellte 2019 fest, dass sie dazu nach der Verfassung von 1964 nicht befugt waren.",
+      "fr": "Lors de discussions à Lancaster House, à Londres, les représentants de la colonie de Maurice acceptent le détachement de l'archipel des Chagos pour une installation militaire. La Cour internationale de justice a estimé en 2019 qu'ils n'en avaient pas le pouvoir selon la Constitution de 1964.",
+      "en": "At talks at Lancaster House in London, representatives of the then colony of Mauritius agree to the detachment of the Chagos Archipelago for a military facility. The International Court of Justice found in 2019 that they had no authority to do so under the 1964 constitution."
+     },
+     "quelle": "https://www.icj-cij.org/public/files/case-related/169/169-20190225-SUM-01-00-EN.pdf"
+    },
+    {
+     "datum": "8. Nov. 1965",
+     "datumI18n": {
+      "fr": "8 nov. 1965",
+      "en": "8 Nov 1965"
+     },
+     "text": {
+      "de": "Großbritannien gründet per Order in Council das „Britische Territorium im Indischen Ozean“ aus dem Chagos-Archipel und einigen Inseln, die bis dahin zu den Seychellen gehörten.",
+      "fr": "Le Royaume-Uni crée par Order in Council le « Territoire britannique de l'océan Indien » à partir de l'archipel des Chagos et de quelques îles rattachées jusque-là aux Seychelles.",
+      "en": "Britain creates the British Indian Ocean Territory by Order in Council from the Chagos Archipelago and some islands previously part of Seychelles."
+     },
+     "quelle": "https://publications.parliament.uk/pa/ld5901/ldselect/ldintagr/146/14605.htm"
+    },
+    {
+     "datum": "16. Dez. 1965",
+     "datumI18n": {
+      "fr": "16 déc. 1965",
+      "en": "16 Dec 1965"
+     },
+     "text": {
+      "de": "Die UN-Generalversammlung fordert Großbritannien mit Resolution 2066 auf, nichts zu unternehmen, was das Gebiet von Mauritius zerstückelt und seine territoriale Unversehrtheit verletzt.",
+      "fr": "L'Assemblée générale de l'ONU demande au Royaume-Uni, par la résolution 2066, de ne prendre aucune mesure qui démembrerait le territoire de Maurice et porterait atteinte à son intégrité territoriale.",
+      "en": "In Resolution 2066 the UN General Assembly calls on Britain to take no action that would dismember the territory of Mauritius and violate its territorial integrity."
+     },
+     "quelle": "https://publications.parliament.uk/pa/ld5901/ldselect/ldintagr/146/14605.htm"
+    },
+    {
+     "datum": "1966",
+     "datumI18n": {
+      "fr": "1966",
+      "en": "1966"
+     },
+     "text": {
+      "de": "Großbritannien und die USA schließen einen Vertrag über die Nutzung von Diego Garcia, wo später ein US-Stützpunkt entsteht.",
+      "fr": "Le Royaume-Uni et les États-Unis concluent un traité sur l'utilisation de Diego Garcia, où une base américaine sera construite.",
+      "en": "Britain and the United States conclude a treaty on the use of Diego Garcia, where a US base is later built."
+     },
+     "quelle": "https://www.asil.org/insights/volume/23/issue/2/chagos-advisory-opinion-and-decolonization-mauritius"
+    },
+    {
+     "datum": "12. März 1968",
+     "datumI18n": {
+      "fr": "12 mars 1968",
+      "en": "12 Mar 1968"
+     },
+     "text": {
+      "de": "Mauritius wird unabhängig, ohne das Chagos-Archipel.",
+      "fr": "Maurice accède à l'indépendance, sans l'archipel des Chagos.",
+      "en": "Mauritius becomes independent without the Chagos Archipelago."
+     },
+     "quelle": "https://publications.parliament.uk/pa/ld5901/ldselect/ldintagr/146/14605.htm"
+    },
+    {
+     "datum": "bis 1973",
+     "datumI18n": {
+      "fr": "jusqu'en 1973",
+      "en": "by 1973"
+     },
+     "text": {
+      "de": "Für den Bau des US-Stützpunkts wird die gesamte Bevölkerung des Archipels, die Chagossen, zwangsweise umgesiedelt, die meisten nach Mauritius und auf die Seychellen. Eine Rückkehr wird ihnen verwehrt.",
+      "fr": "Pour la construction de la base américaine, toute la population de l'archipel, les Chagossiens, est déplacée de force, la plupart vers Maurice et les Seychelles. Le retour leur est interdit.",
+      "en": "To make way for the US base, the archipelago's entire population, the Chagossians, is forcibly removed, most of them to Mauritius and Seychelles. They are barred from returning."
+     },
+     "quelle": "https://www.asil.org/insights/volume/23/issue/2/chagos-advisory-opinion-and-decolonization-mauritius"
+    },
+    {
      "datum": "Feb. 2019",
      "datumI18n": {
       "fr": "févr. 2019",
@@ -966,6 +1044,18 @@
     {
      "name": "Wikipedia (Chagossians)",
      "url": "https://en.wikipedia.org/wiki/Chagossians"
+    },
+    {
+     "name": "IGH – Zusammenfassung des Gutachtens 2019",
+     "url": "https://www.icj-cij.org/public/files/case-related/169/169-20190225-SUM-01-00-EN.pdf"
+    },
+    {
+     "name": "House of Lords International Agreements Committee (Hintergrund)",
+     "url": "https://publications.parliament.uk/pa/ld5901/ldselect/ldintagr/146/14605.htm"
+    },
+    {
+     "name": "ASIL Insights: The Chagos Advisory Opinion",
+     "url": "https://www.asil.org/insights/volume/23/issue/2/chagos-advisory-opinion-and-decolonization-mauritius"
     }
    ]
   }
