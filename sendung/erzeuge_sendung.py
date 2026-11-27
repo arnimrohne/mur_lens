@@ -101,6 +101,8 @@ T = {
         'ki': 'Sprecherstimme synthetisch erzeugt (Piper TTS, Stimme: {stimme}). Texte: eigene Zusammenfassungen der Redaktion Gazet Morisyen.',
         'impressum': 'Impressum: https://gazet.morisyen.de/impressum',
         'heute_themen': 'Die Themen',
+        'ki_sprecher': 'Moderation zu Beginn und Ende: KI-generierte Person (Higgsfield).',
+        'ki_marke': 'KI-Moderation',
     },
     'fr': {
         'untertitel': 'Le quotidien de Maurice',
@@ -120,6 +122,8 @@ T = {
         'ki': 'Voix de synthèse (Piper TTS, voix : {stimme}). Textes : résumés rédigés par Gazet Morisyen.',
         'impressum': 'Mentions légales : https://gazet.morisyen.de/impressum',
         'heute_themen': 'Au sommaire',
+        'ki_sprecher': 'Présentation au début et à la fin : personne générée par IA (Higgsfield).',
+        'ki_marke': 'Présentation IA',
     },
     'en': {
         'untertitel': 'The daily paper for Mauritius',
@@ -139,6 +143,8 @@ T = {
         'ki': 'Synthetic narrator voice (Piper TTS, voice: {stimme}). Texts: original summaries by Gazet Morisyen.',
         'impressum': 'Legal notice: https://gazet.morisyen.de/impressum',
         'heute_themen': 'In this edition',
+        'ki_sprecher': 'Opening and closing presenter: AI-generated person (Higgsfield).',
+        'ki_marke': 'AI presenter',
     },
 }
 
@@ -1076,6 +1082,72 @@ def abschnitt_video(bild: Path, ton: Path, ziel: Path) -> None:
            str(ziel))
 
 
+# ----------------------------------------------------------------- Moderations-Clips (Begrüßung/Abschied)
+
+CLIPS = HIER / 'clips'
+
+
+def clip_fuer(sprache: str, art: str) -> Path | None:
+    """Wiederverwendbarer Moderations-Clip, z. B. clips/de-begruessung.mp4; fehlt er, bleibt es bei der Folie."""
+    for endung in ('mp4', 'mov', 'webm'):
+        pfad = CLIPS / f'{sprache}-{art}.{endung}'
+        if pfad.exists():
+            return pfad
+    return None
+
+
+def hat_ton(pfad: Path) -> bool:
+    aus = subprocess.run(['ffprobe', '-v', 'error', '-select_streams', 'a', '-show_entries', 'stream=index',
+                          '-of', 'csv=p=0', str(pfad)], capture_output=True, text=True, check=True)
+    return bool(aus.stdout.strip())
+
+
+def dauer_von(pfad: Path) -> float:
+    aus = subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', str(pfad)],
+                         capture_output=True, text=True, check=True)
+    return float(aus.stdout.strip())
+
+
+def bild_bauchbinde(sprache: str, tag: dt.date, art: str, ziel: Path) -> None:
+    """Transparente Einblendung über dem Clip: Sendung/Datum bzw. Adresse unten links, KI-Hinweis oben rechts."""
+    bild = Image.new('RGBA', (BREITE, HOEHE), (0, 0, 0, 0))
+    z = ImageDraw.Draw(bild)
+    if art == 'begruessung':
+        oben, unten = 'Gazet Morisyen', f'{T[sprache]["sendung"]}  ·  {datum_kurz(tag, sprache)}'
+    else:
+        oben, unten = 'gazet.morisyen.de', T[sprache]['newsletter']
+    f1, f2 = titel_schrift(46), mono(24, True)
+    breite = max(z.textlength(oben, font=f1), z.textlength(unten.upper(), font=f2) + len(unten) * 24 * 0.1) + 90
+    x, y = 80, HOEHE - 230
+    z.rectangle((x, y, x + breite, y + 140), fill=NAVY + (235,))
+    z.rectangle((x, y, x + 10, y + 140), fill=ROT_TV + (255,))
+    z.text((x + 40, y + 22), oben, font=f1, fill=WEISS)
+    gesperrt(z, (x + 40, y + 90), unten, f2, HELLBLAU, 0.1)
+    marke = T[sprache]['ki_marke'].upper()
+    f3 = mono(20, True)
+    b = z.textlength(marke, font=f3) * 1.12 + 36
+    z.rounded_rectangle((BREITE - 60 - b, 50, BREITE - 60, 92), radius=8, fill=(0, 0, 0, 150))
+    gesperrt(z, (round(BREITE - 60 - b + 18), 60), marke, f3, WEISS, 0.12)
+    bild.save(ziel)
+
+
+def clip_video(clip: Path, einblendung: Path, ton: Path | None, ziel: Path) -> float:
+    """Clip auf 1920×1080/25 fps/AAC 48 kHz bringen (wie die Folien), Einblendung darüberlegen."""
+    eingaben = ['-i', str(clip), '-loop', '1', '-i', str(einblendung)]
+    ton_spur = '0:a:0'
+    if ton is not None:
+        eingaben += ['-i', str(ton)]
+        ton_spur = '2:a:0'
+    ffmpeg(*eingaben, '-filter_complex',
+           f'[0:v]scale={BREITE}:{HOEHE}:force_original_aspect_ratio=increase,crop={BREITE}:{HOEHE},'
+           'fps=25,format=yuv420p[v];[v][1:v]overlay=0:0:shortest=1,format=yuv420p[o]',
+           '-map', '[o]', '-map', ton_spur,
+           '-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-pix_fmt', 'yuv420p', '-r', '25',
+           '-video_track_timescale', '12800',
+           '-c:a', 'aac', '-b:a', '160k', '-ar', '48000', '-ac', '2', '-shortest', '-movflags', '+faststart', str(ziel))
+    return dauer_von(ziel)
+
+
 def zeitmarke(sekunden: float) -> str:
     s = int(sekunden)
     return f'{s // 60:02d}:{s % 60:02d}'
@@ -1089,6 +1161,7 @@ class Abschnitt:
     dauer: float = 0.0
     quellen: list[dict] = field(default_factory=list)
     mindestens: float = 0.0
+    clip: str = ''
 
 
 def erzeuge(daten: dict, sprache: str, stimmen: Path, ausgabe: Path, jetzt: dt.datetime) -> dict:
@@ -1105,7 +1178,7 @@ def erzeuge(daten: dict, sprache: str, stimmen: Path, ausgabe: Path, jetzt: dt.d
 
     intro = arbeit / '00-intro.png'
     bild_intro(sprache, tag, intro)
-    abschnitte.append(Abschnitt(t['kapitel_start'], gruss, intro, mindestens=5.0))
+    abschnitte.append(Abschnitt(t['kapitel_start'], gruss, intro, mindestens=5.0, clip='begruessung'))
 
     for i, b in enumerate(beitraege, 1):
         pfad = arbeit / f'{i:02d}-thema.png'
@@ -1123,17 +1196,29 @@ def erzeuge(daten: dict, sprache: str, stimmen: Path, ausgabe: Path, jetzt: dt.d
 
     outro = arbeit / '99-outro.png'
     bild_outro(sprache, tag, outro)
-    abschnitte.append(Abschnitt(t['kapitel_ende'], abschied, outro))
+    abschnitte.append(Abschnitt(t['kapitel_ende'], abschied, outro, clip='abschied'))
 
     modell, stimme_name = STIMMEN[sprache]
     lade_franzoesische_namen(stimmen)
     sprecher = Sprecher(stimmen / f'{modell}.onnx', sprache)
     teile = []
+    mit_clip = False
     for i, a in enumerate(abschnitte):
-        ton = arbeit / f'{i:02d}.wav'
-        a.dauer = sprecher.sprich(a.sprechen, ton, a.mindestens)
         teil = arbeit / f'{i:02d}.mp4'
-        abschnitt_video(a.bild, ton, teil)
+        clip = clip_fuer(sprache, a.clip) if a.clip else None
+        if clip is not None:
+            einblendung = arbeit / f'{i:02d}-einblendung.png'
+            bild_bauchbinde(sprache, tag, a.clip, einblendung)
+            ton = None
+            if not hat_ton(clip):
+                ton = arbeit / f'{i:02d}.wav'
+                sprecher.sprich(a.sprechen, ton, a.mindestens)
+            a.dauer = clip_video(clip, einblendung, ton, teil)
+            mit_clip = True
+        else:
+            ton = arbeit / f'{i:02d}.wav'
+            a.dauer = sprecher.sprich(a.sprechen, ton, a.mindestens)
+            abschnitt_video(a.bild, ton, teil)
         teile.append(teil)
 
     liste = arbeit / 'liste.txt'
@@ -1167,6 +1252,7 @@ def erzeuge(daten: dict, sprache: str, stimmen: Path, ausgabe: Path, jetzt: dt.d
         '✉️ https://gazet.morisyen.de/newsletter',
         '',
         t['ki'].format(stimme=stimme_name),
+        *([t['ki_sprecher']] if mit_clip else []),
         *([t['wetterquelle']] if vorhersage else []),
         t['impressum'],
     ])

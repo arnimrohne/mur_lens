@@ -170,6 +170,25 @@ export interface DossierBild {
   lizenzUrl?: string;
 }
 
+/** Regionalkarte (westlicher Indischer Ozean) mit markierten Orten. */
+export interface DossierKartenOrt {
+  name: Mehrsprachig;
+  lat: number;
+  lon: number;
+  hervor?: boolean;
+  /** Lage der Beschriftung zum Punkt. */
+  seite?: 'links' | 'rechts' | 'oben' | 'unten';
+}
+
+export interface DossierKarte {
+  titel?: Mehrsprachig;
+  /** [West, Süd, Ost, Nord] in Grad. */
+  ausschnitt: [number, number, number, number];
+  orte: DossierKartenOrt[];
+  /** Verbindungslinien zwischen Orten (Indizes in orte); die Entfernung wird berechnet. */
+  linien: { von: number; nach: number }[];
+}
+
 export interface Dossier {
   id: string;
   rubrik: RubrikId;
@@ -177,6 +196,7 @@ export interface Dossier {
   titel: Mehrsprachig;
   kurz: Mehrsprachig;
   bild?: DossierBild;
+  karte?: DossierKarte;
   warum?: Mehrsprachig;
   entwicklung?: Mehrsprachig;
   chronik: DossierEreignis[];

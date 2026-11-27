@@ -2,7 +2,8 @@ import { describe, expect, it } from 'vitest';
 
 import dossierDatei from '../data/zeitung/dossiers.json';
 import { dossierFuerThema, dossierPfad, themenZuDossier } from '../lib/zeitung/dossiers';
-import { istFreieLizenz, parseDossierBild, parseDossiers } from '../lib/zeitung/parse-daten';
+import { istFreieLizenz, parseDossierBild, parseDossierKarte, parseDossiers } from '../lib/zeitung/parse-daten';
+import { entfernungKm } from '../lib/zeitung/regionalkarte';
 
 const t = (s: string) => ({ de: s, fr: s, en: s });
 const minimal = {
@@ -100,5 +101,32 @@ describe('Dossier-Bilder', () => {
 
   it('das mitgelieferte Dossier hat ein Bild', () => {
     expect(parseDossiers(dossierDatei)[0].bild?.lizenz).toBe('CC BY-SA 4.0');
+  });
+});
+
+describe('Dossier-Karte', () => {
+  const ort = (name: string, lat: number, lon: number) => ({ name: t(name), lat, lon });
+  const karte = { ausschnitt: [42, -25, 80, 7], orte: [ort('Mauritius', -20.2, 57.55), ort('Diego Garcia', -7.31, 72.41)], linien: [{ von: 0, nach: 1 }] };
+
+  it('übernimmt eine gültige Karte', () => {
+    const k = parseDossierKarte(karte);
+    expect(k?.orte).toHaveLength(2);
+    expect(k?.linien).toEqual([{ von: 0, nach: 1 }]);
+  });
+
+  it('verwirft Ausschnitte außerhalb der Küstendaten und Orte außerhalb des Ausschnitts', () => {
+    expect(parseDossierKarte({ ...karte, ausschnitt: [100, -25, 120, 7] })).toBeUndefined();
+    expect(parseDossierKarte({ ...karte, orte: [ort('Paris', 48.8, 2.3)] })).toBeUndefined();
+    expect(parseDossierKarte({ ...karte, linien: [{ von: 0, nach: 5 }] })?.linien).toEqual([]);
+  });
+
+  it('berechnet die Entfernung Mauritius–Diego Garcia', () => {
+    const km = entfernungKm({ lat: -20.2, lon: 57.55 }, { lat: -7.31, lon: 72.41 });
+    expect(km).toBeGreaterThan(2050);
+    expect(km).toBeLessThan(2250);
+  });
+
+  it('das mitgelieferte Chagos-Dossier hat eine Karte', () => {
+    expect(parseDossiers(dossierDatei).find((d) => d.id === 'chagos')?.karte?.orte.length).toBeGreaterThan(3);
   });
 });

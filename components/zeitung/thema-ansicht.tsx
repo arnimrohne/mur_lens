@@ -40,6 +40,7 @@ export function ThemaAnsicht({ thema, stand, dossiers = [] }: ThemaAnsichtProps)
             sprache={sprache}
             texte={texte}
             jetzt={jetzt}
+            liste
             oberzeile={texte.rubriken[thema.rubrik].lang + (thema.ort ? ` · ${thema.ort}` : '')}
           />
         </section>

@@ -4,6 +4,7 @@ import Image from 'next/image';
 
 import { FussLinks } from './fuss-links';
 import { GrafikBalken } from './grafik-balken';
+import { RegionalKarte } from './regional-karte';
 import { ShopBanner } from './shop-banner';
 import { ZeitungKopf } from './zeitung-kopf';
 import { useZeitungSprache } from '@/hooks/use-zeitung-sprache';
@@ -136,6 +137,7 @@ export function DossierAnsicht({ dossier, themen, stand }: { dossier: Dossier; t
             <section className="gz-dossier-abschnitt gz-dossier-kurz-block">
               <h2>{a.kurz}</h2>
               <p>{dossier.kurz[sprache]}</p>
+              {dossier.karte && <RegionalKarte karte={dossier.karte} sprache={sprache} />}
             </section>
 
             {dossier.zahlen.length > 0 && (
