@@ -1,7 +1,7 @@
 {
  "schema": 1,
- "stand": "2026-11-27T21:00:00+04:00",
- "laeufe": 5,
+ "stand": "2026-11-28T01:00:00+04:00",
+ "laeufe": 6,
  "topics": [
   {
    "id": "3g-abschaltung",
@@ -327,12 +327,57 @@
   },
   {
    "id": "chagos",
-   "aktualisiert": "2026-11-23T12:00:00+04:00",
+   "aktualisiert": "2026-11-27T12:00:00+04:00",
    "erstellt": "2026-11-06T12:00:00+04:00",
    "rubrik": "politik",
-   "status": "archiv",
-   "titel": "Chagos: Kommentar zum festgefahrenen Vertrag",
+   "status": "aktiv",
+   "titel": "Chagos: Fragen zur Rolle von Sir Geoffrey Cox",
    "updates": [
+    {
+     "zeit": "2026-11-27T12:00:00+04:00",
+     "nurDatum": true,
+     "titel": "Chagos: Fragen zur Rolle von Sir Geoffrey Cox",
+     "text": "Pravind Jugnauth stellt die Rolle von Sir Geoffrey Cox im Zusammenhang mit Chagos infrage. Er spricht von mehr als 25 Millionen Rupien, die gezahlt wurden.\n\nDie Angaben stammen aus der Berichterstattung von Défi Media.",
+     "quellen": [
+      {
+       "name": "Défi Media",
+       "url": "https://defimedia.info/"
+      }
+     ],
+     "i18n": {
+      "fr": {
+       "titel": "Chagos : questions sur le rôle de Sir Geoffrey Cox",
+       "text": "Pravind Jugnauth remet en question le rôle de Sir Geoffrey Cox dans le dossier Chagos. Il évoque plus de 25 millions de roupies versées.\n\nLes informations proviennent de la couverture de Défi Media."
+      },
+      "en": {
+       "titel": "Chagos: questions over Sir Geoffrey Cox’s role",
+       "text": "Pravind Jugnauth questions the role of Sir Geoffrey Cox in the Chagos matter. He refers to more than 25 million rupees paid.\n\nThe information comes from Défi Media’s coverage."
+      }
+     },
+     "sendung": {
+      "de": {
+       "sprechtext": "Im Zusammenhang mit Chagos stellt Pravind Jugnauth die Rolle von Sir Geoffrey Cox infrage. Er spricht von mehr als 25 Millionen Rupien, die gezahlt wurden. Zuvor hatte die Redaktion bereits mehrfach über Chagos berichtet.",
+       "stichpunkte": [
+        "Jugnauth stellt Rolle von Cox infrage",
+        "Mehr als 25 Millionen Rupien gezahlt"
+       ]
+      },
+      "fr": {
+       "sprechtext": "Dans le dossier Chagos, Pravind Jugnauth remet en question le rôle de Sir Geoffrey Cox. Il évoque plus de 25 millions de roupies versées. Auparavant, la rédaction avait déjà publié plusieurs articles sur Chagos.",
+       "stichpunkte": [
+        "Jugnauth remet en question le rôle de Cox",
+        "Plus de 25 millions de roupies versées"
+       ]
+      },
+      "en": {
+       "sprechtext": "In the Chagos matter, Pravind Jugnauth questions the role of Sir Geoffrey Cox. He refers to more than 25 million rupees paid. Earlier, the newsroom had already reported several times on Chagos.",
+       "stichpunkte": [
+        "Jugnauth questions Cox’s role",
+        "More than 25 million rupees paid"
+       ]
+      }
+     }
+    },
     {
      "i18n": {
       "en": {
@@ -1783,7 +1828,8 @@
    ],
    "top": true,
    "warTop": true,
-   "topSeit": "2026-11-27T13:50:00+04:00"
+   "topSeit": "2026-11-27T13:50:00+04:00",
+   "dossier": "wasserversorgung"
   },
   {
    "id": "wirtschaftsstandort",
@@ -2299,9 +2345,9 @@
   }
  ],
  "einleitung": {
-  "zeit": "2026-11-27T21:00:00+04:00",
-  "de": "Die Wasserreserven der Insel sind am 26. November nur noch zu 44 Prozent gefüllt. Bei der Lohnkompensation 2027 haben Gewerkschaften und Arbeitgeber bis 4. Dezember Zeit, Vorschläge einzureichen.",
-  "fr": "Au 26 novembre, les réservoirs de l’île ne sont remplis qu’à 44 %. Pour la compensation salariale 2027, syndicats et patronat ont jusqu’au 4 décembre pour soumettre leurs propositions.",
-  "en": "On 26 November the island’s reservoirs were only 44% full. For the 2027 wage compensation, unions and employers have until 4 December to submit proposals."
+  "zeit": "2026-11-28T01:00:00+04:00",
+  "de": "Die Wasserreserven der Insel sind am 26. November nur noch zu 44 Prozent gefüllt. Zu Chagos stellt Pravind Jugnauth die Rolle von Sir Geoffrey Cox infrage.",
+  "fr": "Au 26 novembre, les réservoirs de l’île ne sont remplis qu’à 44 %. Sur Chagos, Pravind Jugnauth remet en question le rôle de Sir Geoffrey Cox.",
+  "en": "On 26 November the island’s reservoirs were only 44% full. On Chagos, Pravind Jugnauth questions the role of Sir Geoffrey Cox."
  }
 }
