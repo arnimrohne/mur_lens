@@ -40,6 +40,28 @@ export interface MeldungUebersetzung {
 }
 
 /** Ein Stand (eine Meldung) innerhalb eines Themas. */
+/** Text in den drei Sprachen; fehlende Sprachen fallen auf Deutsch zurück. */
+export type Mehrsprachig = Record<Sprache, string>;
+
+export interface GrafikWert {
+  wert: number;
+  label: Mehrsprachig;
+  /** Hervorgehobener Balken, z. B. der aktuelle Wert. */
+  hervor: boolean;
+}
+
+/** Balkendiagramm zu einer Meldung (vom Redaktions-Agenten aus Zahlen der Quelle erstellt). */
+export interface Grafik {
+  art: 'balken';
+  einheit: Mehrsprachig;
+  /** Skalenende; ohne Angabe 100 bei Prozent, sonst der größte Wert. */
+  max?: number;
+  titel?: Mehrsprachig;
+  kennzahl?: { wert: Mehrsprachig; text?: Mehrsprachig };
+  werte: GrafikWert[];
+  quelle?: string;
+}
+
 export interface Meldung {
   zeit: string;
   nurDatum: boolean;
@@ -48,6 +70,7 @@ export interface Meldung {
   text: string;
   quellen: Quelle[];
   i18n: Partial<Record<Exclude<Sprache, 'de'>, MeldungUebersetzung>>;
+  grafik?: Grafik;
 }
 
 export type ThemaStatus = 'aktiv' | 'archiv';

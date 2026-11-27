@@ -19,6 +19,8 @@ export const AKTUALISIERUNG_SEKUNDEN = 600;
 
 export async function ladeZeitung(): Promise<ZeitungDaten> {
   const ersatz = parseZeitungDaten(mitgeliefert);
+  // Für lokale Vorschauen: GAZET_DATEN_LOKAL=1 nutzt nur data/zeitung/daten.json.
+  if (process.env.GAZET_DATEN_LOKAL === '1') return ersatz;
   try {
     const antwort = await fetch(DATEN_URL, { next: { revalidate: AKTUALISIERUNG_SEKUNDEN } });
     if (!antwort.ok) {

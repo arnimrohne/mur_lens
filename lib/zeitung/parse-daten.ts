@@ -8,6 +8,9 @@
 import { RUBRIK_IDS } from './types';
 import type {
   Einleitung,
+  Grafik,
+  GrafikWert,
+  Mehrsprachig,
   Meldung,
   MeldungUebersetzung,
   Quelle,
@@ -62,6 +65,39 @@ function parseMeldungI18n(wert: unknown): Meldung['i18n'] {
   return ergebnis;
 }
 
+/** Text oder {de, fr, en}; fehlende Sprachen übernehmen den deutschen bzw. ersten vorhandenen Wert. */
+function mehrsprachig(wert: unknown): Mehrsprachig | undefined {
+  if (typeof wert === 'string') return text(wert) ? { de: wert, fr: wert, en: wert } : undefined;
+  if (!istObjekt(wert)) return undefined;
+  const basis = text(wert.de) ?? text(wert.fr) ?? text(wert.en);
+  if (!basis) return undefined;
+  return { de: text(wert.de) ?? basis, fr: text(wert.fr) ?? basis, en: text(wert.en) ?? basis };
+}
+
+/** Balkendiagramm: 2–5 Werte ≥ 0, jeder mit Beschriftung; sonst wird die Grafik verworfen. */
+export function parseGrafik(wert: unknown): Grafik | undefined {
+  if (!istObjekt(wert) || (wert.art !== undefined && wert.art !== 'balken')) return undefined;
+  if (!Array.isArray(wert.werte) || wert.werte.length < 2 || wert.werte.length > 5) return undefined;
+  const werte: GrafikWert[] = [];
+  for (const roh of wert.werte) {
+    if (!istObjekt(roh) || typeof roh.wert !== 'number' || !Number.isFinite(roh.wert) || roh.wert < 0) return undefined;
+    const label = mehrsprachig(roh.label);
+    if (!label) return undefined;
+    werte.push({ wert: roh.wert, label, hervor: roh.hervor === true });
+  }
+  const kz = istObjekt(wert.kennzahl) ? mehrsprachig(wert.kennzahl.wert) : undefined;
+  const max = typeof wert.max === 'number' && Number.isFinite(wert.max) && wert.max > 0 ? wert.max : undefined;
+  return {
+    art: 'balken',
+    einheit: mehrsprachig(wert.einheit) ?? { de: '', fr: '', en: '' },
+    max,
+    titel: mehrsprachig(wert.titel),
+    kennzahl: kz && istObjekt(wert.kennzahl) ? { wert: kz, text: mehrsprachig(wert.kennzahl.text) } : undefined,
+    werte,
+    quelle: text(wert.quelle),
+  };
+}
+
 function parseMeldung(wert: unknown): Meldung | undefined {
   if (!istObjekt(wert) || !istGueltigeZeit(wert.zeit)) return undefined;
   const titel = text(wert.titel);
@@ -74,6 +110,7 @@ function parseMeldung(wert: unknown): Meldung | undefined {
     text: text(wert.text) ?? '',
     quellen: parseQuellen(wert.quellen),
     i18n: parseMeldungI18n(wert.i18n),
+    grafik: parseGrafik(wert.grafik),
   };
 }
 

@@ -791,16 +791,85 @@ def piktogramm(ort: Kartenort, sprache: str, breite: int = 460, hoehe: int = 400
     return bild
 
 
+# ----------------------------------------------------------------- Diagramm (Balken)
+
+def _text_i18n(wert, sprache: str) -> str:
+    if isinstance(wert, dict):
+        return str(wert.get(sprache) or wert.get('de') or '')
+    return str(wert or '')
+
+
+def zahl_text(wert: float, einheit: str, sprache: str) -> str:
+    """55.2 → de „55,2 %“, fr « 55,2 % », en "55.2%"; Tausender: de 1.200, fr 1 200, en 1,200."""
+    stellen = 1 if wert % 1 else 0
+    text = f'{wert:,.{stellen}f}'
+    if sprache == 'de':
+        text = text.replace(',', '§').replace('.', ',').replace('§', '.')
+    elif sprache == 'fr':
+        text = text.replace(',', '\u202f').replace('.', ',')
+    if not einheit:
+        return text
+    return f'{text}{einheit}' if (sprache == 'en' and einheit == '%') else f'{text}\u00a0{einheit}'
+
+
+def grafik_daten(b: Beitrag) -> dict | None:
+    """Gültiges Balkendiagramm aus update.grafik (geschrieben vom Redaktions-Agenten), sonst None."""
+    g = b.update.get('grafik')
+    if not isinstance(g, dict) or g.get('art', 'balken') != 'balken':
+        return None
+    werte = [w for w in g.get('werte', []) if isinstance(w, dict) and isinstance(w.get('wert'), (int, float))
+             and w['wert'] >= 0]
+    return g if 2 <= len(werte) <= 5 and len(werte) == len(g.get('werte', [])) else None
+
+
+def diagramm(g: dict, sprache: str, breite: int = 520, hoehe: int = 450) -> Image.Image:
+    img = Image.new('RGBA', (breite, hoehe), (0, 0, 0, 0))
+    z = ImageDraw.Draw(img)
+    einheit = _text_i18n(g.get('einheit', ''), sprache)
+    werte = g['werte']
+    groesst = max(w['wert'] for w in werte)
+    skala = float(g.get('max') or (100 if einheit == '%' and groesst <= 100 else groesst))
+    y = 0
+    titel = _text_i18n(g.get('titel'), sprache)
+    if titel:
+        gesperrt(z, (0, y), titel, mono(22, True), HELLBLAU, 0.08)
+        y += 34
+    kz = g.get('kennzahl')
+    if isinstance(kz, dict) and kz.get('wert'):
+        z.text((0, y), _text_i18n(kz['wert'], sprache), font=titel_schrift(100), fill=WEISS)
+        y += 124
+        unter = _text_i18n(kz.get('text'), sprache)
+        if unter:
+            z.text((0, y), unter, font=text_schrift(30), fill=HELLBLAU)
+            y += 60
+    platz = hoehe - y
+    zeile = min(78, platz // len(werte))
+    bh = max(14, min(26, zeile - 52))
+    spur = breite - 120
+    for w in werte:
+        hervor = bool(w.get('hervor'))
+        z.text((0, y), _text_i18n(w.get('label'), sprache).upper(), font=mono(21, True), fill=WEISS if hervor else HELLBLAU)
+        yb = y + 30
+        z.rounded_rectangle([0, yb, spur, yb + bh], radius=4, fill=(255, 255, 255, 22))
+        laenge = max(8, round(spur * min(w['wert'], skala) / skala))
+        z.rounded_rectangle([0, yb, laenge, yb + bh], radius=4, fill=MINT if hervor else (150, 170, 200, 255))
+        z.text((spur + 14, yb + bh / 2 - 20), zahl_text(w['wert'], einheit, sprache), font=titel_schrift(30),
+               fill=WEISS if hervor else HELLBLAU)
+        y += zeile
+    return img
+
+
 def bild_beitrag(sprache: str, tag: dt.date, b: Beitrag, nummer: int, anzahl: int, ziel: Path) -> None:
     bild = verlauf(NAVY_HELL, NAVY)
     bild.paste(logo_weiss(900, 0.06), (BREITE - 760, 40), logo_weiss(900, 0.06))
-    ort = kartenort(b)
-    if ort:  # Insel mit Nadel rechts oben
-        karte = piktogramm(ort, sprache)
-        bild.paste(karte, (BREITE - 70 - karte.width, 200), karte)
+    grafik = grafik_daten(b)
+    ort = None if grafik else kartenort(b)  # Diagramm hat Vorrang vor der Karte
+    rechts = diagramm(grafik, sprache) if grafik else piktogramm(ort, sprache) if ort else None
+    if rechts:
+        bild.paste(rechts, (BREITE - 70 - rechts.width, 200 if ort else 195), rechts)
     z = ImageDraw.Draw(bild)
     senderkopf(bild, z, sprache, tag, f'{nummer} / {anzahl}')
-    textbreite = 1180 if ort else 1250
+    textbreite = 1180 if ort else 1080 if grafik else 1250
 
     # Bauchbinde mit Schlagzeile (unten)
     titel = feld(b.update, 'titel', sprache)
