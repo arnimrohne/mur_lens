@@ -29,5 +29,9 @@ getrennt.
 - `stand` ist der Zeitpunkt des Laufs. Bestehende Dossiers werden
   aktualisiert, wenn eine neue Meldung den Stand verändert (neuer Chronik-Eintrag,
   neue Zahl).
+- Bei wiederkehrenden Themen (`rhythmus` gesetzt) gehört in die `chronik` jede
+  Runde der letzten Jahre mit dem Kernwert (z. B. Lohnausgleich 2022–2026 in Rupien
+  oder Prozent). Eine passende `grafik` zeigt die Werte im Jahresvergleich.
+  Unter `offen` steht, was bei der nächsten Runde ansteht und wann.
 - Vor dem Push muss `dossiers.json` gültiges JSON sein. Die Website verwirft
   Dossiers mit ungültiger ID oder Rubrik stillschweigend.

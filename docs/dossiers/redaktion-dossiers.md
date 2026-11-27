@@ -13,19 +13,31 @@ Meldung den Link „Hintergrund: …“.
 
 ## 2. Neue Dossiers vorschlagen
 
-Ein Dossier lohnt sich, wenn ein Thema in den letzten 30 Tagen mindestens dreimal
-in der Zeitung war oder absehbar länger bleibt. Lohn, Wasser, Energie, Preise,
-Drogen und Chagos sind solche Themen, ein Einzelereignis ist keins. Für so einen
-Fall trägt die Redaktion in `dossiers.json` unter `vorschlaege` ein:
+Ein Dossier lohnt sich, wenn mindestens eines davon zutrifft:
+
+- **Häufung:** Das Thema war in den letzten 30 Tagen mindestens dreimal in der
+  Zeitung oder bleibt absehbar länger aktuell (Wasser, Energie, Preise, Drogen, Chagos).
+- **Wiederkehr:** Das Thema kommt jedes Jahr oder alle zwei Jahre wieder. Ein
+  Beispiel ist der Haushalt mit Budget-Rede, Lohnausgleich (Salary Compensation)
+  und Mindestlohn. Weitere sind der PRB-Bericht, die Zyklon-Saison, Dürre und
+  Wasserrationierung, die Zuckerrohrernte, Prüfungsergebnisse (SC/HSC, Laureates),
+  Kommunal- und Dorfratswahlen sowie Fest- und Feiertage mit großer
+  Bedeutung (Maha Shivaratri, Nationalfeiertag). Hier genügt **eine** Meldung,
+  wenn aus der Quelle oder aus Allgemeinwissen klar ist, dass das Thema regelmäßig
+  wiederkehrt. Im `grund` steht dann der Rhythmus, z. B. „jährlich im Juni (Budget)“.
+
+Ein einmaliges Ereignis ohne Vorgeschichte und ohne Wiederkehr bekommt kein
+Dossier. Für einen passenden Fall trägt die Redaktion in `dossiers.json` unter
+`vorschlaege` ein:
 
 ```json
 { "id": "energie-ceb", "titel": "Strom und CEB", "rubrik": "wirtschaft",
   "grund": "Stromausfälle und Tarifdebatte, 4 Meldungen seit 2.11.",
   "themen": ["ceb-tarif", "stromausfall-port-louis"],
-  "vorgeschlagen": "2026-11-27T08:00:00Z" }
+  "rhythmus": null, "vorgeschlagen": "2026-11-27T08:00:00Z" }
 ```
 
-Schon vorhandene IDs werden nicht erneut vorgeschlagen. Pro Lauf gibt es höchstens
+`rhythmus` ist `"jaehrlich"`, `"zweijaehrlich"` oder `null`. Schon vorhandene IDs werden nicht erneut vorgeschlagen. Pro Lauf gibt es höchstens
 einen Vorschlag. Die Ausarbeitung übernimmt der Dossier-Recherche-Lauf; er nimmt
 den Vorschlag danach aus der Liste.
 
