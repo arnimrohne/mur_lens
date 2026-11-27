@@ -2,6 +2,12 @@ import { videoDatum, videoText } from '@/lib/zeitung/sprache';
 import type { OberflaechenTexte } from '@/lib/zeitung/texte';
 import type { Sprache, Video } from '@/lib/zeitung/types';
 
+const PLAYLISTEN: Record<Sprache, string> = {
+  de: 'https://www.youtube.com/playlist?list=PLeLup6StD61s',
+  fr: 'https://www.youtube.com/playlist?list=PLR-uk753xli4',
+  en: 'https://www.youtube.com/playlist?list=PLPQaMoOwBNx8',
+};
+
 interface VideoAbschnittProps {
   videos: Video[];
   sprache: Sprache;
@@ -18,6 +24,11 @@ export function VideoAbschnitt({ videos, sprache, texte }: VideoAbschnittProps) 
         <h2 id="h-videos">{texte.videos}</h2>
         <span className="gz-anzahl">{texte.videosHinweis}</span>
       </div>
+      <p className="gz-kanal-abo">
+        <a href={PLAYLISTEN[sprache]} target="_blank" rel="noopener noreferrer">
+          ▶ {texte.kanalAbo}
+        </a>
+      </p>
       <div className="gz-video-raster">
         {videos.map((video, index) => (
           <a

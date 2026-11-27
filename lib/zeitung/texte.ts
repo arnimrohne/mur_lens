@@ -25,6 +25,7 @@ export interface OberflaechenTexte {
   vortage: string;
   videos: string;
   videosHinweis: string;
+  kanalAbo: string;
   datumUnbekannt: string;
   archiv: string;
   archivHinweis: (anzahl: number) => string;
@@ -87,6 +88,7 @@ const de: OberflaechenTexte = {
   vortage: 'Ältere Meldungen · zum Aufklappen antippen',
   videos: 'Videos',
   videosHinweis: 'Öffnen im neuen Tab',
+  kanalAbo: 'Abonniere unseren News-Kanal auf YouTube',
   datumUnbekannt: 'Datum unbekannt',
   archiv: 'Archiv',
   archivHinweis: (n) => `${n} ältere Themen · seit 3 Tagen ohne neue Meldung`,
@@ -152,6 +154,7 @@ const fr: OberflaechenTexte = {
   vortage: 'Plus anciennes · touchez pour déplier',
   videos: 'Vidéos',
   videosHinweis: "S'ouvre dans un nouvel onglet",
+  kanalAbo: "Abonnez-vous à notre chaîne d’actualités sur YouTube",
   datumUnbekannt: 'date inconnue',
   archiv: 'Archives',
   archivHinweis: (n) => `${n} sujets plus anciens · sans nouvelle depuis 3 jours`,
@@ -217,6 +220,7 @@ const en: OberflaechenTexte = {
   vortage: 'Older stories · tap to expand',
   videos: 'Videos',
   videosHinweis: 'Opens in a new tab',
+  kanalAbo: 'Subscribe to our news channel on YouTube',
   datumUnbekannt: 'date unknown',
   archiv: 'Archive',
   archivHinweis: (n) => `${n} older stories · no news for 3 days`,

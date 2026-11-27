@@ -187,6 +187,8 @@ html:has(.gazet) { background: #fdfaf5; }
 }
 
 .gz-videos, .gz-archiv { padding-block: 30px; border-bottom: 1px solid var(--line); scroll-margin-top: 60px; }
+.gz-kanal-abo { margin: 0 0 14px; font-size: .95rem; font-weight: 600; }
+.gz-kanal-abo a { color: inherit; }
 .gz-video-raster { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
 .gz-video { display: flex; flex-direction: column; text-decoration: none; color: var(--fg) !important; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; transition: transform .15s ease, border-color .15s ease; }
 .gz-video:hover { transform: translateY(-2px); border-color: var(--lagoon); }
