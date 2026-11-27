@@ -308,9 +308,10 @@ def ordnungszahl_de(n: int, gebeugt: bool) -> str:
     return wort + ('n' if gebeugt else '')
 
 
-def ordnungszahl_en(n: int) -> str:
-    endung = 'th' if 10 <= n % 100 <= 20 else {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th')
-    return f'{n}{endung}'
+def _num2words(*args, **kwargs) -> str:
+    from num2words import num2words
+
+    return num2words(*args, **kwargs)
 
 
 _GEBEUGT_VOR = re.compile(r'(?:\b(?:am|vom|zum|beim|im|seit|ab|dem|den|des)\s+)$', re.I)
@@ -337,7 +338,7 @@ def daten_sprechen(text: str, sprache: str) -> str:
         monate = '|'.join(MONATE['en'])
         text = re.sub(rf'\b(?:on\s+)?(\d{{1,2}})\s+({monate})\b',
                       lambda m: f'{"on " if m.group(0).lower().startswith("on") else ""}the '
-                                f'{ordnungszahl_en(int(m.group(1)))} of {m.group(2)}', text)
+                                f'{_num2words(int(m.group(1)), lang="en", to="ordinal")} of {m.group(2)}', text)
     return text
 
 
@@ -369,12 +370,68 @@ def lade_franzoesische_namen(stimmen: Path) -> None:
             ziel[name] = f'[[ {laute} ]]'
 
 
+# --- Zahlen ausschreiben (die Stimme bekommt keine Ziffern)
+
+_ZAHL = {
+    'de': (re.compile(r'(?<![\w\[])(\d{1,3}(?:\.\d{3})+|\d+)(?:,(\d+))?(?![\w])'), '.', ' Komma '),
+    'fr': (re.compile(r'(?<![\w\[])(\d{1,3}(?:[ \u00a0\u202f]\d{3})+|\d+)(?:,(\d+))?(?![\w])'), ' \u00a0\u202f', ' virgule '),
+    'en': (re.compile(r'(?<![\w\[])(\d{1,3}(?:,\d{3})+|\d+)(?:\.(\d+))?(?![\w])'), ',', ' point '),
+}
+
+
+_WEIBLICH_DE_WOERTER = {'person', 'frau', 'stunde', 'woche', 'minute', 'sekunde', 'million', 'milliarde', 'rupie',
+                        'familie', 'schule', 'insel', 'stadt', 'partei', 'firma', 'tonne', 'nacht', 'klasse', 'runde'}
+_WEIBLICH_FR = {'personne', 'femme', 'heure', 'semaine', 'minute', 'seconde', 'roupie', 'famille', 'école', 'île',
+                'ville', 'fois', 'année', 'journée', 'tonne', 'nuit', 'victime', 'enquête'}
+
+
+def _weiblich_de(wort: str) -> bool:
+    w = wort.lower()
+    return w in _WEIBLICH_DE_WOERTER or w.endswith(('ung', 'heit', 'keit', 'schaft', 'ion', 'tät', 'ie', 'in', 'ik'))
+
+
+def zahlen_sprechen(text: str, sprache: str) -> str:
+    from num2words import num2words
+
+    if sprache == 'en':  # 7.15 pm → seven fifteen pm
+        text = re.sub(r'\b(\d{1,2})[.:](\d{2})\s?(am|pm)\b',
+                      lambda m: f'{num2words(int(m.group(1)), lang="en")} '
+                                f'{"o\'clock" if m.group(2) == "00" else num2words(int(m.group(2)), lang="en")} {m.group(3)}',
+                      text)
+    muster, tausender, komma = _ZAHL[sprache]
+
+    def ersetze(m: re.Match) -> str:
+        ganz = int(re.sub(f'[{re.escape(tausender)}]', '', m.group(1)))
+        nachkomma = m.group(2)
+        if sprache == 'en' and not nachkomma and 1900 <= ganz <= 2099 and len(m.group(1)) == 4:
+            return num2words(ganz, lang='en', to='year')
+        wort = num2words(ganz, lang=sprache)
+        if sprache == 'de':  # „tausendzweihundert“ statt „eintausendzweihundert“
+            wort = re.sub(r'^ein(tausend|hundert)', r'\1', wort)
+        if nachkomma:
+            return wort + komma + ' '.join(num2words(int(z), lang=sprache) for z in nachkomma)
+        folgt = re.match(r'\s+([A-Za-zÀ-ÿ]+)', text[m.end():])
+        if sprache == 'de' and ganz == 1 and folgt:
+            return 'eine' if _weiblich_de(folgt.group(1)) else 'ein'
+        if sprache == 'fr' and ganz == 1 and folgt:
+            return 'une' if folgt.group(1).lower() in _WEIBLICH_FR else 'un'
+        if sprache == 'en' and ganz == 1 and re.match(r'\s+[A-Za-z]', text[m.end():]):
+            return 'one'
+        return wort
+
+    text = muster.sub(ersetze, text)
+    if sprache == 'fr':  # „de une roupie“ → „d'une roupie“
+        text = re.sub(r'\b([Dd])e (une?)\b', r"\1'\2", text)
+    return text
+
+
 def aussprache(text: str, sprache: str) -> str:
     """Wendet das Aussprache-Verzeichnis an (nur für den Ton)."""
     regeln = AUSSPRACHE.get(sprache, {})
     text = daten_sprechen(text, sprache)
     for muster, ersatz in regeln.get('muster', []):
         text = re.sub(muster, ersatz, text)
+    text = zahlen_sprechen(text, sprache)
     woerter = {**_FR_NAMEN.get(sprache, {}), **regeln.get('woerter', {})}
     for wort in sorted(woerter, key=len, reverse=True):
         text = re.sub(rf'(?<!\w){re.escape(wort)}(?![\w-])', lambda _m, w=wort: woerter[w], text)

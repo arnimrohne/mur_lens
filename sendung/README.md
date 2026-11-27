@@ -7,7 +7,7 @@ und eine Textdatei mit Titel, Beschreibung (Kapitel und Quellen) und Tags für Y
 - **Inhalt:** Themen mit Meldung in den letzten 24 Stunden, Top-Themen zuerst, höchstens 8.
 - **Bild:** Standbild-Folien in der Farbwelt der Website, mit GM-Logo und Flaggenstreifen.
   Keine Fotos oder Grafiken aus den Quellen.
-- **Ton:** Piper TTS, frei nutzbare Stimmen. Die Namensnennung steht in jeder Videobeschreibung.
+- **Ton:** Piper TTS (Zahlen werden vorher mit num2words ausgeschrieben), frei nutzbare Stimmen. Die Namensnennung steht in jeder Videobeschreibung.
   Die Aussprache schwieriger Wörter (Orte, Abkürzungen, Beträge, Uhrzeiten) regelt `aussprache.json`.
   Dort können weitere Wörter ergänzt werden.
   - Deutsch: Thorsten (CC0)

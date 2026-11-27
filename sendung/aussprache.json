@@ -94,6 +94,10 @@
     },
     "muster": [
       [
+        "\\bRs\\.?\\s?1(?!\\d|[.,  ]\\d)",
+        "une roupie"
+      ],
+      [
         "\\bRs\\.?\\s?([\\d][\\d  .,]*\\d)\\s?(millions?|milliards?)",
         "\\1 \\2 de roupies"
       ],
@@ -142,6 +146,10 @@
       "Kréol": "[[ kɹeɪ ˈɒl ]]"
     },
     "muster": [
+      [
+        "\\bRs\\.?\\s?1(?!\\d|[.,]\\d)",
+        "one rupee"
+      ],
       [
         "\\bRs\\.?\\s?([\\d](?:[\\d.,]*\\d)?)\\s?(million|billion|m|bn)\\b",
         "\\1 \\2 rupees"
