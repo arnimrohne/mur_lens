@@ -84,8 +84,7 @@ def komponiere(ziel: Path) -> None:
     melodie = [(0, 'A5'), (2, 'D6'), (3, 'F#6'), (5, 'A6'), (6, 'G6'), (7, 'F#6'), (8, 'E6')]
     for triole, n in melodie:
         xylophon.spiele([n], triole * TRIOLE, TRIOLE, 58)
-    haupt = 3 * TPB  # 1,5 s: Name erscheint – gezupfter D-Akkord von unten nach oben, Xylophon antwortet
-    gitarre.spiele(['D2', 'A2', 'D3', 'F#3', 'A3', 'D4'], haupt, TPB * 2, 108, schrumm=40)
+    haupt = 3 * TPB  # 1,5 s: Name erscheint – Bass und Xylophon setzen ein Zeichen, die Gitarre zupft weiter
     bass.spiele(['D2'], haupt, TPB * 2, 108)
     xylophon.spiele(['D6'], haupt + TRIOLE, TRIOLE, 52)
     xylophon.spiele(['F#6'], haupt + 2 * TRIOLE, TRIOLE, 48)
