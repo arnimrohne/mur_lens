@@ -1,7 +1,7 @@
 {
  "schema": 1,
- "stand": "2026-11-27T13:50:00+04:00",
- "laeufe": 3,
+ "stand": "2026-11-27T17:00:00+04:00",
+ "laeufe": 4,
  "topics": [
   {
    "id": "3g-abschaltung",
@@ -1896,12 +1896,64 @@
   {
    "id": "compensation-salariale-2027",
    "rubrik": "wirtschaft",
-   "titel": "Lohnausgleich 2027: Gewerkschaften fordern 1.200 bis 1.700 Rupien",
+   "titel": "Tripartite-Gespräche: Gewerkschaftsvertreter verlassen Sitzung",
    "status": "aktiv",
    "erstellt": "2026-11-27T12:00:00+04:00",
    "aktualisiert": "2026-11-27T12:00:00+04:00",
    "warTop": false,
    "updates": [
+    {
+     "zeit": "2026-11-27T12:00:00+04:00",
+     "nurDatum": true,
+     "titel": "Tripartite-Gespräche: Gewerkschaftsvertreter verlassen Sitzung",
+     "text": "Bei den Tripartite-Konsultationen zur Lohnkompensation 2027 haben Gewerkschaftsvertreter die Sitzung vorzeitig verlassen. Ein Gewerkschafter fordert mindestens 1.200 Rupien im Monat.\n\nDie Konsultationen laufen trotz des Auszugs weiter.",
+     "quellen": [
+      {
+       "name": "Défi Media",
+       "url": "https://defimedia.info/tripartites-sur-la-compensation-salariale-walk-out-des-syndicalistes-narendranath-gopee-et-devanand-ramjuttu"
+      },
+      {
+       "name": "Défi Media",
+       "url": "https://defimedia.info/compensation-salariale-2027-suttyhudeo-tengur-reclame-au-moins-rs-1-200-par-mois"
+      }
+     ],
+     "i18n": {
+      "fr": {
+       "titel": "Tripartites : des syndicalistes quittent la séance",
+       "text": "Lors des consultations tripartites sur la compensation salariale 2027, des représentants syndicaux ont quitté la séance avant la fin. Un syndicaliste réclame au moins 1 200 roupies par mois.\n\nLes consultations se poursuivent malgré ce départ."
+      },
+      "en": {
+       "titel": "Tripartite talks: union representatives walk out",
+       "text": "During the tripartite consultations on the 2027 wage compensation, union representatives left the session early. One union leader is demanding at least Rs 1,200 a month.\n\nThe consultations continue despite the walkout."
+      }
+     },
+     "sendung": {
+      "de": {
+       "sprechtext": "Bei den Tripartite-Gesprächen zur Lohnkompensation 2027 hat es Streit gegeben. Gewerkschaftsvertreter haben die Sitzung vorzeitig verlassen. Ein Gewerkschafter fordert mindestens 1.200 Rupien im Monat. Die Gespräche laufen trotz des Auszugs weiter. Zuvor hatten die Verhandlungen mit den Forderungen der Gewerkschaften begonnen.",
+       "stichpunkte": [
+        "Gewerkschaften verlassen Tripartite-Sitzung",
+        "Forderung: mindestens Rs 1.200 im Monat",
+        "Gespräche laufen weiter"
+       ]
+      },
+      "fr": {
+       "sprechtext": "Lors des consultations tripartites sur la compensation salariale 2027, il y a eu un différend. Des représentants syndicaux ont quitté la séance avant la fin. Un syndicaliste réclame au moins 1 200 roupies par mois. Les consultations se poursuivent malgré ce départ. Auparavant, les négociations avaient débuté avec les revendications des syndicats.",
+       "stichpunkte": [
+        "Syndicats quittent la séance tripartite",
+        "Revendication : au moins Rs 1 200 par mois",
+        "Les consultations se poursuivent"
+       ]
+      },
+      "en": {
+       "sprechtext": "There was a dispute at the tripartite wage talks for 2027. Union representatives left the session early. One union leader is demanding at least Rs 1,200 a month. The consultations continue despite the walkout. Earlier, the talks had opened with the unions' demands.",
+       "stichpunkte": [
+        "Unions walk out of tripartite session",
+        "Demand: at least Rs 1,200 a month",
+        "Consultations continue"
+       ]
+      }
+     }
+    },
     {
      "zeit": "2026-11-27T12:00:00+04:00",
      "nurDatum": true,
@@ -1950,6 +2002,65 @@
         "Unions ask for Rs 1,200 to Rs 1,700",
         "Employers call for moderation",
         "Tripartite talks on 2027 compensation"
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "my-t-tempo",
+   "rubrik": "wirtschaft",
+   "titel": "my.t: Tempo-Versprechen sorgt für Verwirrung bei Kunden",
+   "status": "aktiv",
+   "erstellt": "2026-11-25T18:00:00+04:00",
+   "aktualisiert": "2026-11-27T12:00:00+04:00",
+   "warTop": false,
+   "updates": [
+    {
+     "zeit": "2026-11-27T12:00:00+04:00",
+     "nurDatum": true,
+     "titel": "my.t: Tempo-Versprechen sorgt für Verwirrung bei Kunden",
+     "text": "Mauritius Telecom hatte am 25. November angekündigt, dass sich die Heimverbindungen von rund 300.000 Glasfaser-Haushalten ohne Aufpreis verdoppeln oder verdreifachen. Kunden berichten nun, dass bei einem 100-Mbps-Paket nur der Upload von 20 auf 30 Mbps steigt, nicht der Download.\n\nAuch Kunden mit älteren Paketen sehen auf ihrer Rechnung teils höhere Grundgebühren als zuvor.",
+     "quellen": [
+      {
+       "name": "ionnews",
+       "url": "https://ionnews.mu/nouveaux-tarifs-my-t-la-colere-gronde-sur-les-reseaux-sociaux/"
+      }
+     ],
+     "i18n": {
+      "fr": {
+       "titel": "my.t : la promesse de débit suscite la confusion chez les abonnés",
+       "text": "Mauritius Telecom avait annoncé le 25 novembre que le débit à domicile d’environ 300 000 foyers fibrés serait doublé, voire triplé, sans frais supplémentaires. Les abonnés disent désormais que, pour un forfait 100 Mbps, seul l’envoi passe de 20 à 30 Mbps, et non le téléchargement.\n\nCertains abonnés aux anciens forfaits constatent aussi des frais de base plus élevés sur leur facture."
+      },
+      "en": {
+       "titel": "my.t: speed promise causes confusion among customers",
+       "text": "On 25 November, Mauritius Telecom announced that home connection speeds for around 300,000 fibre households would double or triple at no extra cost. Customers now report that on a 100 Mbps plan only the upload rises, from 20 to 30 Mbps, not the download.\n\nSome customers on older plans also see higher base charges on their bills."
+      }
+     },
+     "sendung": {
+      "de": {
+       "sprechtext": "Mauritius Telecom hat den Kunden schnellere Internetverbindungen versprochen. Am 25. November war von doppelter oder dreifacher Geschwindigkeit ohne Aufpreis die Rede. Viele Kunden sind enttäuscht. Bei einem 100-Mbps-Paket steigt nach ihren Angaben nur der Upload von 20 auf 30 Mbps. Die Erwartungen haben sich damit nicht erfüllt.",
+       "stichpunkte": [
+        "my.t: Tempo-Versprechen für Glasfaser-Kunden",
+        "Bei 100 Mbps steigt nur der Upload",
+        "Kunden älterer Pakete mit höheren Grundgebühren"
+       ]
+      },
+      "fr": {
+       "sprechtext": "Mauritius Telecom a promis à ses clients des connexions plus rapides. Le 25 novembre, il était question d’un débit doublé, voire triplé, sans frais supplémentaires. De nombreux abonnés sont déçus. Pour un forfait 100 Mbps, seul l’envoi passe de 20 à 30 Mbps, selon leurs témoignages.",
+       "stichpunkte": [
+        "my.t : promesse de débit pour les abonnés fibre",
+        "Forfait 100 Mbps : seul l’envoi progresse",
+        "Anciens forfaits : frais de base plus élevés"
+       ]
+      },
+      "en": {
+       "sprechtext": "Mauritius Telecom promised its customers faster internet connections. On 25 November, it spoke of doubling or tripling home speeds at no extra cost. Many customers are disappointed. On a 100 Mbps plan, they say only the upload rises, from 20 to 30 Mbps.",
+       "stichpunkte": [
+        "my.t: speed promise for fibre customers",
+        "On 100 Mbps only the upload rises",
+        "Older plans show higher base charges"
        ]
       }
      }
@@ -2140,9 +2251,9 @@
   }
  ],
  "einleitung": {
-  "zeit": "2026-11-27T13:50:00+04:00",
-  "de": "Die Wasserreserven der Insel sind am 26. November nur noch zu 44 Prozent gefüllt, deutlich weniger als im Vorjahr. Die Tripartite-Gespräche über den Lohnausgleich für 2027 haben begonnen. Die Gewerkschaften fordern zwischen 1.200 und 1.700 Rupien.",
-  "fr": "Au 26 novembre, les réservoirs de l’île sont remplis à 44 %, bien moins qu’un an plus tôt. Les discussions tripartites sur la compensation salariale 2027 ont commencé. Les syndicats demandent entre 1 200 et 1 700 roupies.",
-  "en": "On 26 November the island’s water reservoirs were only 44% full, well below last year. Tripartite talks on the 2027 wage compensation have begun. The unions are asking for between Rs 1,200 and Rs 1,700."
+  "zeit": "2026-11-27T17:00:00+04:00",
+  "de": "Das Top-Thema bleibt die Wasserkrise: Die Reservoirs sind am 26. November nur zu 44 Prozent gefüllt. Bei den Tripartite-Gesprächen zum Lohnausgleich 2027 haben Gewerkschaftsvertreter die Sitzung verlassen. Kunden von my.t beklagen, dass das versprochene Tempo nicht überall ankommt.",
+  "fr": "Le thème principal reste la crise de l’eau : au 26 novembre, les réservoirs ne sont remplis qu’à 44 %. Lors des tripartites sur la compensation 2027, des syndicalistes ont quitté la séance. Des abonnés de my.t disent que la hausse de débit promise n’est pas au rendez-vous.",
+  "en": "The main topic remains the water crisis: on 26 November the reservoirs were only 44% full. At the tripartite talks on the 2027 compensation, union representatives walked out. my.t customers say the promised speed increase is not materialising."
  }
 }
