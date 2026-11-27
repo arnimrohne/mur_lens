@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import math
 import re
 import shutil
 import subprocess
@@ -705,11 +706,101 @@ def bild_intro(sprache: str, tag: dt.date, ziel: Path) -> None:
     bild.save(ziel)
 
 
+# ----------------------------------------------------------------- Insel-Piktogramm
+
+ZEITUNG_DATEN = HIER.parent / 'lib' / 'zeitung'
+_INSELN = json.loads((ZEITUNG_DATEN / 'inseln.json').read_text(encoding='utf-8'))['inseln']
+_ORTE = json.loads((ZEITUNG_DATEN / 'orte.json').read_text(encoding='utf-8'))
+INSEL_NAME = {
+    'de': {'mauritius': 'Mauritius', 'rodrigues': 'Rodrigues', 'reunion': 'La Réunion'},
+    'fr': {'mauritius': 'Maurice', 'rodrigues': 'Rodrigues', 'reunion': 'La Réunion'},
+    'en': {'mauritius': 'Mauritius', 'rodrigues': 'Rodrigues', 'reunion': 'Réunion'},
+}
+
+
+@dataclass
+class Kartenort:
+    insel: str
+    lat: float | None
+    lon: float | None
+    name: str | None
+
+
+def kartenort(b: Beitrag) -> Kartenort | None:
+    """Ort des Themas für die Karte: aus thema.ort (Ortsliste) oder thema.koordinaten {insel, lat, lon}."""
+    k = b.thema.get('koordinaten')
+    if isinstance(k, dict) and k.get('insel') in _INSELN and k.get('lat') is not None:
+        return Kartenort(k['insel'], float(k['lat']), float(k['lon']), b.thema.get('ort'))
+    ort = (b.thema.get('ort') or '').strip()
+    if not ort:
+        return None
+    if ort in _ORTE['orte']:
+        insel, lat, lon = _ORTE['orte'][ort]
+        return Kartenort(insel, lat, lon, ort)
+    if ort in _ORTE['inseln']:
+        return Kartenort(_ORTE['inseln'][ort], None, None, None)
+    return None
+
+
+def _chaikin(pts: list[tuple[float, float]], runden: int) -> list[tuple[float, float]]:
+    for _ in range(runden):
+        neu = []
+        for i, a in enumerate(pts):
+            b = pts[(i + 1) % len(pts)]
+            neu += [(0.75 * a[0] + 0.25 * b[0], 0.75 * a[1] + 0.25 * b[1]),
+                    (0.25 * a[0] + 0.75 * b[0], 0.25 * a[1] + 0.75 * b[1])]
+        pts = neu
+    return pts
+
+
+def piktogramm(ort: Kartenort, sprache: str, breite: int = 460, hoehe: int = 400) -> Image.Image:
+    """Insel-Umriss (hell, geglättet) mit roter Nadel am Ort und Ortsname darunter."""
+    ring = [tuple(c) for c in _INSELN[ort.insel]['umriss']]
+    xs, ys = [c[0] for c in ring], [c[1] for c in ring]
+    k = math.cos(math.radians(sum(ys) / len(ys)))
+    minx, maxx, miny, maxy = min(xs), max(xs), min(ys), max(ys)
+    rand = 40
+    m = min((breite - 2 * rand) / ((maxx - minx) * k), (hoehe - 2 * rand - 50) / (maxy - miny))
+    ox = (breite - (maxx - minx) * k * m) / 2
+    oy = (hoehe - 50 - (maxy - miny) * m) / 2
+
+    def punkt(x: float, y: float) -> tuple[float, float]:
+        return ox + (x - minx) * k * m, oy + (maxy - y) * m
+
+    f = 3  # dreifach zeichnen, dann verkleinern (glatte Kanten)
+    gross = Image.new('RGBA', (breite * f, hoehe * f), (0, 0, 0, 0))
+    z = ImageDraw.Draw(gross)
+    pts = [(x * f, y * f) for x, y in _chaikin([punkt(x, y) for x, y in ring], 3)]
+    z.polygon(pts, fill=(255, 255, 255, 40))
+    z.line(pts + [pts[0]], fill=(255, 255, 255, 235), width=3 * f, joint='curve')
+    if ort.lat is not None:
+        px, py = (v * f for v in punkt(ort.lon, ort.lat))
+        r = 18 * f
+        z.ellipse([px - 7 * f, py - 3 * f, px + 7 * f, py + 3 * f], fill=(0, 0, 0, 90))
+        z.polygon([(px, py), (px - r * 0.75, py - r * 1.6), (px + r * 0.75, py - r * 1.6)], fill=ROT_TV)
+        z.ellipse([px - r, py - r * 2.6, px + r, py - r * 0.6], fill=ROT_TV)
+        z.ellipse([px - 7 * f, py - r * 1.6 - 7 * f, px + 7 * f, py - r * 1.6 + 7 * f], fill=WEISS)
+    bild = gross.resize((breite, hoehe), Image.LANCZOS)
+    z = ImageDraw.Draw(bild)
+    insel = INSEL_NAME[sprache][ort.insel]
+    text = f'{ort.name} · {insel}' if ort.name and ort.name != insel else insel
+    fm = mono(22, True)
+    abstand = 22 * 0.08
+    tb = sum(z.textlength(c, font=fm) + abstand for c in text.upper()) - abstand
+    gesperrt(z, (round((breite - tb) / 2), hoehe - 36), text, fm, HELLBLAU, 0.08)
+    return bild
+
+
 def bild_beitrag(sprache: str, tag: dt.date, b: Beitrag, nummer: int, anzahl: int, ziel: Path) -> None:
     bild = verlauf(NAVY_HELL, NAVY)
     bild.paste(logo_weiss(900, 0.06), (BREITE - 760, 40), logo_weiss(900, 0.06))
+    ort = kartenort(b)
+    if ort:  # Insel mit Nadel rechts oben
+        karte = piktogramm(ort, sprache)
+        bild.paste(karte, (BREITE - 70 - karte.width, 200), karte)
     z = ImageDraw.Draw(bild)
     senderkopf(bild, z, sprache, tag, f'{nummer} / {anzahl}')
+    textbreite = 1180 if ort else 1250
 
     # Bauchbinde mit Schlagzeile (unten)
     titel = feld(b.update, 'titel', sprache)
@@ -749,7 +840,7 @@ def bild_beitrag(sprache: str, tag: dt.date, b: Beitrag, nummer: int, anzahl: in
             fp = text_schrift(g)
             pzh = round(g * 1.3)
             luecke = round(g * 0.5)
-            bloecke = [umbrechen(z, p, fp, 1250) for p in punkte]
+            bloecke = [umbrechen(z, p, fp, textbreite) for p in punkte]
             hoehe = sum(len(bl) * pzh for bl in bloecke) + luecke * (len(bloecke) - 1)
             if hoehe <= platz:
                 break
@@ -774,7 +865,7 @@ def bild_beitrag(sprache: str, tag: dt.date, b: Beitrag, nummer: int, anzahl: in
         x0 = 160 if punkte else 110
         z.text((x0, zuvor_y + 6), kopf, font=fk, fill=MINT)
         rest = feld(b.vorher, 'titel', sprache)
-        breite = BREITE - 140 - x0 - z.textlength(kopf, font=fk)
+        breite = textbreite + 160 - x0 - z.textlength(kopf, font=fk)
         while z.textlength(rest, font=fv) > breite and ' ' in rest:
             rest = rest.rsplit(' ', 1)[0].rstrip(' ,:;–-') + ' …'
         z.text((x0 + z.textlength(kopf, font=fk), zuvor_y), rest, font=fv, fill=HELLBLAU)
@@ -798,7 +889,6 @@ def wettersymbol(z: ImageDraw.ImageDraw, mx: int, my: int, art: str, g: int = 15
 
     def sonne(cx, cy, rr):
         for i in range(8):
-            import math
             w = i * math.pi / 4
             z.line([cx + math.cos(w) * rr * 1.35, cy + math.sin(w) * rr * 1.35,
                     cx + math.cos(w) * rr * 1.75, cy + math.sin(w) * rr * 1.75], fill=gelb, width=max(4, rr // 6))
