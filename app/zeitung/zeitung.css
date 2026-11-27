@@ -243,6 +243,12 @@ html:has(.gazet) { background: #fdfaf5; }
 .gz-fuss-links { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; }
 .gz-yt-link { display: inline-flex; align-items: center; gap: 8px; }
 .gz-yt-symbol { flex: none; }
+.gazet .gz-sendung-abo { display: flex; align-items: center; gap: 14px; margin: 4px 0 18px; padding: 14px 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); color: var(--fg); text-decoration: none; }
+.gazet .gz-sendung-abo:hover { border-color: #ff0000; }
+.gz-sendung-abo .gz-yt-symbol { width: 40px; height: 28px; }
+.gz-sendung-abo strong { display: block; font-family: var(--f-display); font-weight: 700; font-size: 1.02rem; line-height: 1.3; }
+.gz-sendung-abo small { display: block; font-family: var(--f-mono); font-size: .76rem; color: var(--muted); margin-top: 2px; }
+.gz-sendung-abo-pfeil { margin-left: auto; font-size: 1.3rem; color: var(--lagoon); }
 
 .gz-rechtstext { padding-block: 28px 48px; max-width: 70ch; }
 .gz-rechtstext h1 { font-family: var(--f-display); font-weight: 800; font-size: 2rem; margin: 0 0 16px; }

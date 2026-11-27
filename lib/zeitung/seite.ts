@@ -9,6 +9,13 @@ export const SEITEN_HOST = 'gazet.morisyen.de';
 /** YouTube-Kanal mit der täglichen Sendung (leer = Link wird nicht angezeigt). */
 export const YOUTUBE_KANAL = 'https://www.youtube.com/channel/UCzsMl1rAgzyy3y2eb04BZPg';
 
+/** Playlist der täglichen Sendung je Sprache. */
+export const YOUTUBE_PLAYLISTS = {
+  de: 'https://www.youtube.com/playlist?list=PLeLup6StD61s',
+  fr: 'https://www.youtube.com/playlist?list=PLR-uk753xli4',
+  en: 'https://www.youtube.com/playlist?list=PLPQaMoOwBNx8',
+} as const;
+
 export const SEITEN_BESCHREIBUNG =
   'Nachrichten aus Mauritius auf Deutsch, Französisch und Englisch: Politik, Wirtschaft, Gesellschaft, Umwelt, Sport und Kultur, nach Themen gebündelt und alle vier Stunden aktualisiert.';
 

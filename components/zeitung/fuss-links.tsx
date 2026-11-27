@@ -7,7 +7,7 @@ interface FussLinksProps {
 }
 
 /** YouTube-Symbol (rotes Abspielfeld) nach den Markenrichtlinien, nur als Link zum eigenen Kanal. */
-function YouTubeSymbol() {
+export function YouTubeSymbol() {
   return (
     <svg className="gz-yt-symbol" viewBox="0 0 28 20" width="28" height="20" aria-hidden="true">
       <rect width="28" height="20" rx="5" fill="#FF0000" />
