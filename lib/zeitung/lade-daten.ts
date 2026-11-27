@@ -7,9 +7,10 @@
  */
 
 import mitgeliefert from '@/data/zeitung/daten.json';
+import dossiersMitgeliefert from '@/data/zeitung/dossiers.json';
 
-import { parseZeitungDaten } from './parse-daten';
-import type { ZeitungDaten } from './types';
+import { parseDossiers, parseZeitungDaten } from './parse-daten';
+import type { Dossier, ZeitungDaten } from './types';
 
 export const DATEN_URL =
   'https://raw.githubusercontent.com/arnimrohne/mur_lens/zeitung-daten/daten.json';
@@ -31,6 +32,23 @@ export async function ladeZeitung(): Promise<ZeitungDaten> {
     return daten.themen.length > 0 ? daten : ersatz;
   } catch (fehler) {
     console.warn('Gazet Morisyen: Laden fehlgeschlagen, nutze mitgelieferten Stand.', fehler);
+    return ersatz;
+  }
+}
+
+export const DOSSIERS_URL =
+  'https://raw.githubusercontent.com/arnimrohne/mur_lens/zeitung-daten/dossiers.json';
+
+/** Dossiers vom Daten-Branch; fehlt die Datei dort noch, gilt der mitgelieferte Stand. */
+export async function ladeDossiers(): Promise<Dossier[]> {
+  const ersatz = parseDossiers(dossiersMitgeliefert);
+  if (process.env.GAZET_DATEN_LOKAL === '1') return ersatz;
+  try {
+    const antwort = await fetch(DOSSIERS_URL, { next: { revalidate: AKTUALISIERUNG_SEKUNDEN } });
+    if (!antwort.ok) return ersatz;
+    const dossiers = parseDossiers(await antwort.json());
+    return dossiers.length > 0 ? dossiers : ersatz;
+  } catch {
     return ersatz;
   }
 }

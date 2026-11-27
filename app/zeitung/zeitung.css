@@ -286,3 +286,51 @@ html:has(.gazet) { background: #fdfaf5; }
   .gz-video:hover { transform: none; }
   .gz-spur { transition: none; }
 }
+
+/* Dossiers (Hintergrund-Lexikon) */
+.gz-dossier-link { display: flex; align-items: center; gap: 10px; margin-top: 12px; padding: 10px 14px; border: 1px solid var(--line); border-left: 4px solid var(--lagoon); border-radius: var(--radius); background: var(--paper); text-decoration: none; color: var(--fg); font-family: var(--f-display); font-weight: 500; font-size: .95rem; }
+.gz-dossier-link:hover { background: var(--chip); }
+.gz-dossier-link span:nth-child(2) { flex: 1; min-width: 0; }
+.gz-dossier-marke { flex: none; font-family: var(--f-mono); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--lagoon); }
+.gz-nav-liste a.gz-nav-dossiers { background: var(--lagoon); color: var(--on-lagoon); }
+.gz-nav-liste a.gz-nav-dossiers:hover { background: var(--lagoon); opacity: .9; }
+.gz-dossier-seite { padding-bottom: 32px; }
+.gz-dossier { max-width: 760px; }
+.gz-dossier-h1 { font-family: var(--f-display); font-size: clamp(1.7rem, 4.5vw, 2.5rem); line-height: 1.12; margin: 18px 0 6px; }
+.gz-dossier-unter { color: var(--muted); margin: 0 0 20px; max-width: 640px; }
+.gz-dossier-stand { font-family: var(--f-mono); font-size: .74rem; color: var(--muted); }
+.gz-dossier-liste { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.gz-dossier-karte { position: relative; display: flex; flex-direction: column; gap: 6px; padding: 16px 18px 14px 22px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); text-decoration: none; color: var(--fg); overflow: hidden; }
+.gz-dossier-karte:hover { border-color: var(--muted); }
+.gz-dossier-karte .gz-farbe { position: absolute; left: 0; top: 0; bottom: 0; width: 6px; height: 100%; border-radius: 0; }
+.gz-dossier-karte strong { font-family: var(--f-display); font-size: 1.15rem; line-height: 1.2; }
+.gz-dossier-rubrik { font-family: var(--f-mono); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.gz-dossier-kurz { font-size: .92rem; line-height: 1.45; color: var(--fg); display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.gz-dossier-abschnitt { margin-top: 28px; }
+.gz-dossier-abschnitt h2 { font-family: var(--f-mono); font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--red); font-weight: 500; margin: 0 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+.gz-dossier-abschnitt p { line-height: 1.6; margin: 0 0 12px; }
+.gz-dossier-kurz-block p { font-size: 1.12rem; line-height: 1.55; }
+.gz-dossier-zahlen { list-style: none; padding: 0; margin: 0 0 8px; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+.gz-dossier-zahlen li { display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); font-size: .88rem; line-height: 1.4; }
+.gz-dossier-zahlen strong { font-family: var(--f-display); font-size: 1.5rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.gz-dossier-grafiken { display: grid; gap: 4px; }
+.gz-dossier-quelle { font-family: var(--f-mono); font-size: .7rem; color: var(--muted); white-space: nowrap; }
+.gz-chronik { list-style: none; padding: 0 0 0 4px; margin: 0; border-left: 2px solid var(--line); }
+.gz-chronik li { position: relative; display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 0 0 14px 16px; line-height: 1.5; }
+.gz-chronik li::before { content: ''; position: absolute; left: -6px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--lagoon); }
+.gz-chronik-datum { font-family: var(--f-mono); font-size: .8rem; font-weight: 500; padding-top: 2px; }
+.gz-akteure { margin: 0; display: grid; gap: 12px; }
+.gz-akteure div { padding: 12px 14px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); }
+.gz-akteure dt { font-family: var(--f-display); font-weight: 600; margin-bottom: 4px; }
+.gz-akteure dd { margin: 0; line-height: 1.5; }
+.gz-dossier-offen { margin: 0; padding-left: 20px; line-height: 1.55; }
+.gz-dossier-offen li { margin-bottom: 8px; }
+.gz-dossier-meldungen { list-style: none; padding: 0; margin: 0; }
+.gz-dossier-meldungen li { display: flex; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); line-height: 1.4; }
+.gz-dossier-meldungen time { flex: none; width: 110px; font-family: var(--f-mono); font-size: .76rem; color: var(--muted); padding-top: 2px; }
+.gz-dossier-quellenliste { margin: 0; padding-left: 20px; font-size: .9rem; line-height: 1.6; word-break: break-word; }
+@media (max-width: 560px) {
+  .gz-chronik li { grid-template-columns: 1fr; gap: 2px; }
+  .gz-dossier-meldungen li { flex-direction: column; gap: 2px; }
+  .gz-dossier-meldungen time { width: auto; }
+}

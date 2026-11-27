@@ -43,6 +43,14 @@ export interface OberflaechenTexte {
   linkKopiert: string;
   linkFehler: string;
   zurAusgabe: string;
+  dossiers: string;
+  dossiersUntertitel: string;
+  hintergrund: string;
+  dossierAbschnitte: { kurz: string; warum: string; chronik: string; entwicklung: string; akteure: string; zahlen: string; offen: string; aktuell: string; quellen: string };
+  dossierStand: (datum: string) => string;
+  alleDossiers: string;
+  quelleLink: string;
+  keineDossiers: string;
   wetter: {
     titel: string;
     gefuehlt: (grad: number) => string;
@@ -111,6 +119,14 @@ const de: OberflaechenTexte = {
   linkKopiert: 'Link kopiert',
   linkFehler: 'Kopieren nicht möglich',
   zurAusgabe: '← Zur aktuellen Ausgabe',
+  dossiers: 'Dossiers',
+  dossiersUntertitel: 'Hintergründe zu Themen, die Mauritius immer wieder beschäftigen',
+  hintergrund: 'Hintergrund',
+  dossierAbschnitte: { kurz: 'Kurz erklärt', warum: 'Warum es wichtig ist', chronik: 'Chronik', entwicklung: 'Entwicklung und Ursachen', akteure: 'Wer will was', zahlen: 'Zahlen und Fakten', offen: 'Offene Fragen', aktuell: 'Aktuelle Meldungen', quellen: 'Quellen' },
+  dossierStand: (datum) => `Stand: ${datum}`,
+  alleDossiers: '← Alle Dossiers',
+  quelleLink: 'Quelle',
+  keineDossiers: 'Noch keine Dossiers.',
   wetter: {
     titel: 'Wetter in Port-Louis',
     gefuehlt: (g) => `gefühlt ${g}°`,
@@ -179,6 +195,14 @@ const fr: OberflaechenTexte = {
   linkKopiert: 'Lien copié',
   linkFehler: 'Copie impossible',
   zurAusgabe: "← Vers l'édition du jour",
+  dossiers: 'Dossiers',
+  dossiersUntertitel: 'Le contexte des sujets qui reviennent sans cesse à Maurice',
+  hintergrund: 'Contexte',
+  dossierAbschnitte: { kurz: 'En bref', warum: 'Pourquoi c\'est important', chronik: 'Chronologie', entwicklung: 'Évolution et causes', akteure: 'Qui veut quoi', zahlen: 'Chiffres clés', offen: 'Questions ouvertes', aktuell: 'Actualités', quellen: 'Sources' },
+  dossierStand: (datum) => `Mis à jour : ${datum}`,
+  alleDossiers: '← Tous les dossiers',
+  quelleLink: 'Source',
+  keineDossiers: 'Pas encore de dossiers.',
   wetter: {
     titel: 'Météo à Port-Louis',
     gefuehlt: (g) => `ressenti ${g}°`,
@@ -247,6 +271,14 @@ const en: OberflaechenTexte = {
   linkKopiert: 'Link copied',
   linkFehler: 'Could not copy',
   zurAusgabe: '← To the current edition',
+  dossiers: 'Explainers',
+  dossiersUntertitel: 'Background on the issues that keep coming back in Mauritius',
+  hintergrund: 'Background',
+  dossierAbschnitte: { kurz: 'In short', warum: 'Why it matters', chronik: 'Timeline', entwicklung: 'Trends and causes', akteure: 'Who wants what', zahlen: 'Facts and figures', offen: 'Open questions', aktuell: 'Latest news', quellen: 'Sources' },
+  dossierStand: (datum) => `Updated: ${datum}`,
+  alleDossiers: '← All explainers',
+  quelleLink: 'Source',
+  keineDossiers: 'No explainers yet.',
   wetter: {
     titel: 'Weather in Port Louis',
     gefuehlt: (g) => `feels like ${g}°`,

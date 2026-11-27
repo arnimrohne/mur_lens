@@ -1,4 +1,5 @@
-import { ladeZeitung } from '@/lib/zeitung/lade-daten';
+import { dossierPfad, DOSSIERS_PFAD } from '@/lib/zeitung/dossiers';
+import { ladeDossiers, ladeZeitung } from '@/lib/zeitung/lade-daten';
 import { SEITEN_URL } from '@/lib/zeitung/seite';
 import { themaPfad } from '@/lib/zeitung/teilen';
 
@@ -6,13 +7,17 @@ export const revalidate = 600;
 
 /** Sitemap für gazet.morisyen.de (per Middleware unter /sitemap.xml erreichbar). */
 export async function GET(): Promise<Response> {
-  const daten = await ladeZeitung();
+  const [daten, dossiers] = await Promise.all([ladeZeitung(), ladeDossiers()]);
   const stand = daten.stand || new Date().toISOString();
   const eintraege = [
     { pfad: '/', geaendert: stand, haeufigkeit: 'hourly', prioritaet: '1.0' },
     { pfad: '/impressum', geaendert: stand, haeufigkeit: 'yearly', prioritaet: '0.1' },
     { pfad: '/datenschutz', geaendert: stand, haeufigkeit: 'yearly', prioritaet: '0.1' },
     { pfad: '/nutzungsbedingungen', geaendert: stand, haeufigkeit: 'yearly', prioritaet: '0.1' },
+    ...(dossiers.length > 0
+      ? [{ pfad: DOSSIERS_PFAD, geaendert: stand, haeufigkeit: 'weekly', prioritaet: '0.6' }]
+      : []),
+    ...dossiers.map((d) => ({ pfad: dossierPfad(d.id), geaendert: d.stand, haeufigkeit: 'weekly', prioritaet: '0.6' })),
     ...daten.themen.map((thema) => ({
       pfad: themaPfad(thema.id),
       geaendert: thema.aktualisiert,

@@ -9,15 +9,17 @@ import { ShopBanner } from './shop-banner';
 import { TopKacheln } from './top-kacheln';
 import { WetterLeiste } from './wetter-leiste';
 import { VideoAbschnitt } from './video-abschnitt';
+import { DossierKontext } from './dossier-kontext';
 import { FussLinks } from './fuss-links';
 import { LOGO_PFAD, ZeitungKopf } from './zeitung-kopf';
 import { ZugeklapptesThema } from './zugeklapptes-thema';
 import { useJetzt } from '@/hooks/use-jetzt';
 import { useZeitungSprache } from '@/hooks/use-zeitung-sprache';
 import { baueAusgabe } from '@/lib/zeitung/ausgabe';
+import { DOSSIERS_PFAD } from '@/lib/zeitung/dossiers';
 import { SEITEN_NAME } from '@/lib/zeitung/seite';
 import { TEXTE } from '@/lib/zeitung/texte';
-import type { ZeitungDaten } from '@/lib/zeitung/types';
+import type { Dossier, ZeitungDaten } from '@/lib/zeitung/types';
 import type { Wetter } from '@/lib/zeitung/wetter';
 
 interface ZeitungAnsichtProps {
@@ -26,9 +28,10 @@ interface ZeitungAnsichtProps {
   wetter?: Wetter;
   /** Newsletter-Anmeldung freigeschaltet (Brevo und Impressum eingerichtet). */
   newsletterBereit?: boolean;
+  dossiers?: Dossier[];
 }
 
-export function ZeitungAnsicht({ daten, wetter, newsletterBereit = false }: ZeitungAnsichtProps) {
+export function ZeitungAnsicht({ daten, wetter, newsletterBereit = false, dossiers = [] }: ZeitungAnsichtProps) {
   const [sprache, waehleSprache] = useZeitungSprache();
   const { jetzt, zeitzone } = useJetzt(Date.parse(daten.stand) || 0);
   const ausgabe = useMemo(() => baueAusgabe(daten, jetzt, zeitzone), [daten, jetzt, zeitzone]);
@@ -47,7 +50,7 @@ export function ZeitungAnsicht({ daten, wetter, newsletterBereit = false }: Zeit
   }, []);
 
   return (
-    <>
+    <DossierKontext.Provider value={dossiers}>
       <div className="gz-flagge" aria-hidden="true">
         <span /><span /><span /><span />
       </div>
@@ -65,6 +68,7 @@ export function ZeitungAnsicht({ daten, wetter, newsletterBereit = false }: Zeit
           ))}
           {daten.videos.length > 0 && <a href="#videos">{texte.videos}</a>}
           {ausgabe.archiv.length > 0 && <a href="#archiv">{texte.archiv}</a>}
+          {dossiers.length > 0 && <a className="gz-nav-dossiers" href={DOSSIERS_PFAD}>{texte.dossiers}</a>}
         </div>
       </nav>
 
@@ -107,6 +111,6 @@ export function ZeitungAnsicht({ daten, wetter, newsletterBereit = false }: Zeit
         ))}
         <FussLinks texte={texte} newsletter={newsletterBereit} />
       </footer>
-    </>
+    </DossierKontext.Provider>
   );
 }
