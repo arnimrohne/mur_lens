@@ -1052,20 +1052,50 @@ def bild_outro(sprache: str, tag: dt.date, ziel: Path) -> None:
 
 
 def bild_vorschau(sprache: str, tag: dt.date, ziel: Path) -> None:
-    """YouTube-Vorschaubild 1280×720: Logo und Datum."""
+    """YouTube-Vorschaubild 1280×720 im Sendungsstil: Navy, Sendungstitel groß links, Sprecher rechts, Datum dezent."""
     w, h = 1280, 720
-    bild = Image.new('RGB', (w, h), BG)
+    bild = verlauf(NAVY, NAVY_TIEF).resize((w, h))
+    sprecher = CLIPS / f'{sprache}-sprecher.jpg'
+    if sprecher.exists():
+        foto = Image.open(sprecher).convert('RGB')
+        fh = h
+        fw = round(foto.width * fh / foto.height)
+        foto = foto.resize((fw, fh), Image.LANCZOS)
+        # rechte Hälfte des Fotos (Person steht mittig) an den rechten Rand, nach links weich in Navy übergehen
+        ausschnitt = foto.crop(((fw - 760) // 2, 0, (fw - 760) // 2 + 760, fh))
+        maske = Image.new('L', (760, fh), 255)
+        mz = ImageDraw.Draw(maske)
+        for x in range(260):
+            mz.line([x, 0, x, fh], fill=round(255 * (x / 260) ** 1.6))
+        bild.paste(ausschnitt, (w - 760, 0), maske)
+    else:
+        bild.paste(logo_weiss(700, 0.08), (w - 600, -40), logo_weiss(700, 0.08))
     z = ImageDraw.Draw(bild)
+    links = 64
+    # Absender: kleines Logo + Name
+    bild.paste(logo_weiss(84), (links, 58), logo_weiss(84))
+    z.text((links + 100, 78), 'Gazet Morisyen', font=titel_schrift(40), fill=WEISS)
+    # Sendungstitel groß, umbrochen auf höchstens drei Zeilen
+    titel = T[sprache]['sendung']
+    f = titel_schrift(96)
+    zeilen, zeile = [], ''
+    for wort in titel.split():
+        probe = f'{zeile} {wort}'.strip()
+        if z.textlength(probe, font=f) > 620 and zeile:
+            zeilen.append(zeile)
+            zeile = wort
+        else:
+            zeile = probe
+    zeilen.append(zeile)
+    y = 220 if len(zeilen) <= 2 else 190
+    z.rectangle([links, y + 8, links + 12, y + len(zeilen) * 104 - 14], fill=ROT_TV)
+    for i, zl in enumerate(zeilen):
+        z.text((links + 36, y + i * 104), zl, font=f, fill=WEISS)
+    # Datum dezent darunter
+    gesperrt(z, (links + 38, y + len(zeilen) * 104 + 26), datum_kurz(tag, sprache), mono(30, True), HELLBLAU, 0.12)
+    # Flaggenlinie unten
     for i, farbe in enumerate(FLAGGE):
-        z.rectangle([round(i * w / 4), 0, round((i + 1) * w / 4), 22], fill=farbe)
-        z.rectangle([round(i * w / 4), h - 22, round((i + 1) * w / 4), h], fill=farbe)
-    g = 430
-    bild.paste(logo(g), ((w - g) // 2, 70), logo(g))
-    f = mono(46, True)
-    text = datum_kurz(tag, sprache)
-    abstand = 46 * 0.14
-    breite = sum(z.textlength(c, font=f) + abstand for c in text) - abstand
-    gesperrt(z, (round((w - breite) / 2), 560), text, f, LAGOON, 0.14)
+        z.rectangle([round(i * w / 4), h - 14, round((i + 1) * w / 4), h], fill=farbe)
     bild.save(ziel)
 
 
