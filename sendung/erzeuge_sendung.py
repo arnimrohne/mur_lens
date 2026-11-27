@@ -80,61 +80,99 @@ T = {
     'de': {
         'untertitel': 'Die Tageszeitung für Mauritius',
         'sendung': 'Nachrichten aus Mauritius',
-        'begruessung': 'Willkommen bei Gazet Morisyen, den Nachrichten aus Mauritius. Heute ist {datum}.',
-        'kuerze': 'Das Wichtigste in Kürze.',
         'top': 'Top-Thema',
         'quelle': 'Quelle',
         'quellen': 'Quellen',
-        'abschied': 'Das waren die Nachrichten aus Mauritius. Alle Meldungen mit Quellen finden Sie auf gazet punkt morisyen punkt de. Bis morgen.',
+        'zuvor': 'Zuvor',
         'mehr': 'Alle Meldungen und Quellen',
         'newsletter': 'Newsletter: gazet.morisyen.de/newsletter',
-        'kapitel_start': 'Begrüßung & Überblick',
+        'kapitel_start': 'Begrüßung',
         'kapitel_ende': 'Verabschiedung',
         'titel': 'Nachrichten aus Mauritius · {datum_kurz} | Gazet Morisyen',
         'ki': 'Sprecherstimme synthetisch erzeugt (Piper TTS, Stimme: {stimme}). Texte: eigene Zusammenfassungen der Redaktion Gazet Morisyen.',
         'impressum': 'Impressum: https://gazet.morisyen.de/impressum',
         'heute_themen': 'Die Themen',
-        'ueberblick': 'Unsere Themen:',
     },
     'fr': {
         'untertitel': 'Le quotidien de Maurice',
         'sendung': "L'actualité de Maurice",
-        'begruessung': "Bienvenue sur Gazet Morisyen, l'actualité de Maurice. Nous sommes le {datum}.",
-        'kuerze': "L'essentiel en bref.",
         'top': 'À la une',
         'quelle': 'Source',
         'quellen': 'Sources',
-        'abschied': "C'était l'actualité de Maurice. Retrouvez toutes les informations et leurs sources sur gazet point morisyen point de. À demain.",
+        'zuvor': 'Auparavant',
         'mehr': 'Toutes les infos et sources',
         'newsletter': 'Newsletter : gazet.morisyen.de/newsletter',
-        'kapitel_start': 'Introduction & résumé',
+        'kapitel_start': 'Introduction',
         'kapitel_ende': 'Conclusion',
         'titel': "L'actualité de Maurice · {datum_kurz} | Gazet Morisyen",
         'ki': 'Voix de synthèse (Piper TTS, voix : {stimme}). Textes : résumés rédigés par Gazet Morisyen.',
         'impressum': 'Mentions légales : https://gazet.morisyen.de/impressum',
         'heute_themen': 'Au sommaire',
-        'ueberblick': 'Au sommaire :',
     },
     'en': {
         'untertitel': 'The daily paper for Mauritius',
         'sendung': 'News from Mauritius',
-        'begruessung': 'Welcome to Gazet Morisyen, the news from Mauritius. Today is {datum}.',
-        'kuerze': 'The headlines.',
         'top': 'Top story',
         'quelle': 'Source',
         'quellen': 'Sources',
-        'abschied': "That was the news from Mauritius. You can find every story and its sources at gazet dot morisyen dot de. See you tomorrow.",
+        'zuvor': 'Previously',
         'mehr': 'All stories and sources',
         'newsletter': 'Newsletter: gazet.morisyen.de/newsletter',
-        'kapitel_start': 'Welcome & summary',
+        'kapitel_start': 'Welcome',
         'kapitel_ende': 'Goodbye',
         'titel': 'News from Mauritius · {datum_kurz} | Gazet Morisyen',
         'ki': 'Synthetic narrator voice (Piper TTS, voice: {stimme}). Texts: original summaries by Gazet Morisyen.',
         'impressum': 'Legal notice: https://gazet.morisyen.de/impressum',
         'heute_themen': 'In this edition',
-        'ueberblick': 'Our top stories:',
     },
 }
+
+# Wechselnde Begrüßungen und Verabschiedungen: Gruß × Beiwort × Wort, je Tag eine andere Kombination.
+GRUSS = {
+    'de': {
+        'gruss': ['Herzlich willkommen', 'Willkommen', 'Ich begrüße Sie', 'Schön, dass Sie dabei sind. Willkommen'],
+        'beiwort': ['aktuellen', 'neuesten', 'heutigen'],
+        'wort': ['Nachrichten', 'Meldungen', 'Themen'],
+        'satz': '{gruss} zu den {beiwort} {wort} aus Mauritius.',
+        'abschied': [
+            'Das waren die {wort} für heute. Alle Meldungen mit Quellen finden Sie auf gazet punkt morisyen punkt de. Bis morgen.',
+            'So weit die {wort} aus Mauritius. Mehr dazu auf gazet punkt morisyen punkt de. Ich wünsche Ihnen einen schönen Tag.',
+            'Das war es für heute. Alle Quellen und weitere Meldungen auf gazet punkt morisyen punkt de. Auf Wiedersehen.',
+        ],
+    },
+    'fr': {
+        'gruss': ['Bonjour et bienvenue', 'Bienvenue', 'Je vous souhaite la bienvenue', 'Ravi de vous retrouver. Bienvenue'],
+        'beiwort': ['', 'dernières', 'principales'],
+        'wort': ['nouvelles', 'informations', 'actualités'],
+        'satz': '{gruss}. Voici les {beiwort} {wort} de Maurice.',
+        'abschied': [
+            "C'est tout pour aujourd'hui. Retrouvez toutes les {wort} et leurs sources sur gazet point morisyen point de. À demain.",
+            "Voilà pour les {wort} de Maurice. Plus de détails sur gazet point morisyen point de. Bonne journée.",
+            "C'était l'essentiel du jour. Toutes les sources sur gazet point morisyen point de. Au revoir.",
+        ],
+    },
+    'en': {
+        'gruss': ['Hello and welcome', 'Welcome', 'Good to have you with us. Welcome', 'A warm welcome'],
+        'beiwort': ['the latest', "today's", 'the top'],
+        'wort': ['news', 'headlines', 'stories'],
+        'satz': '{gruss} to {beiwort} {wort} from Mauritius.',
+        'abschied': [
+            "That's all for today. You'll find every story and its sources at gazet dot morisyen dot de. See you tomorrow.",
+            'And those were the {wort} from Mauritius. More at gazet dot morisyen dot de. Have a good day.',
+            "That's it for now. All sources at gazet dot morisyen dot de. Goodbye.",
+        ],
+    },
+}
+
+
+def gruss_und_abschied(sprache: str, tag: dt.date) -> tuple[str, str]:
+    k = GRUSS[sprache]
+    n = tag.toordinal()
+    wort = k['wort'][n % len(k['wort'])]
+    satz = k['satz'].format(gruss=k['gruss'][(n // 3) % len(k['gruss'])],
+                            beiwort=k['beiwort'][(n // 2) % len(k['beiwort'])], wort=wort)
+    abschied = k['abschied'][n % len(k['abschied'])].format(wort=wort)
+    return re.sub(r'\s+', ' ', satz), abschied
 
 
 # ----------------------------------------------------------------- Daten
@@ -181,6 +219,48 @@ class Beitrag:
     update: dict
     top: bool
 
+    @property
+    def vorher(self) -> dict | None:
+        updates = self.thema.get('updates', [])
+        return updates[1] if len(updates) > 1 else None
+
+
+def saetze(text: str) -> list[str]:
+    text = re.sub(r'\s+', ' ', text).strip()
+    return [x for x in re.split(r'(?<=[.!?…])\s+(?=[A-ZÀ-ÖØ-Þ0-9«„"])', text) if x]
+
+
+def kuerze(text: str, zeichen: int) -> str:
+    """Die ersten ganzen Sätze bis etwa `zeichen` Zeichen."""
+    ergebnis = ''
+    for satz in saetze(text):
+        if ergebnis and len(ergebnis) + len(satz) > zeichen:
+            break
+        ergebnis = f'{ergebnis} {satz}'.strip()
+    return ergebnis
+
+
+def sendetext(b: Beitrag, name: str, sprache: str) -> str:
+    """Vom Redaktions-Agenten geschriebener Sende-Text (update.sendung.<sprache>.<name>), falls vorhanden."""
+    return ((b.update.get('sendung') or {}).get(sprache) or {}).get(name, '').strip()
+
+
+def sprech_beitrag(b: Beitrag, sprache: str) -> str:
+    """Was der Sprecher liest: ohne Schlagzeile; mit kurzem Rückblick, wenn es vorher schon Meldungen gab."""
+    eigen = sendetext(b, 'sprechtext', sprache)
+    if eigen:
+        return eigen
+    text = feld(b.update, 'text', sprache)
+    if b.vorher:
+        rueck = kuerze(feld(b.vorher, 'text', sprache), 160)
+        if rueck:
+            text += f' {T[sprache]["zuvor"]}: {rueck}'
+    return text
+
+
+def anzeige_beitrag(b: Beitrag, sprache: str) -> str:
+    return sendetext(b, 'kurz', sprache) or kuerze(feld(b.update, 'text', sprache), 230)
+
 
 def waehle_themen(daten: dict, jetzt: dt.datetime) -> list[Beitrag]:
     """Themen mit Meldung in den letzten 24 Stunden; Top-Themen zuerst, sonst neueste zuerst."""
@@ -204,30 +284,58 @@ def waehle_themen(daten: dict, jetzt: dt.datetime) -> list[Beitrag]:
 
 # ----------------------------------------------------------------- Sprache
 
-def sprechtext(text: str) -> str:
+AUSSPRACHE = json.loads((HIER / 'aussprache.json').read_text(encoding='utf-8'))
+
+
+def aussprache(text: str, sprache: str) -> str:
+    """Wendet das Aussprache-Verzeichnis an (nur für den Ton)."""
+    regeln = AUSSPRACHE.get(sprache, {})
+    for muster, ersatz in regeln.get('muster', []):
+        text = re.sub(muster, ersatz, text)
+    for wort in sorted(regeln.get('woerter', {}), key=len, reverse=True):
+        text = re.sub(rf'(?<![\w-]){re.escape(wort)}(?![\w-])', regeln['woerter'][wort], text)
+    wortweise = set(regeln.get('abkuerzungen_wortweise', []))
+
+    def buchstabiere(m: re.Match) -> str:
+        w = m.group(0)
+        return w if w in wortweise else ' '.join(w)
+
+    return re.sub(r'(?<![\w])[A-Z]{2,5}(?![a-zäöüéèàç])', buchstabiere, text)
+
+
+def sprechtext(text: str, sprache: str = 'de') -> str:
     """Bereinigt Text für die Sprachausgabe."""
     text = re.sub(r'https?://\S+', '', text)
     text = text.replace('«', '').replace('»', '').replace('„', '').replace('“', '').replace('"', '')
     text = text.replace(' – ', ', ').replace(' — ', ', ')
     text = re.sub(r'\s+', ' ', text)
-    return text.strip()
+    return aussprache(text.strip(), sprache)
 
 
 class Sprecher:
-    def __init__(self, modell: Path):
+    def __init__(self, modell: Path, sprache: str):
+        self.sprache = sprache
         from piper import PiperVoice, SynthesisConfig  # erst hier: Bildtests brauchen kein Piper
 
         self.stimme = PiperVoice.load(str(modell))
         self.konfig = SynthesisConfig(length_scale=1.06)
         self.rate = self.stimme.config.sample_rate
 
-    def sprich(self, text: str, ziel: Path) -> float:
+    def sprich(self, text: str, ziel: Path, mindestens: float = 0.0) -> float:
         with wave.open(str(ziel), 'wb') as datei:
-            self.stimme.synthesize_wav(sprechtext(text), datei, syn_config=self.konfig)
+            self.stimme.synthesize_wav(sprechtext(text, self.sprache), datei, syn_config=self.konfig)
             # Stille anhängen
             datei.writeframes(b'\x00\x00' * int(self.rate * PAUSE_S))
         with wave.open(str(ziel), 'rb') as datei:
-            return datei.getnframes() / datei.getframerate()
+            dauer = datei.getnframes() / datei.getframerate()
+        if dauer < mindestens:  # z. B. Startfolie: lange genug zum Lesen der Themen
+            with wave.open(str(ziel), 'rb') as datei:
+                params, frames = datei.getparams(), datei.readframes(datei.getnframes())
+            with wave.open(str(ziel), 'wb') as datei:
+                datei.setparams(params)
+                datei.writeframes(frames + b'\x00\x00' * int(self.rate * (mindestens - dauer)))
+            dauer = mindestens
+        return dauer
 
 
 # ----------------------------------------------------------------- Bilder
@@ -360,7 +468,7 @@ def bild_beitrag(sprache: str, tag: dt.date, b: Beitrag, nummer: int, anzahl: in
     y += 62
 
     titel = feld(b.update, 'titel', sprache)
-    for g in (84, 76, 68, 60, 54):
+    for g in (92, 84, 76, 68, 60):
         f = titel_schrift(g)
         zeilen = umbrechen(z, titel, f, breite)
         if len(zeilen) <= 3:
@@ -368,24 +476,39 @@ def bild_beitrag(sprache: str, tag: dt.date, b: Beitrag, nummer: int, anzahl: in
     for zeile in zeilen[:3]:
         z.text((RAND, y), zeile, font=f, fill=FG)
         y += round(f.size * 1.12)
-    y += 34
+    y += 40
 
-    text = feld(b.update, 'text', sprache).replace('\n\n', '\n')
-    platz = HOEHE - 150 - y
-    for g in (42, 39, 36, 33, 30):
+    # Rückblick als eine Zeile unten, falls es frühere Meldungen gibt
+    unten = HOEHE - 150
+    if b.vorher:
+        vorher_titel = feld(b.vorher, 'titel', sprache)
+        tag_vorher = iso(b.vorher['zeit']).astimezone(MU).date()
+        kopf = f'{T[sprache]["zuvor"]} · {tag_vorher.day:02d}.{tag_vorher.month:02d}.'
+        fz = mono(24, True)
+        fv = text_schrift(32)
+        while z.textlength(vorher_titel, font=fv) > breite and ' ' in vorher_titel:
+            vorher_titel = vorher_titel.rsplit(' ', 1)[0].rstrip(' ,:;–-') + ' …'
+        unten -= 118
+        z.line([RAND, unten, RAND + 80, unten], fill=LAGOON, width=4)
+        gesperrt(z, (RAND, unten + 20), kopf, fz, LAGOON, 0.08)
+        z.text((RAND, unten + 58), vorher_titel, font=fv, fill=MUTED)
+        unten -= 30
+
+    text = anzeige_beitrag(b, sprache)
+    platz = unten - y
+    for g in (48, 44, 40, 36, 33):
         f = text_schrift(g)
         zh = round(g * 1.45)
         zeilen = umbrechen(z, text, f, breite)
         if len(zeilen) * zh <= platz:
             break
-    max_zeilen = platz // zh
+    max_zeilen = max(1, platz // zh)
     if len(zeilen) > max_zeilen:
         zeilen = zeilen[:max_zeilen]
         zeilen[-1] = zeilen[-1].rstrip(' .,;:') + ' …'
     for zeile in zeilen:
-        if zeile:
-            z.text((RAND, y), zeile, font=f, fill=FG)
-        y += zh if zeile else zh // 2
+        z.text((RAND, y), zeile, font=f, fill=FG)
+        y += zh
 
     quellen = [q.get('name', '') for q in b.update.get('quellen', []) if q.get('name')]
     if quellen:
@@ -413,27 +536,19 @@ def bild_outro(sprache: str, tag: dt.date, ziel: Path) -> None:
     bild.save(ziel)
 
 
-def bild_vorschau(sprache: str, tag: dt.date, b: Beitrag | None, ziel: Path) -> None:
-    """YouTube-Vorschaubild 1280×720."""
+def bild_vorschau(sprache: str, tag: dt.date, ziel: Path) -> None:
+    """YouTube-Vorschaubild 1280×720: Logo und Datum."""
     w, h = 1280, 720
     bild = Image.new('RGB', (w, h), BG)
     z = ImageDraw.Draw(bild)
     for i, farbe in enumerate(FLAGGE):
-        z.rectangle([round(i * w / 4), 0, round((i + 1) * w / 4), 16], fill=farbe)
-    bild.paste(logo(150), (60, 60), logo(150))
-    z.text((230, 78), 'Gazet Morisyen', font=titel_schrift(64), fill=FG)
-    gesperrt(z, (234, 160), datum_kurz(tag, sprache), mono(30, True), LAGOON, 0.06)
-    if b:
-        titel = feld(b.update, 'titel', sprache)
-        for g in (76, 68, 60, 54, 48):
-            f = titel_schrift(g)
-            zeilen = umbrechen(z, titel, f, w - 120)
-            if len(zeilen) <= 4:
-                break
-        y = 270
-        for zeile in zeilen[:4]:
-            z.text((60, y), zeile, font=f, fill=FG)
-            y += round(f.size * 1.1)
+        z.rectangle([round(i * w / 4), 0, round((i + 1) * w / 4), 22], fill=farbe)
+        z.rectangle([round(i * w / 4), h - 22, round((i + 1) * w / 4), h], fill=farbe)
+    g = 400
+    bild.paste(logo(g), ((w - g) // 2, 60), logo(g))
+    f = titel_schrift(110)
+    text = datum_kurz(tag, sprache)
+    z.text(((w - z.textlength(text, font=f)) / 2, 480), text, font=f, fill=FG)
     bild.save(ziel)
 
 
@@ -462,6 +577,7 @@ class Abschnitt:
     bild: Path
     dauer: float = 0.0
     quellen: list[dict] = field(default_factory=list)
+    mindestens: float = 0.0
 
 
 def erzeuge(daten: dict, sprache: str, stimmen: Path, ausgabe: Path, jetzt: dt.datetime) -> dict:
@@ -471,6 +587,7 @@ def erzeuge(daten: dict, sprache: str, stimmen: Path, ausgabe: Path, jetzt: dt.d
     einleitung = ''
     if daten.get('einleitung'):
         einleitung = daten['einleitung'].get(sprache) or daten['einleitung'].get('de', '')
+    gruss, abschied = gruss_und_abschied(sprache, tag)
 
     arbeit = Path(tempfile.mkdtemp(prefix=f'sendung-{sprache}-'))
     abschnitte: list[Abschnitt] = []
@@ -478,30 +595,24 @@ def erzeuge(daten: dict, sprache: str, stimmen: Path, ausgabe: Path, jetzt: dt.d
     intro = arbeit / '00-intro.png'
     schlagzeilen = [feld(b.update, 'titel', sprache) for b in beitraege]
     bild_intro(sprache, tag, schlagzeilen, intro)
-    sprechen = t['begruessung'].format(datum=datum_lang(tag, sprache))
-    if einleitung:
-        sprechen += f' {t["kuerze"]} {einleitung}'
-    elif schlagzeilen:
-        sprechen += f' {t["ueberblick"]} ' + ' '.join(f'{x.rstrip(".")}.' for x in schlagzeilen[:3])
-    abschnitte.append(Abschnitt(t['kapitel_start'], sprechen, intro))
+    abschnitte.append(Abschnitt(t['kapitel_start'], gruss, intro, mindestens=7.0))
 
     for i, b in enumerate(beitraege, 1):
         pfad = arbeit / f'{i:02d}-thema.png'
         bild_beitrag(sprache, tag, b, i, len(beitraege), pfad)
-        titel = feld(b.update, 'titel', sprache)
-        text = feld(b.update, 'text', sprache)
-        abschnitte.append(Abschnitt(titel, f'{titel}. {text}', pfad, quellen=b.update.get('quellen', [])))
+        abschnitte.append(Abschnitt(feld(b.update, 'titel', sprache), sprech_beitrag(b, sprache), pfad,
+                                    quellen=b.update.get('quellen', [])))
 
     outro = arbeit / '99-outro.png'
     bild_outro(sprache, tag, outro)
-    abschnitte.append(Abschnitt(t['kapitel_ende'], t['abschied'], outro))
+    abschnitte.append(Abschnitt(t['kapitel_ende'], abschied, outro))
 
     modell, stimme_name = STIMMEN[sprache]
-    sprecher = Sprecher(stimmen / f'{modell}.onnx')
+    sprecher = Sprecher(stimmen / f'{modell}.onnx', sprache)
     teile = []
     for i, a in enumerate(abschnitte):
         ton = arbeit / f'{i:02d}.wav'
-        a.dauer = sprecher.sprich(a.sprechen, ton)
+        a.dauer = sprecher.sprich(a.sprechen, ton, a.mindestens)
         teil = arbeit / f'{i:02d}.mp4'
         abschnitt_video(a.bild, ton, teil)
         teile.append(teil)
@@ -512,7 +623,7 @@ def erzeuge(daten: dict, sprache: str, stimmen: Path, ausgabe: Path, jetzt: dt.d
     stamm = f'gazet-morisyen-{tag.isoformat()}-{sprache}'
     video = ausgabe / f'{stamm}.mp4'
     ffmpeg('-f', 'concat', '-safe', '0', '-i', str(liste), '-c', 'copy', '-movflags', '+faststart', str(video))
-    bild_vorschau(sprache, tag, beitraege[0] if beitraege else None, ausgabe / f'{stamm}-vorschau.png')
+    bild_vorschau(sprache, tag, ausgabe / f'{stamm}-vorschau.png')
 
     # YouTube-Texte
     kapitel, quellen_zeilen, start = [], [], 0.0
@@ -533,8 +644,8 @@ def erzeuge(daten: dict, sprache: str, stimmen: Path, ausgabe: Path, jetzt: dt.d
         f'{t["quellen"]}:',
         *quellen_zeilen,
         '',
-        f'🌐 https://gazet.morisyen.de',
-        f'✉️ https://gazet.morisyen.de/newsletter',
+        '🌐 https://gazet.morisyen.de',
+        '✉️ https://gazet.morisyen.de/newsletter',
         '',
         t['ki'].format(stimme=stimme_name),
         t['impressum'],

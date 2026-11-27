@@ -8,6 +8,8 @@ und eine Textdatei mit Titel, Beschreibung (Kapitel und Quellen) und Tags für Y
 - **Bild:** Standbild-Folien in der Farbwelt der Website, mit GM-Logo und Flaggenstreifen.
   Keine Fotos oder Grafiken aus den Quellen.
 - **Ton:** Piper TTS, frei nutzbare Stimmen. Die Namensnennung steht in jeder Videobeschreibung.
+  Die Aussprache schwieriger Wörter (Orte, Abkürzungen, Beträge, Uhrzeiten) regelt `aussprache.json`.
+  Dort können weitere Wörter ergänzt werden.
   - Deutsch: Thorsten (CC0)
   - Französisch: SIWIS (CC BY 4.0)
   - Englisch: Cori (gemeinfrei)

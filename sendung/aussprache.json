@@ -1,0 +1,213 @@
+{
+  "_hinweis": "Aussprache-Verzeichnis für die Sprecherstimmen. 'woerter': ganzes Wort → Sprechschreibung (nur im Ton, nie auf den Folien). 'muster': reguläre Ausdrücke (Python) für Zahlen, Uhrzeiten, Währungen. 'abkuerzungen_wortweise': Abkürzungen, die als Wort gesprochen werden; alle anderen aus 2–5 Großbuchstaben werden buchstabiert. Ein Wert in [[ … ]] ist Lautschrift (IPA wie bei espeak) und wird exakt so gesprochen.",
+  "de": {
+    "woerter": {
+      "Mauritius": "[[ maʊrˈiːtsiʊs ]]",
+      "Mauritier": "[[ maʊrˈiːtsiɐ ]]",
+      "Mauritierin": "[[ maʊrˈiːtsiərɪn ]]",
+      "Mauritiern": "[[ maʊrˈiːtsiɐn ]]",
+      "Port-Louis": "Por Lui",
+      "Port Louis": "Por Lui",
+      "Quatre-Bornes": "Katr Born",
+      "Rodrigues": "Rodrieg",
+      "Curepipe": "Kürpieb",
+      "Mahébourg": "Maebur",
+      "Vacoas": "Wakoa",
+      "Vacoas-Phoenix": "Wakoa Fönix",
+      "Beau-Bassin": "Bo Bassäng",
+      "Rose-Hill": "Ros Hill",
+      "Champ-de-Mars": "Schang de Mars",
+      "Grand-Baie": "Grang Bä",
+      "Flacq": "Flak",
+      "Moka": "Moka",
+      "Pamplemousses": "Pamplemuss",
+      "Rivière-du-Rempart": "Riwjär dü Rangpar",
+      "Rivière-Noire": "Riwjär Nwar",
+      "Savanne": "Sawann",
+      "Grand-Port": "Grang Por",
+      "Plaine-Wilhems": "Plän Wilems",
+      "Black River": "Bläck Riwer",
+      "Agaléga": "Agalega",
+      "Chagos": "Tschagos",
+      "Réunion": "Reünjon",
+      "La Réunion": "La Reünjon",
+      "Seychellen": "Seschellen",
+      "Défi Media": "Defi Media",
+      "L'Express": "Lexpress",
+      "Le Mauricien": "Lö Morissjäng",
+      "Linfo.re": "Linfo",
+      "Kréol": "Kreol",
+      "Morisien": "Morisjäng",
+      "Morisyen": "Morisjäng",
+      "Select Committee": "Selekt Kommitti",
+      "Assemblée nationale": "Assamble nassjonal",
+      "Supreme Court": "Suprihm Kort",
+      "Bail Act": "Bäil Äkt",
+      "Budget": "Büdschee"
+    },
+    "muster": [
+      [
+        "\\bRs\\.?\\s?([\\d][\\d.,]*)\\s?(Mio\\.|Millionen)",
+        "\\1 Millionen Rupien"
+      ],
+      [
+        "\\bRs\\.?\\s?([\\d][\\d.,]*)\\s?(Mrd\\.|Milliarden)",
+        "\\1 Milliarden Rupien"
+      ],
+      [
+        "\\bRs\\.?\\s?([\\d][\\d.,]*)",
+        "\\1 Rupien"
+      ],
+      [
+        "\\b(\\d{1,2}):00 Uhr",
+        "\\1 Uhr"
+      ],
+      [
+        "\\b(\\d{1,2}):(\\d{2}) Uhr",
+        "\\1 Uhr \\2"
+      ],
+      [
+        "\\b(\\d{1,2}):(\\d{2})\\b",
+        "\\1 Uhr \\2"
+      ],
+      [
+        "(\\d) %",
+        "\\1 Prozent"
+      ],
+      [
+        "\\bca\\. ",
+        "zirka "
+      ],
+      [
+        "\\bz\\. B\\. ",
+        "zum Beispiel "
+      ],
+      [
+        "\\bu\\. a\\. ",
+        "unter anderem "
+      ],
+      [
+        "\\bkm\\b",
+        "Kilometer"
+      ]
+    ],
+    "abkuerzungen_wortweise": [
+      "NATO",
+      "UNO",
+      "COVID",
+      "AIDS",
+      "UNESCO",
+      "FIFA",
+      "OPEC",
+      "SADC",
+      "COMESA",
+      "CEB",
+      "STC",
+      "SMS"
+    ]
+  },
+  "fr": {
+    "woerter": {
+      "Select Committee": "Sélect Comiti",
+      "Supreme Court": "Suprime Corte",
+      "Bail Act": "Bèil Act",
+      "Kréol": "Kréol"
+    },
+    "muster": [
+      [
+        "\\bRs\\.?\\s?([\\d][\\d  .,]*\\d)\\s?(millions?|milliards?)",
+        "\\1 \\2 de roupies"
+      ],
+      [
+        "\\bRs\\.?\\s?([\\d][\\d  .,]*\\d|\\d)",
+        "\\1 roupies"
+      ],
+      [
+        "\\b(\\d{1,2}) h (\\d{2})\\b",
+        "\\1 heures \\2"
+      ],
+      [
+        "\\b(\\d{1,2}) h\\b",
+        "\\1 heures"
+      ],
+      [
+        "\\b(\\d{1,2})h(\\d{2})\\b",
+        "\\1 heures \\2"
+      ],
+      [
+        "(\\d) ?%",
+        "\\1 pour cent"
+      ],
+      [
+        "\\bkm\\b",
+        "kilomètres"
+      ]
+    ],
+    "abkuerzungen_wortweise": [
+      "OTAN",
+      "ONU",
+      "COVID",
+      "UNESCO",
+      "FIFA",
+      "SADC",
+      "COMESA",
+      "CEB",
+      "STC",
+      "SMS",
+      "MITD"
+    ]
+  },
+  "en": {
+    "woerter": {
+      "Port-Louis": "Port Louie",
+      "Port Louis": "Port Louie",
+      "Quatre-Bornes": "Katra Born",
+      "Rodrigues": "Rodreegs",
+      "Curepipe": "Cure peep",
+      "Mahébourg": "Mah-ay-boor",
+      "Vacoas": "Vah-coh-ah",
+      "Beau-Bassin": "Bo Bassan",
+      "Champ-de-Mars": "Shon de Marss",
+      "Grand-Baie": "Gron Bay",
+      "Chagos": "Chah-goss",
+      "Réunion": "Ray-oonion",
+      "La Réunion": "La Ray-oonion",
+      "Défi Media": "Deffy Media",
+      "L'Express": "Lexpress",
+      "Le Mauricien": "Le Moh-ree-see-an",
+      "Kréol": "Cray-ol",
+      "Morisyen": "Mor-ee-see-an"
+    },
+    "muster": [
+      [
+        "\\bRs\\.?\\s?([\\d][\\d.,]*)\\s?(million|billion|m|bn)\\b",
+        "\\1 \\2 rupees"
+      ],
+      [
+        "\\bRs\\.?\\s?([\\d][\\d.,]*)",
+        "\\1 rupees"
+      ],
+      [
+        "(\\d)%",
+        "\\1 per cent"
+      ],
+      [
+        "\\bkm\\b",
+        "kilometres"
+      ]
+    ],
+    "abkuerzungen_wortweise": [
+      "NATO",
+      "COVID",
+      "AIDS",
+      "UNESCO",
+      "FIFA",
+      "OPEC",
+      "SADC",
+      "COMESA",
+      "CEB",
+      "STC",
+      "SMS"
+    ]
+  }
+}
