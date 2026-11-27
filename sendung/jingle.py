@@ -2,7 +2,7 @@
 Erkennungsmelodie der Sendung (ca. 3,5 s), vollständig synthetisiert – keine fremden Samples, keine Lizenzfragen.
 
 Aufbau: Séga im ternären Schwung – die Ravanne (Rahmentrommel) trägt durchgehend den Rhythmus,
-dazu Maravanne (Rassel) und Triangel; darüber ein leises Marimba-Motiv in D-Dur, bei 1,5 s ein Akkordschlag.
+dazu Maravanne (Rassel) und Triangel; darunter ein runder Bass, darüber eine Melodie auf warmem E-Piano in D-Dur; Akkordschläge bei 1,5 s und zum Schluss.
 """
 
 from __future__ import annotations
@@ -26,13 +26,27 @@ def _hz(note: str) -> float:
     return 440.0 * 2 ** ((namen[ton] + 12 * (oktave - 4)) / 12)
 
 
-def _marimba(freq: float, dauer: float = 0.9, laut: float = 0.5) -> np.ndarray:
+def _epiano(freq: float, dauer: float = 1.2, laut: float = 0.4) -> np.ndarray:
+    """Warmes E-Piano (FM-Synthese, Modulationsindex klingt schnell ab – rund statt spitz)."""
     t = _zeit(dauer)
-    ton = (np.sin(2 * np.pi * freq * t) * np.exp(-t * 5.5)
-           + 0.35 * np.sin(2 * np.pi * freq * 4.0 * t) * np.exp(-t * 18)
-           + 0.12 * np.sin(2 * np.pi * freq * 9.9 * t) * np.exp(-t * 40))
-    anschlag = np.minimum(1.0, t / 0.002)
-    return laut * ton * anschlag
+    index = 1.6 * np.exp(-t * 7) + 0.25
+    ton = np.sin(2 * np.pi * freq * t + index * np.sin(2 * np.pi * freq * t))
+    ton += 0.25 * np.sin(2 * np.pi * freq * 2 * t) * np.exp(-t * 6)
+    huelle = np.minimum(1.0, t / 0.004) * np.exp(-t * 2.2) * np.clip((dauer - t) / 0.15, 0, 1)
+    return laut * ton * huelle
+
+
+def _bass(freq: float, dauer: float = 0.45, laut: float = 0.5) -> np.ndarray:
+    """Runder Bass (gezupft): Grundton mit wenigen Obertönen."""
+    t = _zeit(dauer)
+    ton = np.sin(2 * np.pi * freq * t) + 0.35 * np.sin(2 * np.pi * 2 * freq * t) * np.exp(-t * 8) \
+        + 0.12 * np.sin(2 * np.pi * 3 * freq * t) * np.exp(-t * 14)
+    huelle = np.minimum(1.0, t / 0.006) * np.exp(-t * 3.5) * np.clip((dauer - t) / 0.05, 0, 1)
+    return laut * ton * huelle
+
+
+def _akkord(noten: list[str], dauer: float, laut: float) -> np.ndarray:
+    return sum(_epiano(_hz(n), dauer, laut / len(noten) * 2.2) for n in noten)
 
 
 def _flaeche(freqs: list[float], dauer: float, laut: float = 0.12) -> np.ndarray:
@@ -40,8 +54,8 @@ def _flaeche(freqs: list[float], dauer: float, laut: float = 0.12) -> np.ndarray
     s = np.zeros_like(t)
     for f in freqs:
         for verstimmung in (-0.15, 0.15):
-            for n in range(1, 7):
-                s += np.sin(2 * np.pi * (f + verstimmung) * n * t + n) / (n ** 1.6)
+            for n in range(1, 4):
+                s += np.sin(2 * np.pi * (f + verstimmung) * n * t + n) / (n ** 2.2)
     huelle = np.minimum(1.0, t / 0.25) * np.clip((dauer - t) / 1.2, 0, 1)
     return laut * s / len(freqs) * huelle
 
@@ -156,16 +170,25 @@ def erzeuge_jingle(ziel: Path) -> float:
     for b in range(5):
         _setze(spur, _triangel(0.06), b * schlag + 2 * tri, pan=-0.5)
 
-    # Marimba-Motiv (leiser, im Triolen-Raster)
-    for zeit, note in ((0.0, 'A4'), (2 * tri, 'D5'), (schlag, 'F#5'), (schlag + 2 * tri, 'A5'),
-                       (2 * schlag, 'E5'), (2 * schlag + tri, 'F#5'), (2 * schlag + 2 * tri, 'A5')):
-        _setze(spur, _marimba(_hz(note), laut=0.3), zeit, pan=0.15)
+    # Bass: Grundton auf jedem Schlag, Wechsel D – A – D (ternär federnd)
+    for b, note in enumerate(('D2', 'D2', 'A1', 'A1', 'D2', 'A1')):
+        _setze(spur, _bass(_hz(note), 0.32, 0.55), b * schlag)
+        _setze(spur, _bass(_hz(note) * 2, 0.15, 0.25), b * schlag + 2 * tri)
 
-    # Akkordschlag
-    for note in ('D4', 'A4', 'D5', 'F#5', 'A5'):
-        _setze(spur, _marimba(_hz(note), dauer=1.8, laut=0.22), 1.5)
-    _setze(spur, _boom(0.6), 1.5)
-    _setze(spur, _flaeche([_hz(n) for n in ('D3', 'A3', 'F#4', 'E5')], DAUER - 1.45, laut=0.22), 1.45)
+    # Melodie auf warmem E-Piano, mit Terz darunter für mehr Fülle
+    for zeit, oben, unten in ((0.0, 'A4', 'F#4'), (2 * tri, 'D5', 'A4'), (schlag, 'F#5', 'D5'), (schlag + 2 * tri, 'A5', 'F#5'),
+                              (2 * schlag, 'E5', 'C#5'), (2 * schlag + tri, 'F#5', 'D5'), (2 * schlag + 2 * tri, 'A5', 'F#5')):
+        _setze(spur, _epiano(_hz(oben) / 2, 0.6, 0.36), zeit, pan=0.2)
+        _setze(spur, _epiano(_hz(unten) / 2, 0.6, 0.24), zeit, pan=-0.2)
+
+    # Akkordschlag bei 1,5 s (mit dem Namen im Bild)
+    _setze(spur, _akkord(['D3', 'A3', 'D4', 'F#4', 'A4'], 1.6, 0.6), 1.5)
+    _setze(spur, _bass(_hz('D1') * 2, 1.0, 0.7), 1.5)
+    _setze(spur, _boom(0.5), 1.5)
+    _setze(spur, _flaeche([_hz(n) for n in ('D3', 'A3', 'F#4')], DAUER - 1.45, laut=0.16), 1.45)
+    # Schlussakkord zusammen mit dem Dreifachschlag
+    _setze(spur, _akkord(['D3', 'A3', 'D4', 'F#4'], 0.5, 0.55), ende)
+    _setze(spur, _bass(_hz('D2'), 0.5, 0.7), ende)
 
     spur = _hall(spur)
     # sanft ausblenden, normalisieren auf -1 dBFS
