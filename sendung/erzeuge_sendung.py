@@ -259,11 +259,11 @@ def sprech_beitrag(b: Beitrag, sprache: str) -> str:
 
 
 def stichpunkte(b: Beitrag, sprache: str) -> list[str]:
-    """Stichpunkte für die Folie: vom Redaktions-Agenten (sendung.<sprache>.stichpunkte), sonst die Sätze des Textes."""
+    """Stichpunkte (gekürzte Fassung) für die Folie, geschrieben vom Redaktions-Agenten (sendung.<sprache>.stichpunkte)."""
     eigen = ((b.update.get('sendung') or {}).get(sprache) or {}).get('stichpunkte')
     if isinstance(eigen, list) and eigen:
         return [str(x).strip() for x in eigen if str(x).strip()][:5]
-    return [x.rstrip('.') for x in saetze(feld(b.update, 'text', sprache))][:5]
+    return []  # ohne Kurzfassung der Redaktion: nur Schlagzeile und Rückblick
 
 
 def waehle_themen(daten: dict, jetzt: dt.datetime) -> list[Beitrag]:
@@ -565,134 +565,180 @@ def logo(groesse: int) -> Image.Image:
     return _logo_cache[groesse]
 
 
-def grundbild(sprache: str, tag: dt.date, seite: str | None = None) -> tuple[Image.Image, ImageDraw.ImageDraw]:
-    bild = Image.new('RGB', (BREITE, HOEHE), BG)
+# Entwurf A „Abendnachrichten“: dunkelblauer Grund, weißes Senderlogo, Bauchbinde, Quellenleiste
+NAVY = (13, 32, 62)
+NAVY_HELL = (20, 52, 96)
+NAVY_TIEF = (8, 18, 36)
+LEISTE = (6, 14, 28)
+WEISS = (255, 255, 255)
+HELLBLAU = (196, 210, 230)
+MINT = (53, 201, 165)
+ROT_TV = (210, 46, 58)
+SCHWARZ = (20, 24, 31)
+LOGO_WEISS = HIER / 'logo-weiss.png'
+_weiss_cache: dict[tuple[int, float], Image.Image] = {}
+
+
+def logo_weiss(groesse: int, deckkraft: float = 1.0) -> Image.Image:
+    schluessel = (groesse, deckkraft)
+    if schluessel not in _weiss_cache:
+        bild = Image.open(LOGO_WEISS).convert('RGBA').resize((groesse, groesse), Image.LANCZOS)
+        if deckkraft < 1:
+            bild.putalpha(bild.split()[3].point(lambda v: int(v * deckkraft)))
+        _weiss_cache[schluessel] = bild
+    return _weiss_cache[schluessel]
+
+
+def verlauf(oben: tuple, unten: tuple) -> Image.Image:
+    bild = Image.new('RGB', (BREITE, HOEHE), oben)
     z = ImageDraw.Draw(bild)
-    streifen = BREITE / 4
+    for y in range(HOEHE):
+        t = y / HOEHE
+        z.line([0, y, BREITE, y], fill=tuple(round(oben[i] + (unten[i] - oben[i]) * t) for i in range(3)))
+    return bild
+
+
+def flaggenlinie(z: ImageDraw.ImageDraw, y: int, hoehe: int) -> None:
+    b = BREITE / 4
     for i, farbe in enumerate(FLAGGE):
-        z.rectangle([round(i * streifen), 0, round((i + 1) * streifen), 14], fill=farbe)
-    # Kopfzeile
-    bild.paste(logo(76), (RAND - 6, 46), logo(76))
-    z.text((RAND + 86, 52), 'Gazet Morisyen', font=titel_schrift(40), fill=FG)
-    gesperrt(z, (RAND + 88, 102), T[sprache]['sendung'], mono(20), MUTED)
-    gesperrt(z, (BREITE - RAND, 62), datum_anzeige(tag, sprache), mono(22, True), FG, 0.06, rechts=True)
+        z.rectangle([round(i * b), y, round((i + 1) * b), y + hoehe], fill=farbe)
+
+
+def marke(z: ImageDraw.ImageDraw, xy: tuple[int, int], text: str, hinter, vorder) -> int:
+    f = mono(24, True)
+    x, y = xy
+    breite = z.textlength(text, font=f)
+    z.rectangle([x, y, x + breite + 36, y + 44], fill=hinter)
+    z.text((x + 18, y + 8), text, font=f, fill=vorder)
+    return round(x + breite + 36)
+
+
+def senderkopf(bild: Image.Image, z: ImageDraw.ImageDraw, sprache: str, tag: dt.date, seite: str | None) -> None:
+    bild.paste(logo_weiss(92), (70, 50), logo_weiss(92))
+    z.text((180, 60), 'Gazet Morisyen', font=titel_schrift(34), fill=WEISS)
+    gesperrt(z, (182, 106), T[sprache]['sendung'], mono(18, True), HELLBLAU, 0.1)
+    gesperrt(z, (BREITE - 70, 64), datum_anzeige(tag, sprache), mono(22, True), HELLBLAU, 0.06, rechts=True)
     if seite:
-        gesperrt(z, (BREITE - RAND, 98), seite, mono(20), MUTED, 0.06, rechts=True)
-    z.line([RAND, 150, BREITE - RAND, 150], fill=LINE, width=2)
-    return bild, z
+        gesperrt(z, (BREITE - 70, 100), seite, mono(22, True), HELLBLAU, 0.06, rechts=True)
 
 
-def bild_intro(sprache: str, tag: dt.date, schlagzeilen: list[str], ziel: Path) -> None:
-    bild = Image.new('RGB', (BREITE, HOEHE), BG)
+def bild_intro(sprache: str, tag: dt.date, ziel: Path) -> None:
+    bild = verlauf(NAVY, NAVY_TIEF)
+    bild.paste(logo_weiss(1100, 0.05), (BREITE - 900, -60), logo_weiss(1100, 0.05))
     z = ImageDraw.Draw(bild)
-    streifen = BREITE / 4
-    for i, farbe in enumerate(FLAGGE):
-        z.rectangle([round(i * streifen), 0, round((i + 1) * streifen), 18], fill=farbe)
-    gross = 230
-    bild.paste(logo(gross), (RAND - 20, 110), logo(gross))
-    z.text((RAND + gross + 10, 150), 'Gazet Morisyen', font=titel_schrift(116), fill=FG)
-    gesperrt(z, (RAND + gross + 16, 290), T[sprache]['untertitel'], mono(28), MUTED)
-    gesperrt(z, (RAND, 400), datum_anzeige(tag, sprache), mono(32, True), LAGOON, 0.08)
-    z.line([RAND, 462, BREITE - RAND, 462], fill=LINE, width=2)
-    gesperrt(z, (RAND, 492), T[sprache]['heute_themen'], mono(24, True), ROT)
-    f = titel_schrift(38)
-    nr = mono(25, True)
-    zeilen_h = 56
-    platz = (HOEHE - 60 - 545) // zeilen_h
-    for i, titel in enumerate(schlagzeilen[:platz]):
-        y = 545 + i * zeilen_h
-        z.text((RAND, y + 8), f'{i + 1:02d}', font=nr, fill=MUTED)
-        text = titel
-        while z.textlength(text, font=f) > BREITE - 2 * RAND - 80 and ' ' in text:
-            text = text.rsplit(' ', 1)[0].rstrip(' ,:;–-') + ' …'
-        z.text((RAND + 80, y), text, font=f, fill=FG)
+    flaggenlinie(z, HOEHE - 10, 10)
+    g = 380
+    bild.paste(logo_weiss(g), ((BREITE - g) // 2, 200), logo_weiss(g))
+    f = titel_schrift(72)
+    text = 'Gazet Morisyen'
+    z.text(((BREITE - z.textlength(text, font=f)) / 2, 612), text, font=f, fill=WEISS)
+    unter = f'{T[sprache]["sendung"]}  ·  {datum_kurz(tag, sprache)}'
+    f2 = mono(28, True)
+    abstand = 28 * 0.1
+    breite = sum(z.textlength(c, font=f2) + abstand for c in unter.upper()) - abstand
+    gesperrt(z, (round((BREITE - breite) / 2), 714), unter, f2, HELLBLAU, 0.1)
     bild.save(ziel)
 
 
 def bild_beitrag(sprache: str, tag: dt.date, b: Beitrag, nummer: int, anzahl: int, ziel: Path) -> None:
-    bild, z = grundbild(sprache, tag, f'{nummer} / {anzahl}')
-    breite = BREITE - 2 * RAND
-    y = 200
-    marke = RUBRIKEN[sprache].get(b.thema.get('rubrik', ''), '')
-    if b.thema.get('ort'):
-        marke += f' · {b.thema["ort"]}'
-    if b.top:
-        marke = f'{T[sprache]["top"]} · {marke}'
-    gesperrt(z, (RAND, y), marke, mono(26, True), ROT)
-    y += 62
+    bild = verlauf(NAVY_HELL, NAVY)
+    bild.paste(logo_weiss(900, 0.06), (BREITE - 760, 40), logo_weiss(900, 0.06))
+    z = ImageDraw.Draw(bild)
+    senderkopf(bild, z, sprache, tag, f'{nummer} / {anzahl}')
 
+    # Bauchbinde mit Schlagzeile (unten)
     titel = feld(b.update, 'titel', sprache)
-    for g in (92, 84, 76, 68, 60):
-        f = titel_schrift(g)
-        zeilen = umbrechen(z, titel, f, breite)
-        if len(zeilen) <= 3:
+    innen = BREITE - 140 - 50 - 50
+    for g in (72, 66, 60, 54):
+        ft = titel_schrift(g)
+        zeilen = umbrechen(z, titel, ft, innen)
+        if len(zeilen) <= 2:
             break
-    for zeile in zeilen[:3]:
-        z.text((RAND, y), zeile, font=f, fill=FG)
-        y += round(f.size * 1.12)
-    y += 40
+    zeilen = zeilen[:2]
+    zh = round(ft.size * 1.12)
+    binde_h = 44 + len(zeilen) * zh
+    binde_y = HOEHE - 80 - 50 - binde_h
+    z.rectangle([70, binde_y, BREITE - 70, binde_y + binde_h], fill=WEISS)
+    z.rectangle([70, binde_y, 84, binde_y + binde_h], fill=ROT_TV)
+    y = binde_y + 18
+    for zeile in zeilen:
+        z.text((120, y), zeile, font=ft, fill=NAVY)
+        y += zh
+    x = 70
+    if b.top:
+        x = marke(z, (x, binde_y - 44), T[sprache]['top'].upper(), ROT_TV, WEISS)
+    rubrik = RUBRIKEN[sprache].get(b.thema.get('rubrik', ''), '')
+    if b.thema.get('ort'):
+        rubrik += f' · {b.thema["ort"]}'
+    marke(z, (x, binde_y - 44), rubrik.upper(), SCHWARZ if b.top else ROT_TV, WEISS)
 
-    # Rückblick als eine Zeile unten, falls es frühere Meldungen gibt
-    unten = HOEHE - 150
+    # Kernpunkte (gekürzte Fassung) und Rückblick, oberhalb der Bauchbinde
+    oben, unten = 230, binde_y - 44 - 40
+    zuvor_h = 0
     if b.vorher:
-        vorher_titel = feld(b.vorher, 'titel', sprache)
-        tag_vorher = iso(b.vorher['zeit']).astimezone(MU).date()
-        kopf = f'{T[sprache]["zuvor"]} · {tag_vorher.day:02d}.{tag_vorher.month:02d}.'
-        fz = mono(24, True)
-        fv = text_schrift(32)
-        while z.textlength(vorher_titel, font=fv) > breite and ' ' in vorher_titel:
-            vorher_titel = vorher_titel.rsplit(' ', 1)[0].rstrip(' ,:;–-') + ' …'
-        unten -= 118
-        z.line([RAND, unten, RAND + 80, unten], fill=LAGOON, width=4)
-        gesperrt(z, (RAND, unten + 20), kopf, fz, LAGOON, 0.08)
-        z.text((RAND, unten + 58), vorher_titel, font=fv, fill=MUTED)
-        unten -= 30
-
+        zuvor_h = 60
     punkte = stichpunkte(b, sprache)
-    platz = unten - y
-    einzug = 52
-    for g in (46, 42, 39, 36, 33, 30):
-        f = text_schrift(g)
-        zh = round(g * 1.38)
-        abstand = round(g * 0.55)
-        bloecke = [umbrechen(z, p, f, breite - einzug) for p in punkte]
-        hoehe = sum(len(bl) * zh for bl in bloecke) + abstand * (len(bloecke) - 1)
-        if hoehe <= platz:
-            break
-    for bl in bloecke:
-        if y + len(bl) * zh > unten:
-            break
-        q = round(g * 0.34)
-        my = y + round(zh * 0.5)
-        z.rectangle([RAND + 4, my - q // 2, RAND + 4 + q, my + q // 2], fill=LAGOON)
-        for zeile in bl:
-            z.text((RAND + einzug, y), zeile, font=f, fill=FG)
-            y += zh
-        y += abstand
+    if punkte:
+        platz = unten - oben - zuvor_h
+        for g in (48, 44, 40, 36):
+            fp = text_schrift(g)
+            pzh = round(g * 1.3)
+            luecke = round(g * 0.5)
+            bloecke = [umbrechen(z, p, fp, 1250) for p in punkte]
+            hoehe = sum(len(bl) * pzh for bl in bloecke) + luecke * (len(bloecke) - 1)
+            if hoehe <= platz:
+                break
+        y = oben
+        for bl in bloecke:
+            if y + len(bl) * pzh > unten - zuvor_h:
+                break
+            q = round(g * 0.3)
+            my = y + round(pzh * 0.55)
+            z.rectangle([110, my - q // 2, 110 + q, my + q // 2], fill=MINT)
+            for zeile in bl:
+                z.text((160, y), zeile, font=fp, fill=WEISS)
+                y += pzh
+            y += luecke
+        zuvor_y = y + 6
+    else:
+        zuvor_y = unten - zuvor_h
+    if b.vorher:
+        tag_vorher = iso(b.vorher['zeit']).astimezone(MU).date()
+        kopf = f'{T[sprache]["zuvor"]} {tag_vorher.day:02d}.{tag_vorher.month:02d}.'.upper() + '  '
+        fk, fv = mono(22, True), text_schrift(30)
+        x0 = 160 if punkte else 110
+        z.text((x0, zuvor_y + 6), kopf, font=fk, fill=MINT)
+        rest = feld(b.vorher, 'titel', sprache)
+        breite = BREITE - 140 - x0 - z.textlength(kopf, font=fk)
+        while z.textlength(rest, font=fv) > breite and ' ' in rest:
+            rest = rest.rsplit(' ', 1)[0].rstrip(' ,:;–-') + ' …'
+        z.text((x0 + z.textlength(kopf, font=fk), zuvor_y), rest, font=fv, fill=HELLBLAU)
 
+    # Quellenleiste
+    z.rectangle([0, HOEHE - 80, BREITE, HOEHE], fill=LEISTE)
+    flaggenlinie(z, HOEHE - 80, 4)
     quellen = [q.get('name', '') for q in b.update.get('quellen', []) if q.get('name')]
     if quellen:
         wort = T[sprache]['quellen' if len(quellen) > 1 else 'quelle']
-        z.line([RAND, HOEHE - 118, BREITE - RAND, HOEHE - 118], fill=LINE, width=2)
-        z.text((RAND, HOEHE - 92), f'{wort}: ' + ' · '.join(dict.fromkeys(quellen)), font=mono(26), fill=MUTED)
-        gesperrt(z, (BREITE - RAND, HOEHE - 90), 'gazet.morisyen.de', mono(24, True), LAGOON, 0.04, rechts=True)
+        z.text((70, HOEHE - 56), f'{wort}: ' + ' · '.join(dict.fromkeys(quellen)), font=mono(24), fill=HELLBLAU)
+    f = mono(24, True)
+    z.text((BREITE - 70 - z.textlength('gazet.morisyen.de', font=f), HOEHE - 56), 'gazet.morisyen.de', font=f, fill=MINT)
     bild.save(ziel)
 
 
 def bild_outro(sprache: str, tag: dt.date, ziel: Path) -> None:
-    bild = Image.new('RGB', (BREITE, HOEHE), BG)
+    bild = verlauf(NAVY, NAVY_TIEF)
+    bild.paste(logo_weiss(1100, 0.05), (BREITE - 900, -60), logo_weiss(1100, 0.05))
     z = ImageDraw.Draw(bild)
-    streifen = BREITE / 4
-    for i, farbe in enumerate(FLAGGE):
-        z.rectangle([round(i * streifen), HOEHE - 18, round((i + 1) * streifen), HOEHE], fill=farbe)
-    g = 320
-    bild.paste(logo(g), ((BREITE - g) // 2, 120), logo(g))
-    f = titel_schrift(96)
+    flaggenlinie(z, HOEHE - 10, 10)
+    g = 300
+    bild.paste(logo_weiss(g), ((BREITE - g) // 2, 150), logo_weiss(g))
+    f = titel_schrift(92)
     text = 'gazet.morisyen.de'
-    z.text(((BREITE - z.textlength(text, font=f)) / 2, 500), text, font=f, fill=LAGOON)
-    f2 = mono(32)
+    z.text(((BREITE - z.textlength(text, font=f)) / 2, 520), text, font=f, fill=WEISS)
+    f2 = mono(30, True)
     for i, zeile in enumerate([T[sprache]['mehr'], T[sprache]['newsletter']]):
-        z.text(((BREITE - z.textlength(zeile, font=f2)) / 2, 660 + i * 60), zeile, font=f2, fill=MUTED)
+        z.text(((BREITE - z.textlength(zeile, font=f2)) / 2, 680 + i * 58), zeile, font=f2, fill=HELLBLAU if i else MINT)
     bild.save(ziel)
 
 
@@ -755,9 +801,8 @@ def erzeuge(daten: dict, sprache: str, stimmen: Path, ausgabe: Path, jetzt: dt.d
     abschnitte: list[Abschnitt] = []
 
     intro = arbeit / '00-intro.png'
-    schlagzeilen = [feld(b.update, 'titel', sprache) for b in beitraege]
-    bild_intro(sprache, tag, schlagzeilen, intro)
-    abschnitte.append(Abschnitt(t['kapitel_start'], gruss, intro, mindestens=7.0))
+    bild_intro(sprache, tag, intro)
+    abschnitte.append(Abschnitt(t['kapitel_start'], gruss, intro, mindestens=5.0))
 
     for i, b in enumerate(beitraege, 1):
         pfad = arbeit / f'{i:02d}-thema.png'
