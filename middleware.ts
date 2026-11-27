@@ -19,6 +19,9 @@ export function middleware(anfrage: NextRequest): NextResponse {
 
   const { pathname } = anfrage.nextUrl;
 
+  // Icons der Zeitung (Dodo) direkt ausliefern, nicht auf die Wurzel umleiten.
+  if (/^\/zeitung\/(icon|apple-icon)/.test(pathname)) return NextResponse.next();
+
   if (pathname === ZEITUNG_PFAD || pathname.startsWith(`${ZEITUNG_PFAD}/`)) {
     const ziel = anfrage.nextUrl.clone();
     ziel.pathname = pathname.slice(ZEITUNG_PFAD.length) || '/';
