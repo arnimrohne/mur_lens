@@ -131,19 +131,29 @@ def erzeuge_jingle(ziel: Path) -> float:
     tri = schlag / 3
 
     # Ravanne trägt den Rhythmus durchgehend: tiefer Schlag („boum“) auf der Eins, Randschläge („ka-ta“) dazwischen.
-    for b in range(7):
+    for b in range(6):
         start = b * schlag
         _setze(spur, _ravanne(0.62 if b % 2 == 0 else 0.5, True), start, pan=-0.15)
+        if b == 5:
+            continue  # letzter Schlag vor dem Schluss bleibt frei für den Dreifachschlag
         _setze(spur, _ravanne_schlag(0.3, seed=11 + b), start + 2 * tri, pan=0.2)
         if b % 2 == 1:
             _setze(spur, _ravanne_schlag(0.22, seed=31 + b), start + tri, pan=0.25)
         if b in (2, 5):  # kleiner Wirbel als Steigerung
             _setze(spur, _ravanne(0.34, False), start + 2.5 * tri, pan=0.1)
-    # Maravanne auf allen Triolen, Betonung auf der Eins
-    for k in range(int(DAUER / tri)):
+    # Schluss: Dreifachschlag „ta-ta-BOUM“ – zwei Randschläge, dann alle Rhythmusinstrumente zusammen
+    ende = 3.0
+    _setze(spur, _ravanne_schlag(0.42, seed=91), ende - 2 * tri / 1.5, pan=0.2)
+    _setze(spur, _ravanne_schlag(0.48, seed=92), ende - tri / 1.5, pan=-0.2)
+    _setze(spur, _ravanne(0.85, True), ende)
+    _setze(spur, _ravanne_schlag(0.4, seed=93), ende, pan=0.15)
+    _setze(spur, _maravanne(0.22, seed=94), ende, pan=0.45)
+    _setze(spur, _triangel(0.1), ende, pan=-0.5)
+    # Maravanne auf allen Triolen bis kurz vor den Schluss, Betonung auf der Eins
+    for k in range(int((ende - 0.3) / tri)):
         _setze(spur, _maravanne(0.13 if k % 3 == 0 else 0.08, seed=5 + k), k * tri, pan=0.45)
     # Triangel auf der letzten Triole jedes Schlags
-    for b in range(6):
+    for b in range(5):
         _setze(spur, _triangel(0.06), b * schlag + 2 * tri, pan=-0.5)
 
     # Marimba-Motiv (leiser, im Triolen-Raster)
@@ -160,7 +170,7 @@ def erzeuge_jingle(ziel: Path) -> float:
     spur = _hall(spur)
     # sanft ausblenden, normalisieren auf -1 dBFS
     t = _zeit(DAUER)
-    spur *= np.clip((DAUER - t) / 0.6, 0, 1)
+    spur *= np.clip((DAUER - t) / 0.35, 0, 1)  # kurz ausblenden, der Schlussschlag bleibt hörbar
     spur /= np.abs(spur).max() / 10 ** (-1 / 20)
     daten = (spur.T * 32767).astype('<i2')
     with wave.open(str(ziel), 'wb') as w:
