@@ -22,15 +22,57 @@ Der Workflow `.github/workflows/sendung.yml` läuft täglich um 05:20 UTC (09:20
 Man kann ihn auch von Hand starten: GitHub → Actions → „Nachrichtensendung“ → *Run workflow*.
 Das Ergebnis liegt 14 Tage als Artefakt `sendung-JJJJ-MM-TT` (ZIP) am Lauf.
 
-## Hochladen auf YouTube (vorerst von Hand)
+## Automatischer Upload auf YouTube
 
-1. Das Artefakt herunterladen und entpacken.
-2. Studio → Erstellen → Video hochladen: die `.mp4` der Sprache wählen.
+Nach dem Rendern lädt `youtube_upload.py` jedes Video hoch und setzt Titel, Beschreibung,
+Tags, Kategorie „Nachrichten“, Sprache, den Hinweis „synthetische Inhalte“ und das Vorschaubild.
+Jedes Video kommt in die Playlist seiner Sprache. Die Playlists legt das Skript beim ersten
+Lauf selbst an.
+
+- **Sichtbarkeit:** standardmäßig `private`. Über die Repository-Variable `YT_SICHTBARKEIT`
+  (GitHub → Settings → Secrets and variables → Actions → Variables) lässt sie sich auf
+  `unlisted` oder `public` stellen.
+- **Einschränkung von Google:** Neue, noch nicht geprüfte API-Projekte dürfen nur privat
+  hochladen. Bis Google das Projekt geprüft hat, schaltet man die Videos im YouTube Studio
+  von Hand auf öffentlich. Die Prüfung beantragt man über das Formular „YouTube API Services –
+  Audit and Quota Extension“.
+
+### Einmalige Einrichtung
+
+1. **Projekt anlegen:** https://console.cloud.google.com → neues Projekt „Gazet Morisyen“.
+2. **API aktivieren:** „APIs & Dienste“ → „Bibliothek“ → „YouTube Data API v3“ → Aktivieren.
+3. **OAuth-Zustimmungsbildschirm** (bzw. „Google Auth Platform“):
+   - Nutzertyp „Extern“.
+   - App-Name „Gazet Morisyen“, Support- und Kontakt-E-Mail eintragen.
+   - Unter „Zielgruppe“ den Veröffentlichungsstatus auf **„In Produktion“** stellen.
+     Im Status „Test“ verfällt der Zugang nach 7 Tagen.
+4. **Client anlegen:** „Clients“ bzw. „Anmeldedaten“ → „OAuth-Client-ID erstellen“.
+   - Typ „Webanwendung“.
+   - Unter „Autorisierte Weiterleitungs-URIs“: `https://developers.google.com/oauthplayground`
+   - Client-ID und Clientschlüssel notieren.
+5. **Refresh-Token erzeugen:** https://developers.google.com/oauthplayground
+   - Zahnrad oben rechts → „Use your own OAuth credentials“ → Client-ID und Clientschlüssel eintragen.
+   - Links unter „Input your own scopes“:
+     `https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube`
+   - „Authorize APIs“ → mit dem Google-Konto des YouTube-Kanals anmelden.
+   - Den Hinweis „Google hat diese App nicht überprüft“ über „Erweitert“ → „Weiter“ bestätigen.
+   - „Exchange authorization code for tokens“ → den **Refresh token** kopieren.
+6. **GitHub-Secrets anlegen:** GitHub → Settings → Secrets and variables → Actions →
+   „New repository secret“:
+   - `YT_CLIENT_ID`
+   - `YT_CLIENT_SECRET`
+   - `YT_REFRESH_TOKEN`
+
+Ohne diese Secrets läuft alles wie bisher, nur ohne Upload. Die Videos liegen dann weiter als
+Artefakt am Lauf.
+
+### Von Hand hochladen (falls nötig)
+
+1. Das Artefakt `sendung-JJJJ-MM-TT` am Workflow-Lauf herunterladen und entpacken.
+2. Im YouTube Studio die `.mp4` hochladen.
 3. Titel, Beschreibung und Tags aus der `-youtube.txt` übernehmen.
-4. Die `-vorschau.png` als Thumbnail setzen.
-5. Bei „Veränderte oder synthetische Inhalte“ **Ja** wählen, weil die Stimme synthetisch ist.
-6. „Nicht speziell für Kinder“ wählen.
-7. Optional eine Playlist je Sprache anlegen.
+4. Die `-vorschau.png` als Vorschaubild setzen.
+5. Bei „Veränderte oder synthetische Inhalte“ **Ja** wählen.
 
 ## Lokal ausführen
 

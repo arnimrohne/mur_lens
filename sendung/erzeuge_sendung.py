@@ -967,6 +967,18 @@ def erzeuge(daten: dict, sprache: str, stimmen: Path, ausgabe: Path, jetzt: dt.d
         f'TITEL:\n{titel}\n\nBESCHREIBUNG:\n{beschreibung}\n\nTAGS:\n'
         'Mauritius, Maurice, Nachrichten, actualités, news, Port-Louis, Rodrigues, Gazet Morisyen\n',
         encoding='utf-8')
+    # Maschinenlesbar für den automatischen YouTube-Upload (youtube_upload.py)
+    ohne_klammern = str.maketrans({'<': '‹', '>': '›'})  # YouTube lehnt < und > ab
+    (ausgabe / f'{stamm}-youtube.json').write_text(json.dumps({
+        'sprache': sprache,
+        'datum': tag.isoformat(),
+        'video': video.name,
+        'vorschau': f'{stamm}-vorschau.png',
+        'titel': titel.translate(ohne_klammern)[:100],
+        'beschreibung': beschreibung.translate(ohne_klammern)[:4900],
+        'tags': ['Mauritius', 'Maurice', 'Nachrichten', 'actualités', 'news', 'Port-Louis', 'Rodrigues',
+                 'Gazet Morisyen'],
+    }, ensure_ascii=False, indent=1), encoding='utf-8')
     shutil.rmtree(arbeit, ignore_errors=True)
     return {'sprache': sprache, 'video': str(video), 'dauer_s': round(start, 1), 'themen': len(beitraege)}
 
