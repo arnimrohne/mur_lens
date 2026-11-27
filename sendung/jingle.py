@@ -138,7 +138,7 @@ def _hall(spur: np.ndarray) -> np.ndarray:
     return aus
 
 
-def erzeuge_jingle(ziel: Path) -> float:
+def erzeuge_jingle(ziel: Path, mit_melodie: bool = True) -> float:
     spur = np.zeros((2, int(DAUER * RATE)))
     # Séga im ternären Schwung: ein Schlag = 0,5 s, unterteilt in Triolen.
     schlag = 0.5
@@ -170,6 +170,9 @@ def erzeuge_jingle(ziel: Path) -> float:
     for b in range(5):
         _setze(spur, _triangel(0.06), b * schlag + 2 * tri, pan=-0.5)
 
+    if not mit_melodie:
+        return _schreibe(spur, ziel, normalisieren=False)
+
     # Bass: Grundton auf jedem Schlag, Wechsel D – A – D (ternär federnd)
     for b, note in enumerate(('D2', 'D2', 'A1', 'A1', 'D2', 'A1')):
         _setze(spur, _bass(_hz(note), 0.32, 0.55), b * schlag)
@@ -190,12 +193,16 @@ def erzeuge_jingle(ziel: Path) -> float:
     _setze(spur, _akkord(['D3', 'A3', 'D4', 'F#4'], 0.5, 0.55), ende)
     _setze(spur, _bass(_hz('D2'), 0.5, 0.7), ende)
 
+    return _schreibe(spur, ziel)
+
+
+def _schreibe(spur: np.ndarray, ziel: Path, normalisieren: bool = True) -> float:
     spur = _hall(spur)
-    # sanft ausblenden, normalisieren auf -1 dBFS
     t = _zeit(DAUER)
-    spur *= np.clip((DAUER - t) / 0.35, 0, 1)  # kurz ausblenden, der Schlussschlag bleibt hörbar
-    spur /= np.abs(spur).max() / 10 ** (-1 / 20)
-    daten = (spur.T * 32767).astype('<i2')
+    spur = spur * np.clip((DAUER - t) / 0.35, 0, 1)  # kurz ausblenden, der Schlussschlag bleibt hörbar
+    if normalisieren:
+        spur /= np.abs(spur).max() / 10 ** (-1 / 20)
+    daten = (np.clip(spur, -1, 1).T * 32767).astype('<i2')
     with wave.open(str(ziel), 'wb') as w:
         w.setnchannels(2)
         w.setsampwidth(2)

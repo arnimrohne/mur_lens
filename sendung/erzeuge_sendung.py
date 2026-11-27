@@ -1161,8 +1161,13 @@ def vorspann_video(sprache: str, ziel: Path) -> float:
     import jingle
 
     arbeit = ziel.parent
-    ton = arbeit / 'vorspann.wav'
-    dauer = jingle.erzeuge_jingle(ton)
+    fertig = HIER / 'vorspann.wav'  # mit aufgenommenen Instrumenten, erzeugt von vorspann_musik.py
+    if fertig.exists():
+        ton = fertig
+        dauer = dauer_von(ton)
+    else:
+        ton = arbeit / 'vorspann.wav'
+        dauer = jingle.erzeuge_jingle(ton)
     fps = 25
     n = round(dauer * fps)
     grund = verlauf(NAVY, NAVY_TIEF)
