@@ -1,7 +1,7 @@
 {
  "schema": 1,
- "stand": "2026-11-27T17:00:00+04:00",
- "laeufe": 4,
+ "stand": "2026-11-27T21:00:00+04:00",
+ "laeufe": 5,
  "topics": [
   {
    "id": "3g-abschaltung",
@@ -1317,7 +1317,7 @@
    "erstellt": "2026-11-24T17:40:00+04:00",
    "ort": "Rodrigues",
    "rubrik": "umwelt",
-   "status": "aktiv",
+   "status": "archiv",
    "titel": "Entwarnung für Rodrigues: Tsunami-Wache aufgehoben",
    "updates": [
     {
@@ -1896,12 +1896,60 @@
   {
    "id": "compensation-salariale-2027",
    "rubrik": "wirtschaft",
-   "titel": "Tripartite-Gespräche: Gewerkschaftsvertreter verlassen Sitzung",
+   "titel": "Lohnkompensation 2027: Vorschläge bis 4. Dezember",
    "status": "aktiv",
    "erstellt": "2026-11-27T12:00:00+04:00",
    "aktualisiert": "2026-11-27T12:00:00+04:00",
    "warTop": false,
    "updates": [
+    {
+     "zeit": "2026-11-27T12:00:00+04:00",
+     "nurDatum": true,
+     "titel": "Lohnkompensation 2027: Vorschläge bis 4. Dezember",
+     "text": "Gewerkschaften und Arbeitgeber haben bis zum 4. Dezember Zeit, ihre Vorschläge zur Lohnkompensation 2027 einzureichen.\n\nDie Verhandlungen im Rahmen der Tripartite laufen weiter.",
+     "quellen": [
+      {
+       "name": "Défi Media",
+       "url": "https://defimedia.info/"
+      }
+     ],
+     "i18n": {
+      "fr": {
+       "titel": "Compensation salariale 2027 : propositions attendues avant le 4 décembre",
+       "text": "Syndicats et patronat ont jusqu’au 4 décembre pour soumettre leurs propositions sur la compensation salariale 2027.\n\nLes discussions tripartites se poursuivent."
+      },
+      "en": {
+       "titel": "2027 wage compensation: proposals due by 4 December",
+       "text": "Unions and employers have until 4 December to submit their proposals on the 2027 wage compensation.\n\nThe tripartite discussions continue."
+      }
+     },
+     "sendung": {
+      "de": {
+       "sprechtext": "Für die Lohnkompensation 2027 gibt es nun eine Frist. Gewerkschaften und Arbeitgeber haben bis zum 4. Dezember Zeit, ihre Vorschläge einzureichen. Zuvor hatten die Gewerkschaften eine Kompensation von 1.200 bis 1.700 Rupien gefordert.",
+       "stichpunkte": [
+        "Frist für Vorschläge: 4. Dezember",
+        "Gewerkschaften und Arbeitgeber gefordert",
+        "Tripartite-Verhandlungen laufen weiter"
+       ]
+      },
+      "fr": {
+       "sprechtext": "Il y a désormais une échéance pour la compensation salariale 2027. Syndicats et patronat ont jusqu’au 4 décembre pour soumettre leurs propositions. Auparavant, les syndicats avaient réclamé une compensation de 1 200 à 1 700 roupies.",
+       "stichpunkte": [
+        "Échéance des propositions : 4 décembre",
+        "Syndicats et patronat concernés",
+        "Les discussions tripartites se poursuivent"
+       ]
+      },
+      "en": {
+       "sprechtext": "There is now a deadline for the 2027 wage compensation. Unions and employers have until 4 December to submit their proposals. Earlier, the unions had asked for a compensation of Rs 1,200 to Rs 1,700.",
+       "stichpunkte": [
+        "Deadline for proposals: 4 December",
+        "Unions and employers involved",
+        "Tripartite discussions continue"
+       ]
+      }
+     }
+    },
     {
      "zeit": "2026-11-27T12:00:00+04:00",
      "nurDatum": true,
@@ -2251,9 +2299,9 @@
   }
  ],
  "einleitung": {
-  "zeit": "2026-11-27T17:00:00+04:00",
-  "de": "Das Top-Thema bleibt die Wasserkrise: Die Reservoirs sind am 26. November nur zu 44 Prozent gefüllt. Bei den Tripartite-Gesprächen zum Lohnausgleich 2027 haben Gewerkschaftsvertreter die Sitzung verlassen. Kunden von my.t beklagen, dass das versprochene Tempo nicht überall ankommt.",
-  "fr": "Le thème principal reste la crise de l’eau : au 26 novembre, les réservoirs ne sont remplis qu’à 44 %. Lors des tripartites sur la compensation 2027, des syndicalistes ont quitté la séance. Des abonnés de my.t disent que la hausse de débit promise n’est pas au rendez-vous.",
-  "en": "The main topic remains the water crisis: on 26 November the reservoirs were only 44% full. At the tripartite talks on the 2027 compensation, union representatives walked out. my.t customers say the promised speed increase is not materialising."
+  "zeit": "2026-11-27T21:00:00+04:00",
+  "de": "Die Wasserreserven der Insel sind am 26. November nur noch zu 44 Prozent gefüllt. Bei der Lohnkompensation 2027 haben Gewerkschaften und Arbeitgeber bis 4. Dezember Zeit, Vorschläge einzureichen.",
+  "fr": "Au 26 novembre, les réservoirs de l’île ne sont remplis qu’à 44 %. Pour la compensation salariale 2027, syndicats et patronat ont jusqu’au 4 décembre pour soumettre leurs propositions.",
+  "en": "On 26 November the island’s reservoirs were only 44% full. For the 2027 wage compensation, unions and employers have until 4 December to submit proposals."
  }
 }
