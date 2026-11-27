@@ -1,7 +1,7 @@
 """
 Erkennungsmelodie mit aufgenommenen Instrumenten (einmalig erzeugen, Ergebnis: vorspann.wav).
 
-Melodie, Gitarre, Akkordeon, Bass und Bläser kommen aus dem Soundfont FluidR3_GM (MIT-Lizenz,
+Gezupfte Nylon-Gitarre, ganz leises Xylophon und Kontrabass kommen aus dem Soundfont FluidR3_GM (MIT-Lizenz,
 Debian-Paket fluid-soundfont-gm), gespielt mit FluidSynth. Die Séga-Trommeln (Ravanne, Maravanne,
 Triangel) kommen aus jingle.py. Benötigt: fluidsynth, fluid-soundfont-gm, mido.
 
@@ -27,7 +27,7 @@ TPB = 480                      # Ticks pro Viertel; Viertel = 0,5 s (120 BPM) = 
 TRIOLE = TPB // 3
 
 # General-MIDI-Programme
-GITARRE, AKKORDEON, BASS, BLAESER = 25, 21, 32, 61
+GITARRE, XYLOPHON, BASS = 24, 13, 32
 
 
 def note(name: str) -> int:
@@ -66,39 +66,36 @@ def komponiere(ziel: Path) -> None:
     tempo.append(mido.MetaMessage('set_tempo', tempo=500000, time=0))
     mid.tracks.append(tempo)
 
-    gitarre = Spur(0, GITARRE, 92, 40)
-    akkordeon = Spur(1, AKKORDEON, 100, 80)
-    bass = Spur(2, BASS, 115, 64)
-    blaeser = Spur(3, BLAESER, 82, 70)
+    gitarre = Spur(0, GITARRE, 112, 52)
+    xylophon = Spur(1, XYLOPHON, 52, 84)
+    bass = Spur(2, BASS, 110, 64)
 
-    akkorde = {'D': ['D3', 'A3', 'D4', 'F#4'], 'G': ['D3', 'G3', 'B3', 'D4'], 'A': ['E3', 'A3', 'C#4', 'E4']}
-    # Gitarre: Séga-Schlag „lang – kurz kurz“ auf den Triolen; I – IV – V, dann D
-    for schlag, akk in enumerate(['D', 'G', 'A', 'D', 'D']):
-        t0 = schlag * TPB
-        gitarre.spiele(akkorde[akk], t0, TRIOLE * 2 - 20, 96, schrumm=12)
-        gitarre.spiele(list(reversed(akkorde[akk])), t0 + 2 * TRIOLE, TRIOLE - 20, 74, schrumm=10)
-    # Bass: Grundtöne
+    # Gitarre: gezupfte Triolen-Arpeggien (Daumen auf dem Grundton, dann zwei Akkordtöne); I – IV – V – I – I
+    zupfen = {'D': ['D3', 'A3', 'F#4', 'D4', 'A3', 'F#4'], 'G': ['G2', 'D3', 'B3', 'G3', 'D3', 'B3'],
+              'A': ['A2', 'E3', 'C#4', 'A3', 'E3', 'C#4']}
+    for schlag, akk in enumerate(['D', 'G', 'A', 'D', 'D', 'A']):
+        for k in range(3):
+            ton = zupfen[akk][k if schlag % 2 == 0 else k + 3]
+            gitarre.spiele([ton], schlag * TPB + k * TRIOLE, TRIOLE * (3 - k) + 60, 100 if k == 0 else 82)
+    # Bass: Grundtöne auf der Eins
     for schlag, n in enumerate(['D2', 'G2', 'A2']):
-        bass.spiele([n], schlag * TPB, TPB - 40, 105)
-        bass.spiele([n.replace('2', '3')], schlag * TPB + 2 * TRIOLE, TRIOLE - 20, 80)
-    # Akkordeon: Melodie bis zum Akkordschlag, dann gehaltener Akkord
-    melodie = [(0, 'A4'), (2, 'D5'), (3, 'F#5'), (5, 'A5'), (6, 'G5'), (7, 'F#5'), (8, 'E5')]
+        bass.spiele([n], schlag * TPB, TPB - 40, 100)
+    # Xylophon: die Melodie, ganz leise
+    melodie = [(0, 'A5'), (2, 'D6'), (3, 'F#6'), (5, 'A6'), (6, 'G6'), (7, 'F#6'), (8, 'E6')]
     for triole, n in melodie:
-        akkordeon.spiele([n], triole * TRIOLE, TRIOLE * 2 - 30 if triole in (3, 6) else TRIOLE - 20, 100)
-    haupt = 3 * TPB  # 1,5 s: Name erscheint
-    akkordeon.spiele(['D4', 'F#4', 'A4', 'D5'], haupt, int(1.3 * TPB * 2) - 60, 92)
-    bass.spiele(['D2'], haupt, TPB * 2, 115)
-    blaeser.spiele(['D3', 'A3', 'D4', 'F#4'], haupt, TPB - 60, 100)
+        xylophon.spiele([n], triole * TRIOLE, TRIOLE, 58)
+    haupt = 3 * TPB  # 1,5 s: Name erscheint – gezupfter D-Akkord von unten nach oben, Xylophon antwortet
+    gitarre.spiele(['D2', 'A2', 'D3', 'F#3', 'A3', 'D4'], haupt, TPB * 2, 108, schrumm=40)
+    bass.spiele(['D2'], haupt, TPB * 2, 108)
+    xylophon.spiele(['D6'], haupt + TRIOLE, TRIOLE, 52)
+    xylophon.spiele(['F#6'], haupt + 2 * TRIOLE, TRIOLE, 48)
     # Schluss bei 3,0 s mit dem Dreifachschlag der Trommeln
     ende = 6 * TPB
-    for i, n in enumerate(['A3', 'C#4']):
-        blaeser.spiele([n], ende - (2 - i) * (TRIOLE * 2 // 3), TRIOLE // 2, 85)
-    blaeser.spiele(['D3', 'A3', 'D4', 'F#4'], ende, TPB // 2, 112)
-    akkordeon.spiele(['D4', 'F#4', 'A4', 'D5'], ende, TPB // 2, 105)
-    gitarre.spiele(akkorde['D'], ende, TPB // 2, 105, schrumm=8)
-    bass.spiele(['D2'], ende, TPB // 2, 120)
+    gitarre.spiele(['D2', 'A2', 'D3', 'F#3', 'A3', 'D4'], ende, TPB, 115, schrumm=18)
+    bass.spiele(['D2'], ende, TPB // 2, 115)
+    xylophon.spiele(['D6'], ende, TRIOLE, 60)
 
-    for spur in (gitarre, akkordeon, bass, blaeser):
+    for spur in (gitarre, xylophon, bass):
         mid.tracks.append(spur.als_track())
     mid.save(str(ziel))
 

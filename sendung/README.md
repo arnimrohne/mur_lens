@@ -87,7 +87,7 @@ Die Stimmen lädt der Workflow von huggingface.co/rhasspy/piper-voices herunter 
 
 - **Ablauf:** Vor jeder Sendung läuft ein Vorspann von 3,5 s, die Logo-Animation in `erzeuge_sendung.py` (`vorspann_video`).
 - **Musik:** Die Melodie liegt fertig in `vorspann.wav` und wurde einmalig mit `vorspann_musik.py` erzeugt.
-  - Gitarre, Akkordeon, Kontrabass und Bläser stammen aus dem Soundfont FluidR3_GM (MIT-Lizenz, Debian-Paket `fluid-soundfont-gm`) und werden mit FluidSynth gespielt.
+  - Gezupfte Nylon-Gitarre, ein ganz leises Xylophon und der Kontrabass stammen aus dem Soundfont FluidR3_GM (MIT-Lizenz, Debian-Paket `fluid-soundfont-gm`) und werden mit FluidSynth gespielt.
   - Die Séga-Trommeln (Ravanne, Maravanne, Triangel) synthetisiert `jingle.py`.
 - **Neu erzeugen:** `apt-get install fluidsynth fluid-soundfont-gm && pip install mido && python3 vorspann_musik.py`
 - **Ersatz:** Fehlt `vorspann.wav`, erzeugt `jingle.py` eine rein synthetische Fassung.
