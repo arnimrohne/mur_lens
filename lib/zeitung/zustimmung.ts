@@ -13,7 +13,7 @@ export const ZUSTIMMUNG_OEFFNEN = 'gazet-zustimmung-oeffnen';
  * Google-Tag-Manager-Container (GTM-…) oder GA4-Mess-ID (G-…).
  * Überschreibbar mit NEXT_PUBLIC_GA_ID; leer = Analytics und Banner sind abgeschaltet.
  */
-export const GA_ID = (process.env.NEXT_PUBLIC_GA_ID ?? 'GTM-KNGPKGPW').trim();
+export const GA_ID = (process.env.NEXT_PUBLIC_GA_ID ?? 'G-1G97ZY3NEX').trim();
 
 export function istGaId(id: string): boolean {
   return /^(G|GT|GTM)-[A-Z0-9]{4,12}$/.test(id);
