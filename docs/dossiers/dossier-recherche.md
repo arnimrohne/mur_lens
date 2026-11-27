@@ -26,6 +26,20 @@ getrennt.
 - Das Bild wird nicht beschnitten oder bearbeitet, nur verkleinert. Ohne passendes freies Bild bleibt "bild" weg.
 - Bestehende Dossiers ohne Bild bekommen bei der nächsten Aktualisierung eines.
 
+## Karte
+Optional, aber erwünscht, wenn die Lage von Orten für das Thema wichtig ist (Inseln, Grenzen, Entfernungen). Die Website zeichnet die Karte selbst aus gemeinfreien Küstendaten (Natural Earth). Abgedeckt ist der westliche Indische Ozean, Länge 28–92° Ost, Breite 36° Süd bis 16° Nord.
+```json
+"karte": {"titel": {"de","fr","en"},
+          "ausschnitt": [West, Süd, Ost, Nord],
+          "orte": [{"name": {"de","fr","en"}, "lat": -20.16, "lon": 57.5, "hervor": true, "seite": "rechts"}],
+          "linien": [{"von": 0, "nach": 1}]}
+```
+- Höchstens 12 Orte. Genau ein Ort ist `hervor` (rot), nämlich der wichtigste.
+- `seite` bestimmt, wo die Beschriftung steht: `links`, `rechts`, `oben` oder `unten`. Wähle sie so, dass sich keine Beschriftungen überlappen.
+- Koordinaten nur, wenn sie sicher bekannt sind, z. B. aus Wikipedia oder einem Gazetteer.
+- `linien` verbinden zwei Orte. Die Entfernung berechnet die Website.
+- Ausschnitt: alle Orte mit etwas Rand. Für Themen nur auf Mauritius reicht oft das Insel-Piktogramm der Meldungen; dann keine Karte.
+
 ## Regeln
 - Jede Zahl, jedes Datum und jede Position braucht eine `quelle` (https-URL),
   die der Lauf selbst aufgerufen hat. Was sich nicht belegen lässt, bleibt weg.

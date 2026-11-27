@@ -10,6 +10,8 @@ import type {
   Dossier,
   DossierAkteur,
   DossierBild,
+  DossierKarte,
+  DossierKartenOrt,
   DossierEreignis,
   DossierZahl,
   Einleitung,
@@ -247,6 +249,40 @@ export function parseDossierBild(wert: unknown): DossierBild | undefined {
   return { src, breite, hoehe, alt, urheber, seite, lizenz, lizenzUrl: sichereUrl(wert.lizenzUrl) };
 }
 
+/** Ausdehnung der mitgelieferten Küstenlinien (region-indischer-ozean.json). */
+const KARTEN_GRENZEN: [number, number, number, number] = [28, -36, 92, 16];
+const SEITEN = ['links', 'rechts', 'oben', 'unten'] as const;
+
+function zahl(wert: unknown): number | undefined {
+  return typeof wert === 'number' && Number.isFinite(wert) ? wert : undefined;
+}
+
+export function parseDossierKarte(wert: unknown): DossierKarte | undefined {
+  if (!istObjekt(wert) || !Array.isArray(wert.ausschnitt) || wert.ausschnitt.length !== 4) return undefined;
+  const [w, s, o, n] = wert.ausschnitt.map(zahl);
+  if (w === undefined || s === undefined || o === undefined || n === undefined) return undefined;
+  const [gw, gs, go, gn] = KARTEN_GRENZEN;
+  if (w < gw || o > go || s < gs || n > gn || o - w < 2 || n - s < 2) return undefined;
+  const orte = liste(wert.orte, (roh): DossierKartenOrt | undefined => {
+    if (!istObjekt(roh)) return undefined;
+    const name = mehrsprachig(roh.name);
+    const lat = zahl(roh.lat);
+    const lon = zahl(roh.lon);
+    if (!name || lat === undefined || lon === undefined || lon < w || lon > o || lat < s || lat > n) return undefined;
+    const seite = SEITEN.find((x) => x === roh.seite);
+    return { name, lat, lon, hervor: roh.hervor === true || undefined, seite };
+  }).slice(0, 12);
+  if (orte.length === 0) return undefined;
+  const linien = liste(wert.linien, (roh) => {
+    if (!istObjekt(roh)) return undefined;
+    const von = zahl(roh.von);
+    const nach = zahl(roh.nach);
+    const gueltig = (i: number | undefined): i is number => i !== undefined && Number.isInteger(i) && i >= 0 && i < orte.length;
+    return gueltig(von) && gueltig(nach) && von !== nach ? { von, nach } : undefined;
+  }).slice(0, 4);
+  return { titel: mehrsprachig(wert.titel), ausschnitt: [w, s, o, n], orte, linien };
+}
+
 function parseDossier(wert: unknown): Dossier | undefined {
   if (!istObjekt(wert) || typeof wert.id !== 'string' || !DOSSIER_ID.test(wert.id) || !istRubrik(wert.rubrik)) return undefined;
   const titel = mehrsprachig(wert.titel);
@@ -279,6 +315,7 @@ function parseDossier(wert: unknown): Dossier | undefined {
     titel,
     kurz,
     bild: parseDossierBild(wert.bild),
+    karte: parseDossierKarte(wert.karte),
     warum: mehrsprachig(wert.warum),
     entwicklung: mehrsprachig(wert.entwicklung),
     chronik,

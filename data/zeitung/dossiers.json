@@ -450,6 +450,524 @@
      "url": "https://newsmoris.com/cwa-loses-60-of-supply-amid-mounting-financial-deficits/"
     }
    ]
+  },
+  {
+   "id": "chagos",
+   "rubrik": "politik",
+   "stand": "2026-11-28T01:35:00+04:00",
+   "titel": {
+    "de": "Das Chagos-Archipel",
+    "fr": "L'archipel des Chagos",
+    "en": "The Chagos Archipelago"
+   },
+   "kurz": {
+    "de": "Mauritius und Großbritannien haben im Mai 2025 einen Vertrag unterzeichnet, der die Souveränität über das Chagos-Archipel an Mauritius übertragen soll; die Militärbasis Diego Garcia bleibt für mindestens 99 Jahre an Großbritannien verpachtet. Der Vertrag ist bis heute nicht ratifiziert, weil die USA ihn nicht mittragen. Mauritius verlangt von London bis Dezember 2026 einen Fahrplan und droht sonst mit rechtlichen Schritten.",
+    "fr": "Maurice et le Royaume-Uni ont signé en mai 2025 un traité qui doit transférer la souveraineté sur l'archipel des Chagos à Maurice ; la base militaire de Diego Garcia reste louée au Royaume-Uni pour au moins 99 ans. Le traité n'est toujours pas ratifié, car les États-Unis ne le soutiennent pas. Maurice exige de Londres une feuille de route d'ici décembre 2026 et menace sinon d'engager des poursuites.",
+    "en": "Mauritius and the United Kingdom signed a treaty in May 2025 that is meant to transfer sovereignty over the Chagos Archipelago to Mauritius, while the Diego Garcia military base stays leased to the UK for at least 99 years. The treaty has still not been ratified because the US does not back it. Mauritius is demanding a roadmap from London by December 2026 and otherwise threatens legal action."
+   },
+   "karte": {
+    "titel": {
+     "de": "Lage der Chagos-Inseln",
+     "fr": "Situation des Chagos",
+     "en": "Where the Chagos Islands are"
+    },
+    "ausschnitt": [
+     42,
+     -25,
+     80,
+     7
+    ],
+    "orte": [
+     {
+      "name": {
+       "de": "Mauritius",
+       "fr": "Maurice",
+       "en": "Mauritius"
+      },
+      "lat": -20.2,
+      "lon": 57.55,
+      "seite": "oben"
+     },
+     {
+      "name": {
+       "de": "Diego Garcia",
+       "fr": "Diego Garcia",
+       "en": "Diego Garcia"
+      },
+      "lat": -7.31,
+      "lon": 72.41,
+      "hervor": true,
+      "seite": "rechts"
+     },
+     {
+      "name": {
+       "de": "Chagos-Archipel",
+       "fr": "Archipel des Chagos",
+       "en": "Chagos Archipelago"
+      },
+      "lat": -5.6,
+      "lon": 72.0,
+      "seite": "oben"
+     },
+     {
+      "name": {
+       "de": "Malediven",
+       "fr": "Maldives",
+       "en": "Maldives"
+      },
+      "lat": 4.18,
+      "lon": 73.51,
+      "seite": "links"
+     },
+     {
+      "name": {
+       "de": "Seychellen",
+       "fr": "Seychelles",
+       "en": "Seychelles"
+      },
+      "lat": -4.68,
+      "lon": 55.48,
+      "seite": "rechts"
+     },
+     {
+      "name": {
+       "de": "Rodrigues",
+       "fr": "Rodrigues",
+       "en": "Rodrigues"
+      },
+      "lat": -19.72,
+      "lon": 63.42,
+      "seite": "rechts"
+     },
+     {
+      "name": {
+       "de": "La Réunion",
+       "fr": "La Réunion",
+       "en": "Réunion"
+      },
+      "lat": -21.11,
+      "lon": 55.53,
+      "seite": "unten"
+     },
+     {
+      "name": {
+       "de": "Madagaskar",
+       "fr": "Madagascar",
+       "en": "Madagascar"
+      },
+      "lat": -18.9,
+      "lon": 47.5,
+      "seite": "oben"
+     }
+    ],
+    "linien": [
+     {
+      "von": 0,
+      "nach": 1
+     }
+    ]
+   },
+   "warum": {
+    "de": "Das Chagos-Archipel im Indischen Ozean wurde 1965 vor der Unabhängigkeit von Mauritius abgetrennt. Mauritius sieht darin einen Verstoß gegen das Recht auf Entkolonialisierung und verlangt seit Jahrzehnten die Rückgabe. Für Großbritannien und die USA ist vor allem die gemeinsam genutzte Militärbasis auf Diego Garcia wichtig.\n\nFür Mauritius geht es um Staatsgebiet, um Meeresflächen und um eine politische Frage, die das Land seit seiner Unabhängigkeit begleitet. Für die vertriebenen Chagossen geht es außerdem um die Rückkehr auf die Inseln. Das Thema steht deshalb auch in der mauritischen Innenpolitik regelmäßig im Mittelpunkt.",
+    "fr": "L'archipel des Chagos, dans l'océan Indien, a été détaché de Maurice en 1965, avant l'indépendance. Maurice y voit une violation du droit à la décolonisation et en réclame la restitution depuis des décennies. Pour le Royaume-Uni et les États-Unis, c'est surtout la base militaire commune de Diego Garcia qui compte.\n\nPour Maurice, il s'agit d'un territoire, d'espaces maritimes et d'une question politique qui accompagne le pays depuis son indépendance. Pour les Chagossiens déplacés, il s'agit aussi du retour sur les îles. Le sujet revient donc régulièrement au cœur de la politique intérieure mauricienne.",
+    "en": "The Chagos Archipelago in the Indian Ocean was separated from Mauritius in 1965, before independence. Mauritius sees this as a breach of the right to decolonisation and has demanded its return for decades. For the UK and the US, what matters most is the jointly used military base on Diego Garcia.\n\nFor Mauritius, the issue involves territory, maritime zones and a political question that has accompanied the country since independence. For the displaced Chagossians, it also concerns returning to the islands. The topic therefore regularly features in Mauritian domestic politics."
+   },
+   "entwicklung": {
+    "de": "Den rechtlichen Rahmen setzte der Internationale Gerichtshof 2019: Er stellte fest, dass die Entkolonialisierung von Mauritius 1968 nicht rechtmäßig abgeschlossen wurde. Die UN-Generalversammlung forderte Großbritannien daraufhin auf, seine Verwaltung zurückzuziehen. Die Souveränitätsfrage selbst blieb nach Darstellung von Fachleuten ein bilateraler Streit, den das Gutachten nicht entschied.\n\nIm Mai 2025 unterzeichneten beide Regierungen den Vertrag: Mauritius erhält die Souveränität über das gesamte Archipel, Großbritannien pachtet Diego Garcia zunächst für 99 Jahre, mit Option auf Verlängerung. Seit Anfang 2026 stockt die Umsetzung. Nach Berichten lehnt US-Präsident Trump den Vertrag aus Sicherheitsgründen ab, London ließ sein Ratifizierungsgesetz im April ruhen. Dazu kommt ein zweiter Streit: Die Malediven stellten im Februar 2026 die Souveränität von Mauritius infrage.\n\nIn Mauritius selbst ist der Vertrag Gegenstand des Parteienstreits. Die Opposition kritisiert die Kosten der Rechtsberatung und die Rolle des britischen Juristen Sir Geoffrey Cox; die Regierung verweist auf ihre Frist an London.",
+    "fr": "Le cadre juridique a été posé en 2019 par la Cour internationale de justice : elle a jugé que la décolonisation de Maurice n'avait pas été menée à bien légalement en 1968. L'Assemblée générale de l'ONU a ensuite demandé au Royaume-Uni de retirer son administration. La question de la souveraineté est restée, selon les spécialistes, un différend bilatéral que l'avis n'a pas tranché.\n\nEn mai 2025, les deux gouvernements ont signé le traité : Maurice obtient la souveraineté sur tout l'archipel, le Royaume-Uni loue Diego Garcia pour 99 ans dans un premier temps, avec une option de prolongation. Depuis début 2026, la mise en œuvre est bloquée. Selon des informations de presse, le président américain Trump rejette le traité pour des raisons de sécurité ; Londres a laissé son projet de loi de ratification en suspens en avril. S'y ajoute un second différend : les Maldives ont remis en cause en février 2026 la souveraineté de Maurice.\n\nÀ Maurice même, le traité alimente le débat partisan. L'opposition critique le coût des conseils juridiques et le rôle du juriste britannique Sir Geoffrey Cox ; le gouvernement met en avant son délai fixé à Londres.",
+    "en": "The legal framework was set by the International Court of Justice in 2019: it found that Mauritius's decolonisation had not been lawfully completed in 1968. The UN General Assembly then called on the UK to withdraw its administration. According to legal commentators, the sovereignty question itself remained a bilateral dispute that the opinion did not settle.\n\nIn May 2025 the two governments signed the treaty: Mauritius gains sovereignty over the whole archipelago, and the UK leases Diego Garcia for an initial 99 years, with an option to extend. Implementation has stalled since early 2026. According to reports, US President Trump rejects the treaty on security grounds, and London let its ratification bill lapse in April. A second dispute has been added: the Maldives called Mauritius's sovereignty into question in February 2026.\n\nIn Mauritius itself, the treaty is a subject of party-political dispute. The opposition criticises the cost of legal advice and the role of the British lawyer Sir Geoffrey Cox; the government points to its deadline for London."
+   },
+   "chronik": [
+    {
+     "datum": "Feb. 2019",
+     "datumI18n": {
+      "fr": "févr. 2019",
+      "en": "Feb 2019"
+     },
+     "text": {
+      "de": "Der Internationale Gerichtshof stellt in einem Gutachten fest, dass die Entkolonialisierung von Mauritius 1968 nicht rechtmäßig abgeschlossen wurde. Die Abtrennung des Archipels vor der Unabhängigkeit war demnach unrechtmäßig. Die Souveränität im engeren Sinn entscheidet das Gericht nicht.",
+      "fr": "La Cour internationale de justice estime dans un avis que la décolonisation de Maurice n'a pas été menée à bien légalement en 1968. Le détachement de l'archipel avant l'indépendance était donc illicite. La Cour ne tranche pas la question de la souveraineté au sens strict.",
+      "en": "The International Court of Justice finds in an advisory opinion that Mauritius's decolonisation was not lawfully completed in 1968. The detachment of the archipelago before independence was therefore wrongful. The Court does not decide sovereignty in the narrow sense."
+     },
+     "quelle": "https://www.worldcourts.com/icj/eng/decisions/2019.02.25_Mauritius.htm"
+    },
+    {
+     "datum": "2019",
+     "datumI18n": {
+      "fr": "2019",
+      "en": "2019"
+     },
+     "text": {
+      "de": "Die UN-Generalversammlung begrüßt das Gutachten und fordert Großbritannien auf, seine Kolonialverwaltung bedingungslos aus dem Gebiet abzuziehen. Sie ruft London außerdem zur Zusammenarbeit bei der Umsiedlung mauritischer Staatsangehöriger auf, darunter Chagossen.",
+      "fr": "L'Assemblée générale de l'ONU salue l'avis et demande au Royaume-Uni de retirer sans condition son administration coloniale de la zone. Elle appelle aussi Londres à coopérer pour la réinstallation de ressortissants mauriciens, dont des Chagossiens.",
+      "en": "The UN General Assembly welcomes the opinion and calls on the UK to withdraw its colonial administration from the area unconditionally. It also urges London to cooperate on the resettlement of Mauritian nationals, including Chagossians."
+     },
+     "quelle": "https://press.un.org/en/2019/ga12146.doc.htm"
+    },
+    {
+     "datum": "Apr. 2023",
+     "datumI18n": {
+      "fr": "avr. 2023",
+      "en": "Apr 2023"
+     },
+     "text": {
+      "de": "Im Streit mit den Malediven um überlappende Meeresgebiete teilt der Internationale Seegerichtshof die Zonen zwischen beiden Staaten auf. Das Urteil ist später Anlass für neuen Streit mit den Malediven.",
+      "fr": "Dans le différend avec les Maldives sur des zones maritimes qui se chevauchent, le Tribunal international du droit de la mer partage les espaces entre les deux États. Ce jugement devient plus tard l'objet d'un nouveau différend avec les Maldives.",
+      "en": "In the dispute with the Maldives over overlapping maritime areas, the International Tribunal for the Law of the Sea divides the zones between the two states. The judgment later becomes the subject of a fresh dispute with the Maldives."
+     },
+     "quelle": "https://maldivesindependent.com/explainer/the-chagos-dispute-explained-colonial-borders-displaced-people-and-a-small-nation-defying-international-law-0755"
+    },
+    {
+     "datum": "22. Mai 2025",
+     "datumI18n": {
+      "fr": "22 mai 2025",
+      "en": "22 May 2025"
+     },
+     "text": {
+      "de": "Mauritius und Großbritannien unterzeichnen den Vertrag über das Chagos-Archipel einschließlich Diego Garcia. Mauritius soll die Souveränität erhalten, Großbritannien behält Diego Garcia unter einem Pachtvertrag mit anfänglich 99 Jahren Laufzeit.",
+      "fr": "Maurice et le Royaume-Uni signent le traité sur l'archipel des Chagos, Diego Garcia compris. Maurice doit obtenir la souveraineté, le Royaume-Uni conserve Diego Garcia dans le cadre d'un bail d'une durée initiale de 99 ans.",
+      "en": "Mauritius and the UK sign the treaty on the Chagos Archipelago including Diego Garcia. Mauritius is to receive sovereignty, while the UK keeps Diego Garcia under a lease with an initial term of 99 years."
+     },
+     "quelle": "https://lordslibrary.parliament.uk/uk-mauritius-treaty-on-the-chagos-archipelago/"
+    },
+    {
+     "datum": "Jan. 2026",
+     "datumI18n": {
+      "fr": "janv. 2026",
+      "en": "Jan 2026"
+     },
+     "text": {
+      "de": "Das Londoner Institut Chatham House argumentiert, dass eine britische Ratifizierung des Vertrags nicht gegen Völkerrecht verstoßen würde.",
+      "fr": "Le centre de réflexion londonien Chatham House soutient qu'une ratification britannique du traité ne violerait pas le droit international.",
+      "en": "The London think tank Chatham House argues that UK ratification of the treaty would not breach international law."
+     },
+     "quelle": "https://www.chathamhouse.org/2026/01/uk-ratification-chagos-archipelago-treaty-will-not-violate-international-law"
+    },
+    {
+     "datum": "Feb. 2026",
+     "datumI18n": {
+      "fr": "févr. 2026",
+      "en": "Feb 2026"
+     },
+     "text": {
+      "de": "Der maledivische Präsident Muizzu kündigt im Parlament an, die Souveränität von Mauritius über das Chagos-Archipel nicht mehr anzuerkennen. Mauritius setzt daraufhin die diplomatischen Beziehungen zu den Malediven aus.",
+      "fr": "Le président maldivien Muizzu annonce devant le Parlement qu'il ne reconnaît plus la souveraineté de Maurice sur l'archipel des Chagos. Maurice suspend alors ses relations diplomatiques avec les Maldives.",
+      "en": "Maldivian President Muizzu tells parliament that his country will no longer recognise Mauritius's sovereignty over the Chagos Archipelago. Mauritius then suspends diplomatic relations with the Maldives."
+     },
+     "quelle": "https://www.orfonline.org/expert-speak/the-maldives-chagos-claim-implications-for-india"
+    },
+    {
+     "datum": "Apr. 2026",
+     "datumI18n": {
+      "fr": "avr. 2026",
+      "en": "Apr 2026"
+     },
+     "text": {
+      "de": "London legt das Ratifizierungsgesetz auf Eis, weil die USA bei einem aktualisierten Verteidigungsabkommen zu Diego Garcia nicht mitziehen. Der Vertrag bleibt damit ohne Rechtskraft.",
+      "fr": "Londres met son projet de loi de ratification en suspens, car les États-Unis ne suivent pas pour un accord de défense actualisé sur Diego Garcia. Le traité reste donc sans force juridique.",
+      "en": "London puts its ratification bill on hold because the US is not joining an updated defence agreement on Diego Garcia. The treaty therefore remains without legal force."
+     },
+     "quelle": "https://mauritius-news.com/article/chagos-deal-mauritius-and-uk-set-december-2026-deadline"
+    },
+    {
+     "datum": "Apr. 2026",
+     "datumI18n": {
+      "fr": "avr. 2026",
+      "en": "Apr 2026"
+     },
+     "text": {
+      "de": "Bei einer parlamentarischen Anfrage (PNQ) nennt die Regierung die Kosten für ausländische Anwälte: Seit November 2024 arbeitet Mauritius mit der Londoner Kanzlei Withers LLP, die Honorare belaufen sich auf 408.028,40 Pfund, etwa 25 Millionen Rupien.",
+      "fr": "Lors d'une question parlementaire (PNQ), le gouvernement chiffre le coût des avocats étrangers : depuis novembre 2024, Maurice travaille avec le cabinet londonien Withers LLP ; les honoraires s'élèvent à 408 028,40 livres, soit environ 25 millions de roupies.",
+      "en": "In a parliamentary question (PNQ), the government states the cost of foreign lawyers: since November 2024 Mauritius has worked with the London firm Withers LLP, with fees of £408,028.40, about 25 million rupees."
+     },
+     "quelle": "https://fr.allafrica.com/stories/202604220722.html"
+    },
+    {
+     "datum": "17. Nov. 2026",
+     "datumI18n": {
+      "fr": "17 nov. 2026",
+      "en": "17 Nov 2026"
+     },
+     "text": {
+      "de": "Premierminister Navin Ramgoolam verlangt von London bis Dezember einen klaren Fahrplan zur Ratifizierung. Andernfalls will Mauritius im neuen Jahr rechtlich vorgehen.",
+      "fr": "Le Premier ministre Navin Ramgoolam exige de Londres, d'ici décembre, une feuille de route claire pour la ratification. Sinon, Maurice compte engager des poursuites au cours de la nouvelle année.",
+      "en": "Prime Minister Navin Ramgoolam demands a clear roadmap for ratification from London by December. Otherwise Mauritius intends to take legal action in the new year."
+     },
+     "quelle": "https://mauritius-news.com/article/chagos-deal-mauritius-and-uk-set-december-2026-deadline"
+    },
+    {
+     "datum": "27. Nov. 2026",
+     "datumI18n": {
+      "fr": "27 nov. 2026",
+      "en": "27 Nov 2026"
+     },
+     "text": {
+      "de": "Oppositionsführer Pravind Jugnauth (MSM) fragt bei einer Versammlung in Triolet nach der Rolle von Sir Geoffrey Cox und spricht von mehr als 25 Millionen Rupien, die in diesem Zusammenhang gezahlt worden sein sollen. Das ist seine Behauptung; belegt hat er sie in dem Bericht nicht.",
+      "fr": "Pravind Jugnauth (MSM) interroge, lors d'un meeting à Triolet, le rôle de Sir Geoffrey Cox et évoque plus de 25 millions de roupies qui auraient été versées dans ce contexte. Il s'agit de son affirmation ; le compte rendu ne la documente pas.",
+      "en": "Pravind Jugnauth (MSM) asks about the role of Sir Geoffrey Cox at a rally in Triolet and speaks of more than 25 million rupees allegedly paid in this context. This is his claim; the report does not substantiate it."
+     },
+     "quelle": "https://defimedia.info/chagos-pravind-jugnauth-questionne-le-role-de-sir-geoffrey-cox-et-evoque-plus-de-rs-25-m-versees-un"
+    }
+   ],
+   "akteure": [
+    {
+     "name": {
+      "de": "Regierung Mauritius (Premier Navin Ramgoolam)",
+      "fr": "Gouvernement mauricien (Premier ministre Navin Ramgoolam)",
+      "en": "Government of Mauritius (Prime Minister Navin Ramgoolam)"
+     },
+     "position": {
+      "de": "Will den Vertrag vom Mai 2025 ratifiziert sehen und verlangt von London bis Dezember 2026 einen Fahrplan. Sonst droht sie mit rechtlichen Schritten im neuen Jahr.",
+      "fr": "Veut voir le traité de mai 2025 ratifié et exige de Londres une feuille de route d'ici décembre 2026. Sinon, elle menace d'engager des poursuites dans la nouvelle année.",
+      "en": "Wants the May 2025 treaty ratified and demands a roadmap from London by December 2026. Otherwise it threatens legal action in the new year."
+     },
+     "quelle": "https://mauritius-news.com/article/chagos-deal-mauritius-and-uk-set-december-2026-deadline"
+    },
+    {
+     "name": {
+      "de": "Opposition (MSM, Pravind Jugnauth)",
+      "fr": "Opposition (MSM, Pravind Jugnauth)",
+      "en": "Opposition (MSM, Pravind Jugnauth)"
+     },
+     "position": {
+      "de": "Stellt die Rolle von Sir Geoffrey Cox und die Kosten der Rechtsberatung infrage und fordert Erklärungen von der Regierung.",
+      "fr": "Remet en question le rôle de Sir Geoffrey Cox et le coût des conseils juridiques et réclame des explications au gouvernement.",
+      "en": "Questions the role of Sir Geoffrey Cox and the cost of legal advice and demands explanations from the government."
+     },
+     "quelle": "https://defimedia.info/chagos-pravind-jugnauth-questionne-le-role-de-sir-geoffrey-cox-et-evoque-plus-de-rs-25-m-versees-un"
+    },
+    {
+     "name": {
+      "de": "Regierung des Vereinigten Königreichs",
+      "fr": "Gouvernement du Royaume-Uni",
+      "en": "UK government"
+     },
+     "position": {
+      "de": "Hat den Vertrag unterzeichnet, sein Ratifizierungsgesetz aber im April 2026 ruhen lassen, weil die USA bei der Verteidigungsfrage zu Diego Garcia nicht mitziehen.",
+      "fr": "A signé le traité, mais a laissé en suspens son projet de loi de ratification en avril 2026, car les États-Unis ne suivent pas sur la question de défense liée à Diego Garcia.",
+      "en": "Signed the treaty but let its ratification bill lapse in April 2026 because the US is not joining on the Diego Garcia defence question."
+     },
+     "quelle": "https://mauritius-news.com/article/chagos-deal-mauritius-and-uk-set-december-2026-deadline"
+    },
+    {
+     "name": {
+      "de": "USA (Präsident Donald Trump)",
+      "fr": "États-Unis (président Donald Trump)",
+      "en": "United States (President Donald Trump)"
+     },
+     "position": {
+      "de": "Trump kritisiert die Vereinbarung laut Berichten scharf („act of great stupidity“) und stellt infrage, ob sie die Basis auf Diego Garcia ausreichend schützt.",
+      "fr": "Selon des informations de presse, Trump critique vivement l'accord (« act of great stupidity ») et doute qu'il protège suffisamment la base de Diego Garcia.",
+      "en": "According to reports, Trump sharply criticises the agreement (\"act of great stupidity\") and questions whether it adequately protects the Diego Garcia base."
+     },
+     "quelle": "https://www.asianews.it/en/articles/trump-opposes-chagos-islands-agreement-diego-garcia-base-at-the-centre-of-tensions"
+    },
+    {
+     "name": {
+      "de": "Malediven (Präsident Muizzu)",
+      "fr": "Maldives (président Muizzu)",
+      "en": "Maldives (President Muizzu)"
+     },
+     "position": {
+      "de": "Erkennt die Souveränität von Mauritius über das Archipel seit Februar 2026 nicht mehr an und stellt die Meeresgrenze von 2023 infrage.",
+      "fr": "Ne reconnaît plus, depuis février 2026, la souveraineté de Maurice sur l'archipel et remet en cause la délimitation maritime de 2023.",
+      "en": "Since February 2026 no longer recognises Mauritius's sovereignty over the archipelago and challenges the 2023 maritime boundary."
+     },
+     "quelle": "https://www.orfonline.org/expert-speak/the-maldives-chagos-claim-implications-for-india"
+    },
+    {
+     "name": {
+      "de": "Chagossische Gruppen",
+      "fr": "Groupes chagossiens",
+      "en": "Chagossian groups"
+     },
+     "position": {
+      "de": "Gespalten: Die Chagos Refugees Group unterstützt den Vertrag im Großen und Ganzen, in Großbritannien ansässige Gruppen wie Chagossian Voices und BIOT Citizens lehnen ihn ab.",
+      "fr": "Divisés : le Chagos Refugees Group soutient globalement le traité, tandis que des groupes basés au Royaume-Uni comme Chagossian Voices et BIOT Citizens le rejettent.",
+      "en": "Divided: the Chagos Refugees Group broadly supports the treaty, while UK-based groups such as Chagossian Voices and BIOT Citizens oppose it."
+     },
+     "quelle": "https://en.wikipedia.org/wiki/Chagossians"
+    }
+   ],
+   "zahlen": [
+    {
+     "wert": {
+      "de": "99 Jahre",
+      "fr": "99 ans",
+      "en": "99 years"
+     },
+     "text": {
+      "de": "Anfangslaufzeit der Pacht für Diego Garcia; eine Verlängerung ist möglich.",
+      "fr": "Durée initiale du bail de Diego Garcia ; une prolongation est possible.",
+      "en": "Initial term of the Diego Garcia lease; an extension is possible."
+     },
+     "quelle": "https://lordslibrary.parliament.uk/uk-mauritius-treaty-on-the-chagos-archipelago/"
+    },
+    {
+     "wert": {
+      "de": "13 zu 1",
+      "fr": "13 contre 1",
+      "en": "13 to 1"
+     },
+     "text": {
+      "de": "Stimmenverhältnis im Internationalen Gerichtshof beim Gutachten von 2019.",
+      "fr": "Répartition des voix à la Cour internationale de justice pour l'avis de 2019.",
+      "en": "Vote split at the International Court of Justice on the 2019 opinion."
+     },
+     "quelle": "https://www.worldcourts.com/icj/eng/decisions/2019.02.25_Mauritius.htm"
+    },
+    {
+     "wert": {
+      "de": "408.028,40 Pfund",
+      "fr": "408 028,40 livres",
+      "en": "£408,028.40"
+     },
+     "text": {
+      "de": "Honorare der Kanzlei Withers LLP und weiterer ausländischer Anwälte laut Regierungsantwort im April 2026, etwa 25 Millionen Rupien.",
+      "fr": "Honoraires du cabinet Withers LLP et d'autres avocats étrangers selon la réponse du gouvernement en avril 2026, soit environ 25 millions de roupies.",
+      "en": "Fees of the firm Withers LLP and other foreign lawyers according to the government's April 2026 answer, about 25 million rupees."
+     },
+     "quelle": "https://fr.allafrica.com/stories/202604220722.html"
+    },
+    {
+     "wert": {
+      "de": "40 Jahre",
+      "fr": "40 ans",
+      "en": "40 years"
+     },
+     "text": {
+      "de": "Mögliche Verlängerung des Abkommens nach Ablauf der Anfangslaufzeit, laut Ausschuss des House of Lords.",
+      "fr": "Prolongation possible de l'accord après la durée initiale, selon une commission de la Chambre des lords.",
+      "en": "Possible extension of the agreement after the initial term, according to a House of Lords committee."
+     },
+     "quelle": "https://publications.parliament.uk/pa/ld5901/ldselect/ldintagr/146/14603.htm"
+    }
+   ],
+   "grafiken": [
+    {
+     "art": "balken",
+     "einheit": {
+      "de": "Richter",
+      "fr": "juges",
+      "en": "judges"
+     },
+     "titel": {
+      "de": "Abstimmung im Internationalen Gerichtshof 2019",
+      "fr": "Vote à la Cour internationale de justice, 2019",
+      "en": "Vote at the International Court of Justice, 2019"
+     },
+     "werte": [
+      {
+       "wert": 13,
+       "hervor": true,
+       "label": {
+        "de": "Für das Gutachten",
+        "fr": "Pour l'avis",
+        "en": "For the opinion"
+       }
+      },
+      {
+       "wert": 1,
+       "label": {
+        "de": "Dagegen",
+        "fr": "Contre",
+        "en": "Against"
+       }
+      }
+     ],
+     "quelle": "Internationaler Gerichtshof (worldcourts.com)"
+    }
+   ],
+   "offen": [
+    {
+     "de": "Legt Großbritannien bis Dezember 2026 einen Fahrplan zur Ratifizierung vor, und wie stellen sich die USA dazu?",
+     "fr": "Le Royaume-Uni présentera-t-il d'ici décembre 2026 une feuille de route de ratification, et quelle sera la position des États-Unis ?",
+     "en": "Will the UK present a ratification roadmap by December 2026, and what will the US position be?"
+    },
+    {
+     "de": "Welche rechtlichen Schritte will Mauritius einleiten, wenn die Frist ungenutzt verstreicht?",
+     "fr": "Quelles démarches juridiques Maurice engagera-t-elle si le délai expire sans suite ?",
+     "en": "What legal steps would Mauritius take if the deadline passes without action?"
+    },
+    {
+     "de": "Wie wird der Streit mit den Malediven um die Meeresgebiete weitergehen?",
+     "fr": "Comment le différend avec les Maldives sur les espaces maritimes évoluera-t-il ?",
+     "en": "How will the dispute with the Maldives over the maritime areas develop?"
+    },
+    {
+     "de": "Welche Rechte erhalten die Chagossen auf Rückkehr und Umsiedlung, und wann?",
+     "fr": "Quels droits de retour et de réinstallation les Chagossiens obtiendront-ils, et quand ?",
+     "en": "What rights to return and resettle will the Chagossians get, and when?"
+    }
+   ],
+   "themen": [
+    "chagos"
+   ],
+   "stichworte": [
+    "Chagos",
+    "Diego Garcia",
+    "Souveränität",
+    "Vertrag",
+    "Malediven"
+   ],
+   "quellen": [
+    {
+     "name": "ICJ-Gutachten 2019 (worldcourts.com)",
+     "url": "https://www.worldcourts.com/icj/eng/decisions/2019.02.25_Mauritius.htm"
+    },
+    {
+     "name": "UN-Pressemitteilung zur Generalversammlung",
+     "url": "https://press.un.org/en/2019/ga12146.doc.htm"
+    },
+    {
+     "name": "Maldives Independent (Erklärstück)",
+     "url": "https://maldivesindependent.com/explainer/the-chagos-dispute-explained-colonial-borders-displaced-people-and-a-small-nation-defying-international-law-0755"
+    },
+    {
+     "name": "House of Lords Library",
+     "url": "https://lordslibrary.parliament.uk/uk-mauritius-treaty-on-the-chagos-archipelago/"
+    },
+    {
+     "name": "House of Lords International Agreements Committee",
+     "url": "https://publications.parliament.uk/pa/ld5901/ldselect/ldintagr/146/14603.htm"
+    },
+    {
+     "name": "Chatham House",
+     "url": "https://www.chathamhouse.org/2026/01/uk-ratification-chagos-archipelago-treaty-will-not-violate-international-law"
+    },
+    {
+     "name": "ORF",
+     "url": "https://www.orfonline.org/expert-speak/the-maldives-chagos-claim-implications-for-india"
+    },
+    {
+     "name": "The Diplomat",
+     "url": "https://thediplomat.com/2026/09/why-has-the-maldives-inserted-itself-into-the-chagos-sovereignty-dispute/"
+    },
+    {
+     "name": "MauritiusNews",
+     "url": "https://mauritius-news.com/article/chagos-deal-mauritius-and-uk-set-december-2026-deadline"
+    },
+    {
+     "name": "allAfrica / L'Express (PNQ)",
+     "url": "https://fr.allafrica.com/stories/202604220722.html"
+    },
+    {
+     "name": "allAfrica / L'Express (Kommentar)",
+     "url": "https://fr.allafrica.com/stories/202611230622.html"
+    },
+    {
+     "name": "Défi Media",
+     "url": "https://defimedia.info/chagos-pravind-jugnauth-questionne-le-role-de-sir-geoffrey-cox-et-evoque-plus-de-rs-25-m-versees-un"
+    },
+    {
+     "name": "AsiaNews",
+     "url": "https://www.asianews.it/en/articles/trump-opposes-chagos-islands-agreement-diego-garcia-base-at-the-centre-of-tensions"
+    },
+    {
+     "name": "Wikipedia (Chagossians)",
+     "url": "https://en.wikipedia.org/wiki/Chagossians"
+    }
+   ]
   }
  ]
 }

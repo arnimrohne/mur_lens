@@ -359,3 +359,16 @@ html:has(.gazet) { background: #fdfaf5; }
 .gz-dossier-karte-link { color: var(--fg); text-decoration: none; }
 .gz-dossier-karte-link::after { content: ''; position: absolute; inset: 0; }
 .gz-dossier-karte-bild figcaption { position: relative; z-index: 1; }
+
+/* Regionalkarte in Dossiers */
+.gz-regionalkarte { margin: 16px 0 0; padding: 14px 16px 10px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); }
+.gz-regionalkarte svg { display: block; width: 100%; height: auto; border-radius: 6px; }
+.gz-rk-meer { fill: color-mix(in srgb, var(--blue) 9%, var(--paper)); }
+.gz-rk-land { fill: var(--chip); stroke: var(--muted); stroke-width: .6; stroke-linejoin: round; }
+.gz-rk-ort circle { fill: var(--fg); stroke: var(--paper); stroke-width: 2; }
+.gz-rk-hervor circle { fill: var(--red); }
+.gz-rk-ort text { font-family: var(--f-display); font-size: 16px; font-weight: 600; fill: var(--fg); paint-order: stroke; stroke: var(--paper); stroke-width: 4px; stroke-linejoin: round; }
+.gz-rk-hervor text { font-weight: 800; }
+.gz-rk-linie line { stroke: var(--red); stroke-width: 2; stroke-dasharray: 6 5; }
+.gz-rk-linie text { font-family: var(--f-mono); font-size: 14px; fill: var(--red); paint-order: stroke; stroke: var(--paper); stroke-width: 4px; }
+.gz-regionalkarte .gz-grafik-quelle { font-family: var(--f-mono); font-size: .7rem; color: var(--muted); margin: 8px 0 0; }
