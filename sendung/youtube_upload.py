@@ -19,6 +19,7 @@ import argparse
 import json
 import os
 import sys
+import time
 from pathlib import Path
 
 PLAYLISTS = {
@@ -48,6 +49,41 @@ def dienst():
     return build('youtube', 'v3', credentials=zugang, cache_discovery=False)
 
 
+def mit_wiederholung(anfrage_bauen, versuche: int = 5):
+    """Führt eine API-Anfrage aus; bei vorübergehenden Fehlern (409/429/5xx) mit Pause erneut."""
+    from googleapiclient.errors import HttpError
+
+    for versuch in range(versuche):
+        try:
+            return anfrage_bauen().execute()
+        except HttpError as fehler:
+            if fehler.resp.status not in (409, 429, 500, 502, 503, 504) or versuch == versuche - 1:
+                raise
+            pause = 5 * 2 ** versuch
+            print(f'  vorübergehender Fehler {fehler.resp.status}, neuer Versuch in {pause} s')
+            time.sleep(pause)
+
+
+def vorhandene_uploads(yt) -> dict[str, str]:
+    """Titel → Video-ID der letzten Uploads des Kanals (verhindert Doppel-Uploads bei Wiederholung)."""
+    kanal = mit_wiederholung(lambda: yt.channels().list(part='contentDetails', mine=True))
+    eintraege = kanal.get('items', [])
+    if not eintraege:
+        return {}
+    uploads = eintraege[0]['contentDetails']['relatedPlaylists']['uploads']
+    antwort = mit_wiederholung(lambda: yt.playlistItems().list(part='snippet', playlistId=uploads, maxResults=50))
+    return {e['snippet']['title']: e['snippet']['resourceId']['videoId'] for e in antwort.get('items', [])}
+
+
+def in_playlist(yt, playlist: str, video_id: str) -> None:
+    antwort = mit_wiederholung(lambda: yt.playlistItems().list(part='snippet', playlistId=playlist, maxResults=50))
+    if any(e['snippet']['resourceId']['videoId'] == video_id for e in antwort.get('items', [])):
+        return
+    mit_wiederholung(lambda: yt.playlistItems().insert(part='snippet', body={
+        'snippet': {'playlistId': playlist, 'resourceId': {'kind': 'youtube#video', 'videoId': video_id}},
+    }))
+
+
 def playlist_id(yt, sprache: str, sichtbarkeit: str) -> str:
     titel, beschreibung = PLAYLISTS[sprache]
     anfrage = yt.playlists().list(part='snippet', mine=True, maxResults=50)
@@ -57,18 +93,24 @@ def playlist_id(yt, sprache: str, sichtbarkeit: str) -> str:
             if eintrag['snippet']['title'] == titel:
                 return eintrag['id']
         anfrage = yt.playlists().list_next(anfrage, antwort)
-    neu = yt.playlists().insert(part='snippet,status', body={
+    neu = mit_wiederholung(lambda: yt.playlists().insert(part='snippet,status', body={
         'snippet': {'title': titel, 'description': beschreibung, 'defaultLanguage': sprache},
         'status': {'privacyStatus': 'public' if sichtbarkeit == 'public' else 'unlisted'},
-    }).execute()
+    }))
     print(f'Playlist angelegt: {titel} ({neu["id"]})')
+    time.sleep(5)  # frisch angelegte Playlists sind nicht sofort beschreibbar
     return neu['id']
 
 
-def lade_hoch(yt, ordner: Path, meta: dict, sichtbarkeit: str) -> str:
+def lade_hoch(yt, ordner: Path, meta: dict, sichtbarkeit: str, vorhanden: dict[str, str]) -> str:
     from googleapiclient.http import MediaFileUpload
 
     sprache = meta['sprache']
+    if meta['titel'] in vorhanden:
+        video_id = vorhanden[meta['titel']]
+        print(f'  {sprache}: schon hochgeladen → https://youtu.be/{video_id}')
+        in_playlist(yt, playlist_id(yt, sprache, sichtbarkeit), video_id)
+        return video_id
     body = {
         'snippet': {
             'title': meta['titel'],
@@ -104,10 +146,7 @@ def lade_hoch(yt, ordner: Path, meta: dict, sichtbarkeit: str) -> str:
         except Exception as fehler:  # noqa: BLE001 – eigenes Vorschaubild braucht einen verifizierten Kanal
             print(f'  {sprache}: Vorschaubild nicht gesetzt ({fehler})')
 
-    yt.playlistItems().insert(part='snippet', body={
-        'snippet': {'playlistId': playlist_id(yt, sprache, sichtbarkeit),
-                    'resourceId': {'kind': 'youtube#video', 'videoId': video_id}},
-    }).execute()
+    in_playlist(yt, playlist_id(yt, sprache, sichtbarkeit), video_id)
     return video_id
 
 
@@ -129,13 +168,19 @@ def main() -> int:
         print('Keine Sendung gefunden – nichts hochzuladen.')
         return 0
     yt = dienst()
-    ergebnis = {}
+    vorhanden = vorhandene_uploads(yt)
+    ergebnis, fehler = {}, []
     for pfad in metas:
         meta = json.loads(pfad.read_text(encoding='utf-8'))
-        ergebnis[meta['sprache']] = lade_hoch(yt, a.ausgabe, meta, sichtbarkeit)
+        try:
+            ergebnis[meta['sprache']] = lade_hoch(yt, a.ausgabe, meta, sichtbarkeit, vorhanden)
+        except Exception as f:  # noqa: BLE001 – die anderen Sprachen trotzdem hochladen
+            print(f'  {meta["sprache"]}: FEHLER {f}', file=sys.stderr)
+            fehler.append(meta['sprache'])
     (a.ausgabe / 'youtube-ergebnis.json').write_text(json.dumps(ergebnis, indent=1), encoding='utf-8')
-    return 0
+    return 1 if fehler else 0
 
 
 if __name__ == '__main__':
+    sys.stdout.reconfigure(line_buffering=True)
     sys.exit(main())
