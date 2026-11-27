@@ -7,6 +7,10 @@
 
 import { RUBRIK_IDS } from './types';
 import type {
+  Dossier,
+  DossierAkteur,
+  DossierEreignis,
+  DossierZahl,
   Einleitung,
   Grafik,
   GrafikWert,
@@ -138,6 +142,7 @@ function parseThema(wert: unknown): Thema | undefined {
     warTop: wert.warTop === true || wert.top === true,
     topSeit: istGueltigeZeit(wert.topSeit) ? wert.topSeit : undefined,
     ort: text(wert.ort),
+    dossier: text(wert.dossier),
     koordinaten: parseKoordinaten(wert.koordinaten),
     updates,
   };
@@ -205,4 +210,64 @@ export function parseZeitungDaten(roh: unknown): ZeitungDaten {
     themen,
     videos,
   };
+}
+
+// ----------------------------------------------------------------- Dossiers
+
+const DOSSIER_ID = /^[a-z0-9][a-z0-9-]{1,60}$/;
+
+function liste<T>(wert: unknown, einzeln: (roh: unknown) => T | undefined): T[] {
+  return Array.isArray(wert) ? wert.flatMap((roh) => {
+    const e = einzeln(roh);
+    return e === undefined ? [] : [e];
+  }) : [];
+}
+
+function parseDossier(wert: unknown): Dossier | undefined {
+  if (!istObjekt(wert) || typeof wert.id !== 'string' || !DOSSIER_ID.test(wert.id) || !istRubrik(wert.rubrik)) return undefined;
+  const titel = mehrsprachig(wert.titel);
+  const kurz = mehrsprachig(wert.kurz);
+  if (!titel || !kurz) return undefined;
+  const chronik = liste(wert.chronik, (roh): DossierEreignis | undefined => {
+    if (!istObjekt(roh)) return undefined;
+    const t = mehrsprachig(roh.text);
+    const datum = text(roh.datum);
+    if (!t || !datum) return undefined;
+    const i18n = istObjekt(roh.datumI18n) ? roh.datumI18n : {};
+    return { datum: { de: datum, fr: text(i18n.fr) ?? datum, en: text(i18n.en) ?? datum }, text: t, quelle: sichereUrl(roh.quelle) };
+  });
+  const akteure = liste(wert.akteure, (roh): DossierAkteur | undefined => {
+    if (!istObjekt(roh)) return undefined;
+    const name = mehrsprachig(roh.name);
+    const position = mehrsprachig(roh.position);
+    return name && position ? { name, position, quelle: sichereUrl(roh.quelle) } : undefined;
+  });
+  const zahlen = liste(wert.zahlen, (roh): DossierZahl | undefined => {
+    if (!istObjekt(roh)) return undefined;
+    const w = mehrsprachig(roh.wert);
+    const t = mehrsprachig(roh.text);
+    return w && t ? { wert: w, text: t, quelle: sichereUrl(roh.quelle) } : undefined;
+  });
+  return {
+    id: wert.id,
+    rubrik: wert.rubrik,
+    stand: istGueltigeZeit(wert.stand) ? wert.stand : new Date(0).toISOString(),
+    titel,
+    kurz,
+    warum: mehrsprachig(wert.warum),
+    entwicklung: mehrsprachig(wert.entwicklung),
+    chronik,
+    akteure,
+    zahlen,
+    grafiken: liste(wert.grafiken, parseGrafik),
+    offen: liste(wert.offen, mehrsprachig),
+    themen: Array.isArray(wert.themen) ? wert.themen.filter((x): x is string => typeof x === 'string') : [],
+    quellen: parseQuellen(wert.quellen),
+  };
+}
+
+export function parseDossiers(roh: unknown): Dossier[] {
+  if (!istObjekt(roh)) return [];
+  const gesehen = new Set<string>();
+  return liste(roh.dossiers, parseDossier).filter((d) => !gesehen.has(d.id) && gesehen.add(d.id));
 }

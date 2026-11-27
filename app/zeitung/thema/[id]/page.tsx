@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { ThemaAnsicht } from '@/components/zeitung/thema-ansicht';
-import { ladeZeitung } from '@/lib/zeitung/lade-daten';
+import { ladeDossiers, ladeZeitung } from '@/lib/zeitung/lade-daten';
 import { SEITEN_NAME } from '@/lib/zeitung/seite';
 import { alsSkriptJson, artikelDaten } from '@/lib/zeitung/strukturierte-daten';
 import { findeThema, themaPfad } from '@/lib/zeitung/teilen';
@@ -52,14 +52,14 @@ export async function generateMetadata({ params }: ThemaSeiteProps): Promise<Met
 
 export default async function ThemaSeite({ params }: ThemaSeiteProps) {
   const { id } = await params;
-  const daten = await ladeZeitung();
+  const [daten, dossiers] = await Promise.all([ladeZeitung(), ladeDossiers()]);
   const thema = findeThema(daten, decodeURIComponent(id));
   if (!thema) notFound();
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: alsSkriptJson(artikelDaten(thema)) }} />
-      <ThemaAnsicht thema={thema} stand={daten.stand} />
+      <ThemaAnsicht thema={thema} stand={daten.stand} dossiers={dossiers} />
     </>
   );
 }

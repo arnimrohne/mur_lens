@@ -97,6 +97,8 @@ export interface Thema {
   /** Zeitpunkt, an dem das Thema (zuletzt) Top-Thema wurde. */
   topSeit?: string;
   ort?: string;
+  /** Zugehöriges Dossier (Hintergrund zu wiederkehrenden Themen). */
+  dossier?: string;
   /** Lage für die Inselkarte, falls der Ort nicht in lib/zeitung/orte.json steht. */
   koordinaten?: Koordinaten;
   /** Neueste Meldung zuerst. */
@@ -132,4 +134,42 @@ export interface ZeitungDaten {
   einleitung?: Einleitung;
   themen: Thema[];
   videos: Video[];
+}
+
+export interface DossierEreignis {
+  /** Anzeige, z. B. „2009“ oder „Nov. 2026“; je Sprache. */
+  datum: Mehrsprachig;
+  text: Mehrsprachig;
+  quelle?: string;
+}
+
+export interface DossierAkteur {
+  name: Mehrsprachig;
+  position: Mehrsprachig;
+  quelle?: string;
+}
+
+export interface DossierZahl {
+  wert: Mehrsprachig;
+  text: Mehrsprachig;
+  quelle?: string;
+}
+
+/** Hintergrund zu einem wiederkehrenden Thema (z. B. Wasserversorgung). */
+export interface Dossier {
+  id: string;
+  rubrik: RubrikId;
+  stand: string;
+  titel: Mehrsprachig;
+  kurz: Mehrsprachig;
+  warum?: Mehrsprachig;
+  entwicklung?: Mehrsprachig;
+  chronik: DossierEreignis[];
+  akteure: DossierAkteur[];
+  zahlen: DossierZahl[];
+  grafiken: Grafik[];
+  offen: Mehrsprachig[];
+  /** Ausdrücklich zugeordnete Themen-IDs (zusätzlich zu thema.dossier). */
+  themen: string[];
+  quellen: Quelle[];
 }

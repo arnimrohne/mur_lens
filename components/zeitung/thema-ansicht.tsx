@@ -1,5 +1,6 @@
 'use client';
 
+import { DossierKontext } from './dossier-kontext';
 import { FussLinks } from './fuss-links';
 import { ShopBanner } from './shop-banner';
 import { ThemenKarte } from './themen-karte';
@@ -7,21 +8,22 @@ import { ZeitungKopf } from './zeitung-kopf';
 import { useJetzt } from '@/hooks/use-jetzt';
 import { useZeitungSprache } from '@/hooks/use-zeitung-sprache';
 import { TEXTE } from '@/lib/zeitung/texte';
-import type { Thema } from '@/lib/zeitung/types';
+import type { Dossier, Thema } from '@/lib/zeitung/types';
 
 interface ThemaAnsichtProps {
   thema: Thema;
   stand: string;
+  dossiers?: Dossier[];
 }
 
 /** Einzelnes Thema, z. B. aus einem geteilten Link. */
-export function ThemaAnsicht({ thema, stand }: ThemaAnsichtProps) {
+export function ThemaAnsicht({ thema, stand, dossiers = [] }: ThemaAnsichtProps) {
   const [sprache, waehleSprache] = useZeitungSprache();
   const { jetzt } = useJetzt(Date.parse(stand) || 0);
   const texte = TEXTE[sprache];
 
   return (
-    <>
+    <DossierKontext.Provider value={dossiers}>
       <div className="gz-flagge" aria-hidden="true">
         <span /><span /><span /><span />
       </div>
@@ -47,6 +49,6 @@ export function ThemaAnsicht({ thema, stand }: ThemaAnsichtProps) {
         <p>{texte.fussnoten[1]}</p>
         <FussLinks texte={texte} />
       </footer>
-    </>
+    </DossierKontext.Provider>
   );
 }

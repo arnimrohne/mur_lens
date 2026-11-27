@@ -1,10 +1,12 @@
 'use client';
 
+import { useDossiers } from './dossier-kontext';
 import { InselKarte } from './insel-karte';
 import { MeldungFolie } from './meldung-folie';
 import { TeilenKnopf } from './teilen-knopf';
 import { useWischStapel } from '@/hooks/use-wisch-stapel';
 import { istFrischAktualisiert, istNeu } from '@/lib/zeitung/ausgabe';
+import { dossierFuerThema, dossierPfad } from '@/lib/zeitung/dossiers';
 import { kartenort } from '@/lib/zeitung/karte';
 import { meldungText } from '@/lib/zeitung/sprache';
 import type { OberflaechenTexte } from '@/lib/zeitung/texte';
@@ -25,6 +27,7 @@ export function ThemenKarte({ thema, sprache, texte, jetzt, oberzeile }: ThemenK
   const folien = [...thema.updates].reverse();
   const titel = meldungText(thema.updates[0], 'titel', sprache);
   const ort = kartenort(thema);
+  const dossier = dossierFuerThema(thema, useDossiers());
   const inselName = ort ? texte.inseln[ort.insel] : '';
   const ortText = ort ? (ort.name && ort.name !== inselName ? `${ort.name} · ${inselName}` : inselName) : '';
 
@@ -72,6 +75,13 @@ export function ThemenKarte({ thema, sprache, texte, jetzt, oberzeile }: ThemenK
             {position === anzahl - 1 ? texte.hinweisEnde(anzahl - 1) : texte.hinweisPosition(position + 1, anzahl)}
           </span>
         </div>
+      )}
+      {dossier && (
+        <a className="gz-dossier-link" href={dossierPfad(dossier.id)}>
+          <span className="gz-dossier-marke">{texte.hintergrund}</span>
+          <span>{dossier.titel[sprache]}</span>
+          <span aria-hidden="true">→</span>
+        </a>
       )}
       <div className="gz-aktionen">
         <TeilenKnopf themaId={thema.id} titel={titel} texte={texte} />
