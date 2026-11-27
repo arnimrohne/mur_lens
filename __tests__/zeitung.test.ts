@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import mitgeliefert from './fixtures/zeitung/ausgabe-2026-11-26.json';
 import aktuellerStand from '@/data/zeitung/daten.json';
-import { baueAusgabe, istAktiv, istVonHeute } from '@/lib/zeitung/ausgabe';
+import { baueAusgabe, istAktiv, istAktuell } from '@/lib/zeitung/ausgabe';
 import { parseZeitungDaten, sichereUrl } from '@/lib/zeitung/parse-daten';
 import { meldungText, meldungZeit, spracheAusBrowser } from '@/lib/zeitung/sprache';
 import { alsSkriptJson, strukturierteDaten } from '@/lib/zeitung/strukturierte-daten';
@@ -88,14 +88,19 @@ describe('Ausgabe', () => {
     expect(istAktiv(thema({ id: 'c', aktualisiert: new Date(jetzt).toISOString(), status: 'archiv' }), jetzt)).toBe(false);
   });
 
-  it('bestimmt "heute" nach dem Kalendertag des Lesers', () => {
+  it('klappt heute und gestern auf, ab vorgestern zu – nach dem Kalendertag des Lesers', () => {
+    const zeitpunkt = Date.parse('2026-11-27T10:00:00+04:00');
+    const vonHeute = thema({ id: 'a', aktualisiert: '2026-11-27T06:00:00+04:00' });
+    const vonGestern = thema({ id: 'b', aktualisiert: '2026-11-26T00:30:00+04:00' });
+    const vonVorgestern = thema({ id: 'c', aktualisiert: '2026-11-25T23:30:00+04:00' });
+    expect(istAktuell(vonHeute, zeitpunkt, 'Indian/Mauritius')).toBe(true);
+    expect(istAktuell(vonGestern, zeitpunkt, 'Indian/Mauritius')).toBe(true);
+    expect(istAktuell(vonVorgestern, zeitpunkt, 'Indian/Mauritius')).toBe(false);
     // 00:30 Uhr auf Mauritius ist 21:30 Uhr in Berlin, noch der 26.11.
-    const zeitpunkt = Date.parse('2026-11-27T00:30:00+04:00');
-    const vomVormittag = thema({ id: 'a', aktualisiert: '2026-11-26T09:00:00+04:00' });
-    expect(istVonHeute(vomVormittag, zeitpunkt, 'Europe/Berlin')).toBe(true);
-    expect(istVonHeute(vomVormittag, zeitpunkt, 'Indian/Mauritius')).toBe(false);
-    const vomVortag = thema({ id: 'b', aktualisiert: '2026-11-25T20:00:00+04:00' });
-    expect(istVonHeute(vomVortag, zeitpunkt, 'Europe/Berlin')).toBe(false);
+    const nachts = Date.parse('2026-11-28T00:30:00+04:00');
+    const vomVormittag = thema({ id: 'd', aktualisiert: '2026-11-26T09:00:00+04:00' });
+    expect(istAktuell(vomVormittag, nachts, 'Europe/Berlin')).toBe(true);
+    expect(istAktuell(vomVormittag, nachts, 'Indian/Mauritius')).toBe(false);
   });
 
   it('stellt das Top-Thema voran und verteilt den Rest auf Rubriken', () => {
@@ -109,7 +114,7 @@ describe('Ausgabe', () => {
   it('stellt ehemalige Top-Themen in ihrer Rubrik nach vorn', () => {
     const t = (id: string, stunden: number, warTop = false) =>
       thema({ id, rubrik: 'umwelt', warTop, aktualisiert: new Date(jetzt - stunden * STUNDE).toISOString() });
-    const daten = { stand: '', videos: [], themen: [t('neu', 1), t('ehemals-top', 30, true), t('alt', 40)] };
+    const daten = { stand: '', videos: [], themen: [t('neu', 1), t('ehemals-top', 50, true), t('alt', 60)] };
     const ausgabe = baueAusgabe(daten, jetzt, 'Indian/Mauritius');
     // Aufmacher ist das neueste Thema, danach führt das ehemalige Top-Thema die Rubrik an.
     expect(ausgabe.topThemen.map((x) => x.id)).toEqual(['neu']);

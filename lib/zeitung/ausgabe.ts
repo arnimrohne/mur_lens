@@ -31,13 +31,23 @@ export function istAktiv(thema: Thema, jetzt: number): boolean {
   return jetzt - Date.parse(thema.aktualisiert) < AKTIV_STUNDEN * STUNDE_MS;
 }
 
+/** Wie viele Kalendertage zwischen zwei Zeitpunkten liegen (in der Zeitzone des Lesers). */
+function tageZurueck(zeitpunkt: number, jetzt: number, zeitzone: string): number {
+  const alsUtc = (tag: string): number => {
+    const [j, m, t] = tag.split('-').map(Number);
+    return Date.UTC(j, m - 1, t);
+  };
+  return Math.round((alsUtc(kalendertag(jetzt, zeitzone)) - alsUtc(kalendertag(zeitpunkt, zeitzone))) / (24 * STUNDE_MS));
+}
+
 /**
- * Ein Thema ist „von heute“, wenn seine letzte Meldung am selben
- * Kalendertag erschienen ist – gemessen in der Zeitzone des Lesers.
- * So bleibt alles vom Tag sichtbar, egal wie viele Läufe dazwischen lagen.
+ * Ein Thema ist „aktuell“ (aufgeklappt), wenn seine letzte Meldung heute oder
+ * gestern erschienen ist – gemessen am Kalendertag in der Zeitzone des Lesers.
+ * Wie in einer Tageszeitung: Vortag und heutiger Tag stehen offen,
+ * erst ab vorgestern wird zugeklappt.
  */
-export function istVonHeute(thema: Thema, jetzt: number, zeitzone: string = STANDARD_ZEITZONE): boolean {
-  return kalendertag(Date.parse(thema.aktualisiert), zeitzone) === kalendertag(jetzt, zeitzone);
+export function istAktuell(thema: Thema, jetzt: number, zeitzone: string = STANDARD_ZEITZONE): boolean {
+  return tageZurueck(Date.parse(thema.aktualisiert), jetzt, zeitzone) <= 1;
 }
 
 export function istNeu(thema: Thema, jetzt: number): boolean {
@@ -99,8 +109,8 @@ export function baueAusgabe(
     return [
       {
         rubrik,
-        heute: themen.filter((t) => istVonHeute(t, jetzt, zeitzone)),
-        vortage: themen.filter((t) => !istVonHeute(t, jetzt, zeitzone)),
+        heute: themen.filter((t) => istAktuell(t, jetzt, zeitzone)),
+        vortage: themen.filter((t) => !istAktuell(t, jetzt, zeitzone)),
       },
     ];
   });
