@@ -6,6 +6,7 @@ import { useZeitungSprache } from '@/hooks/use-zeitung-sprache';
 import {
   GA_ID,
   istGaId,
+  istTagManager,
   leseZustimmung,
   loescheGaCookies,
   speichereZustimmung,
@@ -62,11 +63,17 @@ function ladeGoogleAnalytics(id: string): void {
     ad_personalization: 'denied',
     analytics_storage: 'granted',
   });
-  window.gtag('js', new Date());
-  window.gtag('config', id, { allow_google_signals: false, allow_ad_personalization_signals: false });
   const skript = document.createElement('script');
   skript.async = true;
-  skript.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(id)}`;
+  if (istTagManager(id)) {
+    // Tag Manager: GA4 ist im Container konfiguriert.
+    window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+    skript.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(id)}`;
+  } else {
+    window.gtag('js', new Date());
+    window.gtag('config', id, { allow_google_signals: false, allow_ad_personalization_signals: false });
+    skript.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(id)}`;
+  }
   document.head.appendChild(skript);
 }
 

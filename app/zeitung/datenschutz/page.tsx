@@ -31,8 +31,9 @@ export default function DatenschutzSeite() {
 
       <h2 id="analytics">Reichweitenmessung mit Google Analytics (nur mit Einwilligung)</h2>
       <p>
-        Wenn Sie im Hinweisfenster „Zustimmen“ wählen, nutzen wir Google Analytics 4, einen Dienst der
-        Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Wir sehen damit, welche Seiten
+        Wenn Sie im Hinweisfenster „Zustimmen“ wählen, nutzen wir Google Analytics 4, eingebunden über den
+        Google Tag Manager; beides sind Dienste der Google Ireland Limited, Gordon House, Barrow Street,
+        Dublin 4, Irland. Der Tag Manager selbst wertet keine Daten aus, er lädt nur Google Analytics. Wir sehen damit, welche Seiten
         wie oft gelesen werden, aus welchen Ländern und mit welchen Gerätetypen. Dafür setzt Google Cookies
         (_ga, _ga_…, Speicherdauer bis zu 2 Jahre) und verarbeitet Nutzungsdaten wie gekürzte IP-Adresse,
         aufgerufene Seiten, Verweildauer, Browser und Gerät. Google kürzt IP-Adressen in der EU; eine Übermittlung
@@ -42,7 +43,7 @@ export default function DatenschutzSeite() {
       </p>
       <p>
         Rechtsgrundlage ist Ihre Einwilligung (§ 25 Abs. 1 TDDDG, Art. 6 Abs. 1 lit. a DSGVO). Ohne Zustimmung
-        wird Google Analytics nicht geladen. Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft
+        werden weder der Tag Manager noch Google Analytics geladen. Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft
         über „Cookie-Einstellungen“ unten auf jeder Seite widerrufen; die Analytics-Cookies werden dann gelöscht.
         Weitere Informationen:{' '}
         <a href="https://policies.google.com/privacy" rel="noopener">Datenschutzerklärung von Google</a>.

@@ -5,6 +5,7 @@ import { istGaId } from '../lib/zeitung/zustimmung';
 describe('istGaId', () => {
   it('akzeptiert GA4-Mess-IDs', () => {
     expect(istGaId('G-ABC123XYZ9')).toBe(true);
+    expect(istGaId('GTM-KNGPKGPW')).toBe(true);
   });
   it('lehnt Leeres und Fremdes ab', () => {
     expect(istGaId('')).toBe(false);

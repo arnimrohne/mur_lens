@@ -9,11 +9,18 @@ export const ZUSTIMMUNG_SCHLUESSEL = 'gazet-analyse';
 /** Ereignis, mit dem z. B. der Fußzeilen-Link das Banner erneut öffnet. */
 export const ZUSTIMMUNG_OEFFNEN = 'gazet-zustimmung-oeffnen';
 
-/** GA4-Mess-ID (G-…); leer = Analytics und Banner sind abgeschaltet. */
-export const GA_ID = (process.env.NEXT_PUBLIC_GA_ID ?? '').trim();
+/**
+ * Google-Tag-Manager-Container (GTM-…) oder GA4-Mess-ID (G-…).
+ * Überschreibbar mit NEXT_PUBLIC_GA_ID; leer = Analytics und Banner sind abgeschaltet.
+ */
+export const GA_ID = (process.env.NEXT_PUBLIC_GA_ID ?? 'GTM-KNGPKGPW').trim();
 
 export function istGaId(id: string): boolean {
-  return /^G-[A-Z0-9]{4,12}$/.test(id);
+  return /^(G|GT|GTM)-[A-Z0-9]{4,12}$/.test(id);
+}
+
+export function istTagManager(id: string): boolean {
+  return id.startsWith('GTM-');
 }
 
 export function leseZustimmung(): Zustimmung | undefined {
