@@ -1,0 +1,240 @@
+{
+  "_hinweis": "Aussprache-Verzeichnis für die Sprecherstimmen. 'woerter': ganzes Wort → Sprechschreibung (nur im Ton, nie auf den Folien). 'muster': reguläre Ausdrücke (Python) für Zahlen, Uhrzeiten, Währungen. 'abkuerzungen_wortweise': Abkürzungen, die als Wort gesprochen werden; alle anderen aus 2–5 Großbuchstaben werden buchstabiert. Ein Wert in [[ … ]] ist Lautschrift (IPA wie bei espeak) und wird exakt so gesprochen. 'franzoesisch': Namen, die in allen Sprachen französisch gesprochen werden (Lautung wird von der französischen Stimme ermittelt).",
+  "de": {
+    "woerter": {
+      "Mauritius": "[[ maʊrˈiːtsiʊs ]]",
+      "Mauritier": "[[ maʊrˈiːtsiɐ ]]",
+      "Mauritierin": "[[ maʊrˈiːtsiərɪn ]]",
+      "Mauritiern": "[[ maʊrˈiːtsiɐn ]]",
+      "Black River": "Bläck Riwer",
+      "Chagos": "Tschagos",
+      "Seychellen": "Seschellen",
+      "Linfo.re": "Linfo",
+      "Select Committee": "Selekt Kommitti",
+      "Supreme Court": "Suprihm Kort",
+      "Bail Act": "Bäil Äkt",
+      "Budget": "Büdschee",
+      "Kréol": "[[ kreːˈoːl ]]",
+      "Kreol": "[[ kreːˈoːl ]]",
+      "Rupien": "[[ ruːpˈiːjən ]]",
+      "Bulletin": "[[ bˈʊlət ʔɪn ]]",
+      "Rupie": "[[ ruːpˈiːjə ]]"
+    },
+    "muster": [
+      [
+        "\\bRs\\.?\\s?1(?!\\d|[.,]\\d)",
+        "eine Rupie"
+      ],
+      [
+        "\\bRs\\.?\\s?([\\d](?:[\\d.,]*\\d)?)\\s?(Mio\\.|Millionen)",
+        "\\1 Millionen Rupien"
+      ],
+      [
+        "\\bRs\\.?\\s?([\\d](?:[\\d.,]*\\d)?)\\s?(Mrd\\.|Milliarden)",
+        "\\1 Milliarden Rupien"
+      ],
+      [
+        "\\bRs\\.?\\s?([\\d](?:[\\d.,]*\\d)?)",
+        "\\1 Rupien"
+      ],
+      [
+        "\\b(\\d{1,2}):00 Uhr",
+        "\\1 Uhr"
+      ],
+      [
+        "\\b(\\d{1,2}):(\\d{2}) Uhr",
+        "\\1 Uhr \\2"
+      ],
+      [
+        "\\b(\\d{1,2}):(\\d{2})\\b",
+        "\\1 Uhr \\2"
+      ],
+      [
+        "(\\d) %",
+        "\\1 Prozent"
+      ],
+      [
+        "\\bca\\. ",
+        "zirka "
+      ],
+      [
+        "\\bz\\. B\\. ",
+        "zum Beispiel "
+      ],
+      [
+        "\\bu\\. a\\. ",
+        "unter anderem "
+      ],
+      [
+        "\\bkm\\b",
+        "Kilometer"
+      ]
+    ],
+    "abkuerzungen_wortweise": [
+      "NATO",
+      "UNO",
+      "COVID",
+      "AIDS",
+      "UNESCO",
+      "FIFA",
+      "OPEC",
+      "SADC",
+      "COMESA",
+      "CEB",
+      "STC",
+      "SMS"
+    ]
+  },
+  "fr": {
+    "woerter": {
+      "Select Committee": "Sélect Comiti",
+      "Supreme Court": "Suprime Corte",
+      "Bail Act": "Bèil Act",
+      "Kréol": "Kréol"
+    },
+    "muster": [
+      [
+        "\\bRs\\.?\\s?1(?!\\d|[.,  ]\\d)",
+        "une roupie"
+      ],
+      [
+        "\\bRs\\.?\\s?([\\d][\\d  .,]*\\d)\\s?(millions?|milliards?)",
+        "\\1 \\2 de roupies"
+      ],
+      [
+        "\\bRs\\.?\\s?([\\d][\\d  .,]*\\d|\\d)",
+        "\\1 roupies"
+      ],
+      [
+        "\\b(\\d{1,2}) h (\\d{2})\\b",
+        "\\1 heures \\2"
+      ],
+      [
+        "\\b(\\d{1,2}) h\\b",
+        "\\1 heures"
+      ],
+      [
+        "\\b(\\d{1,2})h(\\d{2})\\b",
+        "\\1 heures \\2"
+      ],
+      [
+        "(\\d) ?%",
+        "\\1 pour cent"
+      ],
+      [
+        "\\bkm\\b",
+        "kilomètres"
+      ]
+    ],
+    "abkuerzungen_wortweise": [
+      "OTAN",
+      "ONU",
+      "COVID",
+      "UNESCO",
+      "FIFA",
+      "SADC",
+      "COMESA",
+      "CEB",
+      "STC",
+      "SMS",
+      "MITD"
+    ]
+  },
+  "en": {
+    "woerter": {
+      "Chagos": "Chah-goss",
+      "Kréol": "[[ kɹeɪ ˈɒl ]]"
+    },
+    "muster": [
+      [
+        "\\bRs\\.?\\s?1(?!\\d|[.,]\\d)",
+        "one rupee"
+      ],
+      [
+        "\\bRs\\.?\\s?([\\d](?:[\\d.,]*\\d)?)\\s?(million|billion|m|bn)\\b",
+        "\\1 \\2 rupees"
+      ],
+      [
+        "\\bRs\\.?\\s?([\\d](?:[\\d.,]*\\d)?)",
+        "\\1 rupees"
+      ],
+      [
+        "(\\d)%",
+        "\\1 per cent"
+      ],
+      [
+        "\\bkm\\b",
+        "kilometres"
+      ]
+    ],
+    "abkuerzungen_wortweise": [
+      "NATO",
+      "COVID",
+      "AIDS",
+      "UNESCO",
+      "FIFA",
+      "OPEC",
+      "SADC",
+      "COMESA",
+      "CEB",
+      "STC",
+      "SMS"
+    ]
+  },
+  "franzoesisch": [
+    "Rodrigues",
+    "Port Mathurin",
+    "Agaléga",
+    "Saint-Brandon",
+    "Cargados Carajos",
+    "La Réunion",
+    "Réunion",
+    "Tromelin",
+    "Mayotte",
+    "Port-Louis",
+    "Port Louis",
+    "Quatre-Bornes",
+    "Curepipe",
+    "Mahébourg",
+    "Vacoas",
+    "Vacoas-Phoenix",
+    "Beau-Bassin",
+    "Rose-Hill",
+    "Champ-de-Mars",
+    "Grand-Baie",
+    "Flacq",
+    "Pamplemousses",
+    "Rivière-du-Rempart",
+    "Rivière-Noire",
+    "Savanne",
+    "Grand-Port",
+    "Plaine-Wilhems",
+    "Moka",
+    "Le Morne",
+    "Tamarin",
+    "Flic-en-Flac",
+    "Belle-Mare",
+    "Triolet",
+    "Goodlands",
+    "Souillac",
+    "Chamarel",
+    "Saint-Pierre",
+    "Cité La Cure",
+    "Roche-Bois",
+    "Plaine-Verte",
+    "Bambous",
+    "Mare-aux-Vacoas",
+    "Tamarind Falls",
+    "La Marie",
+    "Line Barracks",
+    "Melrose",
+    "L'Escalier",
+    "Défi Media",
+    "L'Express",
+    "Le Mauricien",
+    "Morisyen",
+    "Morisien",
+    "Assemblée nationale",
+    "Port-Mathurin"
+  ]
+}

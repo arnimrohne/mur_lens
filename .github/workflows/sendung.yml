@@ -1,0 +1,74 @@
+# Produziert täglich die Nachrichtensendung von Gazet Morisyen als Video
+# (Deutsch, Französisch, Englisch) und legt sie als Artefakt zum Herunterladen ab.
+# 05:20 UTC = 09:20 Uhr Mauritius, nach dem Redaktionslauf um 04:59 UTC.
+name: Nachrichtensendung
+
+on:
+  schedule:
+    - cron: '20 5 * * *'
+  workflow_dispatch:
+    inputs:
+      sprachen:
+        description: 'Sprachen (kommagetrennt)'
+        required: true
+        default: de,fr,en
+
+permissions:
+  contents: read
+
+jobs:
+  sendung:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: sendung/requirements.txt
+
+      - name: Werkzeuge installieren
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          pip install -r sendung/requirements.txt
+
+      - name: Stimmen aus dem Cache
+        id: stimmen
+        uses: actions/cache@v4
+        with:
+          path: stimmen
+          key: piper-stimmen-thorsten-high-siwis-medium-cori-high-v1
+
+      - name: Stimmen herunterladen
+        if: steps.stimmen.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p stimmen
+          B=https://huggingface.co/rhasspy/piper-voices/resolve/main
+          for v in de/de_DE/thorsten/high/de_DE-thorsten-high fr/fr_FR/siwis/medium/fr_FR-siwis-medium en/en_GB/cori/high/en_GB-cori-high; do
+            n=$(basename "$v")
+            curl -sfL -o "stimmen/$n.onnx" "$B/$v.onnx"
+            curl -sfL -o "stimmen/$n.onnx.json" "$B/$v.onnx.json"
+          done
+
+      - name: Aktuelle Daten holen
+        run: |
+          git fetch --depth 1 origin zeitung-daten
+          git show FETCH_HEAD:daten.json > daten.json
+
+      - name: Sendung produzieren
+        env:
+          SPRACHEN: ${{ inputs.sprachen || 'de,fr,en' }}
+        run: python sendung/erzeuge_sendung.py --daten daten.json --stimmen stimmen --ausgabe ausgabe --sprachen "$SPRACHEN"
+
+      - name: Datum bestimmen
+        id: tag
+        run: echo "datum=$(TZ=Indian/Mauritius date +%F)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sendung-${{ steps.tag.outputs.datum }}
+          path: ausgabe/
+          retention-days: 14
+          compression-level: 0

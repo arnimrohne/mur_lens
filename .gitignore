@@ -22,3 +22,9 @@ npm-debug.log*
 
 # TypeScript
 *.tsbuildinfo
+
+# Nachrichtensendung
+/stimmen/
+/ausgabe/
+/daten.json
+__pycache__/
