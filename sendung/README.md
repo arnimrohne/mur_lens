@@ -13,6 +13,7 @@ und eine Textdatei mit Titel, Beschreibung (Kapitel und Quellen) und Tags für Y
   - Deutsch: Thorsten (CC0)
   - Französisch: SIWIS (CC BY 4.0)
   - Englisch: Cori (gemeinfrei)
+- **Wetter:** Zum Schluss die Vorhersage für Mauritius, Rodrigues und La Réunion (MET Norway, CC BY 4.0; `wetter.py`). Ist der Dienst nicht erreichbar, entfällt der Block.
 - **Schriften:** Bricolage Grotesque, Source Serif 4 und IBM Plex Mono, alle unter OFL (siehe `schriften/`).
 
 ## Ablauf
