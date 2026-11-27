@@ -147,9 +147,9 @@ GRUSS = {
         'wort': ['Nachrichten', 'Meldungen', 'Themen'],
         'satz': '{gruss} zu den {beiwort} {wort} aus Mauritius.',
         'abschied': [
-            'Das waren die {wort} für heute. Alle Meldungen mit Quellen finden Sie auf gazet punkt morisyen punkt de. Bis morgen.',
-            'So weit die {wort} aus Mauritius. Mehr dazu auf gazet punkt morisyen punkt de. Ich wünsche Ihnen einen schönen Tag.',
-            'Das war es für heute. Alle Quellen und weitere Meldungen auf gazet punkt morisyen punkt de. Auf Wiedersehen.',
+            'Das waren die {wort} für heute. Alle Meldungen mit Quellen finden Sie auf gazet punkt morisyen punkt D E. Bis morgen.',
+            'So weit die {wort} aus Mauritius. Mehr dazu auf gazet punkt morisyen punkt D E. Ich wünsche Ihnen einen schönen Tag.',
+            'Das war es für heute. Alle Quellen und weitere Meldungen auf gazet punkt morisyen punkt D E. Auf Wiedersehen.',
         ],
     },
     'fr': {
@@ -158,9 +158,9 @@ GRUSS = {
         'wort': ['nouvelles', 'informations', 'actualités'],
         'satz': '{gruss}. Voici les {beiwort} {wort} de Maurice.',
         'abschied': [
-            "C'est tout pour aujourd'hui. Retrouvez toutes les {wort} et leurs sources sur gazet point morisyen point de. À demain.",
-            "Voilà pour les {wort} de Maurice. Plus de détails sur gazet point morisyen point de. Bonne journée.",
-            "C'était l'essentiel du jour. Toutes les sources sur gazet point morisyen point de. Au revoir.",
+            "C'est tout pour aujourd'hui. Retrouvez toutes les {wort} et leurs sources sur gazet point morisyen point D E. À demain.",
+            "Voilà pour les {wort} de Maurice. Plus de détails sur gazet point morisyen point D E. Bonne journée.",
+            "C'était l'essentiel du jour. Toutes les sources sur gazet point morisyen point D E. Au revoir.",
         ],
     },
     'en': {
@@ -169,9 +169,9 @@ GRUSS = {
         'wort': ['news', 'headlines', 'stories'],
         'satz': '{gruss} to {beiwort} {wort} from Mauritius.',
         'abschied': [
-            "That's all for today. You'll find every story and its sources at gazet dot morisyen dot de. See you tomorrow.",
-            'And those were the {wort} from Mauritius. More at gazet dot morisyen dot de. Have a good day.',
-            "That's it for now. All sources at gazet dot morisyen dot de. Goodbye.",
+            "That's all for today. You'll find every story and its sources at gazet dot morisyen dot D E. See you tomorrow.",
+            'And those were the {wort} from Mauritius. More at gazet dot morisyen dot D E. Have a good day.',
+            "That's it for now. All sources at gazet dot morisyen dot D E. Goodbye.",
         ],
     },
 }
