@@ -334,7 +334,20 @@ def daten_sprechen(text: str, sprache: str) -> str:
                                         f' {m.group(3)}' if m.group(3) else ''), text)
         # 25. Februar
         text = re.sub(rf'\b(\d{{1,2}})\.\s+({"|".join(monate)})\b', lambda m: ersetze(m, m.group(2)), text)
-    elif sprache == 'en':
+        # „der 55. Jahrestag“, „zum 3. Mal“: Ordnungszahl nach Artikel/Präposition
+        def allgemein(m: re.Match) -> str:
+            gebeugt = m.group(1).lower() in {'am', 'vom', 'zum', 'beim', 'im', 'dem', 'den', 'des', 'seinem',
+                                             'ihrem', 'seinen', 'ihren', 'zur'}
+            wort = _num2words(int(m.group(2)), lang='de', to='ordinal')
+            return f'{m.group(1)} {wort}{"n" if gebeugt else ""}'
+
+        text = re.sub(r'\b(der|die|das|dem|den|des|am|vom|zum|zur|beim|im|sein|seine|seinem|seinen|ihr|ihre|ihrem|ihren)'
+                      r'\s+(\d{1,4})\.(?=\s+[A-ZÄÖÜ])', allgemein, text, flags=re.I)
+    elif sprache == 'fr':
+        text = re.sub(r'\b1(er|re)\b', lambda m: 'premier' if m.group(1) == 'er' else 'première', text)
+        text = re.sub(r'\b(\d{1,4})(?:e|ème)\b', lambda m: _num2words(int(m.group(1)), lang='fr', to='ordinal'), text)
+    if sprache == 'en':
+        text = re.sub(r'\b(\d{1,4})(st|nd|rd|th)\b', lambda m: _num2words(int(m.group(1)), lang='en', to='ordinal'), text)
         monate = '|'.join(MONATE['en'])
         text = re.sub(rf'\b(?:on\s+)?(\d{{1,2}})\s+({monate})\b',
                       lambda m: f'{"on " if m.group(0).lower().startswith("on") else ""}the '
