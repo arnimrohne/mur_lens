@@ -1,7 +1,7 @@
 {
  "schema": 1,
- "stand": "2026-11-27T00:20:00+04:00",
- "laeufe": 2,
+ "stand": "2026-11-27T13:50:00+04:00",
+ "laeufe": 3,
  "topics": [
   {
    "id": "3g-abschaltung",
@@ -827,7 +827,7 @@
    "aktualisiert": "2026-11-24T12:00:00+04:00",
    "erstellt": "2026-11-24T12:00:00+04:00",
    "rubrik": "wirtschaft",
-   "status": "aktiv",
+   "status": "archiv",
    "titel": "Handelsdefizit wächst um 28,5 %",
    "updates": [
     {
@@ -1019,7 +1019,6 @@
    "rubrik": "politik",
    "status": "aktiv",
    "titel": "Jugendkriminalität: Streit um Sonderausschuss und Strafmündigkeit",
-   "top": true,
    "updates": [
     {
      "i18n": {
@@ -1653,12 +1652,60 @@
   },
   {
    "id": "wasserkrise",
-   "aktualisiert": "2026-11-25T12:00:00+04:00",
+   "aktualisiert": "2026-11-26T12:00:00+04:00",
    "erstellt": "2026-11-12T12:00:00+04:00",
    "rubrik": "umwelt",
    "status": "aktiv",
-   "titel": "CWA: 60 % des Wassers bringen keine Einnahmen",
+   "titel": "Wasserreserven nur noch zu 44 Prozent gefüllt",
    "updates": [
+    {
+     "zeit": "2026-11-26T12:00:00+04:00",
+     "nurDatum": true,
+     "titel": "Wasserreserven nur noch zu 44 Prozent gefüllt",
+     "text": "Am 26. November 2026 waren die sieben wichtigsten Reservoirs der Insel zu 44 Prozent gefüllt, das sind rund 40,6 Millionen Kubikmeter von 92,2 Millionen. Vor einem Jahr lag der Wert bei 69,7 Prozent, der saisonale Durchschnitt bei 55,2 Prozent.\n\nDie Angaben stammen aus dem Bulletin der Water Resources Commission.",
+     "quellen": [
+      {
+       "name": "ionnews",
+       "url": "https://ionnews.mu/ressources-en-eau-les-reservoirs-reculent-a-44-au-26-novembre-2026/"
+      }
+     ],
+     "i18n": {
+      "fr": {
+       "titel": "Ressources en eau : réservoirs remplis à 44 %",
+       "text": "Au 26 novembre 2026, les sept principaux réservoirs de l’île étaient remplis à 44,0 %, soit environ 40,6 millions de mètres cubes sur 92,2 millions. Un an plus tôt, le taux était de 69,7 %, et la moyenne saisonnière est de 55,2 %.\n\nLes chiffres proviennent du bulletin de la Water Resources Commission."
+      },
+      "en": {
+       "titel": "Water reservoirs only 44% full",
+       "text": "On 26 November 2026, the seven main reservoirs on the island were 44.0% full, around 40.6 million cubic metres out of 92.2 million. A year earlier the level was 69.7%, and the seasonal average is 55.2%.\n\nThe figures come from the Water Resources Commission bulletin."
+      }
+     },
+     "sendung": {
+      "de": {
+       "sprechtext": "Die Wasserreserven auf Mauritius werden knapp. Am 26. November waren die sieben wichtigsten Reservoirs nur zu 44 Prozent gefüllt. Das entspricht rund 40,6 Millionen Kubikmeter von 92,2 Millionen. Der saisonale Durchschnitt liegt bei 55,2 Prozent. Bereits am 26. November 2025 waren es 69,7 Prozent.",
+       "stichpunkte": [
+        "Reservoirs am 26. November nur zu 44 % gefüllt",
+        "Rund 40,6 von 92,2 Millionen Kubikmeter",
+        "Vorjahr 69,7 %, Saisonmittel 55,2 %"
+       ]
+      },
+      "fr": {
+       "sprechtext": "Les réserves d’eau de Maurice se font rares. Au 26 novembre, les sept principaux réservoirs n’étaient remplis qu’à 44 pour cent. Cela représente environ 40,6 millions de mètres cubes sur 92,2 millions. La moyenne saisonnière est de 55,2 pour cent. Déjà le 26 novembre 2025, le taux atteignait 69,7 pour cent.",
+       "stichpunkte": [
+        "Réservoirs à 44 % au 26 novembre",
+        "Environ 40,6 millions de m³ sur 92,2",
+        "Un an plus tôt 69,7 %, moyenne 55,2 %"
+       ]
+      },
+      "en": {
+       "sprechtext": "Mauritius is running low on water. On 26 November, the seven main reservoirs were only 44 per cent full, about 40.6 million cubic metres out of 92.2 million. The seasonal average is 55.2 per cent. Already on 26 November 2025, the level stood at 69.7 per cent.",
+       "stichpunkte": [
+        "Reservoirs only 44% full on 26 November",
+        "About 40.6 of 92.2 million cubic metres",
+        "A year earlier 69.7%, seasonal average 55.2%"
+       ]
+      }
+     }
+    },
     {
      "i18n": {
       "en": {
@@ -1733,7 +1780,10 @@
      "titel": "Mare-aux-Vacoas nur noch zu 33 % gefüllt",
      "zeit": "2026-11-12T12:00:00+04:00"
     }
-   ]
+   ],
+   "top": true,
+   "warTop": true,
+   "topSeit": "2026-11-27T13:50:00+04:00"
   },
   {
    "id": "wirtschaftsstandort",
@@ -1840,6 +1890,69 @@
      "text": "374 von 405 Beschäftigten stimmten gegen die Liquidation der Textilfirma. Sie fordern Garantien für vier bis sechs Monatslöhne Rückstand. Rs 55 Millionen wurden bereits für Löhne aufgewendet.",
      "titel": "World Knits: Belegschaft stimmt gegen Liquidation",
      "zeit": "2026-11-13T12:00:00+04:00"
+    }
+   ]
+  },
+  {
+   "id": "compensation-salariale-2027",
+   "rubrik": "wirtschaft",
+   "titel": "Lohnausgleich 2027: Gewerkschaften fordern 1.200 bis 1.700 Rupien",
+   "status": "aktiv",
+   "erstellt": "2026-11-27T12:00:00+04:00",
+   "aktualisiert": "2026-11-27T12:00:00+04:00",
+   "warTop": false,
+   "updates": [
+    {
+     "zeit": "2026-11-27T12:00:00+04:00",
+     "nurDatum": true,
+     "titel": "Lohnausgleich 2027: Gewerkschaften fordern 1.200 bis 1.700 Rupien",
+     "text": "Die Gewerkschaften verlangen für 2027 eine Kompensationszahlung von 1.200 bis 1.700 Rupien. Die Arbeitgeber rufen zur Mäßigung auf. Die dreiseitigen Lohngespräche zwischen Regierung, Gewerkschaften und Arbeitgebern haben begonnen.",
+     "quellen": [
+      {
+       "name": "Défi Media",
+       "url": "https://defimedia.info/compensation-salariale-2027-les-syndicats-reclament-entre-rs-1-200-et-rs-1-700-les-employeurs-0"
+      },
+      {
+       "name": "News Moris",
+       "url": "https://newsmoris.com/unions-demand-up-to-rs-1700-compensation-as-tripartite-wage-talks-open/"
+      }
+     ],
+     "i18n": {
+      "fr": {
+       "titel": "Compensation salariale 2027 : les syndicats demandent 1 200 à 1 700 roupies",
+       "text": "Les syndicats réclament une compensation salariale de 1 200 à 1 700 roupies pour 2027. Les employeurs plaident pour la modération. Les discussions tripartites ont commencé."
+      },
+      "en": {
+       "titel": "2027 wage compensation: unions ask for Rs 1,200 to Rs 1,700",
+       "text": "The unions are asking for a wage compensation of Rs 1,200 to Rs 1,700 for 2027. Employers are calling for moderation. Tripartite talks between government, unions and employers have opened."
+      }
+     },
+     "sendung": {
+      "de": {
+       "sprechtext": "In Mauritius haben die Tripartite-Lohngespräche für 2027 begonnen. Die Gewerkschaften fordern eine Kompensationszahlung von 1.200 bis 1.700 Rupien. Die Arbeitgeber werben für Zurückhaltung.",
+       "stichpunkte": [
+        "Gewerkschaften fordern Rs 1.200 bis 1.700",
+        "Arbeitgeber plädieren für Mäßigung",
+        "Tripartite-Gespräche zur Kompensation 2027"
+       ]
+      },
+      "fr": {
+       "sprechtext": "Les négociations salariales tripartites pour 2027 ont commencé à Maurice. Les syndicats réclament une compensation de 1 200 à 1 700 roupies. Les employeurs plaident pour la modération.",
+       "stichpunkte": [
+        "Syndicats : Rs 1 200 à Rs 1 700",
+        "Employeurs : appel à la modération",
+        "Négociations tripartites sur la compensation 2027"
+       ]
+      },
+      "en": {
+       "sprechtext": "Tripartite wage talks for 2027 have begun in Mauritius. The unions are asking for a compensation of Rs 1,200 to Rs 1,700. Employers are calling for moderation.",
+       "stichpunkte": [
+        "Unions ask for Rs 1,200 to Rs 1,700",
+        "Employers call for moderation",
+        "Tripartite talks on 2027 compensation"
+       ]
+      }
+     }
     }
    ]
   }
@@ -2025,5 +2138,11 @@
    "titel": "Stauseen sinken schnell",
    "url": "https://www.youtube.com/watch?v=5yUhl2hw30Y"
   }
- ]
+ ],
+ "einleitung": {
+  "zeit": "2026-11-27T13:50:00+04:00",
+  "de": "Die Wasserreserven der Insel sind am 26. November nur noch zu 44 Prozent gefüllt, deutlich weniger als im Vorjahr. Die Tripartite-Gespräche über den Lohnausgleich für 2027 haben begonnen. Die Gewerkschaften fordern zwischen 1.200 und 1.700 Rupien.",
+  "fr": "Au 26 novembre, les réservoirs de l’île sont remplis à 44 %, bien moins qu’un an plus tôt. Les discussions tripartites sur la compensation salariale 2027 ont commencé. Les syndicats demandent entre 1 200 et 1 700 roupies.",
+  "en": "On 26 November the island’s water reservoirs were only 44% full, well below last year. Tripartite talks on the 2027 wage compensation have begun. The unions are asking for between Rs 1,200 and Rs 1,700."
+ }
 }
