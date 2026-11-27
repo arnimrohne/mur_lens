@@ -1,3 +1,5 @@
+import { YouTubeSymbol } from './fuss-links';
+import { YOUTUBE_PLAYLISTS } from '@/lib/zeitung/seite';
 import { videoDatum, videoText } from '@/lib/zeitung/sprache';
 import type { OberflaechenTexte } from '@/lib/zeitung/texte';
 import type { Sprache, Video } from '@/lib/zeitung/types';
@@ -9,7 +11,8 @@ interface VideoAbschnittProps {
 }
 
 export function VideoAbschnitt({ videos, sprache, texte }: VideoAbschnittProps) {
-  if (videos.length === 0) return null;
+  const playlist = YOUTUBE_PLAYLISTS[sprache];
+  if (videos.length === 0 && !playlist) return null;
 
   return (
     <section className="gz-videos" id="videos" aria-labelledby="h-videos">
@@ -18,6 +21,16 @@ export function VideoAbschnitt({ videos, sprache, texte }: VideoAbschnittProps) 
         <h2 id="h-videos">{texte.videos}</h2>
         <span className="gz-anzahl">{texte.videosHinweis}</span>
       </div>
+      {playlist && (
+        <a className="gz-sendung-abo" href={playlist} target="_blank" rel="noopener noreferrer">
+          <YouTubeSymbol />
+          <span>
+            <strong>{texte.sendungAbo}</strong>
+            <small>{texte.sendungAboHinweis}</small>
+          </span>
+          <span className="gz-sendung-abo-pfeil" aria-hidden="true">→</span>
+        </a>
+      )}
       <div className="gz-video-raster">
         {videos.map((video, index) => (
           <a
