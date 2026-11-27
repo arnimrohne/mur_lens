@@ -22,11 +22,11 @@ import sys
 from pathlib import Path
 
 PLAYLISTS = {
-    'de': ('Gazet Morisyen – Nachrichten aus Mauritius (Deutsch)',
+    'de': ('Nachrichten aus Mauritius (Deutsch)',
            'Die tägliche Nachrichtensendung von Gazet Morisyen auf Deutsch. Alle Meldungen und Quellen: https://gazet.morisyen.de'),
-    'fr': ("Gazet Morisyen – L'actualité de Maurice (Français)",
+    'fr': ("L'actualité de Maurice (Français)",
            "Le journal quotidien de Gazet Morisyen en français. Toutes les informations et sources : https://gazet.morisyen.de"),
-    'en': ('Gazet Morisyen – News from Mauritius (English)',
+    'en': ('News from Mauritius (English)',
            'The daily news bulletin from Gazet Morisyen in English. All stories and sources: https://gazet.morisyen.de'),
 }
 KATEGORIE_NACHRICHTEN = '25'  # News & Politics
