@@ -2,7 +2,7 @@
  * Feste Texte der Oberfläche in Deutsch, Französisch und Englisch.
  */
 
-import type { RubrikId, Sprache } from './types';
+import type { InselId, RubrikId, Sprache } from './types';
 import type { WetterArt } from './wetter';
 
 export interface OberflaechenTexte {
@@ -26,6 +26,7 @@ export interface OberflaechenTexte {
   videos: string;
   videosHinweis: string;
   sendungAbo: string;
+  inseln: Record<InselId, string>;
   sendungAboHinweis: string;
   datumUnbekannt: string;
   archiv: string;
@@ -89,6 +90,7 @@ const de: OberflaechenTexte = {
   vortage: 'Ältere Meldungen · zum Aufklappen antippen',
   videos: 'Videos',
   videosHinweis: 'Öffnen im neuen Tab',
+  inseln: { mauritius: 'Mauritius', rodrigues: 'Rodrigues', reunion: 'La Réunion' },
   sendungAbo: 'Abonnieren Sie unsere tägliche Nachrichtensendung auf YouTube',
   sendungAboHinweis: 'Jeden Morgen die wichtigsten Meldungen auf Deutsch',
   datumUnbekannt: 'Datum unbekannt',
@@ -156,6 +158,7 @@ const fr: OberflaechenTexte = {
   vortage: 'Plus anciennes · touchez pour déplier',
   videos: 'Vidéos',
   videosHinweis: "S'ouvre dans un nouvel onglet",
+  inseln: { mauritius: 'Maurice', rodrigues: 'Rodrigues', reunion: 'La Réunion' },
   sendungAbo: 'Abonnez-vous à notre journal quotidien sur YouTube',
   sendungAboHinweis: "L'essentiel de l'actualité chaque matin, en français",
   datumUnbekannt: 'date inconnue',
@@ -223,6 +226,7 @@ const en: OberflaechenTexte = {
   vortage: 'Older stories · tap to expand',
   videos: 'Videos',
   videosHinweis: 'Opens in a new tab',
+  inseln: { mauritius: 'Mauritius', rodrigues: 'Rodrigues', reunion: 'Réunion' },
   sendungAbo: 'Subscribe to our daily news bulletin on YouTube',
   sendungAboHinweis: 'The main stories every morning, in English',
   datumUnbekannt: 'date unknown',

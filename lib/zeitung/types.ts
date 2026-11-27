@@ -53,6 +53,14 @@ export interface Meldung {
 export type ThemaStatus = 'aktiv' | 'archiv';
 
 /** Ein Thema bündelt alle Meldungen zu einer Geschichte. */
+export type InselId = 'mauritius' | 'rodrigues' | 'reunion';
+
+export interface Koordinaten {
+  insel: InselId;
+  lat: number;
+  lon: number;
+}
+
 export interface Thema {
   id: string;
   rubrik: RubrikId;
@@ -66,6 +74,8 @@ export interface Thema {
   /** Zeitpunkt, an dem das Thema (zuletzt) Top-Thema wurde. */
   topSeit?: string;
   ort?: string;
+  /** Lage für die Inselkarte, falls der Ort nicht in lib/zeitung/orte.json steht. */
+  koordinaten?: Koordinaten;
   /** Neueste Meldung zuerst. */
   updates: Meldung[];
 }

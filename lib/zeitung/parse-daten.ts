@@ -101,8 +101,17 @@ function parseThema(wert: unknown): Thema | undefined {
     warTop: wert.warTop === true || wert.top === true,
     topSeit: istGueltigeZeit(wert.topSeit) ? wert.topSeit : undefined,
     ort: text(wert.ort),
+    koordinaten: parseKoordinaten(wert.koordinaten),
     updates,
   };
+}
+
+function parseKoordinaten(wert: unknown): Thema['koordinaten'] {
+  if (!istObjekt(wert)) return undefined;
+  const { insel, lat, lon } = wert;
+  if (insel !== 'mauritius' && insel !== 'rodrigues' && insel !== 'reunion') return undefined;
+  if (typeof lat !== 'number' || typeof lon !== 'number' || !Number.isFinite(lat) || !Number.isFinite(lon)) return undefined;
+  return { insel, lat, lon };
 }
 
 function parseVideoI18n(wert: unknown): Video['i18n'] {
