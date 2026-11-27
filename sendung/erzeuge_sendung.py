@@ -258,8 +258,12 @@ def sprech_beitrag(b: Beitrag, sprache: str) -> str:
     return text
 
 
-def anzeige_beitrag(b: Beitrag, sprache: str) -> str:
-    return sendetext(b, 'kurz', sprache) or kuerze(feld(b.update, 'text', sprache), 230)
+def stichpunkte(b: Beitrag, sprache: str) -> list[str]:
+    """Stichpunkte für die Folie: vom Redaktions-Agenten (sendung.<sprache>.stichpunkte), sonst die Sätze des Textes."""
+    eigen = ((b.update.get('sendung') or {}).get(sprache) or {}).get('stichpunkte')
+    if isinstance(eigen, list) and eigen:
+        return [str(x).strip() for x in eigen if str(x).strip()][:5]
+    return [x.rstrip('.') for x in saetze(feld(b.update, 'text', sprache))][:5]
 
 
 def waehle_themen(daten: dict, jetzt: dt.datetime) -> list[Beitrag]:
@@ -287,20 +291,100 @@ def waehle_themen(daten: dict, jetzt: dt.datetime) -> list[Beitrag]:
 AUSSPRACHE = json.loads((HIER / 'aussprache.json').read_text(encoding='utf-8'))
 
 
+# --- Ordnungszahlen bei Datumsangaben ("25. Februar" → "fünfundzwanzigste Februar")
+
+_EINER = ['', 'ein', 'zwei', 'drei', 'vier', 'fünf', 'sechs', 'sieben', 'acht', 'neun']
+_ORD_DE = {1: 'erste', 2: 'zweite', 3: 'dritte', 4: 'vierte', 5: 'fünfte', 6: 'sechste', 7: 'siebte', 8: 'achte',
+           9: 'neunte', 10: 'zehnte', 11: 'elfte', 12: 'zwölfte', 13: 'dreizehnte', 14: 'vierzehnte',
+           15: 'fünfzehnte', 16: 'sechzehnte', 17: 'siebzehnte', 18: 'achtzehnte', 19: 'neunzehnte'}
+
+
+def ordnungszahl_de(n: int, gebeugt: bool) -> str:
+    if n in _ORD_DE:
+        wort = _ORD_DE[n]
+    else:
+        zehner = {2: 'zwanzig', 3: 'dreißig'}[n // 10]
+        wort = (f'{_EINER[n % 10]}und{zehner}' if n % 10 else zehner) + 'ste'
+    return wort + ('n' if gebeugt else '')
+
+
+def ordnungszahl_en(n: int) -> str:
+    endung = 'th' if 10 <= n % 100 <= 20 else {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th')
+    return f'{n}{endung}'
+
+
+_GEBEUGT_VOR = re.compile(r'(?:\b(?:am|vom|zum|beim|im|seit|ab|dem|den|des)\s+)$', re.I)
+
+
+def daten_sprechen(text: str, sprache: str) -> str:
+    if sprache == 'de':
+        monate = MONATE['de']
+
+        def ersetze(m: re.Match, monat: str, rest: str = '') -> str:
+            tag = int(m.group(1))
+            if not 1 <= tag <= 31:
+                return m.group(0)
+            gebeugt = bool(_GEBEUGT_VOR.search(text[:m.start()]))
+            return f'{ordnungszahl_de(tag, gebeugt)} {monat}{rest}'
+
+        # 25.11.2026 / 25.11.
+        text = re.sub(r'\b(\d{1,2})\.(\d{1,2})\.(\d{4})?(?!\d)',
+                      lambda m: ersetze(m, monate[int(m.group(2)) - 1] if 1 <= int(m.group(2)) <= 12 else m.group(2),
+                                        f' {m.group(3)}' if m.group(3) else ''), text)
+        # 25. Februar
+        text = re.sub(rf'\b(\d{{1,2}})\.\s+({"|".join(monate)})\b', lambda m: ersetze(m, m.group(2)), text)
+    elif sprache == 'en':
+        monate = '|'.join(MONATE['en'])
+        text = re.sub(rf'\b(?:on\s+)?(\d{{1,2}})\s+({monate})\b',
+                      lambda m: f'{"on " if m.group(0).lower().startswith("on") else ""}the '
+                                f'{ordnungszahl_en(int(m.group(1)))} of {m.group(2)}', text)
+    return text
+
+
+# --- Französische Namen in der deutschen und englischen Stimme
+
+_FR_ZU = {
+    'de': [('ɑ̃', 'aŋ'), ('ɛ̃', 'ɛŋ'), ('ɔ̃', 'ɔŋ'), ('œ̃', 'œŋ'), ('ʁ', 'r'), ('ɥ', 'y'), ('-', ' ')],
+    'en': [('ɑ̃', 'ɒŋ'), ('ɛ̃', 'aŋ'), ('ɔ̃', 'ɒŋ'), ('œ̃', 'aŋ'), ('ʁ', 'ɹ'), ('ɥ', 'w'), ('y', 'uː'), ('ø', 'ɜː'),
+           ('œ', 'ɜː'), ('-', ' ')],
+}
+_FR_NAMEN: dict[str, dict[str, str]] = {}
+
+
+def lade_franzoesische_namen(stimmen: Path) -> None:
+    """Ermittelt mit der französischen Stimme die Lautung der Namen aus aussprache.json → 'franzoesisch'."""
+    namen = AUSSPRACHE.get('franzoesisch', [])
+    modell = stimmen / f'{STIMMEN["fr"][0]}.onnx'
+    if not namen or not modell.exists() or _FR_NAMEN:
+        return
+    from piper import PiperVoice
+
+    fr = PiperVoice.load(str(modell))
+    for sprache, tabelle in _FR_ZU.items():
+        ziel = _FR_NAMEN.setdefault(sprache, {})
+        for name in namen:
+            laute = ' '.join(''.join(satz) for satz in fr.phonemize(name)).strip()
+            for alt, neu in tabelle:
+                laute = laute.replace(alt, neu)
+            ziel[name] = f'[[ {laute} ]]'
+
+
 def aussprache(text: str, sprache: str) -> str:
     """Wendet das Aussprache-Verzeichnis an (nur für den Ton)."""
     regeln = AUSSPRACHE.get(sprache, {})
+    text = daten_sprechen(text, sprache)
     for muster, ersatz in regeln.get('muster', []):
         text = re.sub(muster, ersatz, text)
-    for wort in sorted(regeln.get('woerter', {}), key=len, reverse=True):
-        text = re.sub(rf'(?<![\w-]){re.escape(wort)}(?![\w-])', regeln['woerter'][wort], text)
+    woerter = {**_FR_NAMEN.get(sprache, {}), **regeln.get('woerter', {})}
+    for wort in sorted(woerter, key=len, reverse=True):
+        text = re.sub(rf'(?<![\w-]){re.escape(wort)}(?![\w-])', lambda _m, w=wort: woerter[w], text)
     wortweise = set(regeln.get('abkuerzungen_wortweise', []))
 
     def buchstabiere(m: re.Match) -> str:
         w = m.group(0)
         return w if w in wortweise else ' '.join(w)
 
-    return re.sub(r'(?<![\w])[A-Z]{2,5}(?![a-zäöüéèàç])', buchstabiere, text)
+    return re.sub(r'(?<![\w\[])[A-Z]{2,5}(?![a-zäöüéèàç])', buchstabiere, text)
 
 
 def sprechtext(text: str, sprache: str = 'de') -> str:
@@ -494,21 +578,27 @@ def bild_beitrag(sprache: str, tag: dt.date, b: Beitrag, nummer: int, anzahl: in
         z.text((RAND, unten + 58), vorher_titel, font=fv, fill=MUTED)
         unten -= 30
 
-    text = anzeige_beitrag(b, sprache)
+    punkte = stichpunkte(b, sprache)
     platz = unten - y
-    for g in (48, 44, 40, 36, 33):
+    einzug = 52
+    for g in (46, 42, 39, 36, 33, 30):
         f = text_schrift(g)
-        zh = round(g * 1.45)
-        zeilen = umbrechen(z, text, f, breite)
-        if len(zeilen) * zh <= platz:
+        zh = round(g * 1.38)
+        abstand = round(g * 0.55)
+        bloecke = [umbrechen(z, p, f, breite - einzug) for p in punkte]
+        hoehe = sum(len(bl) * zh for bl in bloecke) + abstand * (len(bloecke) - 1)
+        if hoehe <= platz:
             break
-    max_zeilen = max(1, platz // zh)
-    if len(zeilen) > max_zeilen:
-        zeilen = zeilen[:max_zeilen]
-        zeilen[-1] = zeilen[-1].rstrip(' .,;:') + ' …'
-    for zeile in zeilen:
-        z.text((RAND, y), zeile, font=f, fill=FG)
-        y += zh
+    for bl in bloecke:
+        if y + len(bl) * zh > unten:
+            break
+        q = round(g * 0.34)
+        my = y + round(zh * 0.5)
+        z.rectangle([RAND + 4, my - q // 2, RAND + 4 + q, my + q // 2], fill=LAGOON)
+        for zeile in bl:
+            z.text((RAND + einzug, y), zeile, font=f, fill=FG)
+            y += zh
+        y += abstand
 
     quellen = [q.get('name', '') for q in b.update.get('quellen', []) if q.get('name')]
     if quellen:
@@ -610,6 +700,7 @@ def erzeuge(daten: dict, sprache: str, stimmen: Path, ausgabe: Path, jetzt: dt.d
     abschnitte.append(Abschnitt(t['kapitel_ende'], abschied, outro))
 
     modell, stimme_name = STIMMEN[sprache]
+    lade_franzoesische_namen(stimmen)
     sprecher = Sprecher(stimmen / f'{modell}.onnx', sprache)
     teile = []
     for i, a in enumerate(abschnitte):
