@@ -1,8 +1,8 @@
 """
 Erkennungsmelodie der Sendung (ca. 3,5 s), vollständig synthetisiert – keine fremden Samples, keine Lizenzfragen.
 
-Aufbau: Séga-Rhythmus auf Rahmentrommel (Ravanne) und Shaker, darüber ein Marimba-Motiv in D-Dur,
-bei 1,5 s ein Akkordschlag mit tiefem Impuls, danach ein ausklingender Flächenklang.
+Aufbau: Séga im ternären Schwung – die Ravanne (Rahmentrommel) trägt durchgehend den Rhythmus,
+dazu Maravanne (Rassel) und Triangel; darüber ein leises Marimba-Motiv in D-Dur, bei 1,5 s ein Akkordschlag.
 """
 
 from __future__ import annotations
@@ -76,6 +76,29 @@ def _shaker(laut: float = 0.08) -> np.ndarray:
     return laut * hoch * np.exp(-t * 55) * np.minimum(1.0, t / 0.01)
 
 
+def _ravanne_schlag(laut: float = 0.35, seed: int = 11) -> np.ndarray:
+    """Heller Randschlag („ka“) auf der Ravanne: kurzer, gestimmter Klang mit Fell-Rascheln."""
+    t = _zeit(0.18)
+    koerper = np.sin(2 * np.pi * 330 * t) * np.exp(-t * 38) + 0.5 * np.sin(2 * np.pi * 520 * t) * np.exp(-t * 55)
+    rasseln = np.diff(np.random.default_rng(seed).standard_normal(len(t)), prepend=0.0) * np.exp(-t * 45) * 0.35
+    return laut * (koerper + rasseln)
+
+
+def _maravanne(laut: float = 0.1, seed: int = 5) -> np.ndarray:
+    """Maravanne (Rassel aus Zuckerrohr und Samen): weiches, längeres Rauschen."""
+    t = _zeit(0.14)
+    r = np.random.default_rng(seed).standard_normal(len(t))
+    hoch = r - np.concatenate(([0.0], r[:-1])) * 0.6
+    huelle = np.minimum(1.0, t / 0.025) * np.exp(-t * 28)
+    return laut * hoch * huelle
+
+
+def _triangel(laut: float = 0.07) -> np.ndarray:
+    t = _zeit(0.6)
+    ton = sum(np.sin(2 * np.pi * f * t) * a for f, a in ((4200, 1.0), (5650, 0.6), (7300, 0.35)))
+    return laut * ton * np.exp(-t * 7) * np.minimum(1.0, t / 0.001)
+
+
 def _boom(laut: float = 0.7) -> np.ndarray:
     t = _zeit(1.2)
     phase = 2 * np.pi * np.cumsum(38 + 50 * np.exp(-t * 6)) / RATE
@@ -103,23 +126,35 @@ def _hall(spur: np.ndarray) -> np.ndarray:
 
 def erzeuge_jingle(ziel: Path) -> float:
     spur = np.zeros((2, int(DAUER * RATE)))
-    takt = 0.125  # Sechzehntel bei 120 BPM
+    # Séga im ternären Schwung: ein Schlag = 0,5 s, unterteilt in Triolen.
+    schlag = 0.5
+    tri = schlag / 3
 
-    # Séga-Rhythmus bis zum Akkordschlag
-    for schritt, tief in ((0, True), (3, False), (4, True), (6, False), (7, False), (8, True), (11, False)):
-        _setze(spur, _ravanne(0.5 if tief else 0.32, tief), schritt * takt, pan=-0.2 if tief else 0.25)
-    for schritt in range(12):
-        _setze(spur, _shaker(0.07 if schritt % 2 else 0.11), schritt * takt + 0.01, pan=0.5)
+    # Ravanne trägt den Rhythmus durchgehend: tiefer Schlag („boum“) auf der Eins, Randschläge („ka-ta“) dazwischen.
+    for b in range(7):
+        start = b * schlag
+        _setze(spur, _ravanne(0.62 if b % 2 == 0 else 0.5, True), start, pan=-0.15)
+        _setze(spur, _ravanne_schlag(0.3, seed=11 + b), start + 2 * tri, pan=0.2)
+        if b % 2 == 1:
+            _setze(spur, _ravanne_schlag(0.22, seed=31 + b), start + tri, pan=0.25)
+        if b in (2, 5):  # kleiner Wirbel als Steigerung
+            _setze(spur, _ravanne(0.34, False), start + 2.5 * tri, pan=0.1)
+    # Maravanne auf allen Triolen, Betonung auf der Eins
+    for k in range(int(DAUER / tri)):
+        _setze(spur, _maravanne(0.13 if k % 3 == 0 else 0.08, seed=5 + k), k * tri, pan=0.45)
+    # Triangel auf der letzten Triole jedes Schlags
+    for b in range(6):
+        _setze(spur, _triangel(0.06), b * schlag + 2 * tri, pan=-0.5)
 
-    # Marimba-Motiv
-    for zeit, note in ((0.0, 'A4'), (0.25, 'D5'), (0.5, 'F#5'), (0.75, 'A5'), (1.0, 'E5'), (1.125, 'F#5'), (1.25, 'A5')):
-        _setze(spur, _marimba(_hz(note), laut=0.42), zeit, pan=0.15)
+    # Marimba-Motiv (leiser, im Triolen-Raster)
+    for zeit, note in ((0.0, 'A4'), (2 * tri, 'D5'), (schlag, 'F#5'), (schlag + 2 * tri, 'A5'),
+                       (2 * schlag, 'E5'), (2 * schlag + tri, 'F#5'), (2 * schlag + 2 * tri, 'A5')):
+        _setze(spur, _marimba(_hz(note), laut=0.3), zeit, pan=0.15)
 
     # Akkordschlag
     for note in ('D4', 'A4', 'D5', 'F#5', 'A5'):
-        _setze(spur, _marimba(_hz(note), dauer=1.8, laut=0.26), 1.5)
-    _setze(spur, _boom(), 1.5)
-    _setze(spur, _ravanne(0.55, True), 1.5)
+        _setze(spur, _marimba(_hz(note), dauer=1.8, laut=0.22), 1.5)
+    _setze(spur, _boom(0.6), 1.5)
     _setze(spur, _flaeche([_hz(n) for n in ('D3', 'A3', 'F#4', 'E5')], DAUER - 1.45, laut=0.22), 1.45)
 
     spur = _hall(spur)
