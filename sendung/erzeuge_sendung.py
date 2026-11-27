@@ -1148,6 +1148,89 @@ def clip_video(clip: Path, einblendung: Path, ton: Path | None, ziel: Path) -> f
     return dauer_von(ziel)
 
 
+# ----------------------------------------------------------------- Vorspann (Logo-Animation + Erkennungsmelodie)
+
+def _weich(x: float) -> float:
+    """Ease-out (kubisch), x in [0, 1]."""
+    x = min(1.0, max(0.0, x))
+    return 1 - (1 - x) ** 3
+
+
+def vorspann_video(sprache: str, ziel: Path) -> float:
+    """Ca. 3,5 s: Flaggenstreifen fliegen ein, werden zum Logo; Name und Sendung blenden ein. Ton: jingle.py."""
+    import jingle
+
+    arbeit = ziel.parent
+    ton = arbeit / 'vorspann.wav'
+    dauer = jingle.erzeuge_jingle(ton)
+    fps = 25
+    n = round(dauer * fps)
+    grund = verlauf(NAVY, NAVY_TIEF)
+    grund.paste(logo_weiss(1100, 0.05), (BREITE - 900, -60), logo_weiss(1100, 0.05))
+    f_titel = titel_schrift(72)
+    f_unter = mono(28, True)
+    unter = T[sprache]['sendung']
+    proc = subprocess.Popen(
+        ['ffmpeg', '-hide_banner', '-loglevel', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'rgb24',
+         '-s', f'{BREITE}x{HOEHE}', '-r', str(fps), '-i', '-', '-i', str(ton),
+         '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p', '-r', str(fps),
+         '-video_track_timescale', '12800', '-c:a', 'aac', '-b:a', '160k', '-ar', '48000', '-ac', '2',
+         '-shortest', '-movflags', '+faststart', str(ziel)], stdin=subprocess.PIPE)
+    logo_g = 380
+    logo_y = 200
+    mitte_y = logo_y + logo_g // 2
+    for i in range(n):
+        t = i / fps
+        bild = grund.copy()
+        z = ImageDraw.Draw(bild, 'RGBA')
+        # 1) Flaggenstreifen fliegen von links ein (0–0,7 s) und ziehen sich zur Mitte zusammen (0,7–1,3 s)
+        einflug = [_weich((t - 0.08 * k) / 0.55) for k in range(4)]
+        zusammen = _weich((t - 0.75) / 0.55)
+        if zusammen < 1:
+            hoehe_streifen = 22
+            gesamt = 4 * hoehe_streifen
+            for k, farbe in enumerate(FLAGGE):
+                if zusammen == 0:
+                    x1 = -BREITE + einflug[k] * BREITE  # Streifen schiebt sich von links herein
+                    x2 = x1 + BREITE
+                else:
+                    breite = BREITE * (1 - zusammen) + 40 * zusammen  # zieht sich zur Mitte zusammen
+                    x1 = (BREITE - breite) / 2
+                    x2 = x1 + breite
+                y = mitte_y - gesamt / 2 + k * hoehe_streifen
+                deck = round(255 * (1 - zusammen))
+                rgb = tuple(int(farbe[j:j + 2], 16) for j in (1, 3, 5))
+                z.rectangle([round(x1), round(y), round(x2), round(y + hoehe_streifen - 2)], fill=rgb + (deck,))
+        # 2) Logo wächst aus der Mitte (0,9–1,6 s)
+        a = _weich((t - 0.9) / 0.7)
+        if a > 0:
+            g = max(8, round(logo_g * (0.82 + 0.18 * a) * (1 + 0.02 * max(0.0, t - 1.6))))
+            logo = logo_weiss(g, round(a, 2))
+            bild.paste(logo, ((BREITE - g) // 2, mitte_y - g // 2), logo)
+        # 3) Name und Sendungstitel (ab 1,5 s, mit dem Akkordschlag)
+        b = _weich((t - 1.45) / 0.5)
+        if b > 0:
+            text = 'Gazet Morisyen'
+            schicht = Image.new('RGBA', (BREITE, HOEHE), (0, 0, 0, 0))
+            zs = ImageDraw.Draw(schicht)
+            zs.text(((BREITE - zs.textlength(text, font=f_titel)) / 2, 612 + 20 * (1 - b)), text, font=f_titel,
+                    fill=(255, 255, 255, round(255 * b)))
+            c = _weich((t - 1.75) / 0.5)
+            if c > 0:
+                abstand = 28 * 0.1
+                breite = sum(zs.textlength(ch, font=f_unter) + abstand for ch in unter.upper()) - abstand
+                gesperrt(zs, (round((BREITE - breite) / 2), 714), unter, f_unter, HELLBLAU + (round(255 * c),), 0.1)
+            bild.paste(schicht, (0, 0), schicht)
+        # Flaggenlinie unten, sobald das Logo steht
+        if t >= 1.3:
+            flaggenlinie(ImageDraw.Draw(bild), HOEHE - 10, 10)
+        proc.stdin.write(bild.convert('RGB').tobytes())
+    proc.stdin.close()
+    if proc.wait() != 0:
+        raise RuntimeError('ffmpeg (Vorspann) fehlgeschlagen')
+    return dauer_von(ziel)
+
+
 def zeitmarke(sekunden: float) -> str:
     s = int(sekunden)
     return f'{s // 60:02d}:{s % 60:02d}'
@@ -1201,7 +1284,9 @@ def erzeuge(daten: dict, sprache: str, stimmen: Path, ausgabe: Path, jetzt: dt.d
     modell, stimme_name = STIMMEN[sprache]
     lade_franzoesische_namen(stimmen)
     sprecher = Sprecher(stimmen / f'{modell}.onnx', sprache)
-    teile = []
+    vorspann = arbeit / 'vorspann.mp4'
+    vorspann_dauer = vorspann_video(sprache, vorspann)
+    teile = [vorspann]
     mit_clip = False
     for i, a in enumerate(abschnitte):
         teil = arbeit / f'{i:02d}.mp4'
@@ -1230,9 +1315,10 @@ def erzeuge(daten: dict, sprache: str, stimmen: Path, ausgabe: Path, jetzt: dt.d
     bild_vorschau(sprache, tag, ausgabe / f'{stamm}-vorschau.png')
 
     # YouTube-Texte
-    kapitel, quellen_zeilen, start = [], [], 0.0
+    kapitel, quellen_zeilen, start = [], [], vorspann_dauer
     for a in abschnitte:
-        kapitel.append(f'{zeitmarke(start)} {a.kapitel}')
+        # YouTube verlangt das erste Kapitel bei 00:00; der Vorspann gehört zur Begrüßung.
+        kapitel.append(f'{zeitmarke(start if kapitel else 0)} {a.kapitel}')
         start += a.dauer
     for b in beitraege:
         quellen_zeilen.append(f'• {feld(b.update, "titel", sprache)}')
