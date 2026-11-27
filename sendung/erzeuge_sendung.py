@@ -1236,6 +1236,57 @@ def vorspann_video(sprache: str, ziel: Path) -> float:
     return dauer_von(ziel)
 
 
+def abspann_video(sprache: str, tag: dt.date, ziel: Path) -> float:
+    """Ca. 3,5 s Schlussfolie mit Erkennungsmelodie: einblenden, Flaggenlinie wischt herein, sanfter Zoom, ausblenden."""
+    import jingle
+
+    arbeit = ziel.parent
+    folie_pfad = arbeit / 'abspann.png'
+    bild_outro(sprache, tag, folie_pfad)
+    folie = Image.open(folie_pfad).convert('RGB')
+    fertig = HIER / 'vorspann.wav'
+    if fertig.exists():
+        ton = fertig
+        dauer = dauer_von(ton)
+    else:
+        ton = arbeit / 'abspann.wav'
+        dauer = jingle.erzeuge_jingle(ton)
+    fps = 25
+    n = round(dauer * fps)
+    schwarz = Image.new('RGB', (BREITE, HOEHE), NAVY_TIEF)
+    proc = subprocess.Popen(
+        ['ffmpeg', '-hide_banner', '-loglevel', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'rgb24',
+         '-s', f'{BREITE}x{HOEHE}', '-r', str(fps), '-i', '-', '-i', str(ton),
+         '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p', '-r', str(fps),
+         '-video_track_timescale', '12800', '-c:a', 'aac', '-b:a', '160k', '-ar', '48000', '-ac', '2',
+         '-shortest', '-movflags', '+faststart', str(ziel)], stdin=subprocess.PIPE)
+    for i in range(n):
+        t = i / fps
+        zoom = 1.0 + 0.035 * _weich(t / dauer)
+        b, h = round(BREITE / zoom), round(HOEHE / zoom)
+        x, y = (BREITE - b) // 2, (HOEHE - h) // 2
+        bild = folie.crop((x, y, x + b, y + h)).resize((BREITE, HOEHE), Image.BICUBIC)
+        # Flaggenlinie (nach dem Zoom gezeichnet, damit sie nicht abgeschnitten wird) wischt von links herein
+        w = _weich((t - 0.2) / 0.7)
+        if w > 0:
+            z = ImageDraw.Draw(bild)
+            viertel = BREITE / 4
+            for k, farbe in enumerate(FLAGGE):
+                x1, x2 = k * viertel, min((k + 1) * viertel, BREITE * w)
+                if x2 > x1:
+                    z.rectangle([round(x1), HOEHE - 10, round(x2), HOEHE], fill=farbe)
+        ein = _weich(t / 0.4)
+        aus = min(1.0, max(0.0, (dauer - t) / 0.45))
+        deck = min(ein, aus)
+        if deck < 1:
+            bild = Image.blend(schwarz, bild, deck)
+        proc.stdin.write(bild.tobytes())
+    proc.stdin.close()
+    if proc.wait() != 0:
+        raise RuntimeError('ffmpeg (Abspann) fehlgeschlagen')
+    return dauer_von(ziel)
+
+
 def zeitmarke(sekunden: float) -> str:
     s = int(sekunden)
     return f'{s // 60:02d}:{s % 60:02d}'
@@ -1310,6 +1361,11 @@ def erzeuge(daten: dict, sprache: str, stimmen: Path, ausgabe: Path, jetzt: dt.d
             a.dauer = sprecher.sprich(a.sprechen, ton, a.mindestens)
             abschnitt_video(a.bild, ton, teil)
         teile.append(teil)
+
+    abspann = arbeit / 'abspann.mp4'
+    abspann_dauer = abspann_video(sprache, tag, abspann)
+    teile.append(abspann)
+    abschnitte[-1].dauer += abspann_dauer  # Abspann gehört zum Kapitel „Verabschiedung“
 
     liste = arbeit / 'liste.txt'
     liste.write_text(''.join(f"file '{p}'\n" for p in teile))
