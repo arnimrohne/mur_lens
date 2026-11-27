@@ -49,6 +49,8 @@ FLAGGE = ['#c8323c', '#1f4fa3', '#e0a800', '#1f8a4c']
 
 MAX_THEMEN = 8
 PAUSE_S = 0.8  # Stille nach jedem Abschnitt
+SATZ_PAUSE_S = 0.45  # Pause zwischen zwei Sätzen
+KOMMA_PAUSE_S = 0.25  # Pause nach Doppelpunkt oder Semikolon
 
 STIMMEN = {
     'de': ('de_DE-thorsten-high', 'Thorsten-Voice (CC0)'),
@@ -454,6 +456,10 @@ def zahlen_sprechen(text: str, sprache: str) -> str:
 
 
 _FUGE_SCHWELLE = 0.45
+# Vorsilben sind keine Wortfugen: „Zurückhaltung“, „Aufnahme“, „Vorbereitung“ bleiben ganz.
+_VORSILBEN = {'zurück', 'aus', 'auf', 'ab', 'an', 'ein', 'vor', 'nach', 'über', 'unter', 'durch', 'mit', 'bei',
+              'gegen', 'um', 'weg', 'her', 'hin', 'fort', 'los', 'wieder', 'zusammen', 'voran', 'heraus', 'hinaus',
+              'herein', 'hinein', 'vorbei', 'entgegen', 'miss', 'zer', 'ver', 'ent', 'emp'}
 
 
 def wortfugen_trennen(text: str) -> str:
@@ -472,7 +478,7 @@ def wortfugen_trennen(text: str) -> str:
             return wort
         wert, links, rechts = char_split.split_compound(wort)[0]
         schwelle = _FUGE_SCHWELLE if len(wort) >= 10 else 0.6  # kurze Wörter nur bei sicherer Trennung
-        if wert < schwelle or len(links) < 3 or len(rechts) < 3:
+        if wert < schwelle or len(links) < 3 or len(rechts) < 3 or links.lower() in _VORSILBEN:
             return wort
         # Endung „s“ (Fugen-s) bleibt beim linken Teil
         return f'{wort[:len(links)]} {wort[len(links):].capitalize()}' if wort.lower().startswith(links.lower()) else wort
@@ -524,9 +530,20 @@ class Sprecher:
         self.rate = self.stimme.config.sample_rate
 
     def sprich(self, text: str, ziel: Path, mindestens: float = 0.0) -> float:
+        # Satz für Satz sprechen und Pausen selbst setzen: Endet ein Satz mit Lautschrift ([[ … ]]),
+        # verliert Piper sonst den Satzpunkt und zieht zwei Sätze ohne Pause zusammen.
+        saetze_ = [x for x in re.split(r'(?<=[.!?…:;])\s+', sprechtext(text, self.sprache)) if x.strip()]
         with wave.open(str(ziel), 'wb') as datei:
-            self.stimme.synthesize_wav(sprechtext(text, self.sprache), datei, syn_config=self.konfig)
-            # Stille anhängen
+            datei.setnchannels(1)
+            datei.setsampwidth(2)
+            datei.setframerate(self.rate)
+            for i, satz in enumerate(saetze_):
+                for stueck in self.stimme.synthesize(satz, syn_config=self.konfig):
+                    datei.writeframes(stueck.audio_int16_bytes)
+                pause = SATZ_PAUSE_S if satz.rstrip()[-1:] in '.!?…' else KOMMA_PAUSE_S
+                if i < len(saetze_) - 1:
+                    datei.writeframes(b'\x00\x00' * int(self.rate * pause))
+            # Stille am Ende des Abschnitts
             datei.writeframes(b'\x00\x00' * int(self.rate * PAUSE_S))
         with wave.open(str(ziel), 'rb') as datei:
             dauer = datei.getnframes() / datei.getframerate()
