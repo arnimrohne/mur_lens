@@ -334,3 +334,12 @@ html:has(.gazet) { background: #fdfaf5; }
   .gz-dossier-meldungen li { flex-direction: column; gap: 2px; }
   .gz-dossier-meldungen time { width: auto; }
 }
+
+/* Zustimmungs-Banner (Google Analytics) */
+.gz-zustimmung { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); }
+.gz-zustimmung-inhalt { max-width: 760px; margin: 0 auto; padding: 16px 18px; background: var(--paper); color: var(--fg); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 8px 30px rgba(0, 0, 0, .18); }
+.gz-zustimmung-titel { margin: 0 0 4px; font-family: var(--f-display); font-weight: 700; font-size: 1rem; }
+.gz-zustimmung-text { margin: 0 0 12px; font-size: .9rem; line-height: 1.5; }
+.gz-zustimmung-knoepfe { display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap; }
+.gz-zustimmung-knoepfe button { flex: 1 1 140px; max-width: 220px; padding: 10px 16px; border-radius: 999px; font-family: var(--f-display); font-weight: 600; font-size: .95rem; cursor: pointer; border: 1px solid var(--lagoon); background: var(--lagoon); color: var(--on-lagoon); }
+.gz-link-knopf { background: none; border: 0; padding: 0; font: inherit; color: var(--lagoon); cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }

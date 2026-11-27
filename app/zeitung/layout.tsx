@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Bricolage_Grotesque, IBM_Plex_Mono, Source_Serif_4 } from 'next/font/google';
 
+import { Analyse } from '@/components/zeitung/analyse';
 import { impressumVollstaendig, SEITEN_BESCHREIBUNG, SEITEN_NAME, SEITEN_URL, SUCHBEGRIFFE } from '@/lib/zeitung/seite';
 
 import './zeitung.css';
@@ -57,5 +58,10 @@ export const viewport: Viewport = {
 };
 
 export default function ZeitungLayout({ children }: { children: React.ReactNode }) {
-  return <div className={`gazet ${display.variable} ${body.variable} ${mono.variable}`}>{children}</div>;
+  return (
+    <div className={`gazet ${display.variable} ${body.variable} ${mono.variable}`}>
+      {children}
+      <Analyse />
+    </div>
+  );
 }

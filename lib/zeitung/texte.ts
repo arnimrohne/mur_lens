@@ -39,6 +39,7 @@ export interface OberflaechenTexte {
   datenschutz: string;
   nutzungsbedingungen: string;
   youtube: string;
+  analyseEinstellungen: string;
   teilen: string;
   linkKopiert: string;
   linkFehler: string;
@@ -115,6 +116,7 @@ const de: OberflaechenTexte = {
   datenschutz: 'Datenschutz',
   nutzungsbedingungen: 'Nutzungsbedingungen',
   youtube: 'Gazet Morisyen auf YouTube',
+  analyseEinstellungen: 'Cookie-Einstellungen',
   teilen: 'Teilen',
   linkKopiert: 'Link kopiert',
   linkFehler: 'Kopieren nicht möglich',
@@ -191,6 +193,7 @@ const fr: OberflaechenTexte = {
   datenschutz: 'Confidentialité',
   nutzungsbedingungen: "Conditions d'utilisation",
   youtube: 'Gazet Morisyen sur YouTube',
+  analyseEinstellungen: 'Paramètres des cookies',
   teilen: 'Partager',
   linkKopiert: 'Lien copié',
   linkFehler: 'Copie impossible',
@@ -267,6 +270,7 @@ const en: OberflaechenTexte = {
   datenschutz: 'Privacy',
   nutzungsbedingungen: 'Terms of use',
   youtube: 'Gazet Morisyen on YouTube',
+  analyseEinstellungen: 'Cookie settings',
   teilen: 'Share',
   linkKopiert: 'Link copied',
   linkFehler: 'Could not copy',
