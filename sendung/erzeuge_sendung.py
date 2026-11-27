@@ -27,6 +27,9 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import wetter as wetterdienst  # noqa: E402
+
 HIER = Path(__file__).resolve().parent
 SCHRIFTEN = HIER / 'schriften'
 LOGO = HIER.parent / 'public' / 'icons' / 'gazet-logo.png'
@@ -88,6 +91,9 @@ T = {
         'newsletter': 'Newsletter: gazet.morisyen.de/newsletter',
         'kapitel_start': 'Begrüßung',
         'kapitel_ende': 'Verabschiedung',
+        'wetter': ('Wetter heute', 'Wetter morgen'),
+        'regen': 'Regen',
+        'wetterquelle': 'Wetterdaten: MET Norway (CC BY 4.0)',
         'titel': 'Nachrichten aus Mauritius · {datum_kurz} | Gazet Morisyen',
         'ki': 'Sprecherstimme synthetisch erzeugt (Piper TTS, Stimme: {stimme}). Texte: eigene Zusammenfassungen der Redaktion Gazet Morisyen.',
         'impressum': 'Impressum: https://gazet.morisyen.de/impressum',
@@ -104,6 +110,9 @@ T = {
         'newsletter': 'Newsletter : gazet.morisyen.de/newsletter',
         'kapitel_start': 'Introduction',
         'kapitel_ende': 'Conclusion',
+        'wetter': ('Météo du jour', 'Météo de demain'),
+        'regen': 'Pluie',
+        'wetterquelle': 'Données météo : MET Norway (CC BY 4.0)',
         'titel': "L'actualité de Maurice · {datum_kurz} | Gazet Morisyen",
         'ki': 'Voix de synthèse (Piper TTS, voix : {stimme}). Textes : résumés rédigés par Gazet Morisyen.',
         'impressum': 'Mentions légales : https://gazet.morisyen.de/impressum',
@@ -120,6 +129,9 @@ T = {
         'newsletter': 'Newsletter: gazet.morisyen.de/newsletter',
         'kapitel_start': 'Welcome',
         'kapitel_ende': 'Goodbye',
+        'wetter': ('Weather today', 'Weather tomorrow'),
+        'regen': 'Rain',
+        'wetterquelle': 'Weather data: MET Norway (CC BY 4.0)',
         'titel': 'News from Mauritius · {datum_kurz} | Gazet Morisyen',
         'ki': 'Synthetic narrator voice (Piper TTS, voice: {stimme}). Texts: original summaries by Gazet Morisyen.',
         'impressum': 'Legal notice: https://gazet.morisyen.de/impressum',
@@ -731,6 +743,85 @@ def bild_beitrag(sprache: str, tag: dt.date, b: Beitrag, nummer: int, anzahl: in
     bild.save(ziel)
 
 
+def wettersymbol(z: ImageDraw.ImageDraw, mx: int, my: int, art: str, g: int = 150) -> None:
+    """Einfache Wettersymbole: Sonne, Wolke, Regen, Gewitter, Nebel."""
+    gelb, wolke, tropfen = (245, 200, 74), (235, 241, 248), (120, 180, 255)
+    r = g // 2
+
+    def sonne(cx, cy, rr):
+        for i in range(8):
+            import math
+            w = i * math.pi / 4
+            z.line([cx + math.cos(w) * rr * 1.35, cy + math.sin(w) * rr * 1.35,
+                    cx + math.cos(w) * rr * 1.75, cy + math.sin(w) * rr * 1.75], fill=gelb, width=max(4, rr // 6))
+        z.ellipse([cx - rr, cy - rr, cx + rr, cy + rr], fill=gelb)
+
+    def wolke_(cx, cy, s, farbe=wolke):
+        z.ellipse([cx - s * 1.0, cy - s * 0.35, cx - s * 0.1, cy + s * 0.45], fill=farbe)
+        z.ellipse([cx - s * 0.55, cy - s * 0.75, cx + s * 0.45, cy + s * 0.35], fill=farbe)
+        z.ellipse([cx + s * 0.05, cy - s * 0.45, cx + s * 0.95, cy + s * 0.45], fill=farbe)
+        z.rectangle([cx - s * 0.55, cy, cx + s * 0.5, cy + s * 0.45], fill=farbe)
+
+    if art == 'klar':
+        sonne(mx, my, round(r * 0.55))
+    elif art in ('heiter', 'wolkig'):
+        sonne(mx - r * 0.3, my - r * 0.3, round(r * (0.45 if art == 'heiter' else 0.4)))
+        wolke_(mx + r * 0.15, my + r * 0.2, r * (0.6 if art == 'heiter' else 0.8))
+    elif art in ('bedeckt', 'nebel'):
+        wolke_(mx, my - r * 0.1, r * 0.9, (205, 214, 226))
+        if art == 'nebel':
+            for i in range(3):
+                y = my + r * 0.5 + i * r * 0.22
+                z.line([mx - r * 0.8, y, mx + r * 0.8, y], fill=(205, 214, 226), width=max(4, r // 10))
+    else:
+        wolke_(mx, my - r * 0.25, r * 0.85, (205, 214, 226))
+        if art == 'gewitter':
+            z.polygon([(mx, my + r * 0.2), (mx - r * 0.25, my + r * 0.65), (mx - r * 0.02, my + r * 0.65),
+                       (mx - r * 0.15, my + r), (mx + r * 0.3, my + r * 0.45), (mx + r * 0.05, my + r * 0.45),
+                       (mx + r * 0.2, my + r * 0.2)], fill=gelb)
+        else:
+            anzahl = 3 if art == 'regen' else 2
+            for i in range(anzahl):
+                x = mx + (i - (anzahl - 1) / 2) * r * 0.45
+                z.line([x, my + r * 0.4, x - r * 0.12, my + r * 0.8], fill=tropfen, width=max(5, r // 9))
+
+
+def bild_wetter(sprache: str, tag: dt.date, wetter: list, morgen: bool, ziel: Path) -> None:
+    bild = verlauf(NAVY_HELL, NAVY)
+    bild.paste(logo_weiss(900, 0.06), (BREITE - 760, 40), logo_weiss(900, 0.06))
+    z = ImageDraw.Draw(bild)
+    senderkopf(bild, z, sprache, tag, None)
+    t = T[sprache]
+    marke(z, (70, 190), t['wetter'][1 if morgen else 0].upper(), ROT_TV, WEISS)
+    spalten, abstand = 3, 40
+    breite = (BREITE - 140 - abstand * (spalten - 1)) // spalten
+    oben, unten = 270, HOEHE - 80 - 60
+    for i, w in enumerate(wetter):
+        x = 70 + i * (breite + abstand)
+        karte = Image.new('RGBA', (breite, unten - oben), (255, 255, 255, 22))
+        bild.paste(karte, (x, oben), karte)
+        z.rectangle([x, oben, x + breite, oben + 8], fill=FLAGGE[i % 4] if i < 3 else MINT)
+        name = wetterdienst.NAMEN[sprache][w.ort]
+        fn = titel_schrift(56)
+        z.text((x + (breite - z.textlength(name, font=fn)) / 2, oben + 40), name, font=fn, fill=WEISS)
+        wettersymbol(z, x + breite // 2, oben + 250, w.art, 170)
+        art = wetterdienst.ART_TEXT[sprache][w.art]
+        fa = text_schrift(40)
+        z.text((x + (breite - z.textlength(art, font=fa)) / 2, oben + 380), art, font=fa, fill=HELLBLAU)
+        temp = f'{w.tmin}° / {w.tmax}°'
+        ft = titel_schrift(84)
+        z.text((x + (breite - z.textlength(temp, font=ft)) / 2, oben + 440), temp, font=ft, fill=WEISS)
+        info = f'{t["regen"]} {str(w.regen_mm).replace(".", ",") if sprache != "en" else w.regen_mm} mm  ·  Wind {w.wind_kmh} km/h'
+        fi = mono(24, True)
+        z.text((x + (breite - z.textlength(info, font=fi)) / 2, oben + 560), info, font=fi, fill=HELLBLAU)
+    z.rectangle([0, HOEHE - 80, BREITE, HOEHE], fill=LEISTE)
+    flaggenlinie(z, HOEHE - 80, 4)
+    z.text((70, HOEHE - 56), t['wetterquelle'], font=mono(24), fill=HELLBLAU)
+    f = mono(24, True)
+    z.text((BREITE - 70 - z.textlength('gazet.morisyen.de', font=f), HOEHE - 56), 'gazet.morisyen.de', font=f, fill=MINT)
+    bild.save(ziel)
+
+
 def bild_outro(sprache: str, tag: dt.date, ziel: Path) -> None:
     bild = verlauf(NAVY, NAVY_TIEF)
     bild.paste(logo_weiss(1100, 0.05), (BREITE - 900, -60), logo_weiss(1100, 0.05))
@@ -815,6 +906,14 @@ def erzeuge(daten: dict, sprache: str, stimmen: Path, ausgabe: Path, jetzt: dt.d
         abschnitte.append(Abschnitt(feld(b.update, 'titel', sprache), sprech_beitrag(b, sprache), pfad,
                                     quellen=b.update.get('quellen', [])))
 
+    vorhersage = wetterdienst.hole_wetter(jetzt if abs((jetzt - dt.datetime.now(dt.timezone.utc)).days) < 1
+                                          else dt.datetime.now(dt.timezone.utc))
+    if vorhersage:
+        inseln, morgen = vorhersage
+        pfad = arbeit / '98-wetter.png'
+        bild_wetter(sprache, tag, inseln, morgen, pfad)
+        abschnitte.append(Abschnitt(t['wetter'][1 if morgen else 0], wetterdienst.sprechtext(inseln, morgen, sprache), pfad))
+
     outro = arbeit / '99-outro.png'
     bild_outro(sprache, tag, outro)
     abschnitte.append(Abschnitt(t['kapitel_ende'], abschied, outro))
@@ -861,6 +960,7 @@ def erzeuge(daten: dict, sprache: str, stimmen: Path, ausgabe: Path, jetzt: dt.d
         '✉️ https://gazet.morisyen.de/newsletter',
         '',
         t['ki'].format(stimme=stimme_name),
+        *([t['wetterquelle']] if vorhersage else []),
         t['impressum'],
     ])
     (ausgabe / f'{stamm}-youtube.txt').write_text(
