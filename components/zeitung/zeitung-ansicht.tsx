@@ -9,6 +9,7 @@ import { ShopBanner } from './shop-banner';
 import { TopKacheln } from './top-kacheln';
 import { WetterLeiste } from './wetter-leiste';
 import { VideoAbschnitt } from './video-abschnitt';
+import { FussLinks } from './fuss-links';
 import { LOGO_PFAD, ZeitungKopf } from './zeitung-kopf';
 import { ZugeklapptesThema } from './zugeklapptes-thema';
 import { useJetzt } from '@/hooks/use-jetzt';
@@ -104,11 +105,7 @@ export function ZeitungAnsicht({ daten, wetter, newsletterBereit = false }: Zeit
         {texte.fussnoten.map((absatz) => (
           <p key={absatz}>{absatz}</p>
         ))}
-        <p className="gz-fuss-links">
-          <a href="/zeitung/impressum">{texte.impressum}</a>
-          <a href="/zeitung/datenschutz">{texte.datenschutz}</a>
-          {newsletterBereit && <a href="/zeitung/newsletter">Newsletter</a>}
-        </p>
+        <FussLinks texte={texte} newsletter={newsletterBereit} />
       </footer>
     </>
   );

@@ -240,7 +240,9 @@ html:has(.gazet) { background: #fdfaf5; }
 @media (max-width: 560px) { .gz-shop-innen { grid-template-columns: 1fr; grid-template-areas: 'marke' 'text' 'knopf'; } .gazet .gz-shop-knopf { justify-content: center; } }
 .gz-fuss { padding-block: 26px 40px; font-size: .88rem; color: var(--muted); }
 .gz-fuss p { max-width: 70ch; margin: 0 0 .7em; }
-.gz-fuss-links { display: flex; gap: 18px; }
+.gz-fuss-links { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; }
+.gz-yt-link { display: inline-flex; align-items: center; gap: 8px; }
+.gz-yt-symbol { flex: none; }
 
 .gz-rechtstext { padding-block: 28px 48px; max-width: 70ch; }
 .gz-rechtstext h1 { font-family: var(--f-display); font-weight: 800; font-size: 2rem; margin: 0 0 16px; }

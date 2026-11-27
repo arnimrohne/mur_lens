@@ -1,5 +1,6 @@
 'use client';
 
+import { FussLinks } from './fuss-links';
 import { ShopBanner } from './shop-banner';
 import { ThemenKarte } from './themen-karte';
 import { ZeitungKopf } from './zeitung-kopf';
@@ -44,10 +45,7 @@ export function ThemaAnsicht({ thema, stand }: ThemaAnsichtProps) {
       <ShopBanner texte={texte} />
       <footer className="gz-rahmen gz-fuss">
         <p>{texte.fussnoten[1]}</p>
-        <p className="gz-fuss-links">
-          <a href="/zeitung/impressum">{texte.impressum}</a>
-          <a href="/zeitung/datenschutz">{texte.datenschutz}</a>
-        </p>
+        <FussLinks texte={texte} />
       </footer>
     </>
   );
