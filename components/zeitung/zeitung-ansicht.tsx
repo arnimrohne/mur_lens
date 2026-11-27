@@ -1,6 +1,7 @@
 'use client';
 
-import { useMemo } from 'react';
+import Image from 'next/image';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { RubrikAbschnitt } from './rubrik-abschnitt';
 import { AnmeldeFormular } from '@/components/newsletter/anmelde-formular';
@@ -8,11 +9,12 @@ import { ShopBanner } from './shop-banner';
 import { TopKacheln } from './top-kacheln';
 import { WetterLeiste } from './wetter-leiste';
 import { VideoAbschnitt } from './video-abschnitt';
-import { ZeitungKopf } from './zeitung-kopf';
+import { LOGO_PFAD, ZeitungKopf } from './zeitung-kopf';
 import { ZugeklapptesThema } from './zugeklapptes-thema';
 import { useJetzt } from '@/hooks/use-jetzt';
 import { useZeitungSprache } from '@/hooks/use-zeitung-sprache';
 import { baueAusgabe } from '@/lib/zeitung/ausgabe';
+import { SEITEN_NAME } from '@/lib/zeitung/seite';
 import { TEXTE } from '@/lib/zeitung/texte';
 import type { ZeitungDaten } from '@/lib/zeitung/types';
 import type { Wetter } from '@/lib/zeitung/wetter';
@@ -32,17 +34,31 @@ export function ZeitungAnsicht({ daten, wetter, newsletterBereit = false }: Zeit
   const texte = TEXTE[sprache];
   const { topThemen } = ausgabe;
 
+  // Sobald der Kopf aus dem Bild ist, erscheint das Logo klein in der Rubrikleiste.
+  const kopfRef = useRef<HTMLDivElement>(null);
+  const [kopfWeg, setKopfWeg] = useState(false);
+  useEffect(() => {
+    const kopf = kopfRef.current;
+    if (!kopf || typeof IntersectionObserver === 'undefined') return;
+    const beobachter = new IntersectionObserver(([eintrag]) => setKopfWeg(!eintrag.isIntersecting));
+    beobachter.observe(kopf);
+    return () => beobachter.disconnect();
+  }, []);
+
   return (
     <>
       <div className="gz-flagge" aria-hidden="true">
         <span /><span /><span /><span />
       </div>
-      <div className="gz-rahmen">
+      <div className="gz-rahmen" ref={kopfRef}>
         <ZeitungKopf stand={daten.stand} sprache={sprache} texte={texte} waehleSprache={waehleSprache} />
       </div>
 
-      <nav className="gz-nav" aria-label={texte.rubrikenLabel}>
+      <nav className={kopfWeg ? 'gz-nav gz-nav-mit-logo' : 'gz-nav'} aria-label={texte.rubrikenLabel}>
         <div className="gz-rahmen gz-nav-liste">
+          <a className="gz-nav-logo" href="#" aria-label={SEITEN_NAME} tabIndex={kopfWeg ? 0 : -1} aria-hidden={!kopfWeg}>
+            <Image className="gz-logo" src={LOGO_PFAD} alt="" width={64} height={64} />
+          </a>
           {ausgabe.rubriken.map((block) => (
             <a key={block.rubrik} href={`#${block.rubrik}`}>{texte.rubriken[block.rubrik].kurz}</a>
           ))}
