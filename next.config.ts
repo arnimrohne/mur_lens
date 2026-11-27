@@ -12,6 +12,12 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  images: {
+    // Dossier-Bilder (frei lizenziert) vom Daten-Branch; ausgeliefert über die eigene Domain.
+    remotePatterns: [
+      { protocol: "https", hostname: "raw.githubusercontent.com", pathname: "/arnimrohne/mur_lens/zeitung-daten/bilder/**" },
+    ],
+  },
   async headers() {
     return [
       {

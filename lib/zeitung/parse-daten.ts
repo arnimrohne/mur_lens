@@ -9,6 +9,7 @@ import { RUBRIK_IDS } from './types';
 import type {
   Dossier,
   DossierAkteur,
+  DossierBild,
   DossierEreignis,
   DossierZahl,
   Einleitung,
@@ -223,6 +224,29 @@ function liste<T>(wert: unknown, einzeln: (roh: unknown) => T | undefined): T[] 
   }) : [];
 }
 
+const BILD_SRC = /^(\/bilder\/|https:\/\/raw\.githubusercontent\.com\/arnimrohne\/mur_lens\/zeitung-daten\/bilder\/)[a-z0-9][a-z0-9-]{0,80}\.(jpe?g|png|webp)$/;
+const COMMONS_SEITE = /^https:\/\/commons\.wikimedia\.org\/wiki\/File:/;
+/** Nur Lizenzen ohne Einschränkung von Bearbeitung oder kommerzieller Nutzung. */
+const FREIE_LIZENZ = /^(CC0( 1\.0)?|Public domain|PD[- ].+|CC BY(-SA)? [1-4]\.0( [A-Za-z-]+)?)$/i;
+
+export function istFreieLizenz(lizenz: string): boolean {
+  return FREIE_LIZENZ.test(lizenz.trim()) && !/\b(NC|ND)\b/i.test(lizenz);
+}
+
+export function parseDossierBild(wert: unknown): DossierBild | undefined {
+  if (!istObjekt(wert)) return undefined;
+  const src = text(wert.src);
+  const seite = text(wert.seite);
+  const lizenz = text(wert.lizenz);
+  const urheber = text(wert.urheber);
+  const alt = mehrsprachig(wert.alt);
+  const breite = typeof wert.breite === 'number' ? wert.breite : 0;
+  const hoehe = typeof wert.hoehe === 'number' ? wert.hoehe : 0;
+  if (!src || !BILD_SRC.test(src) || !seite || !COMMONS_SEITE.test(seite)) return undefined;
+  if (!lizenz || !istFreieLizenz(lizenz) || !urheber || !alt || breite < 200 || hoehe < 100) return undefined;
+  return { src, breite, hoehe, alt, urheber, seite, lizenz, lizenzUrl: sichereUrl(wert.lizenzUrl) };
+}
+
 function parseDossier(wert: unknown): Dossier | undefined {
   if (!istObjekt(wert) || typeof wert.id !== 'string' || !DOSSIER_ID.test(wert.id) || !istRubrik(wert.rubrik)) return undefined;
   const titel = mehrsprachig(wert.titel);
@@ -254,6 +278,7 @@ function parseDossier(wert: unknown): Dossier | undefined {
     stand: istGueltigeZeit(wert.stand) ? wert.stand : new Date(0).toISOString(),
     titel,
     kurz,
+    bild: parseDossierBild(wert.bild),
     warum: mehrsprachig(wert.warum),
     entwicklung: mehrsprachig(wert.entwicklung),
     chronik,

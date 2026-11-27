@@ -349,3 +349,13 @@ html:has(.gazet) { background: #fdfaf5; }
 .gz-zu-titel .gz-marke-dossier:hover { background: var(--lagoon); color: var(--on-lagoon); }
 .gz-kachel-dossier { display: block; margin-top: 8px; font-family: var(--f-display); font-weight: 500; font-size: .92rem; text-decoration: none; color: var(--fg); }
 .gz-kachel-dossier:hover { color: var(--lagoon); }
+
+/* Dossier-Bilder (frei lizenziert, mit Namensnennung) */
+.gz-dossier-bild { margin: 16px 0 0; }
+.gz-dossier-bild img, .gz-dossier-karte-bild img { display: block; width: 100%; height: auto; border-radius: var(--radius); background: var(--chip); }
+.gz-dossier-bild figcaption, .gz-dossier-karte-bild figcaption { margin-top: 6px; font-family: var(--f-mono); font-size: .68rem; color: var(--muted); }
+.gz-dossier-bild figcaption a, .gz-dossier-karte-bild figcaption a { color: var(--muted); }
+.gz-dossier-karte-bild { margin: 0 0 4px; }
+.gz-dossier-karte-link { color: var(--fg); text-decoration: none; }
+.gz-dossier-karte-link::after { content: ''; position: absolute; inset: 0; }
+.gz-dossier-karte-bild figcaption { position: relative; z-index: 1; }

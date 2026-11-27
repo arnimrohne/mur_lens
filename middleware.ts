@@ -35,5 +35,5 @@ export function middleware(anfrage: NextRequest): NextResponse {
 
 export const config = {
   // Next.js-Interna, API-Routen und App-Dateien auslassen.
-  matcher: ['/((?!_next/|api/|favicon\\.ico|icon|apple-icon|manifest\\.json|icons/).*)'],
+  matcher: ['/((?!_next/|api/|favicon\\.ico|icon|apple-icon|manifest\\.json|icons/|bilder/).*)'],
 };

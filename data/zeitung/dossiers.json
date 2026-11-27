@@ -16,6 +16,20 @@
     "fr": "Maurice stocke son eau principalement dans sept grands réservoirs d'une capacité totale d'environ 92,2 millions de mètres cubes. Pendant les mois secs, leur niveau baisse fortement et l'eau n'est alors distribuée que quelques heures par jour dans de nombreuses régions. Par ailleurs, une grande partie de l'eau traitée ne rapporte rien, perdue à cause de fuites, de branchements illégaux ou d'erreurs de facturation.",
     "en": "Mauritius stores most of its water in seven large reservoirs holding about 92.2 million cubic metres in total. In dry months, levels fall sharply and many areas then receive water only for a few hours a day. At the same time, much of the treated water earns no revenue because it is lost through leaks, illegal connections or billing errors."
    },
+   "bild": {
+    "src": "/bilder/wasserversorgung.jpg",
+    "breite": 1920,
+    "hoehe": 625,
+    "alt": {
+     "de": "Der Stausee Mare aux Vacoas mit breitem, trockenem Uferstreifen, im Vordergrund Kiefern und ein Zaun",
+     "fr": "Le réservoir de Mare-aux-Vacoas avec une large bande de rive asséchée, au premier plan des pins et une clôture",
+     "en": "Mare aux Vacoas reservoir with a wide strip of dry shoreline, pine trees and a fence in the foreground"
+    },
+    "urheber": "Diego Delso",
+    "seite": "https://commons.wikimedia.org/wiki/File:Mare_aux_Vacoas,_Mauricio,_2025-09-25,_DD_77-82_PAN.jpg",
+    "lizenz": "CC BY-SA 4.0",
+    "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+   },
    "warum": {
     "de": "Wasser ist für Haushalte, Landwirtschaft, Industrie und Tourismus unverzichtbar. Wenn die Reservoirs sinken, schränkt die Central Water Authority (CWA) die Versorgung ein: Im November 2026 floss in Vacoas, Phoenix, Curepipe und Floréal nur jeden zweiten Tag Wasser, und zwar von 3 bis 8 Uhr.\n\nDie Verluste im Netz belasten außerdem die Finanzen der CWA und damit den Staatshaushalt. Laut Medienberichten verliert sie dadurch monatlich rund 540 Millionen Rupien.",
     "fr": "L'eau est indispensable aux ménages, à l'agriculture, à l'industrie et au tourisme. Quand les réservoirs baissent, la Central Water Authority (CWA) restreint la distribution : en novembre 2026, l'eau ne coulait à Vacoas, Phoenix, Curepipe et Floréal qu'un jour sur deux, de 3 h à 8 h.\n\nLes pertes sur le réseau pèsent aussi sur les finances de la CWA, et donc sur le budget de l'État. Selon la presse, elles lui coûtent environ 540 millions de roupies par mois.",
@@ -27,52 +41,414 @@
     "en": "Reservoir levels depend heavily on rainfall. During the 2026 dry season they fell well below the previous year's levels: Mare-aux-Vacoas, the largest reservoir, stood at around 33 per cent in mid-November, against 74 per cent a year earlier.\n\nThere are structural problems too. Much of the pipe network is old and leaking. The National Audit Office finds that the share of water earning no revenue has risen over ten years and now stands at about 60 per cent. Tariffs have not been revised since 2012. New storage is slow to arrive: the Rivière-des-Anguilles dam was announced in 2009 and has still not been built."
    },
    "chronik": [
-    {"datum": "2009", "text": {"de": "Der Damm von Rivière-des-Anguilles im Süden wird erstmals angekündigt. Geschätzte Kosten: 2,6 Milliarden Rupien.", "fr": "Le barrage de Rivière-des-Anguilles, dans le Sud, est annoncé pour la première fois. Coût estimé : 2,6 milliards de roupies.", "en": "The Rivière-des-Anguilles dam in the south is first announced, at an estimated cost of 2.6 billion rupees."}, "quelle": "https://nao.govmu.org/nao/wp-content/uploads/2026/02/water_report.pdf"},
-    {"datum": "2012", "text": {"de": "Letzte Anpassung der Wassertarife durch die CWA.", "fr": "Dernière révision des tarifs de l'eau par la CWA.", "en": "Last revision of water tariffs by the CWA."}, "quelle": "https://cwa.govmu.org/cwa/wp-content/uploads/2026/09/CWA_Annual-Report-2024-2025.pdf"},
-    {"datum": "2024", "text": {"de": "Die geschätzten Kosten des Damms von Rivière-des-Anguilles liegen bei rund 9,4 Milliarden Rupien, mehr als das Dreifache der ersten Schätzung.", "fr": "Le coût estimé du barrage de Rivière-des-Anguilles atteint environ 9,4 milliards de roupies, plus du triple de l'estimation initiale.", "en": "The estimated cost of the Rivière-des-Anguilles dam reaches about 9.4 billion rupees, more than three times the first estimate."}, "quelle": "https://nao.govmu.org/nao/wp-content/uploads/2026/02/water_report.pdf"},
-    {"datum": "Dez. 2025", "datumI18n": {"fr": "déc. 2025", "en": "Dec 2025"}, "text": {"de": "Ein Bericht des Rechnungshofs kritisiert die hohen Wasserverluste und das wiederholte Aufschieben von Lösungen.", "fr": "Un rapport du Bureau de l'audit critique les fortes pertes d'eau et le report répété des solutions.", "en": "A National Audit Office report criticises the high water losses and the repeated postponement of solutions."}, "quelle": "https://fr.allafrica.com/stories/202611160631.html"},
-    {"datum": "März 2026", "datumI18n": {"fr": "mars 2026", "en": "Mar 2026"}, "text": {"de": "Der Energieminister kündigt den Baubeginn des Damms von Rivière-des-Anguilles für November 2026 an, Fertigstellung für November 2029.", "fr": "Le ministre de l'Énergie annonce le début des travaux du barrage de Rivière-des-Anguilles pour novembre 2026 et leur fin pour novembre 2029.", "en": "The energy minister announces that construction of the Rivière-des-Anguilles dam will start in November 2026 and finish in November 2029."}, "quelle": "https://maurice-info.mu/2026/03/04/le-barrage-de-riviere-des-anguilles-est-un-projet-phare-pour-le-sud.html"},
-    {"datum": "Nov. 2026", "datumI18n": {"fr": "nov. 2026", "en": "Nov 2026"}, "text": {"de": "Mare-aux-Vacoas fällt auf rund 33 Prozent. In mehreren Orten wird das Wasser rationiert.", "fr": "Mare-aux-Vacoas tombe à environ 33 %. L'eau est rationnée dans plusieurs localités.", "en": "Mare-aux-Vacoas drops to around 33 per cent. Water is rationed in several towns."}, "quelle": "https://fr.allafrica.com/stories/202611180579.html"},
-    {"datum": "26.11.2026", "datumI18n": {"fr": "26/11/2026", "en": "26 Nov 2026"}, "text": {"de": "Die sieben wichtigsten Reservoirs sind zu 44 Prozent gefüllt, ein Jahr zuvor waren es 69,7 Prozent.", "fr": "Les sept principaux réservoirs sont remplis à 44 %, contre 69,7 % un an plus tôt.", "en": "The seven main reservoirs are 44 per cent full, compared with 69.7 per cent a year earlier."}, "quelle": "https://ionnews.mu/ressources-en-eau-les-reservoirs-reculent-a-44-au-26-novembre-2026/"}
+    {
+     "datum": "2009",
+     "text": {
+      "de": "Der Damm von Rivière-des-Anguilles im Süden wird erstmals angekündigt. Geschätzte Kosten: 2,6 Milliarden Rupien.",
+      "fr": "Le barrage de Rivière-des-Anguilles, dans le Sud, est annoncé pour la première fois. Coût estimé : 2,6 milliards de roupies.",
+      "en": "The Rivière-des-Anguilles dam in the south is first announced, at an estimated cost of 2.6 billion rupees."
+     },
+     "quelle": "https://nao.govmu.org/nao/wp-content/uploads/2026/02/water_report.pdf"
+    },
+    {
+     "datum": "2012",
+     "text": {
+      "de": "Letzte Anpassung der Wassertarife durch die CWA.",
+      "fr": "Dernière révision des tarifs de l'eau par la CWA.",
+      "en": "Last revision of water tariffs by the CWA."
+     },
+     "quelle": "https://cwa.govmu.org/cwa/wp-content/uploads/2026/09/CWA_Annual-Report-2024-2025.pdf"
+    },
+    {
+     "datum": "2024",
+     "text": {
+      "de": "Die geschätzten Kosten des Damms von Rivière-des-Anguilles liegen bei rund 9,4 Milliarden Rupien, mehr als das Dreifache der ersten Schätzung.",
+      "fr": "Le coût estimé du barrage de Rivière-des-Anguilles atteint environ 9,4 milliards de roupies, plus du triple de l'estimation initiale.",
+      "en": "The estimated cost of the Rivière-des-Anguilles dam reaches about 9.4 billion rupees, more than three times the first estimate."
+     },
+     "quelle": "https://nao.govmu.org/nao/wp-content/uploads/2026/02/water_report.pdf"
+    },
+    {
+     "datum": "Dez. 2025",
+     "datumI18n": {
+      "fr": "déc. 2025",
+      "en": "Dec 2025"
+     },
+     "text": {
+      "de": "Ein Bericht des Rechnungshofs kritisiert die hohen Wasserverluste und das wiederholte Aufschieben von Lösungen.",
+      "fr": "Un rapport du Bureau de l'audit critique les fortes pertes d'eau et le report répété des solutions.",
+      "en": "A National Audit Office report criticises the high water losses and the repeated postponement of solutions."
+     },
+     "quelle": "https://fr.allafrica.com/stories/202611160631.html"
+    },
+    {
+     "datum": "März 2026",
+     "datumI18n": {
+      "fr": "mars 2026",
+      "en": "Mar 2026"
+     },
+     "text": {
+      "de": "Der Energieminister kündigt den Baubeginn des Damms von Rivière-des-Anguilles für November 2026 an, Fertigstellung für November 2029.",
+      "fr": "Le ministre de l'Énergie annonce le début des travaux du barrage de Rivière-des-Anguilles pour novembre 2026 et leur fin pour novembre 2029.",
+      "en": "The energy minister announces that construction of the Rivière-des-Anguilles dam will start in November 2026 and finish in November 2029."
+     },
+     "quelle": "https://maurice-info.mu/2026/03/04/le-barrage-de-riviere-des-anguilles-est-un-projet-phare-pour-le-sud.html"
+    },
+    {
+     "datum": "Nov. 2026",
+     "datumI18n": {
+      "fr": "nov. 2026",
+      "en": "Nov 2026"
+     },
+     "text": {
+      "de": "Mare-aux-Vacoas fällt auf rund 33 Prozent. In mehreren Orten wird das Wasser rationiert.",
+      "fr": "Mare-aux-Vacoas tombe à environ 33 %. L'eau est rationnée dans plusieurs localités.",
+      "en": "Mare-aux-Vacoas drops to around 33 per cent. Water is rationed in several towns."
+     },
+     "quelle": "https://fr.allafrica.com/stories/202611180579.html"
+    },
+    {
+     "datum": "26.11.2026",
+     "datumI18n": {
+      "fr": "26/11/2026",
+      "en": "26 Nov 2026"
+     },
+     "text": {
+      "de": "Die sieben wichtigsten Reservoirs sind zu 44 Prozent gefüllt, ein Jahr zuvor waren es 69,7 Prozent.",
+      "fr": "Les sept principaux réservoirs sont remplis à 44 %, contre 69,7 % un an plus tôt.",
+      "en": "The seven main reservoirs are 44 per cent full, compared with 69.7 per cent a year earlier."
+     },
+     "quelle": "https://ionnews.mu/ressources-en-eau-les-reservoirs-reculent-a-44-au-26-novembre-2026/"
+    }
    ],
    "akteure": [
-    {"name": {"de": "Central Water Authority (CWA)", "fr": "Central Water Authority (CWA)", "en": "Central Water Authority (CWA)"}, "position": {"de": "Betreibt Aufbereitung und Verteilung. Verweist darauf, dass die Tarife seit 2012 unverändert sind und neue Anschlüsse ein Vielfaches dessen kosten, was dafür berechnet wird.", "fr": "Assure le traitement et la distribution. Souligne que les tarifs sont inchangés depuis 2012 et que les nouveaux raccordements coûtent bien plus que ce qui est facturé.", "en": "Runs treatment and distribution. Points out that tariffs have not changed since 2012 and that new connections cost several times what is charged for them."}, "quelle": "https://cwa.govmu.org/cwa/wp-content/uploads/2026/09/CWA_Annual-Report-2024-2025.pdf"},
-    {"name": {"de": "Ministerium für Energie und öffentliche Versorgung", "fr": "Ministère de l'Énergie et des Services publics", "en": "Ministry of Energy and Public Utilities"}, "position": {"de": "Setzt vor allem auf neue Speicher, insbesondere den Damm von Rivière-des-Anguilles für die Versorgung des Südens.", "fr": "Mise surtout sur de nouvelles capacités de stockage, en particulier le barrage de Rivière-des-Anguilles pour approvisionner le Sud.", "en": "Relies mainly on new storage, especially the Rivière-des-Anguilles dam to supply the south."}, "quelle": "https://maurice-info.mu/2026/03/04/le-barrage-de-riviere-des-anguilles-est-un-projet-phare-pour-le-sud.html"},
-    {"name": {"de": "Rechnungshof (National Audit Office)", "fr": "Bureau de l'audit (National Audit Office)", "en": "National Audit Office"}, "position": {"de": "Kritisiert die hohen Verluste und dass Ministerium und CWA Lösungen durch immer neue Studien aufschieben.", "fr": "Critique les fortes pertes et le fait que le ministère et la CWA repoussent les solutions en commandant toujours de nouvelles études.", "en": "Criticises the high losses and that the ministry and the CWA keep postponing solutions by commissioning more studies."}, "quelle": "https://fr.allafrica.com/stories/202611160631.html"},
-    {"name": {"de": "Fachleute (Artikelserie von L'Express)", "fr": "Spécialistes (série d'articles de L'Express)", "en": "Experts (L'Express article series)"}, "position": {"de": "Halten die Tarife für zu niedrig, verlangen aber zuerst einen besseren Service und weniger Verluste.", "fr": "Jugent les tarifs trop bas, mais réclament d'abord un meilleur service et moins de pertes.", "en": "Consider tariffs too low but want better service and fewer losses first."}, "quelle": "https://lexpress.mu/s/eau-60-de-pertes-des-tarifs-trop-bas-le-verdict-des-specialistes-565115"},
-    {"name": {"de": "Haushalte", "fr": "Ménages", "en": "Households"}, "position": {"de": "Tragen die Folgen der Rationierung. Haushalte, die monatlich höchstens 6 Kubikmeter verbrauchen, erhalten ihr Wasser kostenlos.", "fr": "Subissent le rationnement. Les ménages consommant au plus 6 mètres cubes par mois reçoivent l'eau gratuitement.", "en": "Bear the brunt of rationing. Households using at most 6 cubic metres a month receive their water free of charge."}, "quelle": "https://www.mauritiustimes.com/mt/water-bills-should-match-electricity-and-telecom-costs-to-reflect-the-vital-importance-of-the-resource/"}
+    {
+     "name": {
+      "de": "Central Water Authority (CWA)",
+      "fr": "Central Water Authority (CWA)",
+      "en": "Central Water Authority (CWA)"
+     },
+     "position": {
+      "de": "Betreibt Aufbereitung und Verteilung. Verweist darauf, dass die Tarife seit 2012 unverändert sind und neue Anschlüsse ein Vielfaches dessen kosten, was dafür berechnet wird.",
+      "fr": "Assure le traitement et la distribution. Souligne que les tarifs sont inchangés depuis 2012 et que les nouveaux raccordements coûtent bien plus que ce qui est facturé.",
+      "en": "Runs treatment and distribution. Points out that tariffs have not changed since 2012 and that new connections cost several times what is charged for them."
+     },
+     "quelle": "https://cwa.govmu.org/cwa/wp-content/uploads/2026/09/CWA_Annual-Report-2024-2025.pdf"
+    },
+    {
+     "name": {
+      "de": "Ministerium für Energie und öffentliche Versorgung",
+      "fr": "Ministère de l'Énergie et des Services publics",
+      "en": "Ministry of Energy and Public Utilities"
+     },
+     "position": {
+      "de": "Setzt vor allem auf neue Speicher, insbesondere den Damm von Rivière-des-Anguilles für die Versorgung des Südens.",
+      "fr": "Mise surtout sur de nouvelles capacités de stockage, en particulier le barrage de Rivière-des-Anguilles pour approvisionner le Sud.",
+      "en": "Relies mainly on new storage, especially the Rivière-des-Anguilles dam to supply the south."
+     },
+     "quelle": "https://maurice-info.mu/2026/03/04/le-barrage-de-riviere-des-anguilles-est-un-projet-phare-pour-le-sud.html"
+    },
+    {
+     "name": {
+      "de": "Rechnungshof (National Audit Office)",
+      "fr": "Bureau de l'audit (National Audit Office)",
+      "en": "National Audit Office"
+     },
+     "position": {
+      "de": "Kritisiert die hohen Verluste und dass Ministerium und CWA Lösungen durch immer neue Studien aufschieben.",
+      "fr": "Critique les fortes pertes et le fait que le ministère et la CWA repoussent les solutions en commandant toujours de nouvelles études.",
+      "en": "Criticises the high losses and that the ministry and the CWA keep postponing solutions by commissioning more studies."
+     },
+     "quelle": "https://fr.allafrica.com/stories/202611160631.html"
+    },
+    {
+     "name": {
+      "de": "Fachleute (Artikelserie von L'Express)",
+      "fr": "Spécialistes (série d'articles de L'Express)",
+      "en": "Experts (L'Express article series)"
+     },
+     "position": {
+      "de": "Halten die Tarife für zu niedrig, verlangen aber zuerst einen besseren Service und weniger Verluste.",
+      "fr": "Jugent les tarifs trop bas, mais réclament d'abord un meilleur service et moins de pertes.",
+      "en": "Consider tariffs too low but want better service and fewer losses first."
+     },
+     "quelle": "https://lexpress.mu/s/eau-60-de-pertes-des-tarifs-trop-bas-le-verdict-des-specialistes-565115"
+    },
+    {
+     "name": {
+      "de": "Haushalte",
+      "fr": "Ménages",
+      "en": "Households"
+     },
+     "position": {
+      "de": "Tragen die Folgen der Rationierung. Haushalte, die monatlich höchstens 6 Kubikmeter verbrauchen, erhalten ihr Wasser kostenlos.",
+      "fr": "Subissent le rationnement. Les ménages consommant au plus 6 mètres cubes par mois reçoivent l'eau gratuitement.",
+      "en": "Bear the brunt of rationing. Households using at most 6 cubic metres a month receive their water free of charge."
+     },
+     "quelle": "https://www.mauritiustimes.com/mt/water-bills-should-match-electricity-and-telecom-costs-to-reflect-the-vital-importance-of-the-resource/"
+    }
    ],
    "zahlen": [
-    {"wert": {"de": "92,2 Mio. m³", "fr": "92,2 millions de m³", "en": "92.2 million m³"}, "text": {"de": "Speichervermögen der sieben wichtigsten Reservoirs", "fr": "Capacité des sept principaux réservoirs", "en": "Capacity of the seven main reservoirs"}, "quelle": "https://publicutilities.govmu.org/Pages/Water%20Sector/WRU.aspx"},
-    {"wert": {"de": "25,89 Mio. m³", "fr": "25,89 millions de m³", "en": "25.89 million m³"}, "text": {"de": "Mare-aux-Vacoas, das größte Reservoir", "fr": "Mare-aux-Vacoas, le plus grand réservoir", "en": "Mare-aux-Vacoas, the largest reservoir"}, "quelle": "https://publicutilities.govmu.org/Pages/Water%20Sector/WRU.aspx"},
-    {"wert": {"de": "≈ 60 %", "fr": "≈ 60 %", "en": "≈ 60%"}, "text": {"de": "Anteil des aufbereiteten Wassers ohne Einnahmen", "fr": "Part de l'eau traitée non facturée", "en": "Share of treated water earning no revenue"}, "quelle": "https://lexpress.mu/s/eau-60-de-pertes-des-tarifs-trop-bas-le-verdict-des-specialistes-565115"},
-    {"wert": {"de": "Rs 540 Mio.", "fr": "Rs 540 millions", "en": "Rs 540 million"}, "text": {"de": "monatliche Verluste der CWA laut Medienbericht", "fr": "pertes mensuelles de la CWA selon la presse", "en": "monthly CWA losses according to media reports"}, "quelle": "https://newsmoris.com/cwa-loses-60-of-supply-amid-mounting-financial-deficits/"},
-    {"wert": {"de": "2012", "fr": "2012", "en": "2012"}, "text": {"de": "Jahr der letzten Tarifanpassung", "fr": "année de la dernière révision tarifaire", "en": "year of the last tariff revision"}, "quelle": "https://cwa.govmu.org/cwa/wp-content/uploads/2026/09/CWA_Annual-Report-2024-2025.pdf"}
+    {
+     "wert": {
+      "de": "92,2 Mio. m³",
+      "fr": "92,2 millions de m³",
+      "en": "92.2 million m³"
+     },
+     "text": {
+      "de": "Speichervermögen der sieben wichtigsten Reservoirs",
+      "fr": "Capacité des sept principaux réservoirs",
+      "en": "Capacity of the seven main reservoirs"
+     },
+     "quelle": "https://publicutilities.govmu.org/Pages/Water%20Sector/WRU.aspx"
+    },
+    {
+     "wert": {
+      "de": "25,89 Mio. m³",
+      "fr": "25,89 millions de m³",
+      "en": "25.89 million m³"
+     },
+     "text": {
+      "de": "Mare-aux-Vacoas, das größte Reservoir",
+      "fr": "Mare-aux-Vacoas, le plus grand réservoir",
+      "en": "Mare-aux-Vacoas, the largest reservoir"
+     },
+     "quelle": "https://publicutilities.govmu.org/Pages/Water%20Sector/WRU.aspx"
+    },
+    {
+     "wert": {
+      "de": "≈ 60 %",
+      "fr": "≈ 60 %",
+      "en": "≈ 60%"
+     },
+     "text": {
+      "de": "Anteil des aufbereiteten Wassers ohne Einnahmen",
+      "fr": "Part de l'eau traitée non facturée",
+      "en": "Share of treated water earning no revenue"
+     },
+     "quelle": "https://lexpress.mu/s/eau-60-de-pertes-des-tarifs-trop-bas-le-verdict-des-specialistes-565115"
+    },
+    {
+     "wert": {
+      "de": "Rs 540 Mio.",
+      "fr": "Rs 540 millions",
+      "en": "Rs 540 million"
+     },
+     "text": {
+      "de": "monatliche Verluste der CWA laut Medienbericht",
+      "fr": "pertes mensuelles de la CWA selon la presse",
+      "en": "monthly CWA losses according to media reports"
+     },
+     "quelle": "https://newsmoris.com/cwa-loses-60-of-supply-amid-mounting-financial-deficits/"
+    },
+    {
+     "wert": {
+      "de": "2012",
+      "fr": "2012",
+      "en": "2012"
+     },
+     "text": {
+      "de": "Jahr der letzten Tarifanpassung",
+      "fr": "année de la dernière révision tarifaire",
+      "en": "year of the last tariff revision"
+     },
+     "quelle": "https://cwa.govmu.org/cwa/wp-content/uploads/2026/09/CWA_Annual-Report-2024-2025.pdf"
+    }
    ],
    "grafiken": [
-    {"art": "balken", "einheit": "%", "titel": {"de": "Füllstand der Reservoirs", "fr": "Taux de remplissage des réservoirs", "en": "Reservoir levels"}, "kennzahl": {"wert": {"de": "44 %", "fr": "44 %", "en": "44%"}, "text": {"de": "am 26. November 2026", "fr": "au 26 novembre 2026", "en": "on 26 November 2026"}}, "werte": [{"wert": 44, "hervor": true, "label": {"de": "26.11.2026", "fr": "26/11/2026", "en": "26 Nov 2026"}}, {"wert": 55.2, "label": {"de": "Saisonaler Schnitt", "fr": "Moyenne saisonnière", "en": "Seasonal average"}}, {"wert": 69.7, "label": {"de": "Vor einem Jahr", "fr": "Il y a un an", "en": "A year ago"}}], "quelle": "Water Resources Commission"},
-    {"art": "balken", "einheit": {"de": "Mio. m³", "fr": "millions de m³", "en": "million m³"}, "titel": {"de": "Produziert und verkauft (2024)", "fr": "Produite et vendue (2024)", "en": "Produced and sold (2024)"}, "werte": [{"wert": 332, "label": {"de": "Von der CWA produziert", "fr": "Produite par la CWA", "en": "Produced by the CWA"}}, {"wert": 115, "hervor": true, "label": {"de": "Davon verkauft", "fr": "Dont vendue", "en": "Of which sold"}}], "quelle": "Statistics Mauritius"},
-    {"art": "balken", "einheit": {"de": "Mrd. Rs", "fr": "milliards de Rs", "en": "billion Rs"}, "titel": {"de": "Damm Rivière-des-Anguilles: geschätzte Kosten", "fr": "Barrage de Rivière-des-Anguilles : coût estimé", "en": "Rivière-des-Anguilles dam: estimated cost"}, "werte": [{"wert": 2.6, "label": {"de": "Schätzung 2009", "fr": "Estimation 2009", "en": "2009 estimate"}}, {"wert": 9.4, "hervor": true, "label": {"de": "Schätzung 2024", "fr": "Estimation 2024", "en": "2024 estimate"}}], "quelle": "National Audit Office"}
+    {
+     "art": "balken",
+     "einheit": "%",
+     "titel": {
+      "de": "Füllstand der Reservoirs",
+      "fr": "Taux de remplissage des réservoirs",
+      "en": "Reservoir levels"
+     },
+     "kennzahl": {
+      "wert": {
+       "de": "44 %",
+       "fr": "44 %",
+       "en": "44%"
+      },
+      "text": {
+       "de": "am 26. November 2026",
+       "fr": "au 26 novembre 2026",
+       "en": "on 26 November 2026"
+      }
+     },
+     "werte": [
+      {
+       "wert": 44,
+       "hervor": true,
+       "label": {
+        "de": "26.11.2026",
+        "fr": "26/11/2026",
+        "en": "26 Nov 2026"
+       }
+      },
+      {
+       "wert": 55.2,
+       "label": {
+        "de": "Saisonaler Schnitt",
+        "fr": "Moyenne saisonnière",
+        "en": "Seasonal average"
+       }
+      },
+      {
+       "wert": 69.7,
+       "label": {
+        "de": "Vor einem Jahr",
+        "fr": "Il y a un an",
+        "en": "A year ago"
+       }
+      }
+     ],
+     "quelle": "Water Resources Commission"
+    },
+    {
+     "art": "balken",
+     "einheit": {
+      "de": "Mio. m³",
+      "fr": "millions de m³",
+      "en": "million m³"
+     },
+     "titel": {
+      "de": "Produziert und verkauft (2024)",
+      "fr": "Produite et vendue (2024)",
+      "en": "Produced and sold (2024)"
+     },
+     "werte": [
+      {
+       "wert": 332,
+       "label": {
+        "de": "Von der CWA produziert",
+        "fr": "Produite par la CWA",
+        "en": "Produced by the CWA"
+       }
+      },
+      {
+       "wert": 115,
+       "hervor": true,
+       "label": {
+        "de": "Davon verkauft",
+        "fr": "Dont vendue",
+        "en": "Of which sold"
+       }
+      }
+     ],
+     "quelle": "Statistics Mauritius"
+    },
+    {
+     "art": "balken",
+     "einheit": {
+      "de": "Mrd. Rs",
+      "fr": "milliards de Rs",
+      "en": "billion Rs"
+     },
+     "titel": {
+      "de": "Damm Rivière-des-Anguilles: geschätzte Kosten",
+      "fr": "Barrage de Rivière-des-Anguilles : coût estimé",
+      "en": "Rivière-des-Anguilles dam: estimated cost"
+     },
+     "werte": [
+      {
+       "wert": 2.6,
+       "label": {
+        "de": "Schätzung 2009",
+        "fr": "Estimation 2009",
+        "en": "2009 estimate"
+       }
+      },
+      {
+       "wert": 9.4,
+       "hervor": true,
+       "label": {
+        "de": "Schätzung 2024",
+        "fr": "Estimation 2024",
+        "en": "2024 estimate"
+       }
+      }
+     ],
+     "quelle": "National Audit Office"
+    }
    ],
    "offen": [
-    {"de": "Beginnt der Bau des Damms von Rivière-des-Anguilles wirklich im November 2026? Ein unterzeichneter Bauvertrag ist bisher nicht bekannt.", "fr": "Les travaux du barrage de Rivière-des-Anguilles commenceront-ils vraiment en novembre 2026 ? Aucun contrat signé n'a été rendu public à ce jour.", "en": "Will construction of the Rivière-des-Anguilles dam really start in November 2026? No signed construction contract has been made public so far."},
-    {"de": "Werden die Tarife angepasst, und wie werden Haushalte mit geringem Einkommen dabei geschützt?", "fr": "Les tarifs seront-ils révisés, et comment les ménages modestes seront-ils protégés ?", "en": "Will tariffs be revised, and how will low-income households be protected?"},
-    {"de": "Wie schnell lassen sich die Verluste im Leitungsnetz senken?", "fr": "À quelle vitesse les pertes du réseau peuvent-elles être réduites ?", "en": "How quickly can network losses be reduced?"},
-    {"de": "Wie viel Regen bringt die Regenzeit, und reicht er, um die Reservoirs wieder zu füllen?", "fr": "Quelle quantité de pluie apportera la saison des pluies, et suffira-t-elle à remplir les réservoirs ?", "en": "How much rain will the rainy season bring, and will it be enough to refill the reservoirs?"}
+    {
+     "de": "Beginnt der Bau des Damms von Rivière-des-Anguilles wirklich im November 2026? Ein unterzeichneter Bauvertrag ist bisher nicht bekannt.",
+     "fr": "Les travaux du barrage de Rivière-des-Anguilles commenceront-ils vraiment en novembre 2026 ? Aucun contrat signé n'a été rendu public à ce jour.",
+     "en": "Will construction of the Rivière-des-Anguilles dam really start in November 2026? No signed construction contract has been made public so far."
+    },
+    {
+     "de": "Werden die Tarife angepasst, und wie werden Haushalte mit geringem Einkommen dabei geschützt?",
+     "fr": "Les tarifs seront-ils révisés, et comment les ménages modestes seront-ils protégés ?",
+     "en": "Will tariffs be revised, and how will low-income households be protected?"
+    },
+    {
+     "de": "Wie schnell lassen sich die Verluste im Leitungsnetz senken?",
+     "fr": "À quelle vitesse les pertes du réseau peuvent-elles être réduites ?",
+     "en": "How quickly can network losses be reduced?"
+    },
+    {
+     "de": "Wie viel Regen bringt die Regenzeit, und reicht er, um die Reservoirs wieder zu füllen?",
+     "fr": "Quelle quantité de pluie apportera la saison des pluies, et suffira-t-elle à remplir les réservoirs ?",
+     "en": "How much rain will the rainy season bring, and will it be enough to refill the reservoirs?"
+    }
    ],
-   "themen": ["wasserkrise"],
-   "stichworte": ["Wasser", "Reservoir", "CWA", "Mare-aux-Vacoas", "Rationierung", "Dürre", "eau", "réservoir", "sécheresse"],
+   "themen": [
+    "wasserkrise"
+   ],
+   "stichworte": [
+    "Wasser",
+    "Reservoir",
+    "CWA",
+    "Mare-aux-Vacoas",
+    "Rationierung",
+    "Dürre",
+    "eau",
+    "réservoir",
+    "sécheresse"
+   ],
    "quellen": [
-    {"name": "Ministry of Energy and Public Utilities – Water Resources Unit", "url": "https://publicutilities.govmu.org/Pages/Water%20Sector/WRU.aspx"},
-    {"name": "National Audit Office – Water Report (Dez. 2025)", "url": "https://nao.govmu.org/nao/wp-content/uploads/2026/02/water_report.pdf"},
-    {"name": "CWA – Annual Report 2024–2025", "url": "https://cwa.govmu.org/cwa/wp-content/uploads/2026/09/CWA_Annual-Report-2024-2025.pdf"},
-    {"name": "ION News", "url": "https://ionnews.mu/ressources-en-eau-les-reservoirs-reculent-a-44-au-26-novembre-2026/"},
-    {"name": "L'Express", "url": "https://lexpress.mu/s/eau-60-de-pertes-des-tarifs-trop-bas-le-verdict-des-specialistes-565115"},
-    {"name": "allAfrica / L'Express", "url": "https://fr.allafrica.com/stories/202611180579.html"},
-    {"name": "allAfrica", "url": "https://fr.allafrica.com/stories/202611160631.html"},
-    {"name": "Maurice Info", "url": "https://maurice-info.mu/2026/03/04/le-barrage-de-riviere-des-anguilles-est-un-projet-phare-pour-le-sud.html"},
-    {"name": "Mauritius Times", "url": "https://www.mauritiustimes.com/mt/water-bills-should-match-electricity-and-telecom-costs-to-reflect-the-vital-importance-of-the-resource/"},
-    {"name": "newsmoris", "url": "https://newsmoris.com/cwa-loses-60-of-supply-amid-mounting-financial-deficits/"}
+    {
+     "name": "Ministry of Energy and Public Utilities – Water Resources Unit",
+     "url": "https://publicutilities.govmu.org/Pages/Water%20Sector/WRU.aspx"
+    },
+    {
+     "name": "National Audit Office – Water Report (Dez. 2025)",
+     "url": "https://nao.govmu.org/nao/wp-content/uploads/2026/02/water_report.pdf"
+    },
+    {
+     "name": "CWA – Annual Report 2024–2025",
+     "url": "https://cwa.govmu.org/cwa/wp-content/uploads/2026/09/CWA_Annual-Report-2024-2025.pdf"
+    },
+    {
+     "name": "ION News",
+     "url": "https://ionnews.mu/ressources-en-eau-les-reservoirs-reculent-a-44-au-26-novembre-2026/"
+    },
+    {
+     "name": "L'Express",
+     "url": "https://lexpress.mu/s/eau-60-de-pertes-des-tarifs-trop-bas-le-verdict-des-specialistes-565115"
+    },
+    {
+     "name": "allAfrica / L'Express",
+     "url": "https://fr.allafrica.com/stories/202611180579.html"
+    },
+    {
+     "name": "allAfrica",
+     "url": "https://fr.allafrica.com/stories/202611160631.html"
+    },
+    {
+     "name": "Maurice Info",
+     "url": "https://maurice-info.mu/2026/03/04/le-barrage-de-riviere-des-anguilles-est-un-projet-phare-pour-le-sud.html"
+    },
+    {
+     "name": "Mauritius Times",
+     "url": "https://www.mauritiustimes.com/mt/water-bills-should-match-electricity-and-telecom-costs-to-reflect-the-vital-importance-of-the-resource/"
+    },
+    {
+     "name": "newsmoris",
+     "url": "https://newsmoris.com/cwa-loses-60-of-supply-amid-mounting-financial-deficits/"
+    }
    ]
   }
  ]
