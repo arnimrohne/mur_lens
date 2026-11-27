@@ -457,7 +457,7 @@ _FUGE_SCHWELLE = 0.45
 
 
 def wortfugen_trennen(text: str) -> str:
-    """Trennt lange deutsche Zusammensetzungen an der Wortfuge („Sonderausschuss“ → „Sonder-ausschuss“),
+    """Trennt lange deutsche Zusammensetzungen an der Wortfuge („Sonderausschuss“ → „Sonder Ausschuss“),
     damit die Stimme die Teile nicht falsch zerlegt. Nur bei sicherer Trennung; Lautschrift bleibt unberührt."""
     try:
         from compound_split import char_split
@@ -475,7 +475,7 @@ def wortfugen_trennen(text: str) -> str:
         if wert < schwelle or len(links) < 3 or len(rechts) < 3:
             return wort
         # Endung „s“ (Fugen-s) bleibt beim linken Teil
-        return f'{wort[:len(links)]}-{wort[len(links):].lower()}' if wort.lower().startswith(links.lower()) else wort
+        return f'{wort[:len(links)]} {wort[len(links):].capitalize()}' if wort.lower().startswith(links.lower()) else wort
 
     teile = re.split(r'(\[\[.*?\]\])', text)
     return ''.join(t if t.startswith('[[') else re.sub(r'(?<![\w-])[A-ZÄÖÜ][a-zäöüß]{6,}(?![\w-])', trenne, t)
