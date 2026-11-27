@@ -13,6 +13,19 @@ Maßgeblich ist das Wasserversorgungs-Dossier als Vorlage. Pflichtfelder:
 Alle Texte gibt es in DE, FR und EN; Absätze werden durch eine Leerzeile
 getrennt.
 
+## Bild
+- Suche über die Commons-API, immer mit User-Agent "GazetMorisyen/1.0 (https://gazet.morisyen.de)", höchstens 5 API-Aufrufe pro Lauf; bei HTTP 429 eine Minute warten und es einmal erneut versuchen, sonst ohne Bild weitermachen:
+  curl -s -A "GazetMorisyen/1.0 (https://gazet.morisyen.de)" "https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=<Suchbegriff>&gsrnamespace=6&gsrlimit=15&prop=imageinfo&iiprop=extmetadata|size|url&iiurlwidth=1920&iiextmetadatafilter=LicenseShortName|LicenseUrl|Artist|ImageDescription&format=json"
+- Erlaubt sind nur die Lizenzen CC0, Public domain (PD-…), CC BY x.0 und CC BY-SA x.0. Nicht erlaubt sind NC-, ND- und GFDL-only-Lizenzen und alles ohne klare Lizenz.
+- Keine erkennbaren Privatpersonen im Vordergrund, keine Logos und keine Werbung. Mindestens 1280 Pixel breit, Querformat.
+- Lade die Datei über die thumburl (1920 Pixel, Host thumb.wikimedia.org) herunter. Speichere sie mit Pillow als JPEG (quality 82, höchstens 1920 Pixel breit) unter `bilder/<dossier-id>.jpg` im Branch zeitung-daten und committe sie mit `git add bilder/<dossier-id>.jpg dossiers.json`.
+- Feld im Dossier:
+  "bild": {"src": "https://raw.githubusercontent.com/arnimrohne/mur_lens/zeitung-daten/bilder/<dossier-id>.jpg", "breite": <px>, "hoehe": <px>,
+           "alt": {"de","fr","en"} (sachliche Beschreibung, was zu sehen ist), "urheber": Artist ohne HTML,
+           "seite": "https://commons.wikimedia.org/wiki/File:…" (descriptionurl), "lizenz": LicenseShortName, "lizenzUrl": LicenseUrl}
+- Das Bild wird nicht beschnitten oder bearbeitet, nur verkleinert. Ohne passendes freies Bild bleibt "bild" weg.
+- Bestehende Dossiers ohne Bild bekommen bei der nächsten Aktualisierung eines.
+
 ## Regeln
 - Jede Zahl, jedes Datum und jede Position braucht eine `quelle` (https-URL),
   die der Lauf selbst aufgerufen hat. Was sich nicht belegen lässt, bleibt weg.

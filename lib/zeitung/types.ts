@@ -156,12 +156,27 @@ export interface DossierZahl {
 }
 
 /** Hintergrund zu einem wiederkehrenden Thema (z. B. Wasserversorgung). */
+/** Frei lizenziertes Bild (Wikimedia Commons), selbst ausgeliefert, mit Namensnennung. */
+export interface DossierBild {
+  /** /bilder/<datei> (mitgeliefert) oder raw.githubusercontent.com/…/zeitung-daten/bilder/<datei>. */
+  src: string;
+  breite: number;
+  hoehe: number;
+  alt: Mehrsprachig;
+  urheber: string;
+  /** Dateiseite auf Wikimedia Commons. */
+  seite: string;
+  lizenz: string;
+  lizenzUrl?: string;
+}
+
 export interface Dossier {
   id: string;
   rubrik: RubrikId;
   stand: string;
   titel: Mehrsprachig;
   kurz: Mehrsprachig;
+  bild?: DossierBild;
   warum?: Mehrsprachig;
   entwicklung?: Mehrsprachig;
   chronik: DossierEreignis[];

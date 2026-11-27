@@ -1,6 +1,8 @@
 'use client';
 
+import { useDossiers } from './dossier-kontext';
 import { TeilenKnopf } from './teilen-knopf';
+import { dossierFuerThema, dossierPfad } from '@/lib/zeitung/dossiers';
 import { useKachelKarussell } from '@/hooks/use-kachel-karussell';
 import { meldungText, meldungZeit } from '@/lib/zeitung/sprache';
 import { themaPfad } from '@/lib/zeitung/teilen';
@@ -57,6 +59,7 @@ function TopKachel({ thema, sprache, texte, aktuell }: TopKachelProps) {
   const titel = meldungText(neueste, 'titel', sprache);
   const anriss = meldungText(neueste, 'text', sprache).split(/\n\s*\n/)[0] ?? '';
   const anzahl = thema.updates.length;
+  const dossier = dossierFuerThema(thema, useDossiers());
 
   return (
     <article className={`gz-kachel${aktuell ? ' gz-kachel-aktuell' : ''}`} id={`thema-${thema.id}`}>
@@ -71,6 +74,11 @@ function TopKachel({ thema, sprache, texte, aktuell }: TopKachelProps) {
         <a href={`/zeitung${themaPfad(thema.id)}`}>{titel}</a>
       </h3>
       <p>{anriss}</p>
+      {dossier && (
+        <a className="gz-kachel-dossier" href={dossierPfad(dossier.id)}>
+          <span className="gz-dossier-marke">{texte.hintergrund}</span> {dossier.titel[sprache]} →
+        </a>
+      )}
       <div className="gz-kachel-fuss">
         <a className="gz-weiter" href={`/zeitung${themaPfad(thema.id)}`}>{texte.weiterlesen}</a>
         <TeilenKnopf themaId={thema.id} titel={titel} texte={texte} />
