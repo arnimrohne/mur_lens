@@ -101,7 +101,7 @@ T = {
         'ki': 'Sprecherstimme synthetisch erzeugt (Piper TTS, Stimme: {stimme}). Texte: eigene Zusammenfassungen der Redaktion Gazet Morisyen.',
         'impressum': 'Impressum: https://gazet.morisyen.de/impressum',
         'heute_themen': 'Die Themen',
-        'ki_sprecher': 'Moderation zu Beginn und Ende: KI-generierte Person (Higgsfield).',
+        'ki_sprecher': 'Moderation zu Beginn und Ende: KI-generierte Person (Bild: RealVisXL, Animation: SadTalker); keine reale Person.',
         'ki_marke': 'KI-Moderation',
     },
     'fr': {
@@ -122,7 +122,7 @@ T = {
         'ki': 'Voix de synthèse (Piper TTS, voix : {stimme}). Textes : résumés rédigés par Gazet Morisyen.',
         'impressum': 'Mentions légales : https://gazet.morisyen.de/impressum',
         'heute_themen': 'Au sommaire',
-        'ki_sprecher': 'Présentation au début et à la fin : personne générée par IA (Higgsfield).',
+        'ki_sprecher': 'Présentation au début et à la fin : personne générée par IA (image : RealVisXL, animation : SadTalker) ; pas une personne réelle.',
         'ki_marke': 'Présentation IA',
     },
     'en': {
@@ -143,7 +143,7 @@ T = {
         'ki': 'Synthetic narrator voice (Piper TTS, voice: {stimme}). Texts: original summaries by Gazet Morisyen.',
         'impressum': 'Legal notice: https://gazet.morisyen.de/impressum',
         'heute_themen': 'In this edition',
-        'ki_sprecher': 'Opening and closing presenter: AI-generated person (Higgsfield).',
+        'ki_sprecher': 'Opening and closing presenter: AI-generated person (image: RealVisXL, animation: SadTalker); not a real person.',
         'ki_marke': 'AI presenter',
     },
 }
