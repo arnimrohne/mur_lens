@@ -35,7 +35,36 @@
      ],
      "text": "Die Regulierungsbehörde ICTA bestätigt: Das 3G-Netz wird schrittweise abgeschaltet, spätestens Ende 2028. Die Betreiber bauen ihre Netze bereits in eigenem Tempo ab.\n\nGeräte, die nur 3G können, etwa ältere Handys, GPS-Tracker in Fahrzeugen oder Maschinen-Module, funktionieren danach nicht mehr. Die ICTA rät zum Umstieg auf 4G oder 5G.",
      "titel": "Das 3G-Mobilfunknetz verschwindet bis spätestens 2028",
-     "zeit": "2026-11-26T12:00:00+04:00"
+     "zeit": "2026-11-26T12:00:00+04:00",
+     "sendung": {
+      "de": {
+       "sprechtext": "Das 3G-Mobilfunknetz auf Mauritius wird abgeschaltet, spätestens Ende 2028. Das bestätigt die Regulierungsbehörde ICTA. Die Betreiber bauen ihre Netze schon jetzt schrittweise ab. Geräte, die nur 3G beherrschen, etwa ältere Handys oder GPS-Tracker in Fahrzeugen, funktionieren danach nicht mehr. Die Behörde rät zum Umstieg auf 4G oder 5G.",
+       "stichpunkte": [
+        "3G-Netz endet spätestens Ende 2028",
+        "Betreiber bauen schon jetzt ab",
+        "Reine 3G-Geräte fallen dann aus",
+        "ICTA rät zu 4G oder 5G"
+       ]
+      },
+      "fr": {
+       "sprechtext": "Le réseau mobile 3G va disparaître à Maurice, au plus tard fin 2028. C'est ce que confirme le régulateur ICTA. Les opérateurs démantèlent déjà progressivement leurs réseaux. Les appareils uniquement compatibles 3G, comme d'anciens téléphones ou des traceurs GPS, ne fonctionneront plus. L'ICTA recommande de passer à la 4G ou à la 5G.",
+       "stichpunkte": [
+        "Fin de la 3G au plus tard fin 2028",
+        "Démantèlement déjà en cours",
+        "Les appareils 3G ne marcheront plus",
+        "L'ICTA conseille la 4G ou la 5G"
+       ]
+      },
+      "en": {
+       "sprechtext": "Mauritius's 3G mobile network is being switched off, by the end of 2028 at the latest. The regulator ICTA has confirmed the plan. Operators are already dismantling their networks step by step. Devices that only support 3G, such as older phones or vehicle GPS trackers, will then stop working. The regulator advises switching to 4G or 5G.",
+       "stichpunkte": [
+        "3G network ends by late 2028 at the latest",
+        "Operators already phasing it out",
+        "3G-only devices will stop working",
+        "ICTA advises 4G or 5G"
+       ]
+      }
+     }
     }
    ]
   },
@@ -138,7 +167,33 @@
      ],
      "text": "Der MMM gedachte des Aktivisten Azor Adélaïde, der 1971 getötet wurde. Anlass war der 55. Jahrestag seines Todes.",
      "titel": "MMM erinnert an Azor Adélaïde – 55 Jahre nach seinem Tod",
-     "zeit": "2026-11-26T12:00:00+04:00"
+     "zeit": "2026-11-26T12:00:00+04:00",
+     "sendung": {
+      "de": {
+       "sprechtext": "Der MMM hat an den Aktivisten Azor Adélaïde erinnert, 55 Jahre nach seinem Tod. Adélaïde war 1971 getötet worden. Anlass der Gedenkfeier war der 55. Jahrestag.",
+       "stichpunkte": [
+        "MMM gedenkt Azor Adélaïde",
+        "Aktivist wurde 1971 getötet",
+        "55. Jahrestag seines Todes"
+       ]
+      },
+      "fr": {
+       "sprechtext": "Le MMM a rendu hommage au militant Azor Adélaïde, 55 ans après sa mort. Azor Adélaïde avait été tué en 1971. La cérémonie marquait le 55e anniversaire de sa disparition.",
+       "stichpunkte": [
+        "Le MMM honore Azor Adélaïde",
+        "Militant tué en 1971",
+        "55e anniversaire de sa mort"
+       ]
+      },
+      "en": {
+       "sprechtext": "The MMM has paid tribute to the activist Azor Adélaïde, 55 years after his death. Adélaïde was killed in 1971. The commemoration marked the 55th anniversary.",
+       "stichpunkte": [
+        "MMM honours Azor Adélaïde",
+        "Activist killed in 1971",
+        "55th anniversary of his death"
+       ]
+      }
+     }
     }
    ]
   },
@@ -170,7 +225,33 @@
      ],
      "text": "Laut dem Biennial Transparency Report 2024 sind etwa 21 % der Landesfläche bebaut. Das nationale Ziel ist, diesen Anteil bis 2030 auf höchstens 24 % zu begrenzen.",
      "titel": "Bebaute Flächen sollen nicht über 24 % wachsen",
-     "zeit": "2026-11-26T12:00:00+04:00"
+     "zeit": "2026-11-26T12:00:00+04:00",
+     "sendung": {
+      "de": {
+       "sprechtext": "Mauritius will verhindern, dass bebaute Flächen über 24 Prozent der Landesfläche wachsen. Derzeit sind laut einem Bericht von 2024 etwa 21 Prozent bebaut. Das Ziel gilt bis zum Jahr 2030.",
+       "stichpunkte": [
+        "Heute rund 21 % der Fläche bebaut",
+        "Ziel: höchstens 24 % bis 2030",
+        "Quelle: Biennial Transparency Report 2024"
+       ]
+      },
+      "fr": {
+       "sprechtext": "Maurice veut limiter les surfaces bâties à 24 pour cent du territoire. Selon un rapport de 2024, environ 21 pour cent du pays est aujourd'hui bâti. L'objectif court jusqu'en 2030.",
+       "stichpunkte": [
+        "Environ 21 % du territoire bâti",
+        "Objectif : 24 % maximum d'ici 2030",
+        "Source : Biennial Transparency Report 2024"
+       ]
+      },
+      "en": {
+       "sprechtext": "Mauritius wants to stop built-up land from growing beyond 24 per cent of its territory. According to a 2024 report, around 21 per cent is built up today. The target runs until 2030.",
+       "stichpunkte": [
+        "Around 21% of land built up today",
+        "Target: no more than 24% by 2030",
+        "Source: Biennial Transparency Report 2024"
+       ]
+      }
+     }
     }
    ]
   },
@@ -355,7 +436,33 @@
      ],
      "text": "Die Competition Commission gibt Berufsverbänden drei Monate mehr Zeit für ihr Amnestieprogramm. Die neue Frist ist der 25. Februar 2027. Straffreiheit gibt es weiterhin nur unter den Bedingungen der Vorschriften von 2026.",
      "titel": "Wettbewerbsbehörde verlängert Amnestie um drei Monate",
-     "zeit": "2026-11-26T12:00:00+04:00"
+     "zeit": "2026-11-26T12:00:00+04:00",
+     "sendung": {
+      "de": {
+       "sprechtext": "Die Wettbewerbsbehörde verlängert ihr Amnestieprogramm für Berufsverbände um drei Monate. Neue Frist ist der 25. Februar 2027. Straffreiheit gibt es aber weiterhin nur unter den Bedingungen der Vorschriften von 2026.",
+       "stichpunkte": [
+        "Amnestie für Berufsverbände verlängert",
+        "Neue Frist: 25. Februar 2027",
+        "Bedingungen von 2026 gelten weiter"
+       ]
+      },
+      "fr": {
+       "sprechtext": "La Competition Commission prolonge de trois mois son programme d'amnistie pour les associations professionnelles. La nouvelle échéance est le 25 février 2027. L'immunité reste soumise aux conditions du règlement de 2026.",
+       "stichpunkte": [
+        "Amnistie prolongée de trois mois",
+        "Nouvelle échéance : 25 février 2027",
+        "Conditions de 2026 maintenues"
+       ]
+      },
+      "en": {
+       "sprechtext": "The Competition Commission is extending its amnesty programme for trade associations by three months. The new deadline is 25 February 2027. Immunity still depends on the conditions set out in the 2026 regulations.",
+       "stichpunkte": [
+        "Amnesty for trade associations extended",
+        "New deadline: 25 February 2027",
+        "2026 conditions still apply"
+       ]
+      }
+     }
     }
    ]
   },
@@ -422,7 +529,33 @@
      ],
      "text": "Die Drogenfahndung ADSU nahm einen 33-Jährigen fest. Bei der Hausdurchsuchung fand sie 20,5 Gramm mutmaßliches Heroin.",
      "titel": "Quatre-Bornes: Drogen für Rs 400.000 sichergestellt",
-     "zeit": "2026-11-26T12:00:00+04:00"
+     "zeit": "2026-11-26T12:00:00+04:00",
+     "sendung": {
+      "de": {
+       "sprechtext": "In Quatre-Bornes hat die Drogenfahndung Drogen im Wert von 400.000 Rupien sichergestellt. Bei einer Hausdurchsuchung fanden die Beamten 20,5 Gramm mutmaßliches Heroin. Ein 33-Jähriger wurde festgenommen.",
+       "stichpunkte": [
+        "Drogen für Rs 400.000 sichergestellt",
+        "20,5 g mutmaßliches Heroin gefunden",
+        "33-Jähriger festgenommen"
+       ]
+      },
+      "fr": {
+       "sprechtext": "À Quatre-Bornes, la brigade antidrogue a saisi de la drogue d'une valeur de 400 000 roupies. Lors d'une perquisition, les enquêteurs ont trouvé 20,5 grammes d'héroïne présumée. Un homme de 33 ans a été arrêté.",
+       "stichpunkte": [
+        "Rs 400 000 de drogue saisies",
+        "20,5 g d'héroïne présumée",
+        "Un homme de 33 ans arrêté"
+       ]
+      },
+      "en": {
+       "sprechtext": "In Quatre-Bornes, the anti-drug unit has seized drugs worth 400,000 rupees. A house search turned up 20.5 grams of suspected heroin. A 33-year-old man was arrested.",
+       "stichpunkte": [
+        "Rs 400,000 of drugs seized",
+        "20.5 g of suspected heroin found",
+        "33-year-old man arrested"
+       ]
+      }
+     }
     }
    ]
   },
@@ -487,7 +620,36 @@
      ],
      "text": "Die 27. Ausgabe des Festival Kréol Rodrig dauert zehn Tage und steht unter dem Motto „Ansanm Anou Sélébré Nou Kéolité“. Geplant sind Konzerte, Handwerk, kreolische Küche und Séga Tambour.\n\nAm 3. Dezember wird die zweite Auflage des Wörterbuchs des Rodrigues-Kreols vorgestellt, am Sonntag, 6. Dezember, folgt eine Regatta.",
      "titel": "Rodrigues feiert zehn Tage lang Festival Kréol",
-     "zeit": "2026-11-26T12:00:00+04:00"
+     "zeit": "2026-11-26T12:00:00+04:00",
+     "sendung": {
+      "de": {
+       "sprechtext": "Rodrigues feiert zehn Tage lang das Festival Kréol, bereits zum 27. Mal. Auf dem Programm stehen Konzerte, Handwerk, kreolische Küche und Séga Tambour. Am 3. Dezember wird die zweite Auflage des Wörterbuchs des Rodrigues-Kreols vorgestellt. Zum Abschluss folgt am Sonntag, dem 6. Dezember, eine Regatta.",
+       "stichpunkte": [
+        "27. Festival Kréol, zehn Tage lang",
+        "Konzerte, Handwerk, Küche, Séga Tambour",
+        "3. Dezember: neues Wörterbuch des Rodrigues-Kreols",
+        "6. Dezember: Regatta"
+       ]
+      },
+      "fr": {
+       "sprechtext": "Rodrigues fête le Festival Kréol pendant dix jours, pour la 27e édition. Au programme : concerts, artisanat, cuisine créole et séga tambour. Le 3 décembre, la deuxième édition du dictionnaire du créole rodriguais sera présentée. Une régate est prévue le dimanche 6 décembre.",
+       "stichpunkte": [
+        "27e Festival Kréol, sur dix jours",
+        "Concerts, artisanat, cuisine, séga tambour",
+        "3 décembre : nouveau dictionnaire du créole",
+        "6 décembre : régate"
+       ]
+      },
+      "en": {
+       "sprechtext": "Rodrigues is celebrating the Festival Kréol for ten days, now in its 27th year. The programme includes concerts, crafts, Creole cooking and séga tambour. On 3 December, the second edition of the Rodriguan Creole dictionary will be launched. A regatta follows on Sunday 6 December.",
+       "stichpunkte": [
+        "27th Festival Kréol, over ten days",
+        "Concerts, crafts, food, séga tambour",
+        "3 December: new Rodriguan Creole dictionary",
+        "6 December: regatta"
+       ]
+      }
+     }
     }
    ]
   },
@@ -883,7 +1045,36 @@
      ],
      "text": "Die Regierungsmehrheit unterstützt einen parlamentarischen Sonderausschuss (Select Committee) zur Jugendkriminalität. Die Partei FMP will sich daran nicht beteiligen.\n\nMinister Ashok Subron sprach sich dagegen aus, das Alter der Strafmündigkeit auf 12 Jahre zu senken. Er setzt auf Vorbeugung und verweist auf den Einfluss sozialer Netzwerke und ihrer Algorithmen.",
      "titel": "Jugendkriminalität: Streit um Sonderausschuss und Strafmündigkeit",
-     "zeit": "2026-11-26T12:00:00+04:00"
+     "zeit": "2026-11-26T12:00:00+04:00",
+     "sendung": {
+      "de": {
+       "sprechtext": "Im Streit um die Jugendkriminalität unterstützt die Regierungsmehrheit einen parlamentarischen Sonderausschuss. Die Partei FMP will sich daran allerdings nicht beteiligen. Minister Ashok Subron lehnt es ab, die Strafmündigkeit auf zwölf Jahre zu senken. Er setzt auf Vorbeugung und verweist auf den Einfluss sozialer Netzwerke.",
+       "stichpunkte": [
+        "Regierung will Sonderausschuss zur Jugendkriminalität",
+        "Partei FMP macht nicht mit",
+        "Minister Subron gegen Strafmündigkeit ab 12",
+        "Fokus auf Vorbeugung und soziale Netzwerke"
+       ]
+      },
+      "fr": {
+       "sprechtext": "Face à la délinquance juvénile, la majorité soutient la création d'une commission parlementaire spéciale. Le FMP refuse toutefois d'y participer. Le ministre Ashok Subron s'oppose à un abaissement de l'âge de la responsabilité pénale à douze ans. Il mise sur la prévention et pointe l'influence des réseaux sociaux.",
+       "stichpunkte": [
+        "La majorité veut un Select Committee",
+        "Le FMP refuse de participer",
+        "Ashok Subron contre la responsabilité pénale à 12 ans",
+        "Priorité à la prévention"
+       ]
+      },
+      "en": {
+       "sprechtext": "In the debate on youth crime, the government majority is backing a parliamentary select committee. The FMP party, however, will not take part. Minister Ashok Subron opposes lowering the age of criminal responsibility to twelve. He wants to focus on prevention and points to the influence of social media.",
+       "stichpunkte": [
+        "Government backs a select committee on youth crime",
+        "FMP party refuses to take part",
+        "Minister Subron against criminal responsibility at 12",
+        "Focus on prevention and social media"
+       ]
+      }
+     }
     }
    ],
    "warTop": true,
@@ -1153,7 +1344,33 @@
      ],
      "text": "Die Pegel in Port Mathurin zeigten keine nennenswerte Welle, das MMS-Bulletin von 19:15 Uhr hob die Tsunami-Wache auf. Schäden wurden nicht gemeldet. Auch auf La Réunion, rund 1.200 km entfernt, wurde nichts gespürt. Ein Forscher des Observatoriums am Piton de la Fournaise erklärte, die Art des Bebens habe keinen Tsunami erzeugt.",
      "titel": "Entwarnung für Rodrigues: Tsunami-Wache aufgehoben",
-     "zeit": "2026-11-24T19:15:00+04:00"
+     "zeit": "2026-11-24T19:15:00+04:00",
+     "sendung": {
+      "de": {
+       "sprechtext": "Entwarnung für Rodrigues: Der Wetterdienst hat die Tsunami-Wache um 19 Uhr 15 wieder aufgehoben. Die Pegel in Port Mathurin zeigten keine nennenswerte Welle, Schäden wurden nicht gemeldet. Auch auf La Réunion war nichts zu spüren. Zuvor hatte ein starkes Seebeben rund 326 Kilometer nordöstlich der Insel die Warnung ausgelöst.",
+       "stichpunkte": [
+        "Tsunami-Wache um 19:15 Uhr aufgehoben",
+        "Keine nennenswerte Welle in Port Mathurin",
+        "Keine Schäden, auch auf La Réunion nichts gespürt"
+       ]
+      },
+      "fr": {
+       "sprechtext": "Fin de l'alerte pour Rodrigues : la veille au tsunami a été levée à 19 heures 15. Les marégraphes de Port-Mathurin n'ont relevé aucune vague notable et aucun dégât n'a été signalé. Rien n'a été ressenti non plus à La Réunion. Auparavant, un fort séisme à environ 326 kilomètres au nord-est de l'île avait déclenché l'alerte.",
+       "stichpunkte": [
+        "Veille au tsunami levée à 19 h 15",
+        "Aucune vague notable à Port-Mathurin",
+        "Aucun dégât, rien ressenti à La Réunion"
+       ]
+      },
+      "en": {
+       "sprechtext": "The all clear has been given for Rodrigues: the tsunami watch was lifted at 7.15 pm. Tide gauges at Port Mathurin showed no significant wave, and no damage was reported. Nothing was felt on Réunion either. Earlier, a strong undersea earthquake about 326 kilometres north-east of the island had triggered the warning.",
+       "stichpunkte": [
+        "Tsunami watch lifted at 7.15 pm",
+        "No significant wave at Port Mathurin",
+        "No damage, nothing felt on Réunion"
+       ]
+      }
+     }
     },
     {
      "i18n": {
