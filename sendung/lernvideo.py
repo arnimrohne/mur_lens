@@ -25,7 +25,7 @@ import erzeuge_sendung as es
 
 B, H, FPS = 1920, 1080, 25
 SPRACHE = 'de'  # wird in main() gesetzt
-STAND = {'de': 'Stand: 28. November 2026', 'en': 'As of 28 November 2026'}
+STAND = {'de': 'Stand: 28. November 2026', 'en': 'As of 28 November 2026', 'fr': 'Situation au 28 novembre 2026'}
 
 UI_EN = {
     'GAZET MORISYEN ERKLÄRT': 'GAZET MORISYEN EXPLAINS', 'Quelle': 'Source',
@@ -73,13 +73,62 @@ UI_EN = {
 }
 
 
+UI_FR = {
+    'GAZET MORISYEN ERKLÄRT': 'GAZET MORISYEN EXPLIQUE', 'Quelle': 'Source',
+    '3–8 UHR': '3 H – 8 H', 'JEDEN ZWEITEN TAG': 'UN JOUR SUR DEUX',
+    'Warum auf Mauritius': "Pourquoi l'eau", 'das Wasser knapp wird': 'manque à Maurice',
+    'Haushalte': 'Ménages', 'Landwirtschaft': 'Agriculture', 'Industrie': 'Industrie', 'Tourismus': 'Tourisme',
+    '7 große Reservoirs': '7 grands réservoirs', 'Mio. m³': 'millions de m³',
+    'SPEICHERVERMÖGEN ZUSAMMEN': 'CAPACITÉ TOTALE', '7 von 7 künstlich angelegt': 'Les 7 sont artificiels',
+    'ANTEIL AM GESAMTEN SPEICHER': 'PART DE LA CAPACITÉ TOTALE', 'Pegel': 'Niveau',
+    'Füllstand der sieben Reservoirs': 'Remplissage des sept réservoirs', 'Vor einem Jahr': 'Il y a un an',
+    'Saisonaler Schnitt': 'Moyenne saisonnière', '26.11.2026': '26/11/2026', 'Nov. 2025': 'nov. 2025',
+    'Nov. 2026': 'nov. 2026', 'Nov. 2029': 'nov. 2029', 'offen': 'ouvert', 'geschlossen': 'fermé',
+    'Wasser der CWA im Jahr 2024, in Mio. m³': 'Eau de la CWA en 2024, millions de m³', 'Aufbereitet': 'Traitée',
+    'Verkauft': 'Vendue', 'Rund 60 % des Wassers bringen kein Geld ein': "Environ 60 % de l'eau ne rapporte rien",
+    'Lecks': 'Fuites', 'Illegale Anschlüsse': 'Branchements illégaux', 'Abrechnungsfehler': 'Erreurs de facturation',
+    'Rechnungshof, Dezember 2025': "Bureau de l'audit, décembre 2025", '10 JAHRE': '10 ANS',
+    'Anteil ohne Einnahmen': 'Part non facturée', 'STUDIE': 'ÉTUDE',
+    'VERLUST DER CWA LAUT MEDIENBERICHT': 'PERTES DE LA CWA SELON LA PRESSE', 'pro': 'par', 'Monat': 'mois',
+    'Staatshaushalt': "Budget de l'État", 'Wasserpreise': "Tarifs de l'eau", 'Tarif': 'Tarif',
+    'SEITDEM UNVERÄNDERT': 'INCHANGÉ DEPUIS 2012', 'GRATIS': 'GRATUIT', 'bis 6 m³ im Monat': "jusqu'à 6 m³ par mois",
+    'Ein neuer Anschluss': 'Un nouveau branchement', 'BERECHNET': 'FACTURÉ', 'TATSÄCHLICHE KOSTEN': 'COÛT RÉEL',
+    'Schätzung 2009': 'Estimation 2009', 'Schätzung 2024': 'Estimation 2024',
+    'Geschätzte Kosten, Mrd. Rupien': 'Coût estimé, milliards de roupies',
+    'Damm von Rivière-des-Anguilles': 'Barrage de Rivière-des-Anguilles', 'Ankündigung': 'Annonce',
+    'Baubeginn?': 'Début des travaux ?', 'Fertigstellung geplant': 'Achèvement prévu',
+    'KEIN UNTERZEICHNETER BAUVERTRAG BEKANNT': 'AUCUN CONTRAT DE CONSTRUCTION SIGNÉ CONNU',
+    'Ministerium': 'Ministère', 'setzt auf neue Speicher': 'mise sur de nouveaux réservoirs',
+    'Rechnungshof': "Bureau de l'audit", 'kritisiert die Verluste': 'critique les pertes', 'Fachleute': 'Spécialistes',
+    'Tarife zu niedrig, aber erst besserer Service': "tarifs trop bas, mais d'abord un meilleur service",
+    'tragen die Rationierung': 'subissent le rationnement', 'Wer will was?': 'Qui veut quoi ?',
+    'Regenzeit': 'Saison des pluies', 'Füllt sie die Reservoirs wieder?': 'Remplira-t-elle les réservoirs ?',
+    'Tarife': 'Tarifs', 'Steigen sie, und wer wird geschützt?': 'Vont-ils augmenter, et qui sera protégé ?',
+    'Wie schnell wird das Netz dicht?': 'Quand le réseau sera-t-il réparé ?', 'Offene Fragen': 'Questions ouvertes',
+    'Kurz gesagt': 'En bref', 'Zu wenig Regen': 'Trop peu de pluie', 'Zu viel Verlust': 'Trop de pertes',
+    'Projekte, die warten': 'Des projets en attente',
+    'DOSSIER: WASSERVERSORGUNG · STAND 28.11.2026': 'DOSSIER : EAU · SITUATION AU 28/11/2026',
+    'Alle Quellen, Hintergründe und neue Meldungen': 'Sources, contexte et dernières nouvelles',
+    'ZUM DOSSIER': 'LIRE LE DOSSIER',
+    'Foto: Diego Delso, CC BY-SA 4.0, Wikimedia Commons': 'Photo : Diego Delso, CC BY-SA 4.0, Wikimedia Commons',
+    'CWA über allAfrica': 'CWA via allAfrica',
+    'Ministerium für Energie und öffentliche Versorgung': "Ministère de l'Énergie et des Services publics",
+    'Ministerium; Statistics Mauritius (ODE)': 'Ministère ; Statistics Mauritius (ODE)',
+    'Water Resources Commission über ION News': 'Water Resources Commission via ION News',
+    'CWA-Jahresbericht 2024–25': 'Rapport annuel CWA 2024-2025', "NAO, L'Express, Ministerium": "NAO, L'Express, Ministère",
+}
+UI = {'en': UI_EN, 'fr': UI_FR}
+
+
 def L(deutsch: str) -> str:
     """Bildtext in der Sprache der Fassung (Deutsch ist der Schlüssel)."""
-    return deutsch if SPRACHE == 'de' else UI_EN.get(deutsch, deutsch)
+    return deutsch if SPRACHE == 'de' else UI[SPRACHE].get(deutsch, deutsch)
 
 
 def prozent(wert: float, stellen: int = 0) -> str:
     return f'{zahl_de(wert, stellen)}{"%" if SPRACHE == "en" else " %"}'
+
+
 VOR = 0.5  # Sekunden Bild vor dem ersten Wort
 NACH = 0.7  # Sekunden Bild nach dem letzten Wort
 
@@ -158,7 +207,11 @@ def text(bild: Image.Image, xy, inhalt: str, f, farbe=es.WEISS, anker='la', deck
 def zahl_de(wert: float, stellen: int = 1) -> str:
     """Zahl im Format der Fassung: de 92,2 / 1.200, en 92.2 / 1,200."""
     text = f'{wert:,.{stellen}f}'
-    return text if SPRACHE == 'en' else text.replace(',', '§').replace('.', ',').replace('§', '.')
+    if SPRACHE == 'en':
+        return text
+    if SPRACHE == 'fr':
+        return text.replace(',', ' ').replace('.', ',')
+    return text.replace(',', '§').replace('.', ',').replace('§', '.')
 
 
 # ----------------------------------------------------------------- Rahmen (Kopf, Quelle, Untertitel)
@@ -170,7 +223,7 @@ def rahmen(bild: Image.Image, quelle: str, untertitel: str) -> None:
     es.gesperrt(z, (132, 62), L('GAZET MORISYEN ERKLÄRT'), es.mono(22, True), es.HELLBLAU, 0.12)
     if quelle:
         f = es.mono(20)
-        z.text((B - 64, 62), f'{L("Quelle")}: {L(quelle)}', font=f, fill=es.HELLBLAU, anchor='ra')
+        z.text((B - 64, 62), f'{L("Quelle")}{" :" if SPRACHE == "fr" else ":"} {L(quelle)}', font=f, fill=es.HELLBLAU, anchor='ra')
     if untertitel:
         f = es.text_schrift(38)
         zeilen = es.umbrechen(z, untertitel, f, 1500)
@@ -962,7 +1015,7 @@ def szene_kosten(t: float, s: Szene) -> Image.Image:
         c.fill()
     bild = zu_pil(fl)
     wert = 540 * phase(t, 0.3, 2.2)
-    text(bild, (B / 2, 300), (f'Rs {round(wert)} Mio.' if SPRACHE == 'de' else f'Rs {round(wert)} million'), es.titel_schrift(150), (255, 120, 128), 'ma',
+    text(bild, (B / 2, 300), {'de': f'Rs {round(wert)} Mio.', 'en': f'Rs {round(wert)} million', 'fr': f'Rs {round(wert)} millions'}[SPRACHE], es.titel_schrift(150), (255, 120, 128), 'ma',
          phase(t, 0.2, 0.4))
     text(bild, (B / 2, 520), L('VERLUST DER CWA LAUT MEDIENBERICHT'), es.mono(28, True), es.HELLBLAU, 'ma',
          phase(t, 0.6, 0.5))
@@ -1380,7 +1433,55 @@ TEXT_EN = {
     22: 'For more background, all sources and the latest news on water supply, visit gazet.morisyen.de. And for our '
         'daily news from Mauritius, stay with us here on our channel. See you soon!',
 }
-URL_SPRECHEN = {'de': 'gazet punkt morisyen punkt D E', 'en': 'gazet dot morisyen dot D E'}
+URL_SPRECHEN = {'de': 'gazet punkt morisyen punkt D E', 'en': 'gazet dot morisyen dot D E',
+                'fr': 'gazet point morisyen point D E'}
+
+TEXT_FR = {
+    1: "En novembre 2026, à Curepipe, Vacoas, Phoenix et Floréal, l'eau ne coulait au robinet qu'un jour sur deux. "
+       "Et encore, seulement de trois à huit heures du matin.",
+    2: "Pourquoi l'eau manque-t-elle sur une île tropicale ? C'est ce que nous allons voir. Situation à fin novembre "
+       "2026.",
+    3: "Toute l'île a besoin d'eau : les ménages, l'agriculture, l'industrie et le tourisme. Quand elle manque, tout le "
+       "monde le ressent.",
+    4: 'Maurice stocke son eau potable surtout dans sept grands réservoirs. Ensemble, ils contiennent environ 92 '
+       'millions de mètres cubes.',
+    41: "Les sept sont des lacs artificiels. Le plus ancien est Mare-aux-Vacoas : en 1885, un premier barrage d'un "
+        "mètre de haut y est construit dans une zone marécageuse. Le plus récent est le barrage de Bagatelle, achevé "
+        "en 2017.",
+    5: "Le plus grand est Mare-aux-Vacoas, avec près de 26 millions de mètres cubes, plus d'un quart du total.",
+    6: "Les réservoirs sont alimentés par la pluie. Quand elle manque, les niveaux baissent. C'est exactement ce qui "
+       "s'est passé en 2026.",
+    7: "Le 26 novembre, les sept réservoirs n'étaient remplis qu'à 44 pour cent. Un an plus tôt, ils l'étaient à près "
+       "de 70 pour cent, et la moyenne saisonnière est d'environ 55.",
+    8: 'À Mare-aux-Vacoas, la baisse est particulièrement nette : environ 33 pour cent à la mi-novembre, contre 74 un '
+       'an plus tôt.',
+    9: "Quand les niveaux baissent, la Central Water Authority, la CWA, restreint la distribution. L'eau ne coule alors "
+       "qu'à certaines heures.",
+    10: "Mais il ne manque pas seulement de la pluie. En 2024, la CWA a traité 332 millions de mètres cubes d'eau. "
+        "Seuls 115 millions ont été vendus, soit à peine plus d'un tiers.",
+    11: "Selon des spécialistes, environ 60 pour cent de l'eau ne rapporte rien. Elle se perd dans des conduites "
+        "vétustes qui fuient, part par des branchements illégaux ou est mal facturée.",
+    12: "En décembre 2025, le Bureau de l'audit a constaté que cette part avait augmenté en dix ans. Et les solutions "
+        "sont sans cesse repoussées par de nouvelles études.",
+    13: 'Selon la presse, cela coûte à la CWA environ 540 millions de roupies. Chaque mois.',
+    14: "Ces pertes pèsent sur les finances de la CWA, et donc, au bout du compte, sur le budget de l'État.",
+    15: "Dans le même temps, les tarifs de l'eau n'ont pas été révisés depuis 2012. Les ménages qui consomment au plus "
+        "six mètres cubes par mois ne paient rien.",
+    16: "La CWA souligne aussi qu'un nouveau branchement lui coûte bien plus que ce qu'elle facture.",
+    17: 'De grands espoirs reposent sur un nouveau barrage à Rivière-des-Anguilles, dans le Sud. Il a été annoncé en '
+        "2009, pour 2,6 milliards de roupies. En 2024, l'estimation atteignait environ 9,4 milliards.",
+    18: "Selon le ministre de l'Énergie, les travaux doivent commencer en novembre 2026 et s'achever en 2029. Mais "
+        "aucun contrat de construction signé n'est connu à ce jour.",
+    19: "Les acteurs ont des priorités différentes. Le ministère mise sur de nouvelles capacités de stockage. Le "
+        "Bureau de l'audit critique les pertes. Les spécialistes jugent les tarifs trop bas, mais veulent d'abord un "
+        "meilleur service. Et les ménages subissent le rationnement.",
+    20: "Restent des questions : la saison des pluies apportera-t-elle assez d'eau ? Les tarifs vont-ils augmenter, et "
+        "comment protéger les ménages modestes ? Et à quelle vitesse les fuites seront-elles réparées ?",
+    21: "En bref : trop peu de pluie, trop de pertes et des projets que l'île attend depuis des années.",
+    22: "Plus de contexte, toutes les sources et les dernières nouvelles sur l'approvisionnement en eau : rendez-vous "
+        "sur gazet.morisyen.de. Et nos informations quotidiennes de Maurice, c'est ici, sur notre chaîne. À bientôt !",
+}
+TEXTE = {'en': TEXT_EN, 'fr': TEXT_FR}
 
 # ----------------------------------------------------------------- Ton und Zusammenbau
 
@@ -1515,13 +1616,13 @@ def main() -> None:
     p.add_argument('--stimmen', type=Path, required=True)
     p.add_argument('--ausgabe', type=Path, required=True)
     p.add_argument('--nur', type=int, nargs='*', help='nur diese Szenen (Nummern)')
-    p.add_argument('--sprache', choices=['de', 'en'], default='de')
+    p.add_argument('--sprache', choices=['de', 'en', 'fr'], default='de')
     a = p.parse_args()
     global SPRACHE
     SPRACHE = a.sprache
     if SPRACHE != 'de':
         for szene in SZENEN:
-            szene.text = TEXT_EN[szene.nr]
+            szene.text = TEXTE[SPRACHE][szene.nr]
     a.ausgabe.mkdir(parents=True, exist_ok=True)
     arbeit = Path(tempfile.mkdtemp(prefix='lernvideo-'))
     es.lade_franzoesische_namen(a.stimmen)  # Ortsnamen französisch aussprechen, wie in der Sendung
