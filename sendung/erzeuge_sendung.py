@@ -101,7 +101,7 @@ T = {
         'ki': 'Sprecherstimme synthetisch erzeugt (Piper TTS, Stimme: {stimme}). Texte: eigene Zusammenfassungen der Redaktion Gazet Morisyen.',
         'impressum': 'Impressum: https://gazet.morisyen.de/impressum',
         'heute_themen': 'Die Themen',
-        'ki_sprecher': 'Moderation zu Beginn und Ende: KI-generierte Person (Higgsfield).',
+        'ki_sprecher': 'Moderation zu Beginn und Ende: KI-generierte Person (Bild: RealVisXL, Animation: SadTalker); keine reale Person.',
         'ki_marke': 'KI-Moderation',
     },
     'fr': {
@@ -122,7 +122,7 @@ T = {
         'ki': 'Voix de synthèse (Piper TTS, voix : {stimme}). Textes : résumés rédigés par Gazet Morisyen.',
         'impressum': 'Mentions légales : https://gazet.morisyen.de/impressum',
         'heute_themen': 'Au sommaire',
-        'ki_sprecher': 'Présentation au début et à la fin : personne générée par IA (Higgsfield).',
+        'ki_sprecher': 'Présentation au début et à la fin : personne générée par IA (image : RealVisXL, animation : SadTalker) ; pas une personne réelle.',
         'ki_marke': 'Présentation IA',
     },
     'en': {
@@ -143,7 +143,7 @@ T = {
         'ki': 'Synthetic narrator voice (Piper TTS, voice: {stimme}). Texts: original summaries by Gazet Morisyen.',
         'impressum': 'Legal notice: https://gazet.morisyen.de/impressum',
         'heute_themen': 'In this edition',
-        'ki_sprecher': 'Opening and closing presenter: AI-generated person (Higgsfield).',
+        'ki_sprecher': 'Opening and closing presenter: AI-generated person (image: RealVisXL, animation: SadTalker); not a real person.',
         'ki_marke': 'AI presenter',
     },
 }
@@ -1052,20 +1052,50 @@ def bild_outro(sprache: str, tag: dt.date, ziel: Path) -> None:
 
 
 def bild_vorschau(sprache: str, tag: dt.date, ziel: Path) -> None:
-    """YouTube-Vorschaubild 1280×720: Logo und Datum."""
+    """YouTube-Vorschaubild 1280×720 im Sendungsstil: Navy, Sendungstitel groß links, Sprecher rechts, Datum dezent."""
     w, h = 1280, 720
-    bild = Image.new('RGB', (w, h), BG)
+    bild = verlauf(NAVY, NAVY_TIEF).resize((w, h))
+    sprecher = CLIPS / f'{sprache}-sprecher.jpg'
+    if sprecher.exists():
+        foto = Image.open(sprecher).convert('RGB')
+        fh = h
+        fw = round(foto.width * fh / foto.height)
+        foto = foto.resize((fw, fh), Image.LANCZOS)
+        # rechte Hälfte des Fotos (Person steht mittig) an den rechten Rand, nach links weich in Navy übergehen
+        ausschnitt = foto.crop(((fw - 760) // 2, 0, (fw - 760) // 2 + 760, fh))
+        maske = Image.new('L', (760, fh), 255)
+        mz = ImageDraw.Draw(maske)
+        for x in range(260):
+            mz.line([x, 0, x, fh], fill=round(255 * (x / 260) ** 1.6))
+        bild.paste(ausschnitt, (w - 760, 0), maske)
+    else:
+        bild.paste(logo_weiss(700, 0.08), (w - 600, -40), logo_weiss(700, 0.08))
     z = ImageDraw.Draw(bild)
+    links = 64
+    # Absender: kleines Logo + Name
+    bild.paste(logo_weiss(84), (links, 58), logo_weiss(84))
+    z.text((links + 100, 78), 'Gazet Morisyen', font=titel_schrift(40), fill=WEISS)
+    # Sendungstitel groß, umbrochen auf höchstens drei Zeilen
+    titel = T[sprache]['sendung']
+    f = titel_schrift(96)
+    zeilen, zeile = [], ''
+    for wort in titel.split():
+        probe = f'{zeile} {wort}'.strip()
+        if z.textlength(probe, font=f) > 620 and zeile:
+            zeilen.append(zeile)
+            zeile = wort
+        else:
+            zeile = probe
+    zeilen.append(zeile)
+    y = 220 if len(zeilen) <= 2 else 190
+    z.rectangle([links, y + 8, links + 12, y + len(zeilen) * 104 - 14], fill=ROT_TV)
+    for i, zl in enumerate(zeilen):
+        z.text((links + 36, y + i * 104), zl, font=f, fill=WEISS)
+    # Datum dezent darunter
+    gesperrt(z, (links + 38, y + len(zeilen) * 104 + 26), datum_kurz(tag, sprache), mono(30, True), HELLBLAU, 0.12)
+    # Flaggenlinie unten
     for i, farbe in enumerate(FLAGGE):
-        z.rectangle([round(i * w / 4), 0, round((i + 1) * w / 4), 22], fill=farbe)
-        z.rectangle([round(i * w / 4), h - 22, round((i + 1) * w / 4), h], fill=farbe)
-    g = 430
-    bild.paste(logo(g), ((w - g) // 2, 70), logo(g))
-    f = mono(46, True)
-    text = datum_kurz(tag, sprache)
-    abstand = 46 * 0.14
-    breite = sum(z.textlength(c, font=f) + abstand for c in text) - abstand
-    gesperrt(z, (round((w - breite) / 2), 560), text, f, LAGOON, 0.14)
+        z.rectangle([round(i * w / 4), h - 14, round((i + 1) * w / 4), h], fill=farbe)
     bild.save(ziel)
 
 
@@ -1148,6 +1178,145 @@ def clip_video(clip: Path, einblendung: Path, ton: Path | None, ziel: Path) -> f
     return dauer_von(ziel)
 
 
+# ----------------------------------------------------------------- Vorspann (Logo-Animation + Erkennungsmelodie)
+
+def _weich(x: float) -> float:
+    """Ease-out (kubisch), x in [0, 1]."""
+    x = min(1.0, max(0.0, x))
+    return 1 - (1 - x) ** 3
+
+
+def vorspann_video(sprache: str, ziel: Path) -> float:
+    """Ca. 3,5 s: Flaggenstreifen fliegen ein, werden zum Logo; Name und Sendung blenden ein. Ton: jingle.py."""
+    import jingle
+
+    arbeit = ziel.parent
+    fertig = HIER / 'vorspann.wav'  # mit aufgenommenen Instrumenten, erzeugt von vorspann_musik.py
+    if fertig.exists():
+        ton = fertig
+        dauer = dauer_von(ton)
+    else:
+        ton = arbeit / 'vorspann.wav'
+        dauer = jingle.erzeuge_jingle(ton)
+    fps = 25
+    n = round(dauer * fps)
+    grund = verlauf(NAVY, NAVY_TIEF)
+    grund.paste(logo_weiss(1100, 0.05), (BREITE - 900, -60), logo_weiss(1100, 0.05))
+    f_titel = titel_schrift(72)
+    f_unter = mono(28, True)
+    unter = T[sprache]['sendung']
+    proc = subprocess.Popen(
+        ['ffmpeg', '-hide_banner', '-loglevel', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'rgb24',
+         '-s', f'{BREITE}x{HOEHE}', '-r', str(fps), '-i', '-', '-i', str(ton),
+         '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p', '-r', str(fps),
+         '-video_track_timescale', '12800', '-c:a', 'aac', '-b:a', '160k', '-ar', '48000', '-ac', '2',
+         '-shortest', '-movflags', '+faststart', str(ziel)], stdin=subprocess.PIPE)
+    logo_g = 380
+    logo_y = 200
+    mitte_y = logo_y + logo_g // 2
+    for i in range(n):
+        t = i / fps
+        bild = grund.copy()
+        z = ImageDraw.Draw(bild, 'RGBA')
+        # 1) Flaggenstreifen fliegen von links ein (0–0,7 s) und ziehen sich zur Mitte zusammen (0,7–1,3 s)
+        einflug = [_weich((t - 0.08 * k) / 0.55) for k in range(4)]
+        zusammen = _weich((t - 0.75) / 0.55)
+        if zusammen < 1:
+            hoehe_streifen = 22
+            gesamt = 4 * hoehe_streifen
+            for k, farbe in enumerate(FLAGGE):
+                if zusammen == 0:
+                    x1 = -BREITE + einflug[k] * BREITE  # Streifen schiebt sich von links herein
+                    x2 = x1 + BREITE
+                else:
+                    breite = BREITE * (1 - zusammen) + 40 * zusammen  # zieht sich zur Mitte zusammen
+                    x1 = (BREITE - breite) / 2
+                    x2 = x1 + breite
+                y = mitte_y - gesamt / 2 + k * hoehe_streifen
+                deck = round(255 * (1 - zusammen))
+                rgb = tuple(int(farbe[j:j + 2], 16) for j in (1, 3, 5))
+                z.rectangle([round(x1), round(y), round(x2), round(y + hoehe_streifen - 2)], fill=rgb + (deck,))
+        # 2) Logo wächst aus der Mitte (0,9–1,6 s)
+        a = _weich((t - 0.9) / 0.7)
+        if a > 0:
+            g = max(8, round(logo_g * (0.82 + 0.18 * a) * (1 + 0.02 * max(0.0, t - 1.6))))
+            logo = logo_weiss(g, round(a, 2))
+            bild.paste(logo, ((BREITE - g) // 2, mitte_y - g // 2), logo)
+        # 3) Name und Sendungstitel (ab 1,5 s, mit dem Akkordschlag)
+        b = _weich((t - 1.45) / 0.5)
+        if b > 0:
+            text = 'Gazet Morisyen'
+            schicht = Image.new('RGBA', (BREITE, HOEHE), (0, 0, 0, 0))
+            zs = ImageDraw.Draw(schicht)
+            zs.text(((BREITE - zs.textlength(text, font=f_titel)) / 2, 612 + 20 * (1 - b)), text, font=f_titel,
+                    fill=(255, 255, 255, round(255 * b)))
+            c = _weich((t - 1.75) / 0.5)
+            if c > 0:
+                abstand = 28 * 0.1
+                breite = sum(zs.textlength(ch, font=f_unter) + abstand for ch in unter.upper()) - abstand
+                gesperrt(zs, (round((BREITE - breite) / 2), 714), unter, f_unter, HELLBLAU + (round(255 * c),), 0.1)
+            bild.paste(schicht, (0, 0), schicht)
+        # Flaggenlinie unten, sobald das Logo steht
+        if t >= 1.3:
+            flaggenlinie(ImageDraw.Draw(bild), HOEHE - 10, 10)
+        proc.stdin.write(bild.convert('RGB').tobytes())
+    proc.stdin.close()
+    if proc.wait() != 0:
+        raise RuntimeError('ffmpeg (Vorspann) fehlgeschlagen')
+    return dauer_von(ziel)
+
+
+def abspann_video(sprache: str, tag: dt.date, ziel: Path) -> float:
+    """Ca. 3,5 s Schlussfolie mit Erkennungsmelodie: einblenden, Flaggenlinie wischt herein, sanfter Zoom, ausblenden."""
+    import jingle
+
+    arbeit = ziel.parent
+    folie_pfad = arbeit / 'abspann.png'
+    bild_outro(sprache, tag, folie_pfad)
+    folie = Image.open(folie_pfad).convert('RGB')
+    fertig = HIER / 'vorspann.wav'
+    if fertig.exists():
+        ton = fertig
+        dauer = dauer_von(ton)
+    else:
+        ton = arbeit / 'abspann.wav'
+        dauer = jingle.erzeuge_jingle(ton)
+    fps = 25
+    n = round(dauer * fps)
+    schwarz = Image.new('RGB', (BREITE, HOEHE), NAVY_TIEF)
+    proc = subprocess.Popen(
+        ['ffmpeg', '-hide_banner', '-loglevel', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'rgb24',
+         '-s', f'{BREITE}x{HOEHE}', '-r', str(fps), '-i', '-', '-i', str(ton),
+         '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p', '-r', str(fps),
+         '-video_track_timescale', '12800', '-c:a', 'aac', '-b:a', '160k', '-ar', '48000', '-ac', '2',
+         '-shortest', '-movflags', '+faststart', str(ziel)], stdin=subprocess.PIPE)
+    for i in range(n):
+        t = i / fps
+        zoom = 1.0 + 0.035 * _weich(t / dauer)
+        b, h = round(BREITE / zoom), round(HOEHE / zoom)
+        x, y = (BREITE - b) // 2, (HOEHE - h) // 2
+        bild = folie.crop((x, y, x + b, y + h)).resize((BREITE, HOEHE), Image.BICUBIC)
+        # Flaggenlinie (nach dem Zoom gezeichnet, damit sie nicht abgeschnitten wird) wischt von links herein
+        w = _weich((t - 0.2) / 0.7)
+        if w > 0:
+            z = ImageDraw.Draw(bild)
+            viertel = BREITE / 4
+            for k, farbe in enumerate(FLAGGE):
+                x1, x2 = k * viertel, min((k + 1) * viertel, BREITE * w)
+                if x2 > x1:
+                    z.rectangle([round(x1), HOEHE - 10, round(x2), HOEHE], fill=farbe)
+        ein = _weich(t / 0.4)
+        aus = min(1.0, max(0.0, (dauer - t) / 0.45))
+        deck = min(ein, aus)
+        if deck < 1:
+            bild = Image.blend(schwarz, bild, deck)
+        proc.stdin.write(bild.tobytes())
+    proc.stdin.close()
+    if proc.wait() != 0:
+        raise RuntimeError('ffmpeg (Abspann) fehlgeschlagen')
+    return dauer_von(ziel)
+
+
 def zeitmarke(sekunden: float) -> str:
     s = int(sekunden)
     return f'{s // 60:02d}:{s % 60:02d}'
@@ -1201,7 +1370,9 @@ def erzeuge(daten: dict, sprache: str, stimmen: Path, ausgabe: Path, jetzt: dt.d
     modell, stimme_name = STIMMEN[sprache]
     lade_franzoesische_namen(stimmen)
     sprecher = Sprecher(stimmen / f'{modell}.onnx', sprache)
-    teile = []
+    vorspann = arbeit / 'vorspann.mp4'
+    vorspann_dauer = vorspann_video(sprache, vorspann)
+    teile = [vorspann]
     mit_clip = False
     for i, a in enumerate(abschnitte):
         teil = arbeit / f'{i:02d}.mp4'
@@ -1221,6 +1392,11 @@ def erzeuge(daten: dict, sprache: str, stimmen: Path, ausgabe: Path, jetzt: dt.d
             abschnitt_video(a.bild, ton, teil)
         teile.append(teil)
 
+    abspann = arbeit / 'abspann.mp4'
+    abspann_dauer = abspann_video(sprache, tag, abspann)
+    teile.append(abspann)
+    abschnitte[-1].dauer += abspann_dauer  # Abspann gehört zum Kapitel „Verabschiedung“
+
     liste = arbeit / 'liste.txt'
     liste.write_text(''.join(f"file '{p}'\n" for p in teile))
     ausgabe.mkdir(parents=True, exist_ok=True)
@@ -1230,9 +1406,10 @@ def erzeuge(daten: dict, sprache: str, stimmen: Path, ausgabe: Path, jetzt: dt.d
     bild_vorschau(sprache, tag, ausgabe / f'{stamm}-vorschau.png')
 
     # YouTube-Texte
-    kapitel, quellen_zeilen, start = [], [], 0.0
+    kapitel, quellen_zeilen, start = [], [], vorspann_dauer
     for a in abschnitte:
-        kapitel.append(f'{zeitmarke(start)} {a.kapitel}')
+        # YouTube verlangt das erste Kapitel bei 00:00; der Vorspann gehört zur Begrüßung.
+        kapitel.append(f'{zeitmarke(start if kapitel else 0)} {a.kapitel}')
         start += a.dauer
     for b in beitraege:
         quellen_zeilen.append(f'• {feld(b.update, "titel", sprache)}')

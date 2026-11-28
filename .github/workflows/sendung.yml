@@ -12,6 +12,10 @@ on:
         description: 'Sprachen (kommagetrennt)'
         required: true
         default: de,fr,en
+      hochladen:
+        description: 'Auf YouTube hochladen (aus = nur Test, Video als Artefakt)'
+        type: boolean
+        default: true
 
 permissions:
   contents: read
@@ -19,7 +23,7 @@ permissions:
 jobs:
   sendung:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
 
@@ -63,6 +67,7 @@ jobs:
         run: python sendung/erzeuge_sendung.py --daten daten.json --stimmen stimmen --ausgabe ausgabe --sprachen "$SPRACHEN"
 
       - name: Auf YouTube hochladen
+        if: github.event_name == 'schedule' || inputs.hochladen
         # Ohne die Secrets YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN wird übersprungen.
         env:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
