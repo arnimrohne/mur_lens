@@ -1,7 +1,7 @@
 {
  "schema": 1,
- "stand": "2026-11-28T13:00:00+04:00",
- "laeufe": 9,
+ "stand": "2026-11-28T17:00:00+04:00",
+ "laeufe": 10,
  "topics": [
   {
    "id": "3g-abschaltung",
@@ -2394,6 +2394,65 @@
      }
     }
    ]
+  },
+  {
+   "id": "staatsschulden",
+   "rubrik": "wirtschaft",
+   "titel": "Staatsschulden steigen auf 700,6 Milliarden Rupien",
+   "status": "aktiv",
+   "erstellt": "2026-11-28T12:00:00+04:00",
+   "aktualisiert": "2026-11-28T12:00:00+04:00",
+   "warTop": false,
+   "updates": [
+    {
+     "zeit": "2026-11-28T12:00:00+04:00",
+     "nurDatum": true,
+     "titel": "Staatsschulden steigen auf 700,6 Milliarden Rupien",
+     "text": "Die öffentlichen Schulden Mauritius’ liegen bei 700,6 Milliarden Rupien. Die Entwicklung zeigt nach oben, und der Verbraucherpreisindex steht unter Druck.\n\nDie Angaben stammen aus der Berichterstattung von ionnews.",
+     "quellen": [
+      {
+       "name": "ionnews",
+       "url": "https://ionnews.mu/"
+      }
+     ],
+     "i18n": {
+      "fr": {
+       "titel": "Dette publique : 700,6 milliards de roupies",
+       "text": "La dette publique atteint 700,6 milliards de roupies. Son évolution est à la hausse, et l’indice des prix à la consommation subit des pressions.\n\nLes informations proviennent de la couverture d’ionnews."
+      },
+      "en": {
+       "titel": "Public debt rises to Rs 700.6 billion",
+       "text": "Public debt stands at Rs 700.6 billion. It is rising, and consumer price inflation is under pressure.\n\nThe information comes from ionnews coverage."
+      }
+     },
+     "sendung": {
+      "de": {
+       "sprechtext": "Die öffentlichen Schulden auf Mauritius liegen bei 700,6 Milliarden Rupien. Die Entwicklung zeigt nach oben. Gleichzeitig steht der Verbraucherpreisindex unter Druck.",
+       "stichpunkte": [
+        "Staatsschulden: 700,6 Milliarden Rupien",
+        "Schuldenentwicklung steigt",
+        "Druck auf den Verbraucherpreisindex"
+       ]
+      },
+      "fr": {
+       "sprechtext": "La dette publique de Maurice atteint 700,6 milliards de roupies. Son évolution est à la hausse. Parallèlement, l’indice des prix à la consommation subit des pressions.",
+       "stichpunkte": [
+        "Dette publique : 700,6 milliards de roupies",
+        "Évolution à la hausse",
+        "Pressions sur l’indice des prix"
+       ]
+      },
+      "en": {
+       "sprechtext": "Mauritius’s public debt stands at Rs 700.6 billion. The trend is rising. At the same time, consumer price inflation is under pressure.",
+       "stichpunkte": [
+        "Public debt: Rs 700.6 billion",
+        "Trend is rising",
+        "Pressure on consumer prices"
+       ]
+      }
+     }
+    }
+   ]
   }
  ],
  "videos": [
@@ -2579,9 +2638,9 @@
   }
  ],
  "einleitung": {
-  "zeit": "2026-11-28T13:00:00+04:00",
-  "de": "Die Wasserreserven der Insel sind am 26. November nur noch zu 44 Prozent gefüllt. Bei der Lohnkompensation 2027 dämpft die Regierung die Erwartungen, und der Ministerrat hat eine zentrale Rentenverwaltung gebilligt.",
-  "fr": "Au 26 novembre, les réservoirs de l’île ne sont remplis qu’à 44 %. Sur la compensation salariale 2027, le gouvernement tempère les attentes, et le Conseil des ministres a validé une administration centrale des pensions.",
-  "en": "On 26 November the island’s reservoirs were only 44% full. On the 2027 wage compensation the government is tempering expectations, and the Council of Ministers has approved a central pensions administration."
+  "zeit": "2026-11-28T17:00:00+04:00",
+  "de": "Die Wasserreserven der Insel sind am 26. November nur noch zu 44 Prozent gefüllt. Die öffentlichen Schulden liegen bei 700,6 Milliarden Rupien und steigen weiter.",
+  "fr": "Au 26 novembre, les réservoirs de l’île ne sont remplis qu’à 44 %. La dette publique atteint 700,6 milliards de roupies et continue de croître.",
+  "en": "On 26 November the island’s reservoirs were only 44% full. Public debt stands at Rs 700.6 billion and continues to rise."
  }
 }
