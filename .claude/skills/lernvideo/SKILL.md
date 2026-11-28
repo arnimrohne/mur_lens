@@ -39,6 +39,10 @@ weitergeht. Sprache mit ihm: Deutsch.
 7. **EN, dann FR**: Texte mit **gleicher Satzzahl und Reihenfolge** je Szene, Bildtexte in `UI`, Prüfungen, schicken.
 8. **Vorschaubilder** (DE, dann EN/FR), schicken.
 9. **Merge und Upload** über den Workflow (nur nach Freigabe); danach die SRT-Dateien aus dem Artefakt des Laufs holen.
+10. **Ins Dossier einbinden** (nach Freigabe): Vorschaubilder als JPEG nach `public/bilder/lernvideo-<name>-<sprache>.jpg`
+    (Commit auf main), dann im Dossier auf `zeitung-daten` das Feld
+    `"video": {"youtube": {"de": "<id>", "en": "<id>", "fr": "<id>"}, "vorschau": {"de": "/bilder/…", …}}` setzen.
+    Die Seite zeigt das Video in der gewählten Sprache mit Zwei-Klick-Einbettung (youtube-nocookie).
 
 ## Vollständigkeits-Abgleich (vor dem Pilot und vor der Produktion)
 
