@@ -405,3 +405,24 @@ html:has(.gazet) { background: #fdfaf5; }
 .gz-ticker-eintrag p { margin: 0; }
 .gz-ticker-mehr { margin-top: .5rem; }
 .gz-ticker-mehr summary { cursor: pointer; color: var(--muted); font-family: var(--f-display); font-size: .82rem; }
+
+/* Lernvideo im Dossier: zuerst eigenes Vorschaubild, YouTube erst nach Klick */
+.gz-dossier-video-flaeche { position: relative; aspect-ratio: 16 / 9; max-width: 100%; border-radius: var(--radius); overflow: hidden; background: var(--band); }
+.gz-dossier-video-flaeche iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.gz-dossier-video-start { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; cursor: pointer; background: transparent; }
+.gz-dossier-video-start img { object-fit: cover; }
+.gz-dossier-video-play {
+  position: absolute; left: 75%; top: 50%; width: 76px; height: 76px; transform: translate(-50%, -50%);
+  border-radius: 50%; background: var(--red); box-shadow: 0 6px 24px rgba(0, 0, 0, .35); transition: transform .15s ease;
+}
+.gz-dossier-video-play::after {
+  content: ""; position: absolute; left: 31px; top: 23px; border-style: solid; border-width: 15px 0 15px 24px;
+  border-color: transparent transparent transparent #fff;
+}
+.gz-dossier-video-start:hover .gz-dossier-video-play, .gz-dossier-video-start:focus-visible .gz-dossier-video-play { transform: translate(-50%, -50%) scale(1.08); }
+.gz-dossier-video-label {
+  position: absolute; left: 75%; top: calc(50% + 54px); transform: translateX(-50%); padding: .2rem .7rem; border-radius: 999px;
+  background: rgba(8, 18, 36, .75); color: #fff; font-family: var(--f-display); font-size: .9rem; white-space: nowrap;
+}
+.gz-dossier-video-hinweis { margin: .5rem 0 0; color: var(--muted); font-size: .85rem; }
+@media (prefers-reduced-motion: reduce) { .gz-dossier-video-play { transition: none; } }

@@ -449,7 +449,19 @@
      "name": "newsmoris",
      "url": "https://newsmoris.com/cwa-loses-60-of-supply-amid-mounting-financial-deficits/"
     }
-   ]
+   ],
+   "video": {
+    "youtube": {
+     "de": "4UtA-XNTAlg",
+     "en": "-Qen4qRrVa8",
+     "fr": "5VevmSjwUPg"
+    },
+    "vorschau": {
+     "de": "/bilder/lernvideo-wasser-de.jpg",
+     "en": "/bilder/lernvideo-wasser-en.jpg",
+     "fr": "/bilder/lernvideo-wasser-fr.jpg"
+    }
+   }
   },
   {
    "id": "chagos",

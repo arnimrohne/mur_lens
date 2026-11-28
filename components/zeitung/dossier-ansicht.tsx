@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 
+import { DossierVideoBlock } from './dossier-video';
 import { FussLinks } from './fuss-links';
 import { GrafikBalken } from './grafik-balken';
 import { RegionalKarte } from './regional-karte';
@@ -139,6 +140,8 @@ export function DossierAnsicht({ dossier, themen, stand }: { dossier: Dossier; t
               <p>{dossier.kurz[sprache]}</p>
               {dossier.karte && <RegionalKarte karte={dossier.karte} sprache={sprache} />}
             </section>
+
+            {dossier.video && <DossierVideoBlock video={dossier.video} sprache={sprache} texte={texte} />}
 
             {dossier.zahlen.length > 0 && (
               <section className="gz-dossier-abschnitt">

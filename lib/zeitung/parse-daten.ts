@@ -13,6 +13,7 @@ import type {
   DossierEreignis,
   DossierKarte,
   DossierKartenOrt,
+  DossierVideo,
   DossierZahl,
   Einleitung,
   Grafik,
@@ -313,6 +314,23 @@ export function parseDossierKarte(wert: unknown): DossierKarte | undefined {
   return { titel: mehrsprachig(wert.titel), ausschnitt: [w, s, o, n], orte, linien };
 }
 
+const YOUTUBE_ID = /^[A-Za-z0-9_-]{11}$/;
+const EIGENES_BILD = /^\/bilder\/[a-z0-9-]+\.(?:jpg|png|webp)$/;
+
+/** Lernvideo: nur gültige YouTube-IDs und eigene Vorschaubilder unter /bilder/; ohne ID kein Video. */
+export function parseDossierVideo(wert: unknown): DossierVideo | undefined {
+  if (!istObjekt(wert) || !istObjekt(wert.youtube)) return undefined;
+  const youtube: DossierVideo['youtube'] = {};
+  const vorschau: DossierVideo['vorschau'] = {};
+  for (const sprache of ['de', 'fr', 'en'] as const) {
+    const id = wert.youtube[sprache];
+    if (typeof id === 'string' && YOUTUBE_ID.test(id)) youtube[sprache] = id;
+    const bild = istObjekt(wert.vorschau) ? wert.vorschau[sprache] : undefined;
+    if (typeof bild === 'string' && EIGENES_BILD.test(bild)) vorschau[sprache] = bild;
+  }
+  return Object.keys(youtube).length > 0 ? { youtube, vorschau } : undefined;
+}
+
 function parseDossier(wert: unknown): Dossier | undefined {
   if (!istObjekt(wert) || typeof wert.id !== 'string' || !DOSSIER_ID.test(wert.id) || !istRubrik(wert.rubrik)) return undefined;
   const titel = mehrsprachig(wert.titel);
@@ -346,6 +364,7 @@ function parseDossier(wert: unknown): Dossier | undefined {
     kurz,
     bild: parseDossierBild(wert.bild),
     karte: parseDossierKarte(wert.karte),
+    video: parseDossierVideo(wert.video),
     warum: mehrsprachig(wert.warum),
     entwicklung: mehrsprachig(wert.entwicklung),
     chronik,

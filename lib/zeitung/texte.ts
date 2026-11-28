@@ -53,6 +53,11 @@ export interface OberflaechenTexte {
   hintergrund: string;
   dossierAbschnitte: { kurz: string; warum: string; chronik: string; entwicklung: string; akteure: string; zahlen: string; offen: string; aktuell: string; quellen: string };
   dossierStand: (datum: string) => string;
+  dossierVideo: string;
+  dossierVideoStart: string;
+  dossierVideoHinweis: string;
+  dossierVideoDatenschutz: string;
+  dossierVideoAndereSprache: string;
   alleDossiers: string;
   quelleLink: string;
   keineDossiers: string;
@@ -134,6 +139,11 @@ const de: OberflaechenTexte = {
   hintergrund: 'Hintergrund',
   dossierAbschnitte: { kurz: 'Kurz erklärt', warum: 'Warum es wichtig ist', chronik: 'Chronik', entwicklung: 'Entwicklung und Ursachen', akteure: 'Wer will was', zahlen: 'Zahlen und Fakten', offen: 'Offene Fragen', aktuell: 'Aktuelle Meldungen', quellen: 'Quellen' },
   dossierStand: (datum) => `Stand: ${datum}`,
+  dossierVideo: 'Im Video erklärt',
+  dossierVideoStart: 'Video abspielen',
+  dossierVideoHinweis: 'Beim Abspielen wird das Video von YouTube geladen. Dabei werden Daten an YouTube übertragen.',
+  dossierVideoDatenschutz: 'Datenschutz',
+  dossierVideoAndereSprache: 'Video auf Deutsch',
   alleDossiers: '← Alle Dossiers',
   quelleLink: 'Quelle',
   keineDossiers: 'Noch keine Dossiers.',
@@ -215,6 +225,11 @@ const fr: OberflaechenTexte = {
   hintergrund: 'Contexte',
   dossierAbschnitte: { kurz: 'En bref', warum: 'Pourquoi c\'est important', chronik: 'Chronologie', entwicklung: 'Évolution et causes', akteure: 'Qui veut quoi', zahlen: 'Chiffres clés', offen: 'Questions ouvertes', aktuell: 'Actualités', quellen: 'Sources' },
   dossierStand: (datum) => `Mis à jour : ${datum}`,
+  dossierVideo: 'En vidéo',
+  dossierVideoStart: 'Lire la vidéo',
+  dossierVideoHinweis: 'En lançant la lecture, la vidéo est chargée depuis YouTube. Des données sont alors transmises à YouTube.',
+  dossierVideoDatenschutz: 'Confidentialité',
+  dossierVideoAndereSprache: 'Vidéo en allemand',
   alleDossiers: '← Tous les dossiers',
   quelleLink: 'Source',
   keineDossiers: 'Pas encore de dossiers.',
@@ -296,6 +311,11 @@ const en: OberflaechenTexte = {
   hintergrund: 'Background',
   dossierAbschnitte: { kurz: 'In short', warum: 'Why it matters', chronik: 'Timeline', entwicklung: 'Trends and causes', akteure: 'Who wants what', zahlen: 'Facts and figures', offen: 'Open questions', aktuell: 'Latest news', quellen: 'Sources' },
   dossierStand: (datum) => `Updated: ${datum}`,
+  dossierVideo: 'Explained in a video',
+  dossierVideoStart: 'Play video',
+  dossierVideoHinweis: 'When you press play, the video is loaded from YouTube and data is sent to YouTube.',
+  dossierVideoDatenschutz: 'Privacy',
+  dossierVideoAndereSprache: 'Video in German',
   alleDossiers: '← All explainers',
   quelleLink: 'Source',
   keineDossiers: 'No explainers yet.',

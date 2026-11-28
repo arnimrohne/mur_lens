@@ -208,6 +208,12 @@ export interface DossierKarte {
   linien: { von: number; nach: number }[];
 }
 
+/** Lernvideo zum Dossier: YouTube-ID und eigenes Vorschaubild je Sprache. */
+export interface DossierVideo {
+  youtube: Partial<Record<Sprache, string>>;
+  vorschau: Partial<Record<Sprache, string>>;
+}
+
 export interface Dossier {
   id: string;
   rubrik: RubrikId;
@@ -216,6 +222,7 @@ export interface Dossier {
   kurz: Mehrsprachig;
   bild?: DossierBild;
   karte?: DossierKarte;
+  video?: DossierVideo;
   warum?: Mehrsprachig;
   entwicklung?: Mehrsprachig;
   chronik: DossierEreignis[];
