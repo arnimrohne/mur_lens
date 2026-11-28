@@ -73,7 +73,7 @@ jobs:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
-          YT_SICHTBARKEIT: ${{ vars.YT_SICHTBARKEIT || 'private' }}
+          YT_SICHTBARKEIT: ${{ vars.YT_SICHTBARKEIT || 'public' }}
         run: python sendung/youtube_upload.py --ausgabe ausgabe
 
       - name: Datum bestimmen

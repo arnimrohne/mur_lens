@@ -108,7 +108,8 @@ python3 lernvideo_pruefen.py transkript --mp4 <video> --sprache de --whisper <py
   stammen wie die Videos**: Artefakt `lernvideo-<name>` des Workflow-Laufs herunterladen.
 - Untertitel-Upload per API braucht die Berechtigung `youtube.force-ssl`; ohne sie lädt der Mensch die SRT in
   YouTube Studio hoch (Untertitel → Datei hochladen → „Mit Zeitangaben“).
-- Veröffentlichen macht der Mensch in YouTube Studio.
+- Veröffentlichen nur auf ausdrücklichen Wunsch: Workflow mit `nur_sichtbarkeit=true`, `sichtbarkeit=public`
+  (lädt nichts neu hoch, rendert nicht, prüft danach den neuen Status).
 
 ## Ein neues Video anlegen
 
