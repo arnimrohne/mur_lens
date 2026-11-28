@@ -1,1124 +1,1124 @@
 {
-  "schema": 1,
-  "stand": "2026-11-28T21:08:50+04:00",
-  "dossiers": [
+ "schema": 1,
+ "stand": "2026-11-28T21:08:50+04:00",
+ "dossiers": [
+  {
+   "id": "wasserversorgung",
+   "rubrik": "umwelt",
+   "stand": "2026-11-28T21:08:50+04:00",
+   "titel": {
+    "de": "Wasserversorgung auf Mauritius",
+    "fr": "L'approvisionnement en eau à Maurice",
+    "en": "Water supply in Mauritius"
+   },
+   "kurz": {
+    "de": "Mauritius speichert sein Wasser vor allem in sieben großen Reservoirs mit zusammen rund 92,2 Millionen Kubikmetern. In trockenen Monaten sinken die Füllstände stark, dann wird das Wasser in vielen Regionen nur noch stundenweise geliefert. Zugleich bringt ein großer Teil des aufbereiteten Wassers keine Einnahmen, weil es durch Lecks, illegale Anschlüsse oder Abrechnungsfehler verloren geht.",
+    "fr": "Maurice stocke son eau principalement dans sept grands réservoirs d'une capacité totale d'environ 92,2 millions de mètres cubes. Pendant les mois secs, leur niveau baisse fortement et l'eau n'est alors distribuée que quelques heures par jour dans de nombreuses régions. Par ailleurs, une grande partie de l'eau traitée ne rapporte rien, perdue à cause de fuites, de branchements illégaux ou d'erreurs de facturation.",
+    "en": "Mauritius stores most of its water in seven large reservoirs holding about 92.2 million cubic metres in total. In dry months, levels fall sharply and many areas then receive water only for a few hours a day. At the same time, much of the treated water earns no revenue because it is lost through leaks, illegal connections or billing errors."
+   },
+   "bild": {
+    "src": "/bilder/wasserversorgung.jpg",
+    "breite": 1920,
+    "hoehe": 625,
+    "alt": {
+     "de": "Der Stausee Mare aux Vacoas mit breitem, trockenem Uferstreifen, im Vordergrund Kiefern und ein Zaun",
+     "fr": "Le réservoir de Mare-aux-Vacoas avec une large bande de rive asséchée, au premier plan des pins et une clôture",
+     "en": "Mare aux Vacoas reservoir with a wide strip of dry shoreline, pine trees and a fence in the foreground"
+    },
+    "urheber": "Diego Delso",
+    "seite": "https://commons.wikimedia.org/wiki/File:Mare_aux_Vacoas,_Mauricio,_2025-09-25,_DD_77-82_PAN.jpg",
+    "lizenz": "CC BY-SA 4.0",
+    "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+   },
+   "warum": {
+    "de": "Wasser ist für Haushalte, Landwirtschaft, Industrie und Tourismus unverzichtbar. Wenn die Reservoirs sinken, schränkt die Central Water Authority (CWA) die Versorgung ein: Im November 2026 floss in Vacoas, Phoenix, Curepipe und Floréal nur jeden zweiten Tag Wasser, und zwar von 3 bis 8 Uhr.\n\nDie Verluste im Netz belasten außerdem die Finanzen der CWA und damit den Staatshaushalt. Laut Medienberichten verliert sie dadurch monatlich rund 540 Millionen Rupien.",
+    "fr": "L'eau est indispensable aux ménages, à l'agriculture, à l'industrie et au tourisme. Quand les réservoirs baissent, la Central Water Authority (CWA) restreint la distribution : en novembre 2026, l'eau ne coulait à Vacoas, Phoenix, Curepipe et Floréal qu'un jour sur deux, de 3 h à 8 h.\n\nLes pertes sur le réseau pèsent aussi sur les finances de la CWA, et donc sur le budget de l'État. Selon la presse, elles lui coûtent environ 540 millions de roupies par mois.",
+    "en": "Water is essential for households, farming, industry and tourism. When the reservoirs run low, the Central Water Authority (CWA) restricts supply: in November 2026, Vacoas, Phoenix, Curepipe and Floréal received water only every other day, from 3 am to 8 am.\n\nNetwork losses also weigh on the CWA's finances and thus on the state budget. According to media reports, they cost it around 540 million rupees a month."
+   },
+   "entwicklung": {
+    "de": "Alle sieben großen Reservoirs sind künstliche Stauseen. Der älteste ist Mare-aux-Vacoas: 1885 entstand dort im Sumpfland ein erster, nur einen Meter hoher Damm, der später mehrmals erhöht wurde. Es folgten La Ferme (1914), La Nicolière (1929), Mare Longue (1948), Piton du Milieu (1952) und Midlands (2002); der jüngste ist der Damm von Bagatelle (2017).\n\nDie Füllstände hängen stark vom Regen ab. In der Trockenzeit 2026 fielen sie deutlich unter das Niveau des Vorjahres: Mare-aux-Vacoas, das größte Reservoir, lag Mitte November bei rund 33 Prozent, ein Jahr zuvor bei 74 Prozent.\n\nHinzu kommen strukturelle Probleme. Ein großer Teil des Leitungsnetzes ist alt und undicht. Der Rechnungshof stellt fest, dass der Anteil des Wassers ohne Einnahmen über zehn Jahre gestiegen ist und heute bei etwa 60 Prozent liegt. Die Tarife wurden seit 2012 nicht mehr angepasst. Neue Speicher kommen nur langsam voran: Der Damm von Rivière-des-Anguilles wurde 2009 angekündigt und ist bis heute nicht gebaut.",
+    "fr": "Les sept grands réservoirs sont tous des lacs artificiels formés par des barrages. Le plus ancien est Mare-aux-Vacoas : en 1885, un premier barrage d'un mètre de haut y est construit dans une zone marécageuse, puis rehaussé à plusieurs reprises. Suivent La Ferme (1914), La Nicolière (1929), Mare Longue (1948), Piton du Milieu (1952) et Midlands (2002) ; le plus récent est le barrage de Bagatelle (2017).\n\nLe niveau des réservoirs dépend fortement de la pluie. Pendant la saison sèche 2026, il est tombé nettement sous celui de l'année précédente : Mare-aux-Vacoas, le plus grand réservoir, était à environ 33 % à la mi-novembre, contre 74 % un an plus tôt.\n\nS'y ajoutent des problèmes structurels. Une grande partie du réseau est vétuste et fuit. Le Bureau de l'audit constate que la part de l'eau non facturée a augmenté en dix ans et atteint aujourd'hui environ 60 %. Les tarifs n'ont pas été révisés depuis 2012. Les nouvelles capacités de stockage avancent lentement : le barrage de Rivière-des-Anguilles, annoncé en 2009, n'est toujours pas construit.",
+    "en": "All seven major reservoirs are man-made, formed by dams. The oldest is Mare-aux-Vacoas: in 1885 a first dam just one metre high was built there on marshy land and later raised several times. La Ferme (1914), La Nicolière (1929), Mare Longue (1948), Piton du Milieu (1952) and Midlands (2002) followed; the newest is the Bagatelle Dam (2017).\n\nReservoir levels depend heavily on rainfall. During the 2026 dry season they fell well below the previous year's levels: Mare-aux-Vacoas, the largest reservoir, stood at around 33 per cent in mid-November, against 74 per cent a year earlier.\n\nThere are structural problems too. Much of the pipe network is old and leaking. The National Audit Office finds that the share of water earning no revenue has risen over ten years and now stands at about 60 per cent. Tariffs have not been revised since 2012. New storage is slow to arrive: the Rivière-des-Anguilles dam was announced in 2009 and has still not been built."
+   },
+   "chronik": [
     {
-      "id": "wasserversorgung",
-      "rubrik": "umwelt",
-      "stand": "2026-11-28T21:08:50+04:00",
-      "titel": {
-        "de": "Wasserversorgung auf Mauritius",
-        "fr": "L'approvisionnement en eau à Maurice",
-        "en": "Water supply in Mauritius"
-      },
-      "kurz": {
-        "de": "Mauritius speichert sein Wasser vor allem in sieben großen Reservoirs mit zusammen rund 92,2 Millionen Kubikmetern. In trockenen Monaten sinken die Füllstände stark, dann wird das Wasser in vielen Regionen nur noch stundenweise geliefert. Zugleich bringt ein großer Teil des aufbereiteten Wassers keine Einnahmen, weil es durch Lecks, illegale Anschlüsse oder Abrechnungsfehler verloren geht.",
-        "fr": "Maurice stocke son eau principalement dans sept grands réservoirs d'une capacité totale d'environ 92,2 millions de mètres cubes. Pendant les mois secs, leur niveau baisse fortement et l'eau n'est alors distribuée que quelques heures par jour dans de nombreuses régions. Par ailleurs, une grande partie de l'eau traitée ne rapporte rien, perdue à cause de fuites, de branchements illégaux ou d'erreurs de facturation.",
-        "en": "Mauritius stores most of its water in seven large reservoirs holding about 92.2 million cubic metres in total. In dry months, levels fall sharply and many areas then receive water only for a few hours a day. At the same time, much of the treated water earns no revenue because it is lost through leaks, illegal connections or billing errors."
-      },
-      "bild": {
-        "src": "/bilder/wasserversorgung.jpg",
-        "breite": 1920,
-        "hoehe": 625,
-        "alt": {
-          "de": "Der Stausee Mare aux Vacoas mit breitem, trockenem Uferstreifen, im Vordergrund Kiefern und ein Zaun",
-          "fr": "Le réservoir de Mare-aux-Vacoas avec une large bande de rive asséchée, au premier plan des pins et une clôture",
-          "en": "Mare aux Vacoas reservoir with a wide strip of dry shoreline, pine trees and a fence in the foreground"
-        },
-        "urheber": "Diego Delso",
-        "seite": "https://commons.wikimedia.org/wiki/File:Mare_aux_Vacoas,_Mauricio,_2025-09-25,_DD_77-82_PAN.jpg",
-        "lizenz": "CC BY-SA 4.0",
-        "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
-      },
-      "warum": {
-        "de": "Wasser ist für Haushalte, Landwirtschaft, Industrie und Tourismus unverzichtbar. Wenn die Reservoirs sinken, schränkt die Central Water Authority (CWA) die Versorgung ein: Im November 2026 floss in Vacoas, Phoenix, Curepipe und Floréal nur jeden zweiten Tag Wasser, und zwar von 3 bis 8 Uhr.\n\nDie Verluste im Netz belasten außerdem die Finanzen der CWA und damit den Staatshaushalt. Laut Medienberichten verliert sie dadurch monatlich rund 540 Millionen Rupien.",
-        "fr": "L'eau est indispensable aux ménages, à l'agriculture, à l'industrie et au tourisme. Quand les réservoirs baissent, la Central Water Authority (CWA) restreint la distribution : en novembre 2026, l'eau ne coulait à Vacoas, Phoenix, Curepipe et Floréal qu'un jour sur deux, de 3 h à 8 h.\n\nLes pertes sur le réseau pèsent aussi sur les finances de la CWA, et donc sur le budget de l'État. Selon la presse, elles lui coûtent environ 540 millions de roupies par mois.",
-        "en": "Water is essential for households, farming, industry and tourism. When the reservoirs run low, the Central Water Authority (CWA) restricts supply: in November 2026, Vacoas, Phoenix, Curepipe and Floréal received water only every other day, from 3 am to 8 am.\n\nNetwork losses also weigh on the CWA's finances and thus on the state budget. According to media reports, they cost it around 540 million rupees a month."
-      },
-      "entwicklung": {
-        "de": "Alle sieben großen Reservoirs sind künstliche Stauseen. Der älteste ist Mare-aux-Vacoas: 1885 entstand dort im Sumpfland ein erster, nur einen Meter hoher Damm, der später mehrmals erhöht wurde. Es folgten La Ferme (1914), La Nicolière (1929), Mare Longue (1948), Piton du Milieu (1952) und Midlands (2002); der jüngste ist der Damm von Bagatelle (2017).\n\nDie Füllstände hängen stark vom Regen ab. In der Trockenzeit 2026 fielen sie deutlich unter das Niveau des Vorjahres: Mare-aux-Vacoas, das größte Reservoir, lag Mitte November bei rund 33 Prozent, ein Jahr zuvor bei 74 Prozent.\n\nHinzu kommen strukturelle Probleme. Ein großer Teil des Leitungsnetzes ist alt und undicht. Der Rechnungshof stellt fest, dass der Anteil des Wassers ohne Einnahmen über zehn Jahre gestiegen ist und heute bei etwa 60 Prozent liegt. Die Tarife wurden seit 2012 nicht mehr angepasst. Neue Speicher kommen nur langsam voran: Der Damm von Rivière-des-Anguilles wurde 2009 angekündigt und ist bis heute nicht gebaut.",
-        "fr": "Les sept grands réservoirs sont tous des lacs artificiels formés par des barrages. Le plus ancien est Mare-aux-Vacoas : en 1885, un premier barrage d'un mètre de haut y est construit dans une zone marécageuse, puis rehaussé à plusieurs reprises. Suivent La Ferme (1914), La Nicolière (1929), Mare Longue (1948), Piton du Milieu (1952) et Midlands (2002) ; le plus récent est le barrage de Bagatelle (2017).\n\nLe niveau des réservoirs dépend fortement de la pluie. Pendant la saison sèche 2026, il est tombé nettement sous celui de l'année précédente : Mare-aux-Vacoas, le plus grand réservoir, était à environ 33 % à la mi-novembre, contre 74 % un an plus tôt.\n\nS'y ajoutent des problèmes structurels. Une grande partie du réseau est vétuste et fuit. Le Bureau de l'audit constate que la part de l'eau non facturée a augmenté en dix ans et atteint aujourd'hui environ 60 %. Les tarifs n'ont pas été révisés depuis 2012. Les nouvelles capacités de stockage avancent lentement : le barrage de Rivière-des-Anguilles, annoncé en 2009, n'est toujours pas construit.",
-        "en": "All seven major reservoirs are man-made, formed by dams. The oldest is Mare-aux-Vacoas: in 1885 a first dam just one metre high was built there on marshy land and later raised several times. La Ferme (1914), La Nicolière (1929), Mare Longue (1948), Piton du Milieu (1952) and Midlands (2002) followed; the newest is the Bagatelle Dam (2017).\n\nReservoir levels depend heavily on rainfall. During the 2026 dry season they fell well below the previous year's levels: Mare-aux-Vacoas, the largest reservoir, stood at around 33 per cent in mid-November, against 74 per cent a year earlier.\n\nThere are structural problems too. Much of the pipe network is old and leaking. The National Audit Office finds that the share of water earning no revenue has risen over ten years and now stands at about 60 per cent. Tariffs have not been revised since 2012. New storage is slow to arrive: the Rivière-des-Anguilles dam was announced in 2009 and has still not been built."
-      },
-      "chronik": [
-        {
-          "datum": "1885",
-          "text": {
-            "de": "In Mare-aux-Vacoas entsteht im Sumpfland ein erster, ein Meter hoher Damm: der Beginn des ältesten Reservoirs der Insel.",
-            "fr": "À Mare-aux-Vacoas, un premier barrage d'un mètre de haut est construit dans une zone marécageuse : c'est le début du plus ancien réservoir de l'île.",
-            "en": "At Mare-aux-Vacoas a first dam, one metre high, is built on marshy land, the start of the island's oldest reservoir."
-          },
-          "quelle": "https://publicutilities.govmu.org/Pages/Water%20Sector/WRU.aspx"
-        },
-        {
-          "datum": "2002",
-          "text": {
-            "de": "Der Midlands-Damm wird fertiggestellt; er dient als Puffer für das Reservoir La Nicolière.",
-            "fr": "Le barrage de Midlands est achevé ; il sert de réserve tampon pour le réservoir de La Nicolière.",
-            "en": "The Midlands Dam is completed as buffer storage for La Nicolière reservoir."
-          },
-          "quelle": "https://publicutilities.govmu.org/Pages/Water%20Sector/WRU.aspx"
-        },
-        {
-          "datum": "2009",
-          "text": {
-            "de": "Der Damm von Rivière-des-Anguilles im Süden wird erstmals angekündigt. Geschätzte Kosten: 2,6 Milliarden Rupien.",
-            "fr": "Le barrage de Rivière-des-Anguilles, dans le Sud, est annoncé pour la première fois. Coût estimé : 2,6 milliards de roupies.",
-            "en": "The Rivière-des-Anguilles dam in the south is first announced, at an estimated cost of 2.6 billion rupees."
-          },
-          "quelle": "https://nao.govmu.org/nao/wp-content/uploads/2026/02/water_report.pdf"
-        },
-        {
-          "datum": "2012",
-          "text": {
-            "de": "Letzte Anpassung der Wassertarife durch die CWA.",
-            "fr": "Dernière révision des tarifs de l'eau par la CWA.",
-            "en": "Last revision of water tariffs by the CWA."
-          },
-          "quelle": "https://cwa.govmu.org/cwa/wp-content/uploads/2026/09/CWA_Annual-Report-2024-2025.pdf"
-        },
-        {
-          "datum": "2017",
-          "text": {
-            "de": "Der Damm von Bagatelle wird fertiggestellt, das jüngste der sieben großen Reservoirs, vor allem für Trinkwasser.",
-            "fr": "Le barrage de Bagatelle est achevé ; c'est le plus récent des sept grands réservoirs, destiné surtout à l'eau potable.",
-            "en": "The Bagatelle Dam is completed, the newest of the seven major reservoirs, mainly for drinking water."
-          },
-          "quelle": "https://ode.govmu.org/water-reservoirs"
-        },
-        {
-          "datum": "2024",
-          "text": {
-            "de": "Die geschätzten Kosten des Damms von Rivière-des-Anguilles liegen bei rund 9,4 Milliarden Rupien, mehr als das Dreifache der ersten Schätzung.",
-            "fr": "Le coût estimé du barrage de Rivière-des-Anguilles atteint environ 9,4 milliards de roupies, plus du triple de l'estimation initiale.",
-            "en": "The estimated cost of the Rivière-des-Anguilles dam reaches about 9.4 billion rupees, more than three times the first estimate."
-          },
-          "quelle": "https://nao.govmu.org/nao/wp-content/uploads/2026/02/water_report.pdf"
-        },
-        {
-          "datum": "Dez. 2025",
-          "datumI18n": {
-            "fr": "déc. 2025",
-            "en": "Dec 2025"
-          },
-          "text": {
-            "de": "Ein Bericht des Rechnungshofs kritisiert die hohen Wasserverluste und das wiederholte Aufschieben von Lösungen.",
-            "fr": "Un rapport du Bureau de l'audit critique les fortes pertes d'eau et le report répété des solutions.",
-            "en": "A National Audit Office report criticises the high water losses and the repeated postponement of solutions."
-          },
-          "quelle": "https://fr.allafrica.com/stories/202611160631.html"
-        },
-        {
-          "datum": "März 2026",
-          "datumI18n": {
-            "fr": "mars 2026",
-            "en": "Mar 2026"
-          },
-          "text": {
-            "de": "Der Energieminister kündigt den Baubeginn des Damms von Rivière-des-Anguilles für November 2026 an, Fertigstellung für November 2029.",
-            "fr": "Le ministre de l'Énergie annonce le début des travaux du barrage de Rivière-des-Anguilles pour novembre 2026 et leur fin pour novembre 2029.",
-            "en": "The energy minister announces that construction of the Rivière-des-Anguilles dam will start in November 2026 and finish in November 2029."
-          },
-          "quelle": "https://maurice-info.mu/2026/03/04/le-barrage-de-riviere-des-anguilles-est-un-projet-phare-pour-le-sud.html"
-        },
-        {
-          "datum": "Nov. 2026",
-          "datumI18n": {
-            "fr": "nov. 2026",
-            "en": "Nov 2026"
-          },
-          "text": {
-            "de": "Mare-aux-Vacoas fällt auf rund 33 Prozent. In mehreren Orten wird das Wasser rationiert.",
-            "fr": "Mare-aux-Vacoas tombe à environ 33 %. L'eau est rationnée dans plusieurs localités.",
-            "en": "Mare-aux-Vacoas drops to around 33 per cent. Water is rationed in several towns."
-          },
-          "quelle": "https://fr.allafrica.com/stories/202611180579.html"
-        },
-        {
-          "datum": "26.11.2026",
-          "datumI18n": {
-            "fr": "26/11/2026",
-            "en": "26 Nov 2026"
-          },
-          "text": {
-            "de": "Die sieben wichtigsten Reservoirs sind zu 44 Prozent gefüllt, ein Jahr zuvor waren es 69,7 Prozent.",
-            "fr": "Les sept principaux réservoirs sont remplis à 44 %, contre 69,7 % un an plus tôt.",
-            "en": "The seven main reservoirs are 44 per cent full, compared with 69.7 per cent a year earlier."
-          },
-          "quelle": "https://ionnews.mu/ressources-en-eau-les-reservoirs-reculent-a-44-au-26-novembre-2026/"
-        }
-      ],
-      "akteure": [
-        {
-          "name": {
-            "de": "Central Water Authority (CWA)",
-            "fr": "Central Water Authority (CWA)",
-            "en": "Central Water Authority (CWA)"
-          },
-          "position": {
-            "de": "Betreibt Aufbereitung und Verteilung. Verweist darauf, dass die Tarife seit 2012 unverändert sind und neue Anschlüsse ein Vielfaches dessen kosten, was dafür berechnet wird.",
-            "fr": "Assure le traitement et la distribution. Souligne que les tarifs sont inchangés depuis 2012 et que les nouveaux raccordements coûtent bien plus que ce qui est facturé.",
-            "en": "Runs treatment and distribution. Points out that tariffs have not changed since 2012 and that new connections cost several times what is charged for them."
-          },
-          "quelle": "https://cwa.govmu.org/cwa/wp-content/uploads/2026/09/CWA_Annual-Report-2024-2025.pdf"
-        },
-        {
-          "name": {
-            "de": "Ministerium für Energie und öffentliche Versorgung",
-            "fr": "Ministère de l'Énergie et des Services publics",
-            "en": "Ministry of Energy and Public Utilities"
-          },
-          "position": {
-            "de": "Setzt vor allem auf neue Speicher, insbesondere den Damm von Rivière-des-Anguilles für die Versorgung des Südens.",
-            "fr": "Mise surtout sur de nouvelles capacités de stockage, en particulier le barrage de Rivière-des-Anguilles pour approvisionner le Sud.",
-            "en": "Relies mainly on new storage, especially the Rivière-des-Anguilles dam to supply the south."
-          },
-          "quelle": "https://maurice-info.mu/2026/03/04/le-barrage-de-riviere-des-anguilles-est-un-projet-phare-pour-le-sud.html"
-        },
-        {
-          "name": {
-            "de": "Rechnungshof (National Audit Office)",
-            "fr": "Bureau de l'audit (National Audit Office)",
-            "en": "National Audit Office"
-          },
-          "position": {
-            "de": "Kritisiert die hohen Verluste und dass Ministerium und CWA Lösungen durch immer neue Studien aufschieben.",
-            "fr": "Critique les fortes pertes et le fait que le ministère et la CWA repoussent les solutions en commandant toujours de nouvelles études.",
-            "en": "Criticises the high losses and that the ministry and the CWA keep postponing solutions by commissioning more studies."
-          },
-          "quelle": "https://fr.allafrica.com/stories/202611160631.html"
-        },
-        {
-          "name": {
-            "de": "Fachleute (Artikelserie von L'Express)",
-            "fr": "Spécialistes (série d'articles de L'Express)",
-            "en": "Experts (L'Express article series)"
-          },
-          "position": {
-            "de": "Halten die Tarife für zu niedrig, verlangen aber zuerst einen besseren Service und weniger Verluste.",
-            "fr": "Jugent les tarifs trop bas, mais réclament d'abord un meilleur service et moins de pertes.",
-            "en": "Consider tariffs too low but want better service and fewer losses first."
-          },
-          "quelle": "https://lexpress.mu/s/eau-60-de-pertes-des-tarifs-trop-bas-le-verdict-des-specialistes-565115"
-        },
-        {
-          "name": {
-            "de": "Haushalte",
-            "fr": "Ménages",
-            "en": "Households"
-          },
-          "position": {
-            "de": "Tragen die Folgen der Rationierung. Haushalte, die monatlich höchstens 6 Kubikmeter verbrauchen, erhalten ihr Wasser kostenlos.",
-            "fr": "Subissent le rationnement. Les ménages consommant au plus 6 mètres cubes par mois reçoivent l'eau gratuitement.",
-            "en": "Bear the brunt of rationing. Households using at most 6 cubic metres a month receive their water free of charge."
-          },
-          "quelle": "https://www.mauritiustimes.com/mt/water-bills-should-match-electricity-and-telecom-costs-to-reflect-the-vital-importance-of-the-resource/"
-        }
-      ],
-      "zahlen": [
-        {
-          "wert": {
-            "de": "92,2 Mio. m³",
-            "fr": "92,2 millions de m³",
-            "en": "92.2 million m³"
-          },
-          "text": {
-            "de": "Speichervermögen der sieben wichtigsten Reservoirs",
-            "fr": "Capacité des sept principaux réservoirs",
-            "en": "Capacity of the seven main reservoirs"
-          },
-          "quelle": "https://publicutilities.govmu.org/Pages/Water%20Sector/WRU.aspx"
-        },
-        {
-          "wert": {
-            "de": "25,89 Mio. m³",
-            "fr": "25,89 millions de m³",
-            "en": "25.89 million m³"
-          },
-          "text": {
-            "de": "Mare-aux-Vacoas, das größte Reservoir",
-            "fr": "Mare-aux-Vacoas, le plus grand réservoir",
-            "en": "Mare-aux-Vacoas, the largest reservoir"
-          },
-          "quelle": "https://publicutilities.govmu.org/Pages/Water%20Sector/WRU.aspx"
-        },
-        {
-          "wert": {
-            "de": "≈ 60 %",
-            "fr": "≈ 60 %",
-            "en": "≈ 60%"
-          },
-          "text": {
-            "de": "Anteil des aufbereiteten Wassers ohne Einnahmen",
-            "fr": "Part de l'eau traitée non facturée",
-            "en": "Share of treated water earning no revenue"
-          },
-          "quelle": "https://lexpress.mu/s/eau-60-de-pertes-des-tarifs-trop-bas-le-verdict-des-specialistes-565115"
-        },
-        {
-          "wert": {
-            "de": "Rs 540 Mio.",
-            "fr": "Rs 540 millions",
-            "en": "Rs 540 million"
-          },
-          "text": {
-            "de": "monatliche Verluste der CWA laut Medienbericht",
-            "fr": "pertes mensuelles de la CWA selon la presse",
-            "en": "monthly CWA losses according to media reports"
-          },
-          "quelle": "https://newsmoris.com/cwa-loses-60-of-supply-amid-mounting-financial-deficits/"
-        },
-        {
-          "wert": {
-            "de": "2012",
-            "fr": "2012",
-            "en": "2012"
-          },
-          "text": {
-            "de": "Jahr der letzten Tarifanpassung",
-            "fr": "année de la dernière révision tarifaire",
-            "en": "year of the last tariff revision"
-          },
-          "quelle": "https://cwa.govmu.org/cwa/wp-content/uploads/2026/09/CWA_Annual-Report-2024-2025.pdf"
-        }
-      ],
-      "grafiken": [
-        {
-          "art": "balken",
-          "einheit": "%",
-          "titel": {
-            "de": "Füllstand der Reservoirs",
-            "fr": "Taux de remplissage des réservoirs",
-            "en": "Reservoir levels"
-          },
-          "kennzahl": {
-            "wert": {
-              "de": "44 %",
-              "fr": "44 %",
-              "en": "44%"
-            },
-            "text": {
-              "de": "am 26. November 2026",
-              "fr": "au 26 novembre 2026",
-              "en": "on 26 November 2026"
-            }
-          },
-          "werte": [
-            {
-              "wert": 44,
-              "hervor": true,
-              "label": {
-                "de": "26.11.2026",
-                "fr": "26/11/2026",
-                "en": "26 Nov 2026"
-              }
-            },
-            {
-              "wert": 55.2,
-              "label": {
-                "de": "Saisonaler Schnitt",
-                "fr": "Moyenne saisonnière",
-                "en": "Seasonal average"
-              }
-            },
-            {
-              "wert": 69.7,
-              "label": {
-                "de": "Vor einem Jahr",
-                "fr": "Il y a un an",
-                "en": "A year ago"
-              }
-            }
-          ],
-          "quelle": "Water Resources Commission"
-        },
-        {
-          "art": "balken",
-          "einheit": {
-            "de": "Mio. m³",
-            "fr": "millions de m³",
-            "en": "million m³"
-          },
-          "titel": {
-            "de": "Produziert und verkauft (2024)",
-            "fr": "Produite et vendue (2024)",
-            "en": "Produced and sold (2024)"
-          },
-          "werte": [
-            {
-              "wert": 332,
-              "label": {
-                "de": "Von der CWA produziert",
-                "fr": "Produite par la CWA",
-                "en": "Produced by the CWA"
-              }
-            },
-            {
-              "wert": 115,
-              "hervor": true,
-              "label": {
-                "de": "Davon verkauft",
-                "fr": "Dont vendue",
-                "en": "Of which sold"
-              }
-            }
-          ],
-          "quelle": "Statistics Mauritius"
-        },
-        {
-          "art": "balken",
-          "einheit": {
-            "de": "Mrd. Rs",
-            "fr": "milliards de Rs",
-            "en": "billion Rs"
-          },
-          "titel": {
-            "de": "Damm Rivière-des-Anguilles: geschätzte Kosten",
-            "fr": "Barrage de Rivière-des-Anguilles : coût estimé",
-            "en": "Rivière-des-Anguilles dam: estimated cost"
-          },
-          "werte": [
-            {
-              "wert": 2.6,
-              "label": {
-                "de": "Schätzung 2009",
-                "fr": "Estimation 2009",
-                "en": "2009 estimate"
-              }
-            },
-            {
-              "wert": 9.4,
-              "hervor": true,
-              "label": {
-                "de": "Schätzung 2024",
-                "fr": "Estimation 2024",
-                "en": "2024 estimate"
-              }
-            }
-          ],
-          "quelle": "National Audit Office"
-        }
-      ],
-      "offen": [
-        {
-          "de": "Beginnt der Bau des Damms von Rivière-des-Anguilles wirklich im November 2026? Ein unterzeichneter Bauvertrag ist bisher nicht bekannt.",
-          "fr": "Les travaux du barrage de Rivière-des-Anguilles commenceront-ils vraiment en novembre 2026 ? Aucun contrat signé n'a été rendu public à ce jour.",
-          "en": "Will construction of the Rivière-des-Anguilles dam really start in November 2026? No signed construction contract has been made public so far."
-        },
-        {
-          "de": "Werden die Tarife angepasst, und wie werden Haushalte mit geringem Einkommen dabei geschützt?",
-          "fr": "Les tarifs seront-ils révisés, et comment les ménages modestes seront-ils protégés ?",
-          "en": "Will tariffs be revised, and how will low-income households be protected?"
-        },
-        {
-          "de": "Wie schnell lassen sich die Verluste im Leitungsnetz senken?",
-          "fr": "À quelle vitesse les pertes du réseau peuvent-elles être réduites ?",
-          "en": "How quickly can network losses be reduced?"
-        },
-        {
-          "de": "Wie viel Regen bringt die Regenzeit, und reicht er, um die Reservoirs wieder zu füllen?",
-          "fr": "Quelle quantité de pluie apportera la saison des pluies, et suffira-t-elle à remplir les réservoirs ?",
-          "en": "How much rain will the rainy season bring, and will it be enough to refill the reservoirs?"
-        }
-      ],
-      "themen": [
-        "wasserkrise"
-      ],
-      "stichworte": [
-        "Wasser",
-        "Reservoir",
-        "CWA",
-        "Mare-aux-Vacoas",
-        "Rationierung",
-        "Dürre",
-        "eau",
-        "réservoir",
-        "sécheresse"
-      ],
-      "quellen": [
-        {
-          "name": "Ministry of Energy and Public Utilities – Water Resources Unit",
-          "url": "https://publicutilities.govmu.org/Pages/Water%20Sector/WRU.aspx"
-        },
-        {
-          "name": "National Audit Office – Water Report (Dez. 2025)",
-          "url": "https://nao.govmu.org/nao/wp-content/uploads/2026/02/water_report.pdf"
-        },
-        {
-          "name": "CWA – Annual Report 2024–2025",
-          "url": "https://cwa.govmu.org/cwa/wp-content/uploads/2026/09/CWA_Annual-Report-2024-2025.pdf"
-        },
-        {
-          "name": "ION News",
-          "url": "https://ionnews.mu/ressources-en-eau-les-reservoirs-reculent-a-44-au-26-novembre-2026/"
-        },
-        {
-          "name": "L'Express",
-          "url": "https://lexpress.mu/s/eau-60-de-pertes-des-tarifs-trop-bas-le-verdict-des-specialistes-565115"
-        },
-        {
-          "name": "allAfrica / L'Express",
-          "url": "https://fr.allafrica.com/stories/202611180579.html"
-        },
-        {
-          "name": "allAfrica",
-          "url": "https://fr.allafrica.com/stories/202611160631.html"
-        },
-        {
-          "name": "Maurice Info",
-          "url": "https://maurice-info.mu/2026/03/04/le-barrage-de-riviere-des-anguilles-est-un-projet-phare-pour-le-sud.html"
-        },
-        {
-          "name": "Mauritius Times",
-          "url": "https://www.mauritiustimes.com/mt/water-bills-should-match-electricity-and-telecom-costs-to-reflect-the-vital-importance-of-the-resource/"
-        },
-        {
-          "name": "newsmoris",
-          "url": "https://newsmoris.com/cwa-loses-60-of-supply-amid-mounting-financial-deficits/"
-        },
-        {
-          "name": "Statistics Mauritius über ODE – Water Reservoirs",
-          "url": "https://ode.govmu.org/water-reservoirs"
-        }
-      ],
-      "video": {
-        "youtube": {
-          "de": "4UtA-XNTAlg",
-          "en": "-Qen4qRrVa8",
-          "fr": "5VevmSjwUPg"
-        },
-        "vorschau": {
-          "de": "/bilder/lernvideo-wasser-de.jpg",
-          "en": "/bilder/lernvideo-wasser-en.jpg",
-          "fr": "/bilder/lernvideo-wasser-fr.jpg"
-        }
-      }
+     "datum": "1885",
+     "text": {
+      "de": "In Mare-aux-Vacoas entsteht im Sumpfland ein erster, ein Meter hoher Damm: der Beginn des ältesten Reservoirs der Insel.",
+      "fr": "À Mare-aux-Vacoas, un premier barrage d'un mètre de haut est construit dans une zone marécageuse : c'est le début du plus ancien réservoir de l'île.",
+      "en": "At Mare-aux-Vacoas a first dam, one metre high, is built on marshy land, the start of the island's oldest reservoir."
+     },
+     "quelle": "https://publicutilities.govmu.org/Pages/Water%20Sector/WRU.aspx"
     },
     {
-      "id": "chagos",
-      "rubrik": "politik",
-      "stand": "2026-11-28T01:35:00+04:00",
-      "titel": {
-        "de": "Das Chagos-Archipel",
-        "fr": "L'archipel des Chagos",
-        "en": "The Chagos Archipelago"
-      },
-      "kurz": {
-        "de": "Mauritius und Großbritannien haben im Mai 2025 einen Vertrag unterzeichnet, der die Souveränität über das Chagos-Archipel an Mauritius übertragen soll; die Militärbasis Diego Garcia bleibt für mindestens 99 Jahre an Großbritannien verpachtet. Der Vertrag ist bis heute nicht ratifiziert, weil die USA ihn nicht mittragen. Mauritius verlangt von London bis Dezember 2026 einen Fahrplan und droht sonst mit rechtlichen Schritten.",
-        "fr": "Maurice et le Royaume-Uni ont signé en mai 2025 un traité qui doit transférer la souveraineté sur l'archipel des Chagos à Maurice ; la base militaire de Diego Garcia reste louée au Royaume-Uni pour au moins 99 ans. Le traité n'est toujours pas ratifié, car les États-Unis ne le soutiennent pas. Maurice exige de Londres une feuille de route d'ici décembre 2026 et menace sinon d'engager des poursuites.",
-        "en": "Mauritius and the United Kingdom signed a treaty in May 2025 that is meant to transfer sovereignty over the Chagos Archipelago to Mauritius, while the Diego Garcia military base stays leased to the UK for at least 99 years. The treaty has still not been ratified because the US does not back it. Mauritius is demanding a roadmap from London by December 2026 and otherwise threatens legal action."
-      },
-      "karte": {
-        "titel": {
-          "de": "Lage der Chagos-Inseln",
-          "fr": "Situation des Chagos",
-          "en": "Where the Chagos Islands are"
-        },
-        "ausschnitt": [
-          42,
-          -25,
-          80,
-          7
-        ],
-        "orte": [
-          {
-            "name": {
-              "de": "Mauritius",
-              "fr": "Maurice",
-              "en": "Mauritius"
-            },
-            "lat": -20.2,
-            "lon": 57.55,
-            "seite": "oben"
-          },
-          {
-            "name": {
-              "de": "Diego Garcia",
-              "fr": "Diego Garcia",
-              "en": "Diego Garcia"
-            },
-            "lat": -7.31,
-            "lon": 72.41,
-            "hervor": true,
-            "seite": "rechts"
-          },
-          {
-            "name": {
-              "de": "Chagos-Archipel",
-              "fr": "Archipel des Chagos",
-              "en": "Chagos Archipelago"
-            },
-            "lat": -5.6,
-            "lon": 72.0,
-            "seite": "oben"
-          },
-          {
-            "name": {
-              "de": "Malediven",
-              "fr": "Maldives",
-              "en": "Maldives"
-            },
-            "lat": 4.18,
-            "lon": 73.51,
-            "seite": "links"
-          },
-          {
-            "name": {
-              "de": "Seychellen",
-              "fr": "Seychelles",
-              "en": "Seychelles"
-            },
-            "lat": -4.68,
-            "lon": 55.48,
-            "seite": "rechts"
-          },
-          {
-            "name": {
-              "de": "Rodrigues",
-              "fr": "Rodrigues",
-              "en": "Rodrigues"
-            },
-            "lat": -19.72,
-            "lon": 63.42,
-            "seite": "rechts"
-          },
-          {
-            "name": {
-              "de": "La Réunion",
-              "fr": "La Réunion",
-              "en": "Réunion"
-            },
-            "lat": -21.11,
-            "lon": 55.53,
-            "seite": "unten"
-          },
-          {
-            "name": {
-              "de": "Madagaskar",
-              "fr": "Madagascar",
-              "en": "Madagascar"
-            },
-            "lat": -18.9,
-            "lon": 47.5,
-            "seite": "oben"
-          }
-        ],
-        "linien": [
-          {
-            "von": 0,
-            "nach": 1
-          }
-        ]
-      },
-      "warum": {
-        "de": "Das Chagos-Archipel im Indischen Ozean wurde 1965 vor der Unabhängigkeit von Mauritius abgetrennt. Mauritius sieht darin einen Verstoß gegen das Recht auf Entkolonialisierung und verlangt seit Jahrzehnten die Rückgabe. Für Großbritannien und die USA ist vor allem die gemeinsam genutzte Militärbasis auf Diego Garcia wichtig.\n\nFür Mauritius geht es um Staatsgebiet, um Meeresflächen und um eine politische Frage, die das Land seit seiner Unabhängigkeit begleitet. Für die vertriebenen Chagossen geht es außerdem um die Rückkehr auf die Inseln. Das Thema steht deshalb auch in der mauritischen Innenpolitik regelmäßig im Mittelpunkt.",
-        "fr": "L'archipel des Chagos, dans l'océan Indien, a été détaché de Maurice en 1965, avant l'indépendance. Maurice y voit une violation du droit à la décolonisation et en réclame la restitution depuis des décennies. Pour le Royaume-Uni et les États-Unis, c'est surtout la base militaire commune de Diego Garcia qui compte.\n\nPour Maurice, il s'agit d'un territoire, d'espaces maritimes et d'une question politique qui accompagne le pays depuis son indépendance. Pour les Chagossiens déplacés, il s'agit aussi du retour sur les îles. Le sujet revient donc régulièrement au cœur de la politique intérieure mauricienne.",
-        "en": "The Chagos Archipelago in the Indian Ocean was separated from Mauritius in 1965, before independence. Mauritius sees this as a breach of the right to decolonisation and has demanded its return for decades. For the UK and the US, what matters most is the jointly used military base on Diego Garcia.\n\nFor Mauritius, the issue involves territory, maritime zones and a political question that has accompanied the country since independence. For the displaced Chagossians, it also concerns returning to the islands. The topic therefore regularly features in Mauritian domestic politics."
-      },
-      "entwicklung": {
-        "de": "Den rechtlichen Rahmen setzte der Internationale Gerichtshof 2019: Er stellte fest, dass die Entkolonialisierung von Mauritius 1968 nicht rechtmäßig abgeschlossen wurde. Die UN-Generalversammlung forderte Großbritannien daraufhin auf, seine Verwaltung zurückzuziehen. Die Souveränitätsfrage selbst blieb nach Darstellung von Fachleuten ein bilateraler Streit, den das Gutachten nicht entschied.\n\nIm Mai 2025 unterzeichneten beide Regierungen den Vertrag: Mauritius erhält die Souveränität über das gesamte Archipel, Großbritannien pachtet Diego Garcia zunächst für 99 Jahre, mit Option auf Verlängerung. Seit Anfang 2026 stockt die Umsetzung. Nach Berichten lehnt US-Präsident Trump den Vertrag aus Sicherheitsgründen ab, London ließ sein Ratifizierungsgesetz im April ruhen. Dazu kommt ein zweiter Streit: Die Malediven stellten im Februar 2026 die Souveränität von Mauritius infrage.\n\nIn Mauritius selbst ist der Vertrag Gegenstand des Parteienstreits. Die Opposition kritisiert die Kosten der Rechtsberatung und die Rolle des britischen Juristen Sir Geoffrey Cox; die Regierung verweist auf ihre Frist an London.",
-        "fr": "Le cadre juridique a été posé en 2019 par la Cour internationale de justice : elle a jugé que la décolonisation de Maurice n'avait pas été menée à bien légalement en 1968. L'Assemblée générale de l'ONU a ensuite demandé au Royaume-Uni de retirer son administration. La question de la souveraineté est restée, selon les spécialistes, un différend bilatéral que l'avis n'a pas tranché.\n\nEn mai 2025, les deux gouvernements ont signé le traité : Maurice obtient la souveraineté sur tout l'archipel, le Royaume-Uni loue Diego Garcia pour 99 ans dans un premier temps, avec une option de prolongation. Depuis début 2026, la mise en œuvre est bloquée. Selon des informations de presse, le président américain Trump rejette le traité pour des raisons de sécurité ; Londres a laissé son projet de loi de ratification en suspens en avril. S'y ajoute un second différend : les Maldives ont remis en cause en février 2026 la souveraineté de Maurice.\n\nÀ Maurice même, le traité alimente le débat partisan. L'opposition critique le coût des conseils juridiques et le rôle du juriste britannique Sir Geoffrey Cox ; le gouvernement met en avant son délai fixé à Londres.",
-        "en": "The legal framework was set by the International Court of Justice in 2019: it found that Mauritius's decolonisation had not been lawfully completed in 1968. The UN General Assembly then called on the UK to withdraw its administration. According to legal commentators, the sovereignty question itself remained a bilateral dispute that the opinion did not settle.\n\nIn May 2025 the two governments signed the treaty: Mauritius gains sovereignty over the whole archipelago, and the UK leases Diego Garcia for an initial 99 years, with an option to extend. Implementation has stalled since early 2026. According to reports, US President Trump rejects the treaty on security grounds, and London let its ratification bill lapse in April. A second dispute has been added: the Maldives called Mauritius's sovereignty into question in February 2026.\n\nIn Mauritius itself, the treaty is a subject of party-political dispute. The opposition criticises the cost of legal advice and the role of the British lawyer Sir Geoffrey Cox; the government points to its deadline for London."
-      },
-      "chronik": [
-        {
-          "datum": "23. Sept. 1965",
-          "datumI18n": {
-            "fr": "23 sept. 1965",
-            "en": "23 Sep 1965"
-          },
-          "text": {
-            "de": "Bei Gesprächen im Londoner Lancaster House stimmen Vertreter der damaligen Kolonie Mauritius zu, das Chagos-Archipel für eine Militäranlage abzutrennen. Der Internationale Gerichtshof stellte 2019 fest, dass sie dazu nach der Verfassung von 1964 nicht befugt waren.",
-            "fr": "Lors de discussions à Lancaster House, à Londres, les représentants de la colonie de Maurice acceptent le détachement de l'archipel des Chagos pour une installation militaire. La Cour internationale de justice a estimé en 2019 qu'ils n'en avaient pas le pouvoir selon la Constitution de 1964.",
-            "en": "At talks at Lancaster House in London, representatives of the then colony of Mauritius agree to the detachment of the Chagos Archipelago for a military facility. The International Court of Justice found in 2019 that they had no authority to do so under the 1964 constitution."
-          },
-          "quelle": "https://www.icj-cij.org/public/files/case-related/169/169-20190225-SUM-01-00-EN.pdf"
-        },
-        {
-          "datum": "8. Nov. 1965",
-          "datumI18n": {
-            "fr": "8 nov. 1965",
-            "en": "8 Nov 1965"
-          },
-          "text": {
-            "de": "Großbritannien gründet per Order in Council das „Britische Territorium im Indischen Ozean“ aus dem Chagos-Archipel und einigen Inseln, die bis dahin zu den Seychellen gehörten.",
-            "fr": "Le Royaume-Uni crée par Order in Council le « Territoire britannique de l'océan Indien » à partir de l'archipel des Chagos et de quelques îles rattachées jusque-là aux Seychelles.",
-            "en": "Britain creates the British Indian Ocean Territory by Order in Council from the Chagos Archipelago and some islands previously part of Seychelles."
-          },
-          "quelle": "https://publications.parliament.uk/pa/ld5901/ldselect/ldintagr/146/14605.htm"
-        },
-        {
-          "datum": "16. Dez. 1965",
-          "datumI18n": {
-            "fr": "16 déc. 1965",
-            "en": "16 Dec 1965"
-          },
-          "text": {
-            "de": "Die UN-Generalversammlung fordert Großbritannien mit Resolution 2066 auf, nichts zu unternehmen, was das Gebiet von Mauritius zerstückelt und seine territoriale Unversehrtheit verletzt.",
-            "fr": "L'Assemblée générale de l'ONU demande au Royaume-Uni, par la résolution 2066, de ne prendre aucune mesure qui démembrerait le territoire de Maurice et porterait atteinte à son intégrité territoriale.",
-            "en": "In Resolution 2066 the UN General Assembly calls on Britain to take no action that would dismember the territory of Mauritius and violate its territorial integrity."
-          },
-          "quelle": "https://publications.parliament.uk/pa/ld5901/ldselect/ldintagr/146/14605.htm"
-        },
-        {
-          "datum": "1966",
-          "datumI18n": {
-            "fr": "1966",
-            "en": "1966"
-          },
-          "text": {
-            "de": "Großbritannien und die USA schließen einen Vertrag über die Nutzung von Diego Garcia, wo später ein US-Stützpunkt entsteht.",
-            "fr": "Le Royaume-Uni et les États-Unis concluent un traité sur l'utilisation de Diego Garcia, où une base américaine sera construite.",
-            "en": "Britain and the United States conclude a treaty on the use of Diego Garcia, where a US base is later built."
-          },
-          "quelle": "https://www.asil.org/insights/volume/23/issue/2/chagos-advisory-opinion-and-decolonization-mauritius"
-        },
-        {
-          "datum": "12. März 1968",
-          "datumI18n": {
-            "fr": "12 mars 1968",
-            "en": "12 Mar 1968"
-          },
-          "text": {
-            "de": "Mauritius wird unabhängig, ohne das Chagos-Archipel.",
-            "fr": "Maurice accède à l'indépendance, sans l'archipel des Chagos.",
-            "en": "Mauritius becomes independent without the Chagos Archipelago."
-          },
-          "quelle": "https://publications.parliament.uk/pa/ld5901/ldselect/ldintagr/146/14605.htm"
-        },
-        {
-          "datum": "bis 1973",
-          "datumI18n": {
-            "fr": "jusqu'en 1973",
-            "en": "by 1973"
-          },
-          "text": {
-            "de": "Für den Bau des US-Stützpunkts wird die gesamte Bevölkerung des Archipels, die Chagossen, zwangsweise umgesiedelt, die meisten nach Mauritius und auf die Seychellen. Eine Rückkehr wird ihnen verwehrt.",
-            "fr": "Pour la construction de la base américaine, toute la population de l'archipel, les Chagossiens, est déplacée de force, la plupart vers Maurice et les Seychelles. Le retour leur est interdit.",
-            "en": "To make way for the US base, the archipelago's entire population, the Chagossians, is forcibly removed, most of them to Mauritius and Seychelles. They are barred from returning."
-          },
-          "quelle": "https://www.asil.org/insights/volume/23/issue/2/chagos-advisory-opinion-and-decolonization-mauritius"
-        },
-        {
-          "datum": "Feb. 2019",
-          "datumI18n": {
-            "fr": "févr. 2019",
-            "en": "Feb 2019"
-          },
-          "text": {
-            "de": "Der Internationale Gerichtshof stellt in einem Gutachten fest, dass die Entkolonialisierung von Mauritius 1968 nicht rechtmäßig abgeschlossen wurde. Die Abtrennung des Archipels vor der Unabhängigkeit war demnach unrechtmäßig. Die Souveränität im engeren Sinn entscheidet das Gericht nicht.",
-            "fr": "La Cour internationale de justice estime dans un avis que la décolonisation de Maurice n'a pas été menée à bien légalement en 1968. Le détachement de l'archipel avant l'indépendance était donc illicite. La Cour ne tranche pas la question de la souveraineté au sens strict.",
-            "en": "The International Court of Justice finds in an advisory opinion that Mauritius's decolonisation was not lawfully completed in 1968. The detachment of the archipelago before independence was therefore wrongful. The Court does not decide sovereignty in the narrow sense."
-          },
-          "quelle": "https://www.worldcourts.com/icj/eng/decisions/2019.02.25_Mauritius.htm"
-        },
-        {
-          "datum": "2019",
-          "datumI18n": {
-            "fr": "2019",
-            "en": "2019"
-          },
-          "text": {
-            "de": "Die UN-Generalversammlung begrüßt das Gutachten und fordert Großbritannien auf, seine Kolonialverwaltung bedingungslos aus dem Gebiet abzuziehen. Sie ruft London außerdem zur Zusammenarbeit bei der Umsiedlung mauritischer Staatsangehöriger auf, darunter Chagossen.",
-            "fr": "L'Assemblée générale de l'ONU salue l'avis et demande au Royaume-Uni de retirer sans condition son administration coloniale de la zone. Elle appelle aussi Londres à coopérer pour la réinstallation de ressortissants mauriciens, dont des Chagossiens.",
-            "en": "The UN General Assembly welcomes the opinion and calls on the UK to withdraw its colonial administration from the area unconditionally. It also urges London to cooperate on the resettlement of Mauritian nationals, including Chagossians."
-          },
-          "quelle": "https://press.un.org/en/2019/ga12146.doc.htm"
-        },
-        {
-          "datum": "Apr. 2023",
-          "datumI18n": {
-            "fr": "avr. 2023",
-            "en": "Apr 2023"
-          },
-          "text": {
-            "de": "Im Streit mit den Malediven um überlappende Meeresgebiete teilt der Internationale Seegerichtshof die Zonen zwischen beiden Staaten auf. Das Urteil ist später Anlass für neuen Streit mit den Malediven.",
-            "fr": "Dans le différend avec les Maldives sur des zones maritimes qui se chevauchent, le Tribunal international du droit de la mer partage les espaces entre les deux États. Ce jugement devient plus tard l'objet d'un nouveau différend avec les Maldives.",
-            "en": "In the dispute with the Maldives over overlapping maritime areas, the International Tribunal for the Law of the Sea divides the zones between the two states. The judgment later becomes the subject of a fresh dispute with the Maldives."
-          },
-          "quelle": "https://maldivesindependent.com/explainer/the-chagos-dispute-explained-colonial-borders-displaced-people-and-a-small-nation-defying-international-law-0755"
-        },
-        {
-          "datum": "22. Mai 2025",
-          "datumI18n": {
-            "fr": "22 mai 2025",
-            "en": "22 May 2025"
-          },
-          "text": {
-            "de": "Mauritius und Großbritannien unterzeichnen den Vertrag über das Chagos-Archipel einschließlich Diego Garcia. Mauritius soll die Souveränität erhalten, Großbritannien behält Diego Garcia unter einem Pachtvertrag mit anfänglich 99 Jahren Laufzeit.",
-            "fr": "Maurice et le Royaume-Uni signent le traité sur l'archipel des Chagos, Diego Garcia compris. Maurice doit obtenir la souveraineté, le Royaume-Uni conserve Diego Garcia dans le cadre d'un bail d'une durée initiale de 99 ans.",
-            "en": "Mauritius and the UK sign the treaty on the Chagos Archipelago including Diego Garcia. Mauritius is to receive sovereignty, while the UK keeps Diego Garcia under a lease with an initial term of 99 years."
-          },
-          "quelle": "https://lordslibrary.parliament.uk/uk-mauritius-treaty-on-the-chagos-archipelago/"
-        },
-        {
-          "datum": "Jan. 2026",
-          "datumI18n": {
-            "fr": "janv. 2026",
-            "en": "Jan 2026"
-          },
-          "text": {
-            "de": "Das Londoner Institut Chatham House argumentiert, dass eine britische Ratifizierung des Vertrags nicht gegen Völkerrecht verstoßen würde.",
-            "fr": "Le centre de réflexion londonien Chatham House soutient qu'une ratification britannique du traité ne violerait pas le droit international.",
-            "en": "The London think tank Chatham House argues that UK ratification of the treaty would not breach international law."
-          },
-          "quelle": "https://www.chathamhouse.org/2026/01/uk-ratification-chagos-archipelago-treaty-will-not-violate-international-law"
-        },
-        {
-          "datum": "Feb. 2026",
-          "datumI18n": {
-            "fr": "févr. 2026",
-            "en": "Feb 2026"
-          },
-          "text": {
-            "de": "Der maledivische Präsident Muizzu kündigt im Parlament an, die Souveränität von Mauritius über das Chagos-Archipel nicht mehr anzuerkennen. Mauritius setzt daraufhin die diplomatischen Beziehungen zu den Malediven aus.",
-            "fr": "Le président maldivien Muizzu annonce devant le Parlement qu'il ne reconnaît plus la souveraineté de Maurice sur l'archipel des Chagos. Maurice suspend alors ses relations diplomatiques avec les Maldives.",
-            "en": "Maldivian President Muizzu tells parliament that his country will no longer recognise Mauritius's sovereignty over the Chagos Archipelago. Mauritius then suspends diplomatic relations with the Maldives."
-          },
-          "quelle": "https://www.orfonline.org/expert-speak/the-maldives-chagos-claim-implications-for-india"
-        },
-        {
-          "datum": "Apr. 2026",
-          "datumI18n": {
-            "fr": "avr. 2026",
-            "en": "Apr 2026"
-          },
-          "text": {
-            "de": "London legt das Ratifizierungsgesetz auf Eis, weil die USA bei einem aktualisierten Verteidigungsabkommen zu Diego Garcia nicht mitziehen. Der Vertrag bleibt damit ohne Rechtskraft.",
-            "fr": "Londres met son projet de loi de ratification en suspens, car les États-Unis ne suivent pas pour un accord de défense actualisé sur Diego Garcia. Le traité reste donc sans force juridique.",
-            "en": "London puts its ratification bill on hold because the US is not joining an updated defence agreement on Diego Garcia. The treaty therefore remains without legal force."
-          },
-          "quelle": "https://mauritius-news.com/article/chagos-deal-mauritius-and-uk-set-december-2026-deadline"
-        },
-        {
-          "datum": "Apr. 2026",
-          "datumI18n": {
-            "fr": "avr. 2026",
-            "en": "Apr 2026"
-          },
-          "text": {
-            "de": "Bei einer parlamentarischen Anfrage (PNQ) nennt die Regierung die Kosten für ausländische Anwälte: Seit November 2024 arbeitet Mauritius mit der Londoner Kanzlei Withers LLP, die Honorare belaufen sich auf 408.028,40 Pfund, etwa 25 Millionen Rupien.",
-            "fr": "Lors d'une question parlementaire (PNQ), le gouvernement chiffre le coût des avocats étrangers : depuis novembre 2024, Maurice travaille avec le cabinet londonien Withers LLP ; les honoraires s'élèvent à 408 028,40 livres, soit environ 25 millions de roupies.",
-            "en": "In a parliamentary question (PNQ), the government states the cost of foreign lawyers: since November 2024 Mauritius has worked with the London firm Withers LLP, with fees of £408,028.40, about 25 million rupees."
-          },
-          "quelle": "https://fr.allafrica.com/stories/202604220722.html"
-        },
-        {
-          "datum": "17. Nov. 2026",
-          "datumI18n": {
-            "fr": "17 nov. 2026",
-            "en": "17 Nov 2026"
-          },
-          "text": {
-            "de": "Premierminister Navin Ramgoolam verlangt von London bis Dezember einen klaren Fahrplan zur Ratifizierung. Andernfalls will Mauritius im neuen Jahr rechtlich vorgehen.",
-            "fr": "Le Premier ministre Navin Ramgoolam exige de Londres, d'ici décembre, une feuille de route claire pour la ratification. Sinon, Maurice compte engager des poursuites au cours de la nouvelle année.",
-            "en": "Prime Minister Navin Ramgoolam demands a clear roadmap for ratification from London by December. Otherwise Mauritius intends to take legal action in the new year."
-          },
-          "quelle": "https://mauritius-news.com/article/chagos-deal-mauritius-and-uk-set-december-2026-deadline"
-        },
-        {
-          "datum": "27. Nov. 2026",
-          "datumI18n": {
-            "fr": "27 nov. 2026",
-            "en": "27 Nov 2026"
-          },
-          "text": {
-            "de": "Oppositionsführer Pravind Jugnauth (MSM) fragt bei einer Versammlung in Triolet nach der Rolle von Sir Geoffrey Cox und spricht von mehr als 25 Millionen Rupien, die in diesem Zusammenhang gezahlt worden sein sollen. Das ist seine Behauptung; belegt hat er sie in dem Bericht nicht.",
-            "fr": "Pravind Jugnauth (MSM) interroge, lors d'un meeting à Triolet, le rôle de Sir Geoffrey Cox et évoque plus de 25 millions de roupies qui auraient été versées dans ce contexte. Il s'agit de son affirmation ; le compte rendu ne la documente pas.",
-            "en": "Pravind Jugnauth (MSM) asks about the role of Sir Geoffrey Cox at a rally in Triolet and speaks of more than 25 million rupees allegedly paid in this context. This is his claim; the report does not substantiate it."
-          },
-          "quelle": "https://defimedia.info/chagos-pravind-jugnauth-questionne-le-role-de-sir-geoffrey-cox-et-evoque-plus-de-rs-25-m-versees-un"
-        }
-      ],
-      "akteure": [
-        {
-          "name": {
-            "de": "Regierung Mauritius (Premier Navin Ramgoolam)",
-            "fr": "Gouvernement mauricien (Premier ministre Navin Ramgoolam)",
-            "en": "Government of Mauritius (Prime Minister Navin Ramgoolam)"
-          },
-          "position": {
-            "de": "Will den Vertrag vom Mai 2025 ratifiziert sehen und verlangt von London bis Dezember 2026 einen Fahrplan. Sonst droht sie mit rechtlichen Schritten im neuen Jahr.",
-            "fr": "Veut voir le traité de mai 2025 ratifié et exige de Londres une feuille de route d'ici décembre 2026. Sinon, elle menace d'engager des poursuites dans la nouvelle année.",
-            "en": "Wants the May 2025 treaty ratified and demands a roadmap from London by December 2026. Otherwise it threatens legal action in the new year."
-          },
-          "quelle": "https://mauritius-news.com/article/chagos-deal-mauritius-and-uk-set-december-2026-deadline"
-        },
-        {
-          "name": {
-            "de": "Opposition (MSM, Pravind Jugnauth)",
-            "fr": "Opposition (MSM, Pravind Jugnauth)",
-            "en": "Opposition (MSM, Pravind Jugnauth)"
-          },
-          "position": {
-            "de": "Stellt die Rolle von Sir Geoffrey Cox und die Kosten der Rechtsberatung infrage und fordert Erklärungen von der Regierung.",
-            "fr": "Remet en question le rôle de Sir Geoffrey Cox et le coût des conseils juridiques et réclame des explications au gouvernement.",
-            "en": "Questions the role of Sir Geoffrey Cox and the cost of legal advice and demands explanations from the government."
-          },
-          "quelle": "https://defimedia.info/chagos-pravind-jugnauth-questionne-le-role-de-sir-geoffrey-cox-et-evoque-plus-de-rs-25-m-versees-un"
-        },
-        {
-          "name": {
-            "de": "Regierung des Vereinigten Königreichs",
-            "fr": "Gouvernement du Royaume-Uni",
-            "en": "UK government"
-          },
-          "position": {
-            "de": "Hat den Vertrag unterzeichnet, sein Ratifizierungsgesetz aber im April 2026 ruhen lassen, weil die USA bei der Verteidigungsfrage zu Diego Garcia nicht mitziehen.",
-            "fr": "A signé le traité, mais a laissé en suspens son projet de loi de ratification en avril 2026, car les États-Unis ne suivent pas sur la question de défense liée à Diego Garcia.",
-            "en": "Signed the treaty but let its ratification bill lapse in April 2026 because the US is not joining on the Diego Garcia defence question."
-          },
-          "quelle": "https://mauritius-news.com/article/chagos-deal-mauritius-and-uk-set-december-2026-deadline"
-        },
-        {
-          "name": {
-            "de": "USA (Präsident Donald Trump)",
-            "fr": "États-Unis (président Donald Trump)",
-            "en": "United States (President Donald Trump)"
-          },
-          "position": {
-            "de": "Trump kritisiert die Vereinbarung laut Berichten scharf („act of great stupidity“) und stellt infrage, ob sie die Basis auf Diego Garcia ausreichend schützt.",
-            "fr": "Selon des informations de presse, Trump critique vivement l'accord (« act of great stupidity ») et doute qu'il protège suffisamment la base de Diego Garcia.",
-            "en": "According to reports, Trump sharply criticises the agreement (\"act of great stupidity\") and questions whether it adequately protects the Diego Garcia base."
-          },
-          "quelle": "https://www.asianews.it/en/articles/trump-opposes-chagos-islands-agreement-diego-garcia-base-at-the-centre-of-tensions"
-        },
-        {
-          "name": {
-            "de": "Malediven (Präsident Muizzu)",
-            "fr": "Maldives (président Muizzu)",
-            "en": "Maldives (President Muizzu)"
-          },
-          "position": {
-            "de": "Erkennt die Souveränität von Mauritius über das Archipel seit Februar 2026 nicht mehr an und stellt die Meeresgrenze von 2023 infrage.",
-            "fr": "Ne reconnaît plus, depuis février 2026, la souveraineté de Maurice sur l'archipel et remet en cause la délimitation maritime de 2023.",
-            "en": "Since February 2026 no longer recognises Mauritius's sovereignty over the archipelago and challenges the 2023 maritime boundary."
-          },
-          "quelle": "https://www.orfonline.org/expert-speak/the-maldives-chagos-claim-implications-for-india"
-        },
-        {
-          "name": {
-            "de": "Chagossische Gruppen",
-            "fr": "Groupes chagossiens",
-            "en": "Chagossian groups"
-          },
-          "position": {
-            "de": "Gespalten: Die Chagos Refugees Group unterstützt den Vertrag im Großen und Ganzen, in Großbritannien ansässige Gruppen wie Chagossian Voices und BIOT Citizens lehnen ihn ab.",
-            "fr": "Divisés : le Chagos Refugees Group soutient globalement le traité, tandis que des groupes basés au Royaume-Uni comme Chagossian Voices et BIOT Citizens le rejettent.",
-            "en": "Divided: the Chagos Refugees Group broadly supports the treaty, while UK-based groups such as Chagossian Voices and BIOT Citizens oppose it."
-          },
-          "quelle": "https://en.wikipedia.org/wiki/Chagossians"
-        }
-      ],
-      "zahlen": [
-        {
-          "wert": {
-            "de": "99 Jahre",
-            "fr": "99 ans",
-            "en": "99 years"
-          },
-          "text": {
-            "de": "Anfangslaufzeit der Pacht für Diego Garcia; eine Verlängerung ist möglich.",
-            "fr": "Durée initiale du bail de Diego Garcia ; une prolongation est possible.",
-            "en": "Initial term of the Diego Garcia lease; an extension is possible."
-          },
-          "quelle": "https://lordslibrary.parliament.uk/uk-mauritius-treaty-on-the-chagos-archipelago/"
-        },
-        {
-          "wert": {
-            "de": "1.500 bis 1.750",
-            "fr": "1 500 à 1 750",
-            "en": "1,500 to 1,750"
-          },
-          "text": {
-            "de": "Geschätzte Zahl der Chagossen 1965, kurz vor Beginn der Vertreibung; etwa 1.360 lebten auf den Inseln (Human Rights Watch). Andere Angaben nennen bis zu 2.000 Menschen.",
-            "fr": "Nombre estimé de Chagossiens en 1965, juste avant le début des expulsions ; environ 1 360 vivaient sur les îles (Human Rights Watch). D'autres estimations parlent de jusqu'à 2 000 personnes.",
-            "en": "Estimated number of Chagossians in 1965, just before the expulsions began; about 1,360 lived on the islands (Human Rights Watch). Other estimates put it at up to 2,000 people."
-          },
-          "quelle": "https://www.hrw.org/report/2023/02/15/thats-when-nightmare-started/uk-and-us-forced-displacement-chagossians-and"
-        },
-        {
-          "wert": {
-            "de": "13 zu 1",
-            "fr": "13 contre 1",
-            "en": "13 to 1"
-          },
-          "text": {
-            "de": "Stimmenverhältnis im Internationalen Gerichtshof beim Gutachten von 2019.",
-            "fr": "Répartition des voix à la Cour internationale de justice pour l'avis de 2019.",
-            "en": "Vote split at the International Court of Justice on the 2019 opinion."
-          },
-          "quelle": "https://www.worldcourts.com/icj/eng/decisions/2019.02.25_Mauritius.htm"
-        },
-        {
-          "wert": {
-            "de": "408.028,40 Pfund",
-            "fr": "408 028,40 livres",
-            "en": "£408,028.40"
-          },
-          "text": {
-            "de": "Honorare der Kanzlei Withers LLP und weiterer ausländischer Anwälte laut Regierungsantwort im April 2026, etwa 25 Millionen Rupien.",
-            "fr": "Honoraires du cabinet Withers LLP et d'autres avocats étrangers selon la réponse du gouvernement en avril 2026, soit environ 25 millions de roupies.",
-            "en": "Fees of the firm Withers LLP and other foreign lawyers according to the government's April 2026 answer, about 25 million rupees."
-          },
-          "quelle": "https://fr.allafrica.com/stories/202604220722.html"
-        },
-        {
-          "wert": {
-            "de": "40 Jahre",
-            "fr": "40 ans",
-            "en": "40 years"
-          },
-          "text": {
-            "de": "Mögliche Verlängerung des Abkommens nach Ablauf der Anfangslaufzeit, laut Ausschuss des House of Lords.",
-            "fr": "Prolongation possible de l'accord après la durée initiale, selon une commission de la Chambre des lords.",
-            "en": "Possible extension of the agreement after the initial term, according to a House of Lords committee."
-          },
-          "quelle": "https://publications.parliament.uk/pa/ld5901/ldselect/ldintagr/146/14603.htm"
-        }
-      ],
-      "grafiken": [
-        {
-          "art": "balken",
-          "einheit": {
-            "de": "Richter",
-            "fr": "juges",
-            "en": "judges"
-          },
-          "titel": {
-            "de": "Abstimmung im Internationalen Gerichtshof 2019",
-            "fr": "Vote à la Cour internationale de justice, 2019",
-            "en": "Vote at the International Court of Justice, 2019"
-          },
-          "werte": [
-            {
-              "wert": 13,
-              "hervor": true,
-              "label": {
-                "de": "Für das Gutachten",
-                "fr": "Pour l'avis",
-                "en": "For the opinion"
-              }
-            },
-            {
-              "wert": 1,
-              "label": {
-                "de": "Dagegen",
-                "fr": "Contre",
-                "en": "Against"
-              }
-            }
-          ],
-          "quelle": "Internationaler Gerichtshof (worldcourts.com)"
-        }
-      ],
-      "offen": [
-        {
-          "de": "Legt Großbritannien bis Dezember 2026 einen Fahrplan zur Ratifizierung vor, und wie stellen sich die USA dazu?",
-          "fr": "Le Royaume-Uni présentera-t-il d'ici décembre 2026 une feuille de route de ratification, et quelle sera la position des États-Unis ?",
-          "en": "Will the UK present a ratification roadmap by December 2026, and what will the US position be?"
-        },
-        {
-          "de": "Welche rechtlichen Schritte will Mauritius einleiten, wenn die Frist ungenutzt verstreicht?",
-          "fr": "Quelles démarches juridiques Maurice engagera-t-elle si le délai expire sans suite ?",
-          "en": "What legal steps would Mauritius take if the deadline passes without action?"
-        },
-        {
-          "de": "Wie wird der Streit mit den Malediven um die Meeresgebiete weitergehen?",
-          "fr": "Comment le différend avec les Maldives sur les espaces maritimes évoluera-t-il ?",
-          "en": "How will the dispute with the Maldives over the maritime areas develop?"
-        },
-        {
-          "de": "Welche Rechte erhalten die Chagossen auf Rückkehr und Umsiedlung, und wann?",
-          "fr": "Quels droits de retour et de réinstallation les Chagossiens obtiendront-ils, et quand ?",
-          "en": "What rights to return and resettle will the Chagossians get, and when?"
-        }
-      ],
-      "themen": [
-        "chagos"
-      ],
-      "stichworte": [
-        "Chagos",
-        "Diego Garcia",
-        "Souveränität",
-        "Vertrag",
-        "Malediven"
-      ],
-      "quellen": [
-        {
-          "name": "ICJ-Gutachten 2019 (worldcourts.com)",
-          "url": "https://www.worldcourts.com/icj/eng/decisions/2019.02.25_Mauritius.htm"
-        },
-        {
-          "name": "UN-Pressemitteilung zur Generalversammlung",
-          "url": "https://press.un.org/en/2019/ga12146.doc.htm"
-        },
-        {
-          "name": "Maldives Independent (Erklärstück)",
-          "url": "https://maldivesindependent.com/explainer/the-chagos-dispute-explained-colonial-borders-displaced-people-and-a-small-nation-defying-international-law-0755"
-        },
-        {
-          "name": "House of Lords Library",
-          "url": "https://lordslibrary.parliament.uk/uk-mauritius-treaty-on-the-chagos-archipelago/"
-        },
-        {
-          "name": "House of Lords International Agreements Committee",
-          "url": "https://publications.parliament.uk/pa/ld5901/ldselect/ldintagr/146/14603.htm"
-        },
-        {
-          "name": "Chatham House",
-          "url": "https://www.chathamhouse.org/2026/01/uk-ratification-chagos-archipelago-treaty-will-not-violate-international-law"
-        },
-        {
-          "name": "ORF",
-          "url": "https://www.orfonline.org/expert-speak/the-maldives-chagos-claim-implications-for-india"
-        },
-        {
-          "name": "The Diplomat",
-          "url": "https://thediplomat.com/2026/09/why-has-the-maldives-inserted-itself-into-the-chagos-sovereignty-dispute/"
-        },
-        {
-          "name": "MauritiusNews",
-          "url": "https://mauritius-news.com/article/chagos-deal-mauritius-and-uk-set-december-2026-deadline"
-        },
-        {
-          "name": "allAfrica / L'Express (PNQ)",
-          "url": "https://fr.allafrica.com/stories/202604220722.html"
-        },
-        {
-          "name": "allAfrica / L'Express (Kommentar)",
-          "url": "https://fr.allafrica.com/stories/202611230622.html"
-        },
-        {
-          "name": "Défi Media",
-          "url": "https://defimedia.info/chagos-pravind-jugnauth-questionne-le-role-de-sir-geoffrey-cox-et-evoque-plus-de-rs-25-m-versees-un"
-        },
-        {
-          "name": "AsiaNews",
-          "url": "https://www.asianews.it/en/articles/trump-opposes-chagos-islands-agreement-diego-garcia-base-at-the-centre-of-tensions"
-        },
-        {
-          "name": "Wikipedia (Chagossians)",
-          "url": "https://en.wikipedia.org/wiki/Chagossians"
-        },
-        {
-          "name": "IGH – Zusammenfassung des Gutachtens 2019",
-          "url": "https://www.icj-cij.org/public/files/case-related/169/169-20190225-SUM-01-00-EN.pdf"
-        },
-        {
-          "name": "House of Lords International Agreements Committee (Hintergrund)",
-          "url": "https://publications.parliament.uk/pa/ld5901/ldselect/ldintagr/146/14605.htm"
-        },
-        {
-          "name": "ASIL Insights: The Chagos Advisory Opinion",
-          "url": "https://www.asil.org/insights/volume/23/issue/2/chagos-advisory-opinion-and-decolonization-mauritius"
-        },
-        {
-          "name": "Human Rights Watch: „That's When the Nightmare Started“ (2023)",
-          "url": "https://www.hrw.org/report/2023/02/15/thats-when-nightmare-started/uk-and-us-forced-displacement-chagossians-and"
-        }
-      ]
+     "datum": "2002",
+     "text": {
+      "de": "Der Midlands-Damm wird fertiggestellt; er dient als Puffer für das Reservoir La Nicolière.",
+      "fr": "Le barrage de Midlands est achevé ; il sert de réserve tampon pour le réservoir de La Nicolière.",
+      "en": "The Midlands Dam is completed as buffer storage for La Nicolière reservoir."
+     },
+     "quelle": "https://publicutilities.govmu.org/Pages/Water%20Sector/WRU.aspx"
+    },
+    {
+     "datum": "2009",
+     "text": {
+      "de": "Der Damm von Rivière-des-Anguilles im Süden wird erstmals angekündigt. Geschätzte Kosten: 2,6 Milliarden Rupien.",
+      "fr": "Le barrage de Rivière-des-Anguilles, dans le Sud, est annoncé pour la première fois. Coût estimé : 2,6 milliards de roupies.",
+      "en": "The Rivière-des-Anguilles dam in the south is first announced, at an estimated cost of 2.6 billion rupees."
+     },
+     "quelle": "https://nao.govmu.org/nao/wp-content/uploads/2026/02/water_report.pdf"
+    },
+    {
+     "datum": "2012",
+     "text": {
+      "de": "Letzte Anpassung der Wassertarife durch die CWA.",
+      "fr": "Dernière révision des tarifs de l'eau par la CWA.",
+      "en": "Last revision of water tariffs by the CWA."
+     },
+     "quelle": "https://cwa.govmu.org/cwa/wp-content/uploads/2026/09/CWA_Annual-Report-2024-2025.pdf"
+    },
+    {
+     "datum": "2017",
+     "text": {
+      "de": "Der Damm von Bagatelle wird fertiggestellt, das jüngste der sieben großen Reservoirs, vor allem für Trinkwasser.",
+      "fr": "Le barrage de Bagatelle est achevé ; c'est le plus récent des sept grands réservoirs, destiné surtout à l'eau potable.",
+      "en": "The Bagatelle Dam is completed, the newest of the seven major reservoirs, mainly for drinking water."
+     },
+     "quelle": "https://ode.govmu.org/water-reservoirs"
+    },
+    {
+     "datum": "2024",
+     "text": {
+      "de": "Die geschätzten Kosten des Damms von Rivière-des-Anguilles liegen bei rund 9,4 Milliarden Rupien, mehr als das Dreifache der ersten Schätzung.",
+      "fr": "Le coût estimé du barrage de Rivière-des-Anguilles atteint environ 9,4 milliards de roupies, plus du triple de l'estimation initiale.",
+      "en": "The estimated cost of the Rivière-des-Anguilles dam reaches about 9.4 billion rupees, more than three times the first estimate."
+     },
+     "quelle": "https://nao.govmu.org/nao/wp-content/uploads/2026/02/water_report.pdf"
+    },
+    {
+     "datum": "Dez. 2025",
+     "datumI18n": {
+      "fr": "déc. 2025",
+      "en": "Dec 2025"
+     },
+     "text": {
+      "de": "Ein Bericht des Rechnungshofs kritisiert die hohen Wasserverluste und das wiederholte Aufschieben von Lösungen.",
+      "fr": "Un rapport du Bureau de l'audit critique les fortes pertes d'eau et le report répété des solutions.",
+      "en": "A National Audit Office report criticises the high water losses and the repeated postponement of solutions."
+     },
+     "quelle": "https://fr.allafrica.com/stories/202611160631.html"
+    },
+    {
+     "datum": "März 2026",
+     "datumI18n": {
+      "fr": "mars 2026",
+      "en": "Mar 2026"
+     },
+     "text": {
+      "de": "Der Energieminister kündigt den Baubeginn des Damms von Rivière-des-Anguilles für November 2026 an, Fertigstellung für November 2029.",
+      "fr": "Le ministre de l'Énergie annonce le début des travaux du barrage de Rivière-des-Anguilles pour novembre 2026 et leur fin pour novembre 2029.",
+      "en": "The energy minister announces that construction of the Rivière-des-Anguilles dam will start in November 2026 and finish in November 2029."
+     },
+     "quelle": "https://maurice-info.mu/2026/03/04/le-barrage-de-riviere-des-anguilles-est-un-projet-phare-pour-le-sud.html"
+    },
+    {
+     "datum": "Nov. 2026",
+     "datumI18n": {
+      "fr": "nov. 2026",
+      "en": "Nov 2026"
+     },
+     "text": {
+      "de": "Mare-aux-Vacoas fällt auf rund 33 Prozent. In mehreren Orten wird das Wasser rationiert.",
+      "fr": "Mare-aux-Vacoas tombe à environ 33 %. L'eau est rationnée dans plusieurs localités.",
+      "en": "Mare-aux-Vacoas drops to around 33 per cent. Water is rationed in several towns."
+     },
+     "quelle": "https://fr.allafrica.com/stories/202611180579.html"
+    },
+    {
+     "datum": "26.11.2026",
+     "datumI18n": {
+      "fr": "26/11/2026",
+      "en": "26 Nov 2026"
+     },
+     "text": {
+      "de": "Die sieben wichtigsten Reservoirs sind zu 44 Prozent gefüllt, ein Jahr zuvor waren es 69,7 Prozent.",
+      "fr": "Les sept principaux réservoirs sont remplis à 44 %, contre 69,7 % un an plus tôt.",
+      "en": "The seven main reservoirs are 44 per cent full, compared with 69.7 per cent a year earlier."
+     },
+     "quelle": "https://ionnews.mu/ressources-en-eau-les-reservoirs-reculent-a-44-au-26-novembre-2026/"
     }
-  ],
-  "vorschlaege": []
+   ],
+   "akteure": [
+    {
+     "name": {
+      "de": "Central Water Authority (CWA)",
+      "fr": "Central Water Authority (CWA)",
+      "en": "Central Water Authority (CWA)"
+     },
+     "position": {
+      "de": "Betreibt Aufbereitung und Verteilung. Verweist darauf, dass die Tarife seit 2012 unverändert sind und neue Anschlüsse ein Vielfaches dessen kosten, was dafür berechnet wird.",
+      "fr": "Assure le traitement et la distribution. Souligne que les tarifs sont inchangés depuis 2012 et que les nouveaux raccordements coûtent bien plus que ce qui est facturé.",
+      "en": "Runs treatment and distribution. Points out that tariffs have not changed since 2012 and that new connections cost several times what is charged for them."
+     },
+     "quelle": "https://cwa.govmu.org/cwa/wp-content/uploads/2026/09/CWA_Annual-Report-2024-2025.pdf"
+    },
+    {
+     "name": {
+      "de": "Ministerium für Energie und öffentliche Versorgung",
+      "fr": "Ministère de l'Énergie et des Services publics",
+      "en": "Ministry of Energy and Public Utilities"
+     },
+     "position": {
+      "de": "Setzt vor allem auf neue Speicher, insbesondere den Damm von Rivière-des-Anguilles für die Versorgung des Südens.",
+      "fr": "Mise surtout sur de nouvelles capacités de stockage, en particulier le barrage de Rivière-des-Anguilles pour approvisionner le Sud.",
+      "en": "Relies mainly on new storage, especially the Rivière-des-Anguilles dam to supply the south."
+     },
+     "quelle": "https://maurice-info.mu/2026/03/04/le-barrage-de-riviere-des-anguilles-est-un-projet-phare-pour-le-sud.html"
+    },
+    {
+     "name": {
+      "de": "Rechnungshof (National Audit Office)",
+      "fr": "Bureau de l'audit (National Audit Office)",
+      "en": "National Audit Office"
+     },
+     "position": {
+      "de": "Kritisiert die hohen Verluste und dass Ministerium und CWA Lösungen durch immer neue Studien aufschieben.",
+      "fr": "Critique les fortes pertes et le fait que le ministère et la CWA repoussent les solutions en commandant toujours de nouvelles études.",
+      "en": "Criticises the high losses and that the ministry and the CWA keep postponing solutions by commissioning more studies."
+     },
+     "quelle": "https://fr.allafrica.com/stories/202611160631.html"
+    },
+    {
+     "name": {
+      "de": "Fachleute (Artikelserie von L'Express)",
+      "fr": "Spécialistes (série d'articles de L'Express)",
+      "en": "Experts (L'Express article series)"
+     },
+     "position": {
+      "de": "Halten die Tarife für zu niedrig, verlangen aber zuerst einen besseren Service und weniger Verluste.",
+      "fr": "Jugent les tarifs trop bas, mais réclament d'abord un meilleur service et moins de pertes.",
+      "en": "Consider tariffs too low but want better service and fewer losses first."
+     },
+     "quelle": "https://lexpress.mu/s/eau-60-de-pertes-des-tarifs-trop-bas-le-verdict-des-specialistes-565115"
+    },
+    {
+     "name": {
+      "de": "Haushalte",
+      "fr": "Ménages",
+      "en": "Households"
+     },
+     "position": {
+      "de": "Tragen die Folgen der Rationierung. Haushalte, die monatlich höchstens 6 Kubikmeter verbrauchen, erhalten ihr Wasser kostenlos.",
+      "fr": "Subissent le rationnement. Les ménages consommant au plus 6 mètres cubes par mois reçoivent l'eau gratuitement.",
+      "en": "Bear the brunt of rationing. Households using at most 6 cubic metres a month receive their water free of charge."
+     },
+     "quelle": "https://www.mauritiustimes.com/mt/water-bills-should-match-electricity-and-telecom-costs-to-reflect-the-vital-importance-of-the-resource/"
+    }
+   ],
+   "zahlen": [
+    {
+     "wert": {
+      "de": "92,2 Mio. m³",
+      "fr": "92,2 millions de m³",
+      "en": "92.2 million m³"
+     },
+     "text": {
+      "de": "Speichervermögen der sieben wichtigsten Reservoirs",
+      "fr": "Capacité des sept principaux réservoirs",
+      "en": "Capacity of the seven main reservoirs"
+     },
+     "quelle": "https://publicutilities.govmu.org/Pages/Water%20Sector/WRU.aspx"
+    },
+    {
+     "wert": {
+      "de": "25,89 Mio. m³",
+      "fr": "25,89 millions de m³",
+      "en": "25.89 million m³"
+     },
+     "text": {
+      "de": "Mare-aux-Vacoas, das größte Reservoir",
+      "fr": "Mare-aux-Vacoas, le plus grand réservoir",
+      "en": "Mare-aux-Vacoas, the largest reservoir"
+     },
+     "quelle": "https://publicutilities.govmu.org/Pages/Water%20Sector/WRU.aspx"
+    },
+    {
+     "wert": {
+      "de": "≈ 60 %",
+      "fr": "≈ 60 %",
+      "en": "≈ 60%"
+     },
+     "text": {
+      "de": "Anteil des aufbereiteten Wassers ohne Einnahmen",
+      "fr": "Part de l'eau traitée non facturée",
+      "en": "Share of treated water earning no revenue"
+     },
+     "quelle": "https://lexpress.mu/s/eau-60-de-pertes-des-tarifs-trop-bas-le-verdict-des-specialistes-565115"
+    },
+    {
+     "wert": {
+      "de": "Rs 540 Mio.",
+      "fr": "Rs 540 millions",
+      "en": "Rs 540 million"
+     },
+     "text": {
+      "de": "monatliche Verluste der CWA laut Medienbericht",
+      "fr": "pertes mensuelles de la CWA selon la presse",
+      "en": "monthly CWA losses according to media reports"
+     },
+     "quelle": "https://newsmoris.com/cwa-loses-60-of-supply-amid-mounting-financial-deficits/"
+    },
+    {
+     "wert": {
+      "de": "2012",
+      "fr": "2012",
+      "en": "2012"
+     },
+     "text": {
+      "de": "Jahr der letzten Tarifanpassung",
+      "fr": "année de la dernière révision tarifaire",
+      "en": "year of the last tariff revision"
+     },
+     "quelle": "https://cwa.govmu.org/cwa/wp-content/uploads/2026/09/CWA_Annual-Report-2024-2025.pdf"
+    }
+   ],
+   "grafiken": [
+    {
+     "art": "balken",
+     "einheit": "%",
+     "titel": {
+      "de": "Füllstand der Reservoirs",
+      "fr": "Taux de remplissage des réservoirs",
+      "en": "Reservoir levels"
+     },
+     "kennzahl": {
+      "wert": {
+       "de": "44 %",
+       "fr": "44 %",
+       "en": "44%"
+      },
+      "text": {
+       "de": "am 26. November 2026",
+       "fr": "au 26 novembre 2026",
+       "en": "on 26 November 2026"
+      }
+     },
+     "werte": [
+      {
+       "wert": 44,
+       "hervor": true,
+       "label": {
+        "de": "26.11.2026",
+        "fr": "26/11/2026",
+        "en": "26 Nov 2026"
+       }
+      },
+      {
+       "wert": 55.2,
+       "label": {
+        "de": "Saisonaler Schnitt",
+        "fr": "Moyenne saisonnière",
+        "en": "Seasonal average"
+       }
+      },
+      {
+       "wert": 69.7,
+       "label": {
+        "de": "Vor einem Jahr",
+        "fr": "Il y a un an",
+        "en": "A year ago"
+       }
+      }
+     ],
+     "quelle": "Water Resources Commission"
+    },
+    {
+     "art": "balken",
+     "einheit": {
+      "de": "Mio. m³",
+      "fr": "millions de m³",
+      "en": "million m³"
+     },
+     "titel": {
+      "de": "Produziert und verkauft (2024)",
+      "fr": "Produite et vendue (2024)",
+      "en": "Produced and sold (2024)"
+     },
+     "werte": [
+      {
+       "wert": 332,
+       "label": {
+        "de": "Von der CWA produziert",
+        "fr": "Produite par la CWA",
+        "en": "Produced by the CWA"
+       }
+      },
+      {
+       "wert": 115,
+       "hervor": true,
+       "label": {
+        "de": "Davon verkauft",
+        "fr": "Dont vendue",
+        "en": "Of which sold"
+       }
+      }
+     ],
+     "quelle": "Statistics Mauritius"
+    },
+    {
+     "art": "balken",
+     "einheit": {
+      "de": "Mrd. Rs",
+      "fr": "milliards de Rs",
+      "en": "billion Rs"
+     },
+     "titel": {
+      "de": "Damm Rivière-des-Anguilles: geschätzte Kosten",
+      "fr": "Barrage de Rivière-des-Anguilles : coût estimé",
+      "en": "Rivière-des-Anguilles dam: estimated cost"
+     },
+     "werte": [
+      {
+       "wert": 2.6,
+       "label": {
+        "de": "Schätzung 2009",
+        "fr": "Estimation 2009",
+        "en": "2009 estimate"
+       }
+      },
+      {
+       "wert": 9.4,
+       "hervor": true,
+       "label": {
+        "de": "Schätzung 2024",
+        "fr": "Estimation 2024",
+        "en": "2024 estimate"
+       }
+      }
+     ],
+     "quelle": "National Audit Office"
+    }
+   ],
+   "offen": [
+    {
+     "de": "Beginnt der Bau des Damms von Rivière-des-Anguilles wirklich im November 2026? Ein unterzeichneter Bauvertrag ist bisher nicht bekannt.",
+     "fr": "Les travaux du barrage de Rivière-des-Anguilles commenceront-ils vraiment en novembre 2026 ? Aucun contrat signé n'a été rendu public à ce jour.",
+     "en": "Will construction of the Rivière-des-Anguilles dam really start in November 2026? No signed construction contract has been made public so far."
+    },
+    {
+     "de": "Werden die Tarife angepasst, und wie werden Haushalte mit geringem Einkommen dabei geschützt?",
+     "fr": "Les tarifs seront-ils révisés, et comment les ménages modestes seront-ils protégés ?",
+     "en": "Will tariffs be revised, and how will low-income households be protected?"
+    },
+    {
+     "de": "Wie schnell lassen sich die Verluste im Leitungsnetz senken?",
+     "fr": "À quelle vitesse les pertes du réseau peuvent-elles être réduites ?",
+     "en": "How quickly can network losses be reduced?"
+    },
+    {
+     "de": "Wie viel Regen bringt die Regenzeit, und reicht er, um die Reservoirs wieder zu füllen?",
+     "fr": "Quelle quantité de pluie apportera la saison des pluies, et suffira-t-elle à remplir les réservoirs ?",
+     "en": "How much rain will the rainy season bring, and will it be enough to refill the reservoirs?"
+    }
+   ],
+   "themen": [
+    "wasserkrise"
+   ],
+   "stichworte": [
+    "Wasser",
+    "Reservoir",
+    "CWA",
+    "Mare-aux-Vacoas",
+    "Rationierung",
+    "Dürre",
+    "eau",
+    "réservoir",
+    "sécheresse"
+   ],
+   "quellen": [
+    {
+     "name": "Ministry of Energy and Public Utilities – Water Resources Unit",
+     "url": "https://publicutilities.govmu.org/Pages/Water%20Sector/WRU.aspx"
+    },
+    {
+     "name": "National Audit Office – Water Report (Dez. 2025)",
+     "url": "https://nao.govmu.org/nao/wp-content/uploads/2026/02/water_report.pdf"
+    },
+    {
+     "name": "CWA – Annual Report 2024–2025",
+     "url": "https://cwa.govmu.org/cwa/wp-content/uploads/2026/09/CWA_Annual-Report-2024-2025.pdf"
+    },
+    {
+     "name": "ION News",
+     "url": "https://ionnews.mu/ressources-en-eau-les-reservoirs-reculent-a-44-au-26-novembre-2026/"
+    },
+    {
+     "name": "L'Express",
+     "url": "https://lexpress.mu/s/eau-60-de-pertes-des-tarifs-trop-bas-le-verdict-des-specialistes-565115"
+    },
+    {
+     "name": "allAfrica / L'Express",
+     "url": "https://fr.allafrica.com/stories/202611180579.html"
+    },
+    {
+     "name": "allAfrica",
+     "url": "https://fr.allafrica.com/stories/202611160631.html"
+    },
+    {
+     "name": "Maurice Info",
+     "url": "https://maurice-info.mu/2026/03/04/le-barrage-de-riviere-des-anguilles-est-un-projet-phare-pour-le-sud.html"
+    },
+    {
+     "name": "Mauritius Times",
+     "url": "https://www.mauritiustimes.com/mt/water-bills-should-match-electricity-and-telecom-costs-to-reflect-the-vital-importance-of-the-resource/"
+    },
+    {
+     "name": "newsmoris",
+     "url": "https://newsmoris.com/cwa-loses-60-of-supply-amid-mounting-financial-deficits/"
+    },
+    {
+     "name": "Statistics Mauritius über ODE – Water Reservoirs",
+     "url": "https://ode.govmu.org/water-reservoirs"
+    }
+   ],
+   "video": {
+    "youtube": {
+     "de": "4UtA-XNTAlg",
+     "en": "-Qen4qRrVa8",
+     "fr": "5VevmSjwUPg"
+    },
+    "vorschau": {
+     "de": "/bilder/lernvideo-wasser-de.jpg",
+     "en": "/bilder/lernvideo-wasser-en.jpg",
+     "fr": "/bilder/lernvideo-wasser-fr.jpg"
+    }
+   }
+  },
+  {
+   "id": "chagos",
+   "rubrik": "politik",
+   "stand": "2026-11-28T01:35:00+04:00",
+   "titel": {
+    "de": "Das Chagos-Archipel",
+    "fr": "L'archipel des Chagos",
+    "en": "The Chagos Archipelago"
+   },
+   "kurz": {
+    "de": "Mauritius und Großbritannien haben im Mai 2025 einen Vertrag unterzeichnet, der die Souveränität über das Chagos-Archipel an Mauritius übertragen soll; die Militärbasis Diego Garcia bleibt für mindestens 99 Jahre an Großbritannien verpachtet. Der Vertrag ist bis heute nicht ratifiziert, weil die USA ihn nicht mittragen. Mauritius verlangt von London bis Dezember 2026 einen Fahrplan und droht sonst mit rechtlichen Schritten.",
+    "fr": "Maurice et le Royaume-Uni ont signé en mai 2025 un traité qui doit transférer la souveraineté sur l'archipel des Chagos à Maurice ; la base militaire de Diego Garcia reste louée au Royaume-Uni pour au moins 99 ans. Le traité n'est toujours pas ratifié, car les États-Unis ne le soutiennent pas. Maurice exige de Londres une feuille de route d'ici décembre 2026 et menace sinon d'engager des poursuites.",
+    "en": "Mauritius and the United Kingdom signed a treaty in May 2025 that is meant to transfer sovereignty over the Chagos Archipelago to Mauritius, while the Diego Garcia military base stays leased to the UK for at least 99 years. The treaty has still not been ratified because the US does not back it. Mauritius is demanding a roadmap from London by December 2026 and otherwise threatens legal action."
+   },
+   "karte": {
+    "titel": {
+     "de": "Lage der Chagos-Inseln",
+     "fr": "Situation des Chagos",
+     "en": "Where the Chagos Islands are"
+    },
+    "ausschnitt": [
+     42,
+     -25,
+     80,
+     7
+    ],
+    "orte": [
+     {
+      "name": {
+       "de": "Mauritius",
+       "fr": "Maurice",
+       "en": "Mauritius"
+      },
+      "lat": -20.2,
+      "lon": 57.55,
+      "seite": "oben"
+     },
+     {
+      "name": {
+       "de": "Diego Garcia",
+       "fr": "Diego Garcia",
+       "en": "Diego Garcia"
+      },
+      "lat": -7.31,
+      "lon": 72.41,
+      "hervor": true,
+      "seite": "rechts"
+     },
+     {
+      "name": {
+       "de": "Chagos-Archipel",
+       "fr": "Archipel des Chagos",
+       "en": "Chagos Archipelago"
+      },
+      "lat": -5.6,
+      "lon": 72.0,
+      "seite": "oben"
+     },
+     {
+      "name": {
+       "de": "Malediven",
+       "fr": "Maldives",
+       "en": "Maldives"
+      },
+      "lat": 4.18,
+      "lon": 73.51,
+      "seite": "links"
+     },
+     {
+      "name": {
+       "de": "Seychellen",
+       "fr": "Seychelles",
+       "en": "Seychelles"
+      },
+      "lat": -4.68,
+      "lon": 55.48,
+      "seite": "rechts"
+     },
+     {
+      "name": {
+       "de": "Rodrigues",
+       "fr": "Rodrigues",
+       "en": "Rodrigues"
+      },
+      "lat": -19.72,
+      "lon": 63.42,
+      "seite": "rechts"
+     },
+     {
+      "name": {
+       "de": "La Réunion",
+       "fr": "La Réunion",
+       "en": "Réunion"
+      },
+      "lat": -21.11,
+      "lon": 55.53,
+      "seite": "unten"
+     },
+     {
+      "name": {
+       "de": "Madagaskar",
+       "fr": "Madagascar",
+       "en": "Madagascar"
+      },
+      "lat": -18.9,
+      "lon": 47.5,
+      "seite": "oben"
+     }
+    ],
+    "linien": [
+     {
+      "von": 0,
+      "nach": 1
+     }
+    ]
+   },
+   "warum": {
+    "de": "Das Chagos-Archipel im Indischen Ozean wurde 1965 vor der Unabhängigkeit von Mauritius abgetrennt. Mauritius sieht darin einen Verstoß gegen das Recht auf Entkolonialisierung und verlangt seit Jahrzehnten die Rückgabe. Für Großbritannien und die USA ist vor allem die gemeinsam genutzte Militärbasis auf Diego Garcia wichtig.\n\nFür Mauritius geht es um Staatsgebiet, um Meeresflächen und um eine politische Frage, die das Land seit seiner Unabhängigkeit begleitet. Für die vertriebenen Chagossen geht es außerdem um die Rückkehr auf die Inseln. Das Thema steht deshalb auch in der mauritischen Innenpolitik regelmäßig im Mittelpunkt.",
+    "fr": "L'archipel des Chagos, dans l'océan Indien, a été détaché de Maurice en 1965, avant l'indépendance. Maurice y voit une violation du droit à la décolonisation et en réclame la restitution depuis des décennies. Pour le Royaume-Uni et les États-Unis, c'est surtout la base militaire commune de Diego Garcia qui compte.\n\nPour Maurice, il s'agit d'un territoire, d'espaces maritimes et d'une question politique qui accompagne le pays depuis son indépendance. Pour les Chagossiens déplacés, il s'agit aussi du retour sur les îles. Le sujet revient donc régulièrement au cœur de la politique intérieure mauricienne.",
+    "en": "The Chagos Archipelago in the Indian Ocean was separated from Mauritius in 1965, before independence. Mauritius sees this as a breach of the right to decolonisation and has demanded its return for decades. For the UK and the US, what matters most is the jointly used military base on Diego Garcia.\n\nFor Mauritius, the issue involves territory, maritime zones and a political question that has accompanied the country since independence. For the displaced Chagossians, it also concerns returning to the islands. The topic therefore regularly features in Mauritian domestic politics."
+   },
+   "entwicklung": {
+    "de": "Den rechtlichen Rahmen setzte der Internationale Gerichtshof 2019: Er stellte fest, dass die Entkolonialisierung von Mauritius 1968 nicht rechtmäßig abgeschlossen wurde. Die UN-Generalversammlung forderte Großbritannien daraufhin auf, seine Verwaltung zurückzuziehen. Die Souveränitätsfrage selbst blieb nach Darstellung von Fachleuten ein bilateraler Streit, den das Gutachten nicht entschied.\n\nIm Mai 2025 unterzeichneten beide Regierungen den Vertrag: Mauritius erhält die Souveränität über das gesamte Archipel, Großbritannien pachtet Diego Garcia zunächst für 99 Jahre, mit Option auf Verlängerung. Seit Anfang 2026 stockt die Umsetzung. Nach Berichten lehnt US-Präsident Trump den Vertrag aus Sicherheitsgründen ab, London ließ sein Ratifizierungsgesetz im April ruhen. Dazu kommt ein zweiter Streit: Die Malediven stellten im Februar 2026 die Souveränität von Mauritius infrage.\n\nIn Mauritius selbst ist der Vertrag Gegenstand des Parteienstreits. Die Opposition kritisiert die Kosten der Rechtsberatung und die Rolle des britischen Juristen Sir Geoffrey Cox; die Regierung verweist auf ihre Frist an London.",
+    "fr": "Le cadre juridique a été posé en 2019 par la Cour internationale de justice : elle a jugé que la décolonisation de Maurice n'avait pas été menée à bien légalement en 1968. L'Assemblée générale de l'ONU a ensuite demandé au Royaume-Uni de retirer son administration. La question de la souveraineté est restée, selon les spécialistes, un différend bilatéral que l'avis n'a pas tranché.\n\nEn mai 2025, les deux gouvernements ont signé le traité : Maurice obtient la souveraineté sur tout l'archipel, le Royaume-Uni loue Diego Garcia pour 99 ans dans un premier temps, avec une option de prolongation. Depuis début 2026, la mise en œuvre est bloquée. Selon des informations de presse, le président américain Trump rejette le traité pour des raisons de sécurité ; Londres a laissé son projet de loi de ratification en suspens en avril. S'y ajoute un second différend : les Maldives ont remis en cause en février 2026 la souveraineté de Maurice.\n\nÀ Maurice même, le traité alimente le débat partisan. L'opposition critique le coût des conseils juridiques et le rôle du juriste britannique Sir Geoffrey Cox ; le gouvernement met en avant son délai fixé à Londres.",
+    "en": "The legal framework was set by the International Court of Justice in 2019: it found that Mauritius's decolonisation had not been lawfully completed in 1968. The UN General Assembly then called on the UK to withdraw its administration. According to legal commentators, the sovereignty question itself remained a bilateral dispute that the opinion did not settle.\n\nIn May 2025 the two governments signed the treaty: Mauritius gains sovereignty over the whole archipelago, and the UK leases Diego Garcia for an initial 99 years, with an option to extend. Implementation has stalled since early 2026. According to reports, US President Trump rejects the treaty on security grounds, and London let its ratification bill lapse in April. A second dispute has been added: the Maldives called Mauritius's sovereignty into question in February 2026.\n\nIn Mauritius itself, the treaty is a subject of party-political dispute. The opposition criticises the cost of legal advice and the role of the British lawyer Sir Geoffrey Cox; the government points to its deadline for London."
+   },
+   "chronik": [
+    {
+     "datum": "23. Sept. 1965",
+     "datumI18n": {
+      "fr": "23 sept. 1965",
+      "en": "23 Sep 1965"
+     },
+     "text": {
+      "de": "Bei Gesprächen im Londoner Lancaster House stimmen Vertreter der damaligen Kolonie Mauritius zu, das Chagos-Archipel für eine Militäranlage abzutrennen. Der Internationale Gerichtshof stellte 2019 fest, dass sie dazu nach der Verfassung von 1964 nicht befugt waren.",
+      "fr": "Lors de discussions à Lancaster House, à Londres, les représentants de la colonie de Maurice acceptent le détachement de l'archipel des Chagos pour une installation militaire. La Cour internationale de justice a estimé en 2019 qu'ils n'en avaient pas le pouvoir selon la Constitution de 1964.",
+      "en": "At talks at Lancaster House in London, representatives of the then colony of Mauritius agree to the detachment of the Chagos Archipelago for a military facility. The International Court of Justice found in 2019 that they had no authority to do so under the 1964 constitution."
+     },
+     "quelle": "https://www.icj-cij.org/public/files/case-related/169/169-20190225-SUM-01-00-EN.pdf"
+    },
+    {
+     "datum": "8. Nov. 1965",
+     "datumI18n": {
+      "fr": "8 nov. 1965",
+      "en": "8 Nov 1965"
+     },
+     "text": {
+      "de": "Großbritannien gründet per Order in Council das „Britische Territorium im Indischen Ozean“ aus dem Chagos-Archipel und einigen Inseln, die bis dahin zu den Seychellen gehörten.",
+      "fr": "Le Royaume-Uni crée par Order in Council le « Territoire britannique de l'océan Indien » à partir de l'archipel des Chagos et de quelques îles rattachées jusque-là aux Seychelles.",
+      "en": "Britain creates the British Indian Ocean Territory by Order in Council from the Chagos Archipelago and some islands previously part of Seychelles."
+     },
+     "quelle": "https://publications.parliament.uk/pa/ld5901/ldselect/ldintagr/146/14605.htm"
+    },
+    {
+     "datum": "16. Dez. 1965",
+     "datumI18n": {
+      "fr": "16 déc. 1965",
+      "en": "16 Dec 1965"
+     },
+     "text": {
+      "de": "Die UN-Generalversammlung fordert Großbritannien mit Resolution 2066 auf, nichts zu unternehmen, was das Gebiet von Mauritius zerstückelt und seine territoriale Unversehrtheit verletzt.",
+      "fr": "L'Assemblée générale de l'ONU demande au Royaume-Uni, par la résolution 2066, de ne prendre aucune mesure qui démembrerait le territoire de Maurice et porterait atteinte à son intégrité territoriale.",
+      "en": "In Resolution 2066 the UN General Assembly calls on Britain to take no action that would dismember the territory of Mauritius and violate its territorial integrity."
+     },
+     "quelle": "https://publications.parliament.uk/pa/ld5901/ldselect/ldintagr/146/14605.htm"
+    },
+    {
+     "datum": "1966",
+     "datumI18n": {
+      "fr": "1966",
+      "en": "1966"
+     },
+     "text": {
+      "de": "Großbritannien und die USA schließen einen Vertrag über die Nutzung von Diego Garcia, wo später ein US-Stützpunkt entsteht.",
+      "fr": "Le Royaume-Uni et les États-Unis concluent un traité sur l'utilisation de Diego Garcia, où une base américaine sera construite.",
+      "en": "Britain and the United States conclude a treaty on the use of Diego Garcia, where a US base is later built."
+     },
+     "quelle": "https://www.asil.org/insights/volume/23/issue/2/chagos-advisory-opinion-and-decolonization-mauritius"
+    },
+    {
+     "datum": "12. März 1968",
+     "datumI18n": {
+      "fr": "12 mars 1968",
+      "en": "12 Mar 1968"
+     },
+     "text": {
+      "de": "Mauritius wird unabhängig, ohne das Chagos-Archipel.",
+      "fr": "Maurice accède à l'indépendance, sans l'archipel des Chagos.",
+      "en": "Mauritius becomes independent without the Chagos Archipelago."
+     },
+     "quelle": "https://publications.parliament.uk/pa/ld5901/ldselect/ldintagr/146/14605.htm"
+    },
+    {
+     "datum": "bis 1973",
+     "datumI18n": {
+      "fr": "jusqu'en 1973",
+      "en": "by 1973"
+     },
+     "text": {
+      "de": "Für den Bau des US-Stützpunkts wird die gesamte Bevölkerung des Archipels, die Chagossen, zwangsweise umgesiedelt, die meisten nach Mauritius und auf die Seychellen. Eine Rückkehr wird ihnen verwehrt.",
+      "fr": "Pour la construction de la base américaine, toute la population de l'archipel, les Chagossiens, est déplacée de force, la plupart vers Maurice et les Seychelles. Le retour leur est interdit.",
+      "en": "To make way for the US base, the archipelago's entire population, the Chagossians, is forcibly removed, most of them to Mauritius and Seychelles. They are barred from returning."
+     },
+     "quelle": "https://www.asil.org/insights/volume/23/issue/2/chagos-advisory-opinion-and-decolonization-mauritius"
+    },
+    {
+     "datum": "Feb. 2019",
+     "datumI18n": {
+      "fr": "févr. 2019",
+      "en": "Feb 2019"
+     },
+     "text": {
+      "de": "Der Internationale Gerichtshof stellt in einem Gutachten fest, dass die Entkolonialisierung von Mauritius 1968 nicht rechtmäßig abgeschlossen wurde. Die Abtrennung des Archipels vor der Unabhängigkeit war demnach unrechtmäßig. Die Souveränität im engeren Sinn entscheidet das Gericht nicht.",
+      "fr": "La Cour internationale de justice estime dans un avis que la décolonisation de Maurice n'a pas été menée à bien légalement en 1968. Le détachement de l'archipel avant l'indépendance était donc illicite. La Cour ne tranche pas la question de la souveraineté au sens strict.",
+      "en": "The International Court of Justice finds in an advisory opinion that Mauritius's decolonisation was not lawfully completed in 1968. The detachment of the archipelago before independence was therefore wrongful. The Court does not decide sovereignty in the narrow sense."
+     },
+     "quelle": "https://www.worldcourts.com/icj/eng/decisions/2019.02.25_Mauritius.htm"
+    },
+    {
+     "datum": "2019",
+     "datumI18n": {
+      "fr": "2019",
+      "en": "2019"
+     },
+     "text": {
+      "de": "Die UN-Generalversammlung begrüßt das Gutachten und fordert Großbritannien auf, seine Kolonialverwaltung bedingungslos aus dem Gebiet abzuziehen. Sie ruft London außerdem zur Zusammenarbeit bei der Umsiedlung mauritischer Staatsangehöriger auf, darunter Chagossen.",
+      "fr": "L'Assemblée générale de l'ONU salue l'avis et demande au Royaume-Uni de retirer sans condition son administration coloniale de la zone. Elle appelle aussi Londres à coopérer pour la réinstallation de ressortissants mauriciens, dont des Chagossiens.",
+      "en": "The UN General Assembly welcomes the opinion and calls on the UK to withdraw its colonial administration from the area unconditionally. It also urges London to cooperate on the resettlement of Mauritian nationals, including Chagossians."
+     },
+     "quelle": "https://press.un.org/en/2019/ga12146.doc.htm"
+    },
+    {
+     "datum": "Apr. 2023",
+     "datumI18n": {
+      "fr": "avr. 2023",
+      "en": "Apr 2023"
+     },
+     "text": {
+      "de": "Im Streit mit den Malediven um überlappende Meeresgebiete teilt der Internationale Seegerichtshof die Zonen zwischen beiden Staaten auf. Das Urteil ist später Anlass für neuen Streit mit den Malediven.",
+      "fr": "Dans le différend avec les Maldives sur des zones maritimes qui se chevauchent, le Tribunal international du droit de la mer partage les espaces entre les deux États. Ce jugement devient plus tard l'objet d'un nouveau différend avec les Maldives.",
+      "en": "In the dispute with the Maldives over overlapping maritime areas, the International Tribunal for the Law of the Sea divides the zones between the two states. The judgment later becomes the subject of a fresh dispute with the Maldives."
+     },
+     "quelle": "https://maldivesindependent.com/explainer/the-chagos-dispute-explained-colonial-borders-displaced-people-and-a-small-nation-defying-international-law-0755"
+    },
+    {
+     "datum": "22. Mai 2025",
+     "datumI18n": {
+      "fr": "22 mai 2025",
+      "en": "22 May 2025"
+     },
+     "text": {
+      "de": "Mauritius und Großbritannien unterzeichnen den Vertrag über das Chagos-Archipel einschließlich Diego Garcia. Mauritius soll die Souveränität erhalten, Großbritannien behält Diego Garcia unter einem Pachtvertrag mit anfänglich 99 Jahren Laufzeit.",
+      "fr": "Maurice et le Royaume-Uni signent le traité sur l'archipel des Chagos, Diego Garcia compris. Maurice doit obtenir la souveraineté, le Royaume-Uni conserve Diego Garcia dans le cadre d'un bail d'une durée initiale de 99 ans.",
+      "en": "Mauritius and the UK sign the treaty on the Chagos Archipelago including Diego Garcia. Mauritius is to receive sovereignty, while the UK keeps Diego Garcia under a lease with an initial term of 99 years."
+     },
+     "quelle": "https://lordslibrary.parliament.uk/uk-mauritius-treaty-on-the-chagos-archipelago/"
+    },
+    {
+     "datum": "Jan. 2026",
+     "datumI18n": {
+      "fr": "janv. 2026",
+      "en": "Jan 2026"
+     },
+     "text": {
+      "de": "Das Londoner Institut Chatham House argumentiert, dass eine britische Ratifizierung des Vertrags nicht gegen Völkerrecht verstoßen würde.",
+      "fr": "Le centre de réflexion londonien Chatham House soutient qu'une ratification britannique du traité ne violerait pas le droit international.",
+      "en": "The London think tank Chatham House argues that UK ratification of the treaty would not breach international law."
+     },
+     "quelle": "https://www.chathamhouse.org/2026/01/uk-ratification-chagos-archipelago-treaty-will-not-violate-international-law"
+    },
+    {
+     "datum": "Feb. 2026",
+     "datumI18n": {
+      "fr": "févr. 2026",
+      "en": "Feb 2026"
+     },
+     "text": {
+      "de": "Der maledivische Präsident Muizzu kündigt im Parlament an, die Souveränität von Mauritius über das Chagos-Archipel nicht mehr anzuerkennen. Mauritius setzt daraufhin die diplomatischen Beziehungen zu den Malediven aus.",
+      "fr": "Le président maldivien Muizzu annonce devant le Parlement qu'il ne reconnaît plus la souveraineté de Maurice sur l'archipel des Chagos. Maurice suspend alors ses relations diplomatiques avec les Maldives.",
+      "en": "Maldivian President Muizzu tells parliament that his country will no longer recognise Mauritius's sovereignty over the Chagos Archipelago. Mauritius then suspends diplomatic relations with the Maldives."
+     },
+     "quelle": "https://www.orfonline.org/expert-speak/the-maldives-chagos-claim-implications-for-india"
+    },
+    {
+     "datum": "Apr. 2026",
+     "datumI18n": {
+      "fr": "avr. 2026",
+      "en": "Apr 2026"
+     },
+     "text": {
+      "de": "London legt das Ratifizierungsgesetz auf Eis, weil die USA bei einem aktualisierten Verteidigungsabkommen zu Diego Garcia nicht mitziehen. Der Vertrag bleibt damit ohne Rechtskraft.",
+      "fr": "Londres met son projet de loi de ratification en suspens, car les États-Unis ne suivent pas pour un accord de défense actualisé sur Diego Garcia. Le traité reste donc sans force juridique.",
+      "en": "London puts its ratification bill on hold because the US is not joining an updated defence agreement on Diego Garcia. The treaty therefore remains without legal force."
+     },
+     "quelle": "https://mauritius-news.com/article/chagos-deal-mauritius-and-uk-set-december-2026-deadline"
+    },
+    {
+     "datum": "Apr. 2026",
+     "datumI18n": {
+      "fr": "avr. 2026",
+      "en": "Apr 2026"
+     },
+     "text": {
+      "de": "Bei einer parlamentarischen Anfrage (PNQ) nennt die Regierung die Kosten für ausländische Anwälte: Seit November 2024 arbeitet Mauritius mit der Londoner Kanzlei Withers LLP, die Honorare belaufen sich auf 408.028,40 Pfund, etwa 25 Millionen Rupien.",
+      "fr": "Lors d'une question parlementaire (PNQ), le gouvernement chiffre le coût des avocats étrangers : depuis novembre 2024, Maurice travaille avec le cabinet londonien Withers LLP ; les honoraires s'élèvent à 408 028,40 livres, soit environ 25 millions de roupies.",
+      "en": "In a parliamentary question (PNQ), the government states the cost of foreign lawyers: since November 2024 Mauritius has worked with the London firm Withers LLP, with fees of £408,028.40, about 25 million rupees."
+     },
+     "quelle": "https://fr.allafrica.com/stories/202604220722.html"
+    },
+    {
+     "datum": "17. Nov. 2026",
+     "datumI18n": {
+      "fr": "17 nov. 2026",
+      "en": "17 Nov 2026"
+     },
+     "text": {
+      "de": "Premierminister Navin Ramgoolam verlangt von London bis Dezember einen klaren Fahrplan zur Ratifizierung. Andernfalls will Mauritius im neuen Jahr rechtlich vorgehen.",
+      "fr": "Le Premier ministre Navin Ramgoolam exige de Londres, d'ici décembre, une feuille de route claire pour la ratification. Sinon, Maurice compte engager des poursuites au cours de la nouvelle année.",
+      "en": "Prime Minister Navin Ramgoolam demands a clear roadmap for ratification from London by December. Otherwise Mauritius intends to take legal action in the new year."
+     },
+     "quelle": "https://mauritius-news.com/article/chagos-deal-mauritius-and-uk-set-december-2026-deadline"
+    },
+    {
+     "datum": "27. Nov. 2026",
+     "datumI18n": {
+      "fr": "27 nov. 2026",
+      "en": "27 Nov 2026"
+     },
+     "text": {
+      "de": "Oppositionsführer Pravind Jugnauth (MSM) fragt bei einer Versammlung in Triolet nach der Rolle von Sir Geoffrey Cox und spricht von mehr als 25 Millionen Rupien, die in diesem Zusammenhang gezahlt worden sein sollen. Das ist seine Behauptung; belegt hat er sie in dem Bericht nicht.",
+      "fr": "Pravind Jugnauth (MSM) interroge, lors d'un meeting à Triolet, le rôle de Sir Geoffrey Cox et évoque plus de 25 millions de roupies qui auraient été versées dans ce contexte. Il s'agit de son affirmation ; le compte rendu ne la documente pas.",
+      "en": "Pravind Jugnauth (MSM) asks about the role of Sir Geoffrey Cox at a rally in Triolet and speaks of more than 25 million rupees allegedly paid in this context. This is his claim; the report does not substantiate it."
+     },
+     "quelle": "https://defimedia.info/chagos-pravind-jugnauth-questionne-le-role-de-sir-geoffrey-cox-et-evoque-plus-de-rs-25-m-versees-un"
+    }
+   ],
+   "akteure": [
+    {
+     "name": {
+      "de": "Regierung Mauritius (Premier Navin Ramgoolam)",
+      "fr": "Gouvernement mauricien (Premier ministre Navin Ramgoolam)",
+      "en": "Government of Mauritius (Prime Minister Navin Ramgoolam)"
+     },
+     "position": {
+      "de": "Will den Vertrag vom Mai 2025 ratifiziert sehen und verlangt von London bis Dezember 2026 einen Fahrplan. Sonst droht sie mit rechtlichen Schritten im neuen Jahr.",
+      "fr": "Veut voir le traité de mai 2025 ratifié et exige de Londres une feuille de route d'ici décembre 2026. Sinon, elle menace d'engager des poursuites dans la nouvelle année.",
+      "en": "Wants the May 2025 treaty ratified and demands a roadmap from London by December 2026. Otherwise it threatens legal action in the new year."
+     },
+     "quelle": "https://mauritius-news.com/article/chagos-deal-mauritius-and-uk-set-december-2026-deadline"
+    },
+    {
+     "name": {
+      "de": "Opposition (MSM, Pravind Jugnauth)",
+      "fr": "Opposition (MSM, Pravind Jugnauth)",
+      "en": "Opposition (MSM, Pravind Jugnauth)"
+     },
+     "position": {
+      "de": "Stellt die Rolle von Sir Geoffrey Cox und die Kosten der Rechtsberatung infrage und fordert Erklärungen von der Regierung.",
+      "fr": "Remet en question le rôle de Sir Geoffrey Cox et le coût des conseils juridiques et réclame des explications au gouvernement.",
+      "en": "Questions the role of Sir Geoffrey Cox and the cost of legal advice and demands explanations from the government."
+     },
+     "quelle": "https://defimedia.info/chagos-pravind-jugnauth-questionne-le-role-de-sir-geoffrey-cox-et-evoque-plus-de-rs-25-m-versees-un"
+    },
+    {
+     "name": {
+      "de": "Regierung des Vereinigten Königreichs",
+      "fr": "Gouvernement du Royaume-Uni",
+      "en": "UK government"
+     },
+     "position": {
+      "de": "Hat den Vertrag unterzeichnet, sein Ratifizierungsgesetz aber im April 2026 ruhen lassen, weil die USA bei der Verteidigungsfrage zu Diego Garcia nicht mitziehen.",
+      "fr": "A signé le traité, mais a laissé en suspens son projet de loi de ratification en avril 2026, car les États-Unis ne suivent pas sur la question de défense liée à Diego Garcia.",
+      "en": "Signed the treaty but let its ratification bill lapse in April 2026 because the US is not joining on the Diego Garcia defence question."
+     },
+     "quelle": "https://mauritius-news.com/article/chagos-deal-mauritius-and-uk-set-december-2026-deadline"
+    },
+    {
+     "name": {
+      "de": "USA (Präsident Donald Trump)",
+      "fr": "États-Unis (président Donald Trump)",
+      "en": "United States (President Donald Trump)"
+     },
+     "position": {
+      "de": "Trump kritisiert die Vereinbarung laut Berichten scharf („act of great stupidity“) und stellt infrage, ob sie die Basis auf Diego Garcia ausreichend schützt.",
+      "fr": "Selon des informations de presse, Trump critique vivement l'accord (« act of great stupidity ») et doute qu'il protège suffisamment la base de Diego Garcia.",
+      "en": "According to reports, Trump sharply criticises the agreement (\"act of great stupidity\") and questions whether it adequately protects the Diego Garcia base."
+     },
+     "quelle": "https://www.asianews.it/en/articles/trump-opposes-chagos-islands-agreement-diego-garcia-base-at-the-centre-of-tensions"
+    },
+    {
+     "name": {
+      "de": "Malediven (Präsident Muizzu)",
+      "fr": "Maldives (président Muizzu)",
+      "en": "Maldives (President Muizzu)"
+     },
+     "position": {
+      "de": "Erkennt die Souveränität von Mauritius über das Archipel seit Februar 2026 nicht mehr an und stellt die Meeresgrenze von 2023 infrage.",
+      "fr": "Ne reconnaît plus, depuis février 2026, la souveraineté de Maurice sur l'archipel et remet en cause la délimitation maritime de 2023.",
+      "en": "Since February 2026 no longer recognises Mauritius's sovereignty over the archipelago and challenges the 2023 maritime boundary."
+     },
+     "quelle": "https://www.orfonline.org/expert-speak/the-maldives-chagos-claim-implications-for-india"
+    },
+    {
+     "name": {
+      "de": "Chagossische Gruppen",
+      "fr": "Groupes chagossiens",
+      "en": "Chagossian groups"
+     },
+     "position": {
+      "de": "Gespalten: Die Chagos Refugees Group unterstützt den Vertrag im Großen und Ganzen, in Großbritannien ansässige Gruppen wie Chagossian Voices und BIOT Citizens lehnen ihn ab.",
+      "fr": "Divisés : le Chagos Refugees Group soutient globalement le traité, tandis que des groupes basés au Royaume-Uni comme Chagossian Voices et BIOT Citizens le rejettent.",
+      "en": "Divided: the Chagos Refugees Group broadly supports the treaty, while UK-based groups such as Chagossian Voices and BIOT Citizens oppose it."
+     },
+     "quelle": "https://en.wikipedia.org/wiki/Chagossians"
+    }
+   ],
+   "zahlen": [
+    {
+     "wert": {
+      "de": "99 Jahre",
+      "fr": "99 ans",
+      "en": "99 years"
+     },
+     "text": {
+      "de": "Anfangslaufzeit der Pacht für Diego Garcia; eine Verlängerung ist möglich.",
+      "fr": "Durée initiale du bail de Diego Garcia ; une prolongation est possible.",
+      "en": "Initial term of the Diego Garcia lease; an extension is possible."
+     },
+     "quelle": "https://lordslibrary.parliament.uk/uk-mauritius-treaty-on-the-chagos-archipelago/"
+    },
+    {
+     "wert": {
+      "de": "1.500 bis 1.750",
+      "fr": "1 500 à 1 750",
+      "en": "1,500 to 1,750"
+     },
+     "text": {
+      "de": "Geschätzte Zahl der Chagossen 1965, kurz vor Beginn der Vertreibung; etwa 1.360 lebten auf den Inseln (Human Rights Watch). Andere Angaben nennen bis zu 2.000 Menschen.",
+      "fr": "Nombre estimé de Chagossiens en 1965, juste avant le début des expulsions ; environ 1 360 vivaient sur les îles (Human Rights Watch). D'autres estimations parlent de jusqu'à 2 000 personnes.",
+      "en": "Estimated number of Chagossians in 1965, just before the expulsions began; about 1,360 lived on the islands (Human Rights Watch). Other estimates put it at up to 2,000 people."
+     },
+     "quelle": "https://www.hrw.org/report/2023/02/15/thats-when-nightmare-started/uk-and-us-forced-displacement-chagossians-and"
+    },
+    {
+     "wert": {
+      "de": "13 zu 1",
+      "fr": "13 contre 1",
+      "en": "13 to 1"
+     },
+     "text": {
+      "de": "Stimmenverhältnis im Internationalen Gerichtshof beim Gutachten von 2019.",
+      "fr": "Répartition des voix à la Cour internationale de justice pour l'avis de 2019.",
+      "en": "Vote split at the International Court of Justice on the 2019 opinion."
+     },
+     "quelle": "https://www.worldcourts.com/icj/eng/decisions/2019.02.25_Mauritius.htm"
+    },
+    {
+     "wert": {
+      "de": "408.028,40 Pfund",
+      "fr": "408 028,40 livres",
+      "en": "£408,028.40"
+     },
+     "text": {
+      "de": "Honorare der Kanzlei Withers LLP und weiterer ausländischer Anwälte laut Regierungsantwort im April 2026, etwa 25 Millionen Rupien.",
+      "fr": "Honoraires du cabinet Withers LLP et d'autres avocats étrangers selon la réponse du gouvernement en avril 2026, soit environ 25 millions de roupies.",
+      "en": "Fees of the firm Withers LLP and other foreign lawyers according to the government's April 2026 answer, about 25 million rupees."
+     },
+     "quelle": "https://fr.allafrica.com/stories/202604220722.html"
+    },
+    {
+     "wert": {
+      "de": "40 Jahre",
+      "fr": "40 ans",
+      "en": "40 years"
+     },
+     "text": {
+      "de": "Mögliche Verlängerung des Abkommens nach Ablauf der Anfangslaufzeit, laut Ausschuss des House of Lords.",
+      "fr": "Prolongation possible de l'accord après la durée initiale, selon une commission de la Chambre des lords.",
+      "en": "Possible extension of the agreement after the initial term, according to a House of Lords committee."
+     },
+     "quelle": "https://publications.parliament.uk/pa/ld5901/ldselect/ldintagr/146/14603.htm"
+    }
+   ],
+   "grafiken": [
+    {
+     "art": "balken",
+     "einheit": {
+      "de": "Richter",
+      "fr": "juges",
+      "en": "judges"
+     },
+     "titel": {
+      "de": "Abstimmung im Internationalen Gerichtshof 2019",
+      "fr": "Vote à la Cour internationale de justice, 2019",
+      "en": "Vote at the International Court of Justice, 2019"
+     },
+     "werte": [
+      {
+       "wert": 13,
+       "hervor": true,
+       "label": {
+        "de": "Für das Gutachten",
+        "fr": "Pour l'avis",
+        "en": "For the opinion"
+       }
+      },
+      {
+       "wert": 1,
+       "label": {
+        "de": "Dagegen",
+        "fr": "Contre",
+        "en": "Against"
+       }
+      }
+     ],
+     "quelle": "Internationaler Gerichtshof (worldcourts.com)"
+    }
+   ],
+   "offen": [
+    {
+     "de": "Legt Großbritannien bis Dezember 2026 einen Fahrplan zur Ratifizierung vor, und wie stellen sich die USA dazu?",
+     "fr": "Le Royaume-Uni présentera-t-il d'ici décembre 2026 une feuille de route de ratification, et quelle sera la position des États-Unis ?",
+     "en": "Will the UK present a ratification roadmap by December 2026, and what will the US position be?"
+    },
+    {
+     "de": "Welche rechtlichen Schritte will Mauritius einleiten, wenn die Frist ungenutzt verstreicht?",
+     "fr": "Quelles démarches juridiques Maurice engagera-t-elle si le délai expire sans suite ?",
+     "en": "What legal steps would Mauritius take if the deadline passes without action?"
+    },
+    {
+     "de": "Wie wird der Streit mit den Malediven um die Meeresgebiete weitergehen?",
+     "fr": "Comment le différend avec les Maldives sur les espaces maritimes évoluera-t-il ?",
+     "en": "How will the dispute with the Maldives over the maritime areas develop?"
+    },
+    {
+     "de": "Welche Rechte erhalten die Chagossen auf Rückkehr und Umsiedlung, und wann?",
+     "fr": "Quels droits de retour et de réinstallation les Chagossiens obtiendront-ils, et quand ?",
+     "en": "What rights to return and resettle will the Chagossians get, and when?"
+    }
+   ],
+   "themen": [
+    "chagos"
+   ],
+   "stichworte": [
+    "Chagos",
+    "Diego Garcia",
+    "Souveränität",
+    "Vertrag",
+    "Malediven"
+   ],
+   "quellen": [
+    {
+     "name": "ICJ-Gutachten 2019 (worldcourts.com)",
+     "url": "https://www.worldcourts.com/icj/eng/decisions/2019.02.25_Mauritius.htm"
+    },
+    {
+     "name": "UN-Pressemitteilung zur Generalversammlung",
+     "url": "https://press.un.org/en/2019/ga12146.doc.htm"
+    },
+    {
+     "name": "Maldives Independent (Erklärstück)",
+     "url": "https://maldivesindependent.com/explainer/the-chagos-dispute-explained-colonial-borders-displaced-people-and-a-small-nation-defying-international-law-0755"
+    },
+    {
+     "name": "House of Lords Library",
+     "url": "https://lordslibrary.parliament.uk/uk-mauritius-treaty-on-the-chagos-archipelago/"
+    },
+    {
+     "name": "House of Lords International Agreements Committee",
+     "url": "https://publications.parliament.uk/pa/ld5901/ldselect/ldintagr/146/14603.htm"
+    },
+    {
+     "name": "Chatham House",
+     "url": "https://www.chathamhouse.org/2026/01/uk-ratification-chagos-archipelago-treaty-will-not-violate-international-law"
+    },
+    {
+     "name": "ORF",
+     "url": "https://www.orfonline.org/expert-speak/the-maldives-chagos-claim-implications-for-india"
+    },
+    {
+     "name": "The Diplomat",
+     "url": "https://thediplomat.com/2026/09/why-has-the-maldives-inserted-itself-into-the-chagos-sovereignty-dispute/"
+    },
+    {
+     "name": "MauritiusNews",
+     "url": "https://mauritius-news.com/article/chagos-deal-mauritius-and-uk-set-december-2026-deadline"
+    },
+    {
+     "name": "allAfrica / L'Express (PNQ)",
+     "url": "https://fr.allafrica.com/stories/202604220722.html"
+    },
+    {
+     "name": "allAfrica / L'Express (Kommentar)",
+     "url": "https://fr.allafrica.com/stories/202611230622.html"
+    },
+    {
+     "name": "Défi Media",
+     "url": "https://defimedia.info/chagos-pravind-jugnauth-questionne-le-role-de-sir-geoffrey-cox-et-evoque-plus-de-rs-25-m-versees-un"
+    },
+    {
+     "name": "AsiaNews",
+     "url": "https://www.asianews.it/en/articles/trump-opposes-chagos-islands-agreement-diego-garcia-base-at-the-centre-of-tensions"
+    },
+    {
+     "name": "Wikipedia (Chagossians)",
+     "url": "https://en.wikipedia.org/wiki/Chagossians"
+    },
+    {
+     "name": "IGH – Zusammenfassung des Gutachtens 2019",
+     "url": "https://www.icj-cij.org/public/files/case-related/169/169-20190225-SUM-01-00-EN.pdf"
+    },
+    {
+     "name": "House of Lords International Agreements Committee (Hintergrund)",
+     "url": "https://publications.parliament.uk/pa/ld5901/ldselect/ldintagr/146/14605.htm"
+    },
+    {
+     "name": "ASIL Insights: The Chagos Advisory Opinion",
+     "url": "https://www.asil.org/insights/volume/23/issue/2/chagos-advisory-opinion-and-decolonization-mauritius"
+    },
+    {
+     "name": "Human Rights Watch: „That's When the Nightmare Started“ (2023)",
+     "url": "https://www.hrw.org/report/2023/02/15/thats-when-nightmare-started/uk-and-us-forced-displacement-chagossians-and"
+    }
+   ]
+  }
+ ],
+ "vorschlaege": []
 }
