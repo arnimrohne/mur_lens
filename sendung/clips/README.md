@@ -15,8 +15,9 @@ Fehlt ein Clip, bleibt es bei der Folie. Jeder Clip wird bei allen Sendungen wie
 - **Beschreibung:** In der YouTube-Beschreibung steht automatisch, dass die Moderation KI-generiert ist.
 - **Ohne Wasserzeichen und Fremdlogos:** Die Clips müssen frei davon sein, und es braucht das Recht zur kommerziellen Nutzung.
 
-## So sind die aktuellen Clips entstanden (28.11.2026)
+## So sind die aktuellen Clips entstanden (28.11.2026, Kling)
 - **Porträts:** RealVisXL V4.0 (SDXL, Lizenz OpenRAIL++) mit den Prompts aus `vorschlaege.md`, Richtung A (Studio), jeweils Variante 1. Die französische und die englische Sprecherin sind per SDXL-Inpainting (Maske nur um die Person) in das deutsche Studiobild `de-A-1` gesetzt, damit alle drei Sprachen denselben Hintergrund haben. Die Standbilder liegen als `<sprache>-sprecher.jpg` hier im Ordner und werden auch für das YouTube-Vorschaubild genutzt.
-- **Animation:** SadTalker (MIT) im Modus `full`/`still` mit GFPGAN-Gesichtsverbesserung. Die deutsche Begrüßung ist mit dem 512er-Modell gerechnet, die übrigen Clips mit dem 256er-Modell.
+- **Animation:** Kling AI, Modell Kling 4.0 „Omni-Ref“ (1080p, 16:9, mit Ton), Eingaben: Standbild als `图片1` und die Tonspur als `音频1`. Kosten: 15 Credits pro Sekunde.
+- **Wichtig beim Prompt:** Der genaue Wortlaut der Tonspur muss im Prompt stehen, dazu „Use 音频1 unchanged as the soundtrack … no other words“ und „exactly the framing of 图片1 (no desk …)“. Ohne Wortlaut erfindet Kling eigene Sätze und ignoriert die Tonspur; ohne Bildausschnitt setzt es die Person auch mal an ein Pult. Jeden Clip danach per Transkription mit der Tonspur vergleichen.
 - **Ton:** `ton/<sprache>-<art>.wav`, gesprochen mit den Piper-Stimmen der Sendung. Vor dem Sprechen ist 0,6–0,8 s Ruhe eingefügt, danach 1,0–1,4 s.
-- **Lizenzhinweis:** SadTalker nutzt intern das Basel Face Model, dessen Lizenz nur nichtkommerzielle Forschung vorsieht. Das ist eine Grauzone, die bewusst in Kauf genommen wurde (Entscheidung vom 27.11.2026). Wer die Clips wieder entfernen will, löscht die `*.mp4` in diesem Ordner, dann erscheinen wieder die Folien.
+- **Lizenz:** Die Clips sind mit einer bezahlten Kling-Mitgliedschaft erzeugt, die kommerzielle Nutzung erlaubt. Die frühere SadTalker-Fassung (Basel-Face-Model-Grauzone) ist damit ersetzt. Wer die Clips wieder entfernen will, löscht die `*.mp4` in diesem Ordner, dann erscheinen wieder die Folien.
