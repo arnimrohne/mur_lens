@@ -77,8 +77,10 @@ function TopKachel({ thema, sprache, texte, aktuell }: TopKachelProps) {
       {dossier && (
         <a className={dossier.video ? 'gz-kachel-dossier gz-mit-video' : 'gz-kachel-dossier'} href={dossierZiel(dossier)}>
           {dossier.video && <span className="gz-play-knopf" aria-hidden="true" />}
-          <span className="gz-dossier-marke">{dossier.video ? texte.hintergrundVideo : texte.hintergrund}</span>{' '}
-          {dossier.titel[sprache]} →
+          <span className="gz-dossier-text">
+            <span className="gz-dossier-marke">{dossier.video ? texte.hintergrundVideo : texte.hintergrund}</span>
+            <span className="gz-dossier-titel">{dossier.titel[sprache]} →</span>
+          </span>
         </a>
       )}
       <div className="gz-kachel-fuss">
