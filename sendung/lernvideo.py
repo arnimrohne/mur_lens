@@ -375,6 +375,50 @@ def karten(t: float, s: Szene, eintraege: list[tuple[str, str]], titel: str, fra
     return bild
 
 
+REGION = Path(__file__).resolve().parents[1] / 'lib' / 'zeitung' / 'region-indischer-ozean.json'
+
+
+def regionalkarte(c: cairo.Context, ausschnitt: tuple[float, float, float, float], x0: float, y0: float, hoehe: float,
+                  a: float = 1.0) -> Callable[[float, float], tuple[float, float]]:
+    """Küsten des westlichen Indischen Ozeans (Natural Earth, wie die Dossier-Karte) im Ausschnitt (W, S, O, N);
+    zeichnet das Land und gibt die Umrechnung lon/lat → Bildpunkt zurück."""
+    import json
+
+    w, s, o, n = ausschnitt
+    k = math.cos(math.radians((s + n) / 2))
+    m = hoehe / (n - s)
+
+    def punkt(lon: float, lat: float) -> tuple[float, float]:
+        return x0 + (lon - w) * k * m, y0 + (n - lat) * m
+
+    if a > 0:
+        c.save()
+        c.rectangle(x0, y0, (o - w) * k * m, hoehe)
+        c.clip()
+        for ring in json.loads(REGION.read_text(encoding='utf-8'))['land']:
+            xs, ys = [p[0] for p in ring], [p[1] for p in ring]
+            if max(xs) < w - 1 or min(xs) > o + 1 or max(ys) < s - 1 or min(ys) > n + 1:
+                continue
+            c.move_to(*punkt(*ring[0]))
+            for q in ring[1:]:
+                c.line_to(*punkt(*q))
+            c.close_path()
+        c.set_source_rgba(1, 1, 1, 0.13 * a)
+        c.fill_preserve()
+        c.set_source_rgba(*HELL, 0.55 * a)
+        c.set_line_width(1.5)
+        c.stroke()
+        c.restore()
+    return punkt
+
+
+def entfernung_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    r = math.pi / 180
+    h = (math.sin((lat2 - lat1) * r / 2) ** 2
+         + math.cos(lat1 * r) * math.cos(lat2 * r) * math.sin((lon2 - lon1) * r / 2) ** 2)
+    return 6371 * 2 * math.asin(math.sqrt(h))
+
+
 URL_SPRECHEN = {'de': 'gazet punkt morisyen punkt D E', 'en': 'gazet dot morisyen dot D E',
                 'fr': 'gazet point morisyen point D E'}
 
@@ -554,7 +598,7 @@ def main() -> None:
         start += echte_dauer
         print(f'Szene {szene.nr}: {echte_dauer:.1f} s')
     musik_bis = start
-    if not a.nur or 22 in a.nur:  # Abspann-Folie der Sendung mit Erkennungsmelodie
+    if not a.nur or SZENEN[-1].nr in a.nur:  # Abspann-Folie der Sendung mit Erkennungsmelodie
         abspann = arbeit / 'abspann.mp4'
         es.abspann_video(SPRACHE, VIDEO.STAND_DATUM, abspann)
         teile.append(abspann)
