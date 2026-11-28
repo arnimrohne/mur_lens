@@ -1,12 +1,13 @@
 """
-YouTube-Vorschaubild (1280×720) für das Lernvideo „Gazet Morisyen erklärt: Wasser“.
+YouTube-Vorschaubild (1280×720) für ein Lernvideo „Gazet Morisyen erklärt“; Texte und Foto kommen aus dem Video-Modul.
 
-    python3 lernvideo_vorschau.py --sprache de --ziel vorschau.png [--variante foto|grafik]
+    python3 lernvideo_vorschau.py --video wasser --sprache de --ziel vorschau.png
 """
 
 from __future__ import annotations
 
 import argparse
+import importlib
 from pathlib import Path
 
 from PIL import Image, ImageDraw
@@ -14,26 +15,14 @@ from PIL import Image, ImageDraw
 import erzeuge_sendung as es
 
 W, H = 1280, 720
-FOTO = Path(__file__).resolve().parent.parent / 'public' / 'bilder' / 'wasserversorgung.jpg'
-
-TEXTE = {
-    'de': {'reihe': 'GAZET MORISYEN ERKLÄRT', 'titel': ['Warum auf Mauritius', 'das Wasser', 'knapp wird'],
-           'zahl': '44 %', 'zahl_text': 'Füllstand der Reservoirs', 'stand': 'STAND: NOV. 2026',
-           'foto': 'Foto: Diego Delso, CC BY-SA 4.0'},
-    'en': {'reihe': 'GAZET MORISYEN EXPLAINS', 'titel': ['Why Mauritius is', 'running short', 'of water'],
-           'zahl': '44%', 'zahl_text': 'reservoir level', 'stand': 'AS OF NOV 2026',
-           'foto': 'Photo: Diego Delso, CC BY-SA 4.0'},
-    'fr': {'reihe': 'GAZET MORISYEN EXPLIQUE', 'titel': ["Pourquoi l'eau", 'manque', 'à Maurice'],
-           'zahl': '44 %', 'zahl_text': 'remplissage des réservoirs', 'stand': 'SITUATION : NOV. 2026',
-           'foto': 'Photo : Diego Delso, CC BY-SA 4.0'},
-}
 
 
-def vorschau(sprache: str, ziel: Path) -> None:
-    t = TEXTE[sprache]
+
+def vorschau(video, sprache: str, ziel: Path) -> None:
+    t = video.VORSCHAU[sprache]
     bild = es.verlauf(es.NAVY, es.NAVY_TIEF).resize((W, H))
     # rechts: Foto des Stausees mit trockenem Ufer, nach links weich in Navy
-    foto = Image.open(FOTO).convert('RGB')
+    foto = Image.open(video.VORSCHAU_FOTO).convert('RGB')
     fh = H
     fw = round(foto.width * fh / foto.height)
     foto = foto.resize((fw, fh), Image.LANCZOS)
@@ -75,8 +64,9 @@ def vorschau(sprache: str, ziel: Path) -> None:
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--sprache', choices=list(TEXTE), default='de')
+    p.add_argument('--video', default='wasser', help='Modul in lernvideos/')
+    p.add_argument('--sprache', choices=['de', 'en', 'fr'], default='de')
     p.add_argument('--ziel', type=Path, required=True)
     a = p.parse_args()
-    vorschau(a.sprache, a.ziel)
+    vorschau(importlib.import_module(f'lernvideos.{a.video}'), a.sprache, a.ziel)
     print(a.ziel)
