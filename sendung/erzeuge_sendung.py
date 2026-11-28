@@ -1051,8 +1051,8 @@ def bild_outro(sprache: str, tag: dt.date, ziel: Path) -> None:
     bild.save(ziel)
 
 
-def bild_vorschau(sprache: str, tag: dt.date, ziel: Path) -> None:
-    """YouTube-Vorschaubild 1280×720 im Sendungsstil: Navy, Sendungstitel groß links, Sprecher rechts, Datum dezent."""
+def bild_vorschau(sprache: str, tag: dt.date, ziel: Path, topthema: str = '') -> None:
+    """YouTube-Vorschaubild 1280×720 im Sendungsstil: Navy, Topthema groß links, darunter der Sendungstitel, Sprecher rechts."""
     w, h = 1280, 720
     bild = verlauf(NAVY, NAVY_TIEF).resize((w, h))
     sprecher = CLIPS / f'{sprache}-sprecher.jpg'
@@ -1075,24 +1075,39 @@ def bild_vorschau(sprache: str, tag: dt.date, ziel: Path) -> None:
     # Absender: kleines Logo + Name
     bild.paste(logo_weiss(84), (links, 58), logo_weiss(84))
     z.text((links + 100, 78), 'Gazet Morisyen', font=titel_schrift(40), fill=WEISS)
-    # Sendungstitel groß, umbrochen auf höchstens drei Zeilen
-    titel = T[sprache]['sendung']
-    f = titel_schrift(96)
-    zeilen, zeile = [], ''
-    for wort in titel.split():
-        probe = f'{zeile} {wort}'.strip()
-        if z.textlength(probe, font=f) > 620 and zeile:
-            zeilen.append(zeile)
-            zeile = wort
-        else:
-            zeile = probe
-    zeilen.append(zeile)
-    y = 220 if len(zeilen) <= 2 else 190
-    z.rectangle([links, y + 8, links + 12, y + len(zeilen) * 104 - 14], fill=ROT_TV)
+    # Topthema groß (Schrift schrumpft, bis es in höchstens vier Zeilen passt), darunter kleiner der Sendungstitel
+    titel = (topthema or T[sprache]['sendung']).strip()
+    for groesse in (88, 80, 72, 66, 60, 54):
+        f = titel_schrift(groesse)
+        zeilen, zeile = [], ''
+        for wort in titel.split():
+            probe = f'{zeile} {wort}'.strip()
+            if z.textlength(probe, font=f) > 640 and zeile:
+                zeilen.append(zeile)
+                zeile = wort
+            else:
+                zeile = probe
+        zeilen.append(zeile)
+        if len(zeilen) <= 4 and all(z.textlength(zl, font=f) <= 660 for zl in zeilen):
+            break
+    if len(zeilen) > 4:  # auch in kleinster Schrift zu lang: nach vier Zeilen mit Auslassungszeichen kürzen
+        zeilen = zeilen[:4]
+        while z.textlength(zeilen[3] + ' …', font=f) > 640 and ' ' in zeilen[3]:
+            zeilen[3] = zeilen[3].rsplit(' ', 1)[0]
+        zeilen[3] = zeilen[3].rstrip(',;:–-') + ' …'
+    abstand = round(groesse * 1.1)
+    unter = T[sprache]['sendung'] if topthema else ''
+    hoehe = len(zeilen) * abstand + (70 if unter else 0) + 60
+    y = max(170, 170 + (h - 70 - 170 - hoehe) // 2)
+    z.rectangle([links, y + 8, links + 12, y + len(zeilen) * abstand - 14], fill=ROT_TV)
     for i, zl in enumerate(zeilen):
-        z.text((links + 36, y + i * 104), zl, font=f, fill=WEISS)
+        z.text((links + 36, y + i * abstand), zl, font=f, fill=WEISS)
+    y += len(zeilen) * abstand + 14
+    if unter:
+        z.text((links + 38, y), unter, font=titel_schrift(46), fill=HELLBLAU)
+        y += 70
     # Datum dezent darunter
-    gesperrt(z, (links + 38, y + len(zeilen) * 104 + 26), datum_kurz(tag, sprache), mono(30, True), HELLBLAU, 0.12)
+    gesperrt(z, (links + 38, y + 8), datum_kurz(tag, sprache), mono(28, True), HELLBLAU, 0.12)
     # Flaggenlinie unten
     for i, farbe in enumerate(FLAGGE):
         z.rectangle([round(i * w / 4), h - 14, round((i + 1) * w / 4), h], fill=farbe)
@@ -1403,7 +1418,8 @@ def erzeuge(daten: dict, sprache: str, stimmen: Path, ausgabe: Path, jetzt: dt.d
     stamm = f'gazet-morisyen-{tag.isoformat()}-{sprache}'
     video = ausgabe / f'{stamm}.mp4'
     ffmpeg('-f', 'concat', '-safe', '0', '-i', str(liste), '-c', 'copy', '-movflags', '+faststart', str(video))
-    bild_vorschau(sprache, tag, ausgabe / f'{stamm}-vorschau.png')
+    topthema = feld(beitraege[0].update, 'titel', sprache) if beitraege else ''
+    bild_vorschau(sprache, tag, ausgabe / f'{stamm}-vorschau.png', topthema)
 
     # YouTube-Texte
     kapitel, quellen_zeilen, start = [], [], vorspann_dauer
