@@ -102,6 +102,18 @@ def playlist_id(yt, sprache: str, sichtbarkeit: str) -> str:
     return neu['id']
 
 
+def setze_vorschau(yt, video_id: str, vorschau: Path, sprache: str) -> None:
+    from googleapiclient.http import MediaFileUpload
+
+    if not vorschau.exists():
+        return
+    try:
+        yt.thumbnails().set(videoId=video_id, media_body=MediaFileUpload(str(vorschau), mimetype='image/png')).execute()
+        print(f'  {sprache}: Vorschaubild gesetzt')
+    except Exception as fehler:  # noqa: BLE001 – eigenes Vorschaubild braucht einen verifizierten Kanal
+        print(f'  {sprache}: Vorschaubild nicht gesetzt ({fehler})')
+
+
 def lade_hoch(yt, ordner: Path, meta: dict, sichtbarkeit: str, vorhanden: dict[str, str]) -> str:
     from googleapiclient.http import MediaFileUpload
 
@@ -109,6 +121,7 @@ def lade_hoch(yt, ordner: Path, meta: dict, sichtbarkeit: str, vorhanden: dict[s
     if meta['titel'] in vorhanden:
         video_id = vorhanden[meta['titel']]
         print(f'  {sprache}: schon hochgeladen → https://youtu.be/{video_id}')
+        setze_vorschau(yt, video_id, ordner / meta['vorschau'], sprache)  # Vorschaubild auffrischen
         in_playlist(yt, playlist_id(yt, sprache, sichtbarkeit), video_id)
         return video_id
     body = {
@@ -139,12 +152,7 @@ def lade_hoch(yt, ordner: Path, meta: dict, sichtbarkeit: str, vorhanden: dict[s
     video_id = antwort['id']
     print(f'  {sprache}: hochgeladen → https://youtu.be/{video_id} ({antwort["status"]["privacyStatus"]})')
 
-    vorschau = ordner / meta['vorschau']
-    if vorschau.exists():
-        try:
-            yt.thumbnails().set(videoId=video_id, media_body=MediaFileUpload(str(vorschau), mimetype='image/png')).execute()
-        except Exception as fehler:  # noqa: BLE001 – eigenes Vorschaubild braucht einen verifizierten Kanal
-            print(f'  {sprache}: Vorschaubild nicht gesetzt ({fehler})')
+    setze_vorschau(yt, video_id, ordner / meta['vorschau'], sprache)
 
     in_playlist(yt, playlist_id(yt, sprache, sichtbarkeit), video_id)
     return video_id
