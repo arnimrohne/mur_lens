@@ -129,9 +129,28 @@ export interface Einleitung {
   texte: Record<Sprache, string>;
 }
 
+/** Ein Eintrag im Live-Ticker (z. B. bei Zyklonwarnung). */
+export interface TickerEintrag {
+  zeit: string;
+  text: Mehrsprachig;
+  quelle?: Quelle;
+}
+
+/** Vorübergehender Live-Ticker; nur vorhanden, solange er aktiv ist. */
+export interface Ticker {
+  /** z. B. „Zyklon Belal“ */
+  anlass: Mehrsprachig;
+  /** z. B. „Warnstufe II“ */
+  warnstufe?: Mehrsprachig;
+  seit: string;
+  /** neueste zuerst */
+  eintraege: TickerEintrag[];
+}
+
 export interface ZeitungDaten {
   stand: string;
   einleitung?: Einleitung;
+  ticker?: Ticker;
   themen: Thema[];
   videos: Video[];
 }

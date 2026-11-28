@@ -47,6 +47,9 @@ export interface OberflaechenTexte {
   zurAusgabe: string;
   dossiers: string;
   dossiersUntertitel: string;
+  ticker: string;
+  tickerOrtszeit: string;
+  tickerAeltere: (anzahl: number) => string;
   hintergrund: string;
   dossierAbschnitte: { kurz: string; warum: string; chronik: string; entwicklung: string; akteure: string; zahlen: string; offen: string; aktuell: string; quellen: string };
   dossierStand: (datum: string) => string;
@@ -125,6 +128,9 @@ const de: OberflaechenTexte = {
   zurAusgabe: '← Zur aktuellen Ausgabe',
   dossiers: 'Dossiers',
   dossiersUntertitel: 'Hintergründe zu Themen, die Mauritius immer wieder beschäftigen',
+  ticker: 'Live-Ticker',
+  tickerOrtszeit: 'Ortszeit Mauritius',
+  tickerAeltere: (n) => (n === 1 ? '1 ältere Meldung' : `${n} ältere Meldungen`),
   hintergrund: 'Hintergrund',
   dossierAbschnitte: { kurz: 'Kurz erklärt', warum: 'Warum es wichtig ist', chronik: 'Chronik', entwicklung: 'Entwicklung und Ursachen', akteure: 'Wer will was', zahlen: 'Zahlen und Fakten', offen: 'Offene Fragen', aktuell: 'Aktuelle Meldungen', quellen: 'Quellen' },
   dossierStand: (datum) => `Stand: ${datum}`,
@@ -203,6 +209,9 @@ const fr: OberflaechenTexte = {
   zurAusgabe: "← Vers l'édition du jour",
   dossiers: 'Dossiers',
   dossiersUntertitel: 'Le contexte des sujets qui reviennent sans cesse à Maurice',
+  ticker: 'En direct',
+  tickerOrtszeit: 'heure de Maurice',
+  tickerAeltere: (n) => (n === 1 ? '1 message précédent' : `${n} messages précédents`),
   hintergrund: 'Contexte',
   dossierAbschnitte: { kurz: 'En bref', warum: 'Pourquoi c\'est important', chronik: 'Chronologie', entwicklung: 'Évolution et causes', akteure: 'Qui veut quoi', zahlen: 'Chiffres clés', offen: 'Questions ouvertes', aktuell: 'Actualités', quellen: 'Sources' },
   dossierStand: (datum) => `Mis à jour : ${datum}`,
@@ -281,6 +290,9 @@ const en: OberflaechenTexte = {
   zurAusgabe: '← To the current edition',
   dossiers: 'Explainers',
   dossiersUntertitel: 'Background on the issues that keep coming back in Mauritius',
+  ticker: 'Live updates',
+  tickerOrtszeit: 'Mauritius time',
+  tickerAeltere: (n) => (n === 1 ? '1 earlier update' : `${n} earlier updates`),
   hintergrund: 'Background',
   dossierAbschnitte: { kurz: 'In short', warum: 'Why it matters', chronik: 'Timeline', entwicklung: 'Trends and causes', akteure: 'Who wants what', zahlen: 'Facts and figures', offen: 'Open questions', aktuell: 'Latest news', quellen: 'Sources' },
   dossierStand: (datum) => `Updated: ${datum}`,

@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { RubrikAbschnitt } from './rubrik-abschnitt';
 import { AnmeldeFormular } from '@/components/newsletter/anmelde-formular';
 import { ShopBanner } from './shop-banner';
+import { TickerBand } from './ticker-band';
 import { TopKacheln } from './top-kacheln';
 import { WetterLeiste } from './wetter-leiste';
 import { VideoAbschnitt } from './video-abschnitt';
@@ -73,6 +74,7 @@ export function ZeitungAnsicht({ daten, wetter, newsletterBereit = false, dossie
       </nav>
 
       <main className="gz-rahmen">
+        {daten.ticker && <TickerBand ticker={daten.ticker} sprache={sprache} texte={texte} />}
         {topThemen.length === 0 && ausgabe.archiv.length === 0 && <p className="gz-notiz">{texte.leer}</p>}
         {topThemen.length > 0 && <TopKacheln themen={topThemen} sprache={sprache} texte={texte} />}
         {wetter && <WetterLeiste wetter={wetter} sprache={sprache} texte={texte} jetzt={jetzt} />}
