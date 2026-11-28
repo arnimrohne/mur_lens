@@ -1,7 +1,7 @@
 {
  "schema": 1,
- "stand": "2026-11-28T01:00:00+04:00",
- "laeufe": 6,
+ "stand": "2026-11-28T05:00:00+04:00",
+ "laeufe": 7,
  "topics": [
   {
    "id": "3g-abschaltung",
@@ -2345,7 +2345,7 @@
   }
  ],
  "einleitung": {
-  "zeit": "2026-11-28T01:00:00+04:00",
+  "zeit": "2026-11-28T05:00:00+04:00",
   "de": "Die Wasserreserven der Insel sind am 26. November nur noch zu 44 Prozent gefüllt. Zu Chagos stellt Pravind Jugnauth die Rolle von Sir Geoffrey Cox infrage.",
   "fr": "Au 26 novembre, les réservoirs de l’île ne sont remplis qu’à 44 %. Sur Chagos, Pravind Jugnauth remet en question le rôle de Sir Geoffrey Cox.",
   "en": "On 26 November the island’s reservoirs were only 44% full. On Chagos, Pravind Jugnauth questions the role of Sir Geoffrey Cox."
