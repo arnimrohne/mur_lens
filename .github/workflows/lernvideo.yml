@@ -17,6 +17,15 @@ on:
         description: 'Auf YouTube hochladen (aus = nur Test, Video als Artefakt)'
         type: boolean
         default: true
+      sichtbarkeit:
+        description: 'Sichtbarkeit auf YouTube'
+        type: choice
+        options: [private, unlisted, public]
+        default: private
+      nur_sichtbarkeit:
+        description: 'Nichts erzeugen oder hochladen, nur die Sichtbarkeit der vorhandenen Videos setzen'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -59,6 +68,7 @@ jobs:
           done
 
       - name: Videos und Vorschaubilder erzeugen
+        if: ${{ !inputs.nur_sichtbarkeit }}
         env:
           VIDEO: ${{ inputs.video }}
           SPRACHEN: ${{ inputs.sprachen }}
@@ -70,17 +80,19 @@ jobs:
           done
 
       - name: Auf YouTube hochladen
-        if: inputs.hochladen
+        if: inputs.hochladen || inputs.nur_sichtbarkeit
         env:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
           VIDEO: ${{ inputs.video }}
           SPRACHEN: ${{ inputs.sprachen }}
-        run: cd sendung && python lernvideo_upload.py --video "$VIDEO" --ausgabe ../ausgabe --sprachen "$SPRACHEN"
+          SICHTBARKEIT: ${{ inputs.sichtbarkeit }}
+          NUR: ${{ inputs.nur_sichtbarkeit && '--nur-sichtbarkeit' || '' }}
+        run: cd sendung && python lernvideo_upload.py --video "$VIDEO" --ausgabe ../ausgabe --sprachen "$SPRACHEN" --sichtbarkeit "$SICHTBARKEIT" $NUR
 
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: ${{ always() && !inputs.nur_sichtbarkeit }}
         with:
           name: lernvideo-${{ inputs.video }}
           path: ausgabe/

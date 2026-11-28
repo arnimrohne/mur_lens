@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
-Lädt ein Lernvideo „Gazet Morisyen erklärt“ (Modul in lernvideos/) privat auf YouTube hoch – direkt in den Kanal, in keine Playlist.
+Lädt ein Lernvideo „Gazet Morisyen erklärt“ (Modul in lernvideos/) auf YouTube hoch (Standard: privat) – direkt in den Kanal, in keine Playlist.
 Setzt Vorschaubild und lädt die SRT-Untertitel hoch.
 
 Zugangsdaten wie bei der Sendung aus YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN (GitHub-Secrets).
 Bereits hochgeladene Titel werden übersprungen (nur Vorschaubild und Untertitel werden aufgefrischt).
 
-    python lernvideo_upload.py --video wasser --ausgabe <ordner> [--sprachen de,en,fr]
+    python lernvideo_upload.py --video wasser --ausgabe <ordner> [--sprachen de,en,fr] [--sichtbarkeit public]
+    python lernvideo_upload.py --video wasser --ausgabe . --sichtbarkeit public --nur-sichtbarkeit   # nur veröffentlichen
 """
 
 from __future__ import annotations
@@ -48,7 +49,26 @@ def lade_untertitel(yt, video_id: str, srt: Path, sprache: str, name: str) -> No
         print(f'  {sprache}: Untertitel nicht hochgeladen ({fehler})')
 
 
-def lade_hoch(yt, ordner: Path, sprache: str, vorhanden: dict[str, str]) -> str:
+def status(sichtbarkeit: str) -> dict:
+    return {'privacyStatus': sichtbarkeit, 'selfDeclaredMadeForKids': False, 'containsSyntheticMedia': True,
+            'license': 'youtube', 'embeddable': True}
+
+
+def setze_sichtbarkeit(yt, video_id: str, sichtbarkeit: str, sprache: str) -> None:
+    """Ändert die Sichtbarkeit eines vorhandenen Videos (z. B. privat → öffentlich)."""
+    jetzt = mit_wiederholung(lambda: yt.videos().list(part='status', id=video_id))['items'][0]['status']['privacyStatus']
+    if jetzt == sichtbarkeit:
+        print(f'  {sprache}: schon {sichtbarkeit}')
+        return
+    mit_wiederholung(lambda: yt.videos().update(part='status', body={'id': video_id, 'status': status(sichtbarkeit)}))
+    neu = mit_wiederholung(lambda: yt.videos().list(part='status', id=video_id))['items'][0]['status']['privacyStatus']
+    print(f'  {sprache}: Sichtbarkeit {jetzt} → {neu} (https://youtu.be/{video_id})')
+    if neu != sichtbarkeit:
+        raise RuntimeError(f'YouTube hat die Sichtbarkeit nicht auf {sichtbarkeit} gesetzt (steht auf {neu})')
+
+
+def lade_hoch(yt, ordner: Path, sprache: str, vorhanden: dict[str, str], sichtbarkeit: str = 'private',
+              nur_sichtbarkeit: bool = False) -> str:
     from googleapiclient.http import MediaFileUpload
 
     m = VIDEO.YOUTUBE[sprache]
@@ -56,12 +76,16 @@ def lade_hoch(yt, ordner: Path, sprache: str, vorhanden: dict[str, str]) -> str:
     if m['titel'] in vorhanden:
         video_id = vorhanden[m['titel']]
         print(f'  {sprache}: schon hochgeladen → https://youtu.be/{video_id}')
+        setze_sichtbarkeit(yt, video_id, sichtbarkeit, sprache)
+        if nur_sichtbarkeit:
+            return video_id
+    elif nur_sichtbarkeit:
+        raise RuntimeError(f'kein Video mit dem Titel „{m["titel"]}“ im Kanal gefunden')
     else:
         body = {
             'snippet': {'title': m['titel'], 'description': beschreibung(m), 'tags': m['tags'],
                         'categoryId': KATEGORIE_BILDUNG, 'defaultLanguage': sprache, 'defaultAudioLanguage': sprache},
-            'status': {'privacyStatus': 'private', 'selfDeclaredMadeForKids': False, 'containsSyntheticMedia': True,
-                       'license': 'youtube', 'embeddable': True},
+            'status': status(sichtbarkeit),
         }
         anfrage = yt.videos().insert(part='snippet,status', body=body, media_body=MediaFileUpload(
             str(video), mimetype='video/mp4', chunksize=8 * 1024 * 1024, resumable=True))
@@ -71,7 +95,7 @@ def lade_hoch(yt, ordner: Path, sprache: str, vorhanden: dict[str, str]) -> str:
             if fortschritt:
                 print(f'  {sprache}: {int(fortschritt.progress() * 100)} %')
         video_id = antwort['id']
-        print(f'  {sprache}: hochgeladen → https://youtu.be/{video_id} (privat)')
+        print(f'  {sprache}: hochgeladen → https://youtu.be/{video_id} ({sichtbarkeit})')
     setze_vorschau(yt, video_id, ordner / f'vorschau-{sprache}.png', sprache)
     lade_untertitel(yt, video_id, ordner / f"{m['datei']}.{sprache}.srt", sprache, m['untertitel'])
     return video_id
@@ -82,6 +106,9 @@ def main() -> int:
     p.add_argument('--ausgabe', required=True, type=Path)
     p.add_argument('--sprachen', default='de,en,fr')
     p.add_argument('--video', default='wasser', help='Modul in lernvideos/')
+    p.add_argument('--sichtbarkeit', choices=['private', 'unlisted', 'public'], default='private')
+    p.add_argument('--nur-sichtbarkeit', action='store_true',
+                   help='nichts hochladen, nur die Sichtbarkeit der vorhandenen Videos setzen')
     a = p.parse_args()
     global VIDEO
     VIDEO = importlib.import_module(f'lernvideos.{a.video}')
@@ -93,7 +120,7 @@ def main() -> int:
     fehler = []
     for sprache in [s.strip() for s in a.sprachen.split(',') if s.strip()]:
         try:
-            lade_hoch(yt, a.ausgabe, sprache, vorhanden)
+            lade_hoch(yt, a.ausgabe, sprache, vorhanden, a.sichtbarkeit, a.nur_sichtbarkeit)
         except Exception as f:  # noqa: BLE001 – die anderen Sprachen trotzdem hochladen
             print(f'  {sprache}: FEHLER {f}', file=sys.stderr)
             fehler.append(sprache)
