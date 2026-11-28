@@ -1,10 +1,14 @@
-# Erzeugt das Lernvideo „Gazet Morisyen erklärt: Wasser“ in DE/EN/FR und lädt es privat auf YouTube hoch
-# (direkt in den Kanal, keine Playlist). Nur von Hand startbar.
+# Erzeugt ein Lernvideo „Gazet Morisyen erklärt“ (Modul in sendung/lernvideos/) in DE/EN/FR und lädt es privat
+# auf YouTube hoch (direkt in den Kanal, keine Playlist). Nur von Hand startbar.
 name: Lernvideo
 
 on:
   workflow_dispatch:
     inputs:
+      video:
+        description: 'Video (Modul in sendung/lernvideos/, z. B. wasser)'
+        required: true
+        default: wasser
       sprachen:
         description: 'Sprachen (kommagetrennt)'
         required: true
@@ -56,12 +60,13 @@ jobs:
 
       - name: Videos und Vorschaubilder erzeugen
         env:
+          VIDEO: ${{ inputs.video }}
           SPRACHEN: ${{ inputs.sprachen }}
         run: |
           cd sendung
           for s in ${SPRACHEN//,/ }; do
-            python lernvideo.py --sprache "$s" --stimmen ../stimmen --ausgabe ../ausgabe
-            python lernvideo_vorschau.py --sprache "$s" --ziel "../ausgabe/vorschau-$s.png"
+            python lernvideo.py --video "$VIDEO" --sprache "$s" --stimmen ../stimmen --ausgabe ../ausgabe
+            python lernvideo_vorschau.py --video "$VIDEO" --sprache "$s" --ziel "../ausgabe/vorschau-$s.png"
           done
 
       - name: Auf YouTube hochladen
@@ -70,13 +75,14 @@ jobs:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          VIDEO: ${{ inputs.video }}
           SPRACHEN: ${{ inputs.sprachen }}
-        run: cd sendung && python lernvideo_upload.py --ausgabe ../ausgabe --sprachen "$SPRACHEN"
+        run: cd sendung && python lernvideo_upload.py --video "$VIDEO" --ausgabe ../ausgabe --sprachen "$SPRACHEN"
 
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: lernvideo-wasser
+          name: lernvideo-${{ inputs.video }}
           path: ausgabe/
           retention-days: 14
           compression-level: 0
