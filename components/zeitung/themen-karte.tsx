@@ -107,8 +107,10 @@ export function ThemenKarte({ thema, sprache, texte, jetzt, oberzeile, liste = f
       {dossier && (
         <a className={dossier.video ? 'gz-dossier-link gz-mit-video' : 'gz-dossier-link'} href={dossierZiel(dossier)}>
           {dossier.video && <span className="gz-play-knopf" aria-hidden="true" />}
-          <span className="gz-dossier-marke">{dossier.video ? texte.hintergrundVideo : texte.hintergrund}</span>
-          <span className="gz-dossier-titel">{dossier.titel[sprache]}</span>
+          <span className="gz-dossier-text">
+            <span className="gz-dossier-marke">{dossier.video ? texte.hintergrundVideo : texte.hintergrund}</span>
+            <span className="gz-dossier-titel">{dossier.titel[sprache]}</span>
+          </span>
           <span aria-hidden="true">→</span>
         </a>
       )}
