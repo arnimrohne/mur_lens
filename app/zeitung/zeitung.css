@@ -290,7 +290,7 @@ html:has(.gazet) { background: #fdfaf5; }
 /* Dossiers (Hintergrund-Lexikon) */
 .gz-dossier-link { display: flex; align-items: center; gap: 10px; margin-top: 12px; padding: 10px 14px; border: 1px solid var(--line); border-left: 4px solid var(--lagoon); border-radius: var(--radius); background: var(--paper); text-decoration: none; color: var(--fg); font-family: var(--f-display); font-weight: 500; font-size: .95rem; }
 .gz-dossier-link:hover { background: var(--chip); }
-.gz-dossier-link span:nth-child(2) { flex: 1; min-width: 0; }
+.gz-dossier-link .gz-dossier-titel { flex: 1; min-width: 0; }
 .gz-dossier-marke { flex: none; font-family: var(--f-mono); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--lagoon); }
 .gz-nav-liste a.gz-nav-dossiers { background: var(--lagoon); color: var(--on-lagoon); }
 .gz-nav-liste a.gz-nav-dossiers:hover { background: var(--lagoon); opacity: .9; }
@@ -426,3 +426,16 @@ html:has(.gazet) { background: #fdfaf5; }
 }
 .gz-dossier-video-hinweis { margin: .5rem 0 0; color: var(--muted); font-size: .85rem; }
 @media (prefers-reduced-motion: reduce) { .gz-dossier-video-play { transition: none; } }
+
+/* Play-Knopf an Dossier-Hinweisen, wenn es ein Lernvideo gibt */
+.gz-play-knopf { position: relative; flex: none; width: 30px; height: 30px; border-radius: 50%; background: var(--red); }
+.gz-play-knopf::after { content: ""; position: absolute; left: 12px; top: 9px; border-style: solid; border-width: 6px 0 6px 10px; border-color: transparent transparent transparent #fff; }
+.gz-dossier-link.gz-mit-video { border-left-color: var(--red); }
+.gz-dossier-link.gz-mit-video .gz-dossier-marke, .gz-kachel-dossier.gz-mit-video .gz-dossier-marke { color: var(--red); }
+.gz-kachel-dossier.gz-mit-video { display: inline-flex; align-items: center; gap: 8px; }
+.gz-kachel-dossier .gz-play-knopf { width: 24px; height: 24px; }
+.gz-kachel-dossier .gz-play-knopf::after { left: 9px; top: 7px; border-width: 5px 0 5px 8px; }
+.gz-play-mini { display: inline-block; width: 0; height: 0; margin-right: 4px; border-style: solid; border-width: 4px 0 4px 7px; border-color: transparent transparent transparent currentColor; vertical-align: 1px; }
+.gz-dossier-video { scroll-margin-top: 80px; }
+.gz-dossier-marke { white-space: nowrap; }
+.gz-dossier-link.gz-mit-video { flex-wrap: wrap; row-gap: 4px; }

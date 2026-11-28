@@ -6,7 +6,7 @@ import { MeldungFolie } from './meldung-folie';
 import { TeilenKnopf } from './teilen-knopf';
 import { useWischStapel } from '@/hooks/use-wisch-stapel';
 import { istFrischAktualisiert, istNeu } from '@/lib/zeitung/ausgabe';
-import { dossierFuerThema, dossierPfad } from '@/lib/zeitung/dossiers';
+import { dossierFuerThema, dossierZiel } from '@/lib/zeitung/dossiers';
 import { kartenort } from '@/lib/zeitung/karte';
 import { meldungText } from '@/lib/zeitung/sprache';
 import type { OberflaechenTexte } from '@/lib/zeitung/texte';
@@ -105,9 +105,10 @@ export function ThemenKarte({ thema, sprache, texte, jetzt, oberzeile, liste = f
         </>
       )}
       {dossier && (
-        <a className="gz-dossier-link" href={dossierPfad(dossier.id)}>
-          <span className="gz-dossier-marke">{texte.hintergrund}</span>
-          <span>{dossier.titel[sprache]}</span>
+        <a className={dossier.video ? 'gz-dossier-link gz-mit-video' : 'gz-dossier-link'} href={dossierZiel(dossier)}>
+          {dossier.video && <span className="gz-play-knopf" aria-hidden="true" />}
+          <span className="gz-dossier-marke">{dossier.video ? texte.hintergrundVideo : texte.hintergrund}</span>
+          <span className="gz-dossier-titel">{dossier.titel[sprache]}</span>
           <span aria-hidden="true">→</span>
         </a>
       )}
