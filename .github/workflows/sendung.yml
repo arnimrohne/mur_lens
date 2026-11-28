@@ -1,11 +1,11 @@
 # Produziert täglich die Nachrichtensendung von Gazet Morisyen als Video
 # (Deutsch, Französisch, Englisch) und legt sie als Artefakt zum Herunterladen ab.
-# 05:20 UTC = 09:20 Uhr Mauritius, nach dem Redaktionslauf um 04:59 UTC.
+# 02:30 UTC = 06:30 Uhr Mauritius, nach dem Redaktionslauf um 02:15 UTC.
 name: Nachrichtensendung
 
 on:
   schedule:
-    - cron: '20 5 * * *'
+    - cron: '30 2 * * *'
   workflow_dispatch:
     inputs:
       sprachen:
