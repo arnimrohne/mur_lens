@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import dossierDatei from '../data/zeitung/dossiers.json';
 import { dossierFuerThema, dossierPfad, themenZuDossier } from '../lib/zeitung/dossiers';
-import { istFreieLizenz, parseDossierBild, parseDossierKarte, parseDossiers } from '../lib/zeitung/parse-daten';
+import { istFreieLizenz, parseDossierBild, parseDossierKarte, parseDossiers, parseDossierVideo } from '../lib/zeitung/parse-daten';
 import { entfernungKm } from '../lib/zeitung/regionalkarte';
 
 const t = (s: string) => ({ de: s, fr: s, en: s });
@@ -128,5 +128,21 @@ describe('Dossier-Karte', () => {
 
   it('das mitgelieferte Chagos-Dossier hat eine Karte', () => {
     expect(parseDossiers(dossierDatei).find((d) => d.id === 'chagos')?.karte?.orte.length).toBeGreaterThan(3);
+  });
+});
+
+describe('Lernvideo im Dossier', () => {
+  it('übernimmt gültige YouTube-IDs und eigene Vorschaubilder je Sprache', () => {
+    const v = parseDossierVideo({
+      youtube: { de: '4UtA-XNTAlg', en: '-Qen4qRrVa8', fr: 'kaputt' },
+      vorschau: { de: '/bilder/lernvideo-wasser-de.jpg', en: 'https://example.com/x.jpg' },
+    });
+    expect(v?.youtube).toEqual({ de: '4UtA-XNTAlg', en: '-Qen4qRrVa8' });
+    expect(v?.vorschau).toEqual({ de: '/bilder/lernvideo-wasser-de.jpg' });
+  });
+
+  it('verwirft ein Video ohne gültige ID', () => {
+    expect(parseDossierVideo({ youtube: { de: 'x' } })).toBeUndefined();
+    expect(parseDossierVideo(undefined)).toBeUndefined();
   });
 });

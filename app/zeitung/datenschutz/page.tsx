@@ -84,6 +84,14 @@ export default function DatenschutzSeite() {
         stellt Ihr Browser eine Verbindung zum jeweiligen Anbieter her (z. B. YouTube, Nachrichtenseiten);
         dort gelten deren Datenschutzbestimmungen.
       </p>
+      <p>
+        <strong>Videos in Dossiers:</strong> Auf Dossier-Seiten können wir unsere eigenen Erklärvideos zeigen. Dort sehen
+        Sie zunächst nur ein Vorschaubild von unserem eigenen Server; es wird keine Verbindung zu YouTube aufgebaut.
+        Erst wenn Sie auf „Video abspielen“ klicken, lädt Ihr Browser den Player von YouTube im erweiterten
+        Datenschutzmodus (youtube-nocookie.com). Dabei werden insbesondere Ihre IP-Adresse und die besuchte Seite an
+        Google übertragen; es gelten die Datenschutzbestimmungen von Google. Rechtsgrundlage ist Ihre Einwilligung durch
+        den Klick (Art. 6 Abs. 1 lit. a DSGVO).
+      </p>
 
       <h2 id="youtube">YouTube-Kanal und YouTube API Services</h2>
       <p>
@@ -118,6 +126,13 @@ export default function DatenschutzSeite() {
           our own channel. No data of visitors to this website or of other YouTube users is accessed, stored or
           shared through the API. We only read the list of our own uploads and playlists to avoid duplicate
           uploads; this information is not kept after each run.
+        </p>
+        <p>
+          <strong>Videos on explainer pages:</strong> Our own explainer videos may be shown on explainer (dossier) pages.
+          At first you only see a preview image from our own server; no connection to YouTube is made. Only when you
+          click “Play video” does your browser load the YouTube player in privacy-enhanced mode (youtube-nocookie.com),
+          which sends your IP address and the page visited to Google. The legal basis is your consent given by that
+          click (Art. 6(1)(a) GDPR).
         </p>
         <p>
           By watching our videos on YouTube you use YouTube and agree to the{' '}
