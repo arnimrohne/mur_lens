@@ -2,7 +2,8 @@ import { describe, expect, it } from 'vitest';
 
 import { VERSANDZEITEN_FUER, istHaeufigkeit, newsletterBereit } from '@/lib/newsletter/konfiguration';
 import { baueMail, themenFuerMail } from '@/lib/newsletter/mail';
-import { maskiere } from '@/lib/newsletter/mail-html';
+import { inhaltFuer, maskiere } from '@/lib/newsletter/mail-html';
+import { SEITEN_URL, YOUTUBE_PLAYLISTS } from '@/lib/zeitung/seite';
 import { einstellungsLink, einstellungsToken, emailAusLink, istEmail, tokenGueltig } from '@/lib/newsletter/token';
 import { parseZeitungDaten } from '@/lib/zeitung/parse-daten';
 import type { Thema, ZeitungDaten } from '@/lib/zeitung/types';
@@ -85,6 +86,19 @@ describe('Newsletter: Mail', () => {
     expect(html).toContain('{{ contact.EINSTELLUNGEN }}');
     expect(html).toContain('{% if contact.SHOP == "ja" %}');
     expect(mail?.betreff).toContain('Gazet Morisyen');
+  });
+
+  it('verlinkt ganz oben Zeitung und Playlist der jeweiligen Sprache', () => {
+    const html = baueMail(daten([thema('a', 1)]), undefined, 'morgen', JETZT)?.html ?? '';
+    for (const sprache of ['de', 'fr', 'en'] as const) {
+      const block = inhaltFuer(sprache, { top: [], neu: [], jetzt: JETZT });
+      const zeitung = block.indexOf(`href="${SEITEN_URL}"`);
+      const playlist = block.indexOf(YOUTUBE_PLAYLISTS[sprache]);
+      expect(zeitung).toBeGreaterThan(-1);
+      expect(playlist).toBeGreaterThan(-1);
+      expect(Math.max(zeitung, playlist)).toBeLessThan(block.indexOf('</tr>'));
+      expect(html).toContain(YOUTUBE_PLAYLISTS[sprache]);
+    }
   });
 
   it('maskiert HTML und Vorlagensyntax aus den Daten', () => {

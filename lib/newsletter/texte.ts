@@ -20,6 +20,8 @@ export interface NewsletterTexte {
   ungueltig: string;
   baldVerfuegbar: string;
   // Mail
+  zurZeitung: string;
+  zurSendung: string;
   kurz: string;
   weitere: string;
   alles: string;
@@ -50,6 +52,8 @@ const de: NewsletterTexte = {
   fehler: 'Die Anmeldung hat nicht geklappt. Bitte versuchen Sie es später noch einmal.',
   ungueltig: 'Bitte geben Sie eine gültige E-Mail-Adresse an und bestätigen Sie die Einwilligung.',
   baldVerfuegbar: 'Der Newsletter startet in Kürze.',
+  zurZeitung: 'Zur Zeitung',
+  zurSendung: 'Video-Sendung auf YouTube',
   kurz: 'Das Wichtigste in Kürze',
   weitere: 'Weitere Meldungen',
   alles: 'Alle Meldungen auf gazet.morisyen.de →',
@@ -79,6 +83,8 @@ const fr: NewsletterTexte = {
   fehler: "L'inscription n'a pas fonctionné. Veuillez réessayer plus tard.",
   ungueltig: 'Veuillez saisir une adresse e-mail valide et confirmer votre consentement.',
   baldVerfuegbar: 'La newsletter démarre prochainement.',
+  zurZeitung: 'Lire le journal',
+  zurSendung: 'Le journal vidéo sur YouTube',
   kurz: "L'essentiel en bref",
   weitere: 'Autres articles',
   alles: 'Tous les articles sur gazet.morisyen.de →',
@@ -108,6 +114,8 @@ const en: NewsletterTexte = {
   fehler: 'Subscription did not work. Please try again later.',
   ungueltig: 'Please enter a valid email address and confirm your consent.',
   baldVerfuegbar: 'The newsletter is starting soon.',
+  zurZeitung: 'Read the paper',
+  zurSendung: 'Video bulletin on YouTube',
   kurz: 'In brief',
   weitere: 'More stories',
   alles: 'All stories on gazet.morisyen.de →',
