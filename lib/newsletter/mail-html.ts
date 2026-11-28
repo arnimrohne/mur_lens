@@ -4,10 +4,10 @@
  */
 
 import { IMPRESSUM, SEITEN_NAME, SEITEN_URL, YOUTUBE_PLAYLISTS } from '@/lib/zeitung/seite';
-import { meldungText } from '@/lib/zeitung/sprache';
+import { meldungText, uhrzeit } from '@/lib/zeitung/sprache';
 import { themaUrl } from '@/lib/zeitung/teilen';
 import { TEXTE } from '@/lib/zeitung/texte';
-import type { Einleitung, Sprache, Thema } from '@/lib/zeitung/types';
+import type { Einleitung, Sprache, Thema, Ticker } from '@/lib/zeitung/types';
 import type { Wetter } from '@/lib/zeitung/wetter';
 import { MAIL_TEXTE } from './texte';
 
@@ -33,8 +33,31 @@ interface InhaltDaten {
   neu: Thema[];
   wetter?: Wetter;
   einleitung?: Einleitung;
+  ticker?: Ticker;
   jetzt: number;
 }
+
+/** Live-Ticker (z. B. Zyklonwarnung): die neuesten Einträge ganz oben. */
+function tickerBlock(ticker: Ticker, sprache: Sprache): string {
+  const t = TEXTE[sprache];
+  const stufe = ticker.warnstufe
+    ? ` · <span style="color:${FARBE.rot};font-weight:700;">${maskiere(ticker.warnstufe[sprache])}</span>`
+    : '';
+  const zeilen = ticker.eintraege
+    .slice(0, 5)
+    .map(
+      (e) => `<tr><td style="padding:4px 10px 4px 0;vertical-align:top;${SANS}font-size:13px;font-weight:700;color:${FARBE.rot};white-space:nowrap;">${maskiere(uhrzeit(e.zeit, sprache))}</td>
+<td style="padding:4px 0;${SCHRIFT}font-size:15px;line-height:1.45;color:${FARBE.text};">${maskiere(e.text[sprache])}</td></tr>`,
+    )
+    .join('');
+  return `<tr><td style="padding:12px 14px;background:${FARBE.papier};border:1px solid ${FARBE.linie};border-left:4px solid ${FARBE.rot};border-radius:10px;">
+<div style="${SANS}font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:${FARBE.rot};font-weight:700;">● ${maskiere(t.ticker)} · ${maskiere(t.tickerOrtszeit)}</div>
+<div style="${SANS}font-size:17px;font-weight:700;color:${FARBE.text};margin:4px 0 6px;">${maskiere(ticker.anlass[sprache])}${stufe}</div>
+<table role="presentation" cellpadding="0" cellspacing="0">${zeilen}</table>
+<a href="${SEITEN_URL}" style="${SANS}font-size:13px;font-weight:700;color:${FARBE.gruen};text-decoration:none;">${maskiere(t.weiterlesen)}</a>
+</td></tr><tr><td style="height:12px;"></td></tr>`;
+}
+
 
 function themaBlock(thema: Thema, sprache: Sprache, istTop: boolean): string {
   const neueste = thema.updates[0];
@@ -75,6 +98,7 @@ function linkLeiste(sprache: Sprache): string {
 export function inhaltFuer(sprache: Sprache, d: InhaltDaten): string {
   const m = MAIL_TEXTE[sprache];
   const teile: string[] = [linkLeiste(sprache)];
+  if (d.ticker) teile.push(tickerBlock(d.ticker, sprache));
   if (d.einleitung) {
     teile.push(`<tr><td style="padding:4px 0 14px;${SCHRIFT}font-size:16px;line-height:1.55;color:${FARBE.text};">
 <div style="${SANS}font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:${FARBE.gruen};margin-bottom:4px;">${maskiere(m.kurz)}</div>

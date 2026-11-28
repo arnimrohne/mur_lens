@@ -10,9 +10,9 @@ import type {
   Dossier,
   DossierAkteur,
   DossierBild,
+  DossierEreignis,
   DossierKarte,
   DossierKartenOrt,
-  DossierEreignis,
   DossierZahl,
   Einleitung,
   Grafik,
@@ -23,6 +23,8 @@ import type {
   Quelle,
   RubrikId,
   Thema,
+  Ticker,
+  TickerEintrag,
   Video,
   VideoUebersetzung,
   ZeitungDaten,
@@ -201,6 +203,33 @@ function parseEinleitung(wert: unknown): Einleitung | undefined {
   return { zeit: wert.zeit, texte: { de, fr: text(wert.fr) ?? de, en: text(wert.en) ?? de } };
 }
 
+const TICKER_MAX = 48;
+
+/** Live-Ticker: nur wenn "aktiv": true und mindestens ein gültiger Eintrag; neueste zuerst. */
+export function parseTicker(wert: unknown): Ticker | undefined {
+  if (!istObjekt(wert) || wert.aktiv !== true) return undefined;
+  const anlass = mehrsprachig(wert.anlass);
+  if (!anlass || !Array.isArray(wert.eintraege)) return undefined;
+  const eintraege = wert.eintraege
+    .flatMap((roh): TickerEintrag[] => {
+      if (!istObjekt(roh) || !istGueltigeZeit(roh.zeit)) return [];
+      const textWert = mehrsprachig(roh.text);
+      if (!textWert) return [];
+      const quelle = istObjekt(roh.quelle) ? parseQuellen([roh.quelle])[0] : undefined;
+      return [{ zeit: roh.zeit, text: textWert, ...(quelle ? { quelle } : {}) }];
+    })
+    .sort((a, b) => Date.parse(b.zeit) - Date.parse(a.zeit))
+    .slice(0, TICKER_MAX);
+  if (eintraege.length === 0) return undefined;
+  const warnstufe = mehrsprachig(wert.warnstufe);
+  return {
+    anlass,
+    ...(warnstufe ? { warnstufe } : {}),
+    seit: istGueltigeZeit(wert.seit) ? wert.seit : eintraege[eintraege.length - 1].zeit,
+    eintraege,
+  };
+}
+
 /** Wandelt beliebige JSON-Daten in gültige Zeitungsdaten um. */
 export function parseZeitungDaten(roh: unknown): ZeitungDaten {
   if (!istObjekt(roh)) return { stand: '', themen: [], videos: [] };
@@ -210,6 +239,7 @@ export function parseZeitungDaten(roh: unknown): ZeitungDaten {
   return {
     stand: istGueltigeZeit(roh.stand) ? roh.stand : '',
     einleitung: parseEinleitung(roh.einleitung),
+    ticker: parseTicker(roh.ticker),
     themen,
     videos,
   };

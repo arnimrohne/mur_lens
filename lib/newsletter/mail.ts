@@ -40,16 +40,17 @@ const BETREFF_ZEIT: Record<Versandzeit, string> = { morgen: 'Morgen · Matin · 
  */
 export function baueMail(daten: ZeitungDaten, wetter: Wetter | undefined, zeit: Versandzeit, jetzt: number): MailAusgabe | undefined {
   const { top, neu } = themenFuerMail(daten, zeit, jetzt);
-  if (zeit !== 'morgen' && top.length === 0 && neu.length === 0) return undefined;
-  if (top.length === 0 && neu.length === 0) return undefined;
+  const ticker = Boolean(daten.ticker);
+  if (zeit !== 'morgen' && top.length === 0 && neu.length === 0 && !ticker) return undefined;
+  if (top.length === 0 && neu.length === 0 && !ticker) return undefined;
   const einleitung =
     daten.einleitung && jetzt - Date.parse(daten.einleitung.zeit) < FENSTER_STUNDEN[zeit] * STUNDE_MS
       ? daten.einleitung
       : undefined;
   const html = mailHtml({
-    de: inhaltFuer('de', { top, neu, wetter, einleitung, jetzt }),
-    fr: inhaltFuer('fr', { top, neu, wetter, einleitung, jetzt }),
-    en: inhaltFuer('en', { top, neu, wetter, einleitung, jetzt }),
+    de: inhaltFuer('de', { top, neu, wetter, einleitung, ticker: daten.ticker, jetzt }),
+    fr: inhaltFuer('fr', { top, neu, wetter, einleitung, ticker: daten.ticker, jetzt }),
+    en: inhaltFuer('en', { top, neu, wetter, einleitung, ticker: daten.ticker, jetzt }),
   });
   return {
     betreff: `Gazet Morisyen · ${BETREFF_DATUM.format(new Date(jetzt))} · ${BETREFF_ZEIT[zeit]}`,

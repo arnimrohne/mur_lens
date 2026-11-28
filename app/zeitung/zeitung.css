@@ -380,3 +380,28 @@ html:has(.gazet) { background: #fdfaf5; }
 .gz-verlauf-liste > li:last-child { border-bottom: 0; }
 .gz-verlauf-liste > li::before { content: ''; position: absolute; left: -23px; top: 22px; width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 2px solid var(--muted); }
 .gz-verlauf-liste h3 { font-size: 1.15rem; }
+
+/* Live-Ticker (z. B. bei Zyklonwarnung): Band ganz oben, neuester Eintrag sichtbar, ältere aufklappbar */
+.gz-ticker {
+  margin: 1rem 0 1.25rem; padding: .85rem 1rem; border-radius: var(--radius);
+  background: var(--paper); border: 1px solid var(--line); border-left: 4px solid var(--red);
+}
+.gz-ticker-kopf {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .7rem;
+  font-family: var(--f-display); font-size: .9rem;
+}
+.gz-ticker-live {
+  display: inline-flex; align-items: center; gap: .4rem; color: var(--red);
+  font-family: var(--f-mono); font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+}
+.gz-ticker-punkt { width: .55rem; height: .55rem; border-radius: 50%; background: var(--red); animation: gz-ticker-puls 1.6s ease-in-out infinite; }
+@keyframes gz-ticker-puls { 50% { opacity: .25; } }
+@media (prefers-reduced-motion: reduce) { .gz-ticker-punkt { animation: none; } }
+.gz-ticker-stufe { padding: .05rem .5rem; border-radius: 999px; background: var(--red); color: var(--bg); font-size: .78rem; font-weight: 700; }
+.gz-ticker-zone { margin-left: auto; color: var(--muted); font-size: .75rem; }
+.gz-ticker-liste { list-style: none; margin: .5rem 0 0; padding: 0; display: grid; gap: .45rem; }
+.gz-ticker-eintrag { display: grid; grid-template-columns: 3.2rem minmax(0, 1fr); gap: .6rem; align-items: baseline; }
+.gz-ticker-eintrag time { font-family: var(--f-mono); font-size: .85rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--red); }
+.gz-ticker-eintrag p { margin: 0; }
+.gz-ticker-mehr { margin-top: .5rem; }
+.gz-ticker-mehr summary { cursor: pointer; color: var(--muted); font-family: var(--f-display); font-size: .82rem; }

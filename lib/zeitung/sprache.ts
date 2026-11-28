@@ -76,6 +76,11 @@ export function tagLang(zeitpunkt: number, sprache: Sprache): string {
   );
 }
 
+/** Uhrzeit (HH:MM) in Ortszeit Mauritius. */
+export function uhrzeit(iso: string, sprache: Sprache): string {
+  return format(sprache, { hour: '2-digit', minute: '2-digit' }).format(new Date(Date.parse(iso)));
+}
+
 export function zeitKurz(zeitpunkt: number, sprache: Sprache): string {
   return format(sprache, { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }).format(
     new Date(zeitpunkt),
