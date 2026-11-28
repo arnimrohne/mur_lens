@@ -3,6 +3,10 @@
   "de": {
     "woerter": {
       "Mauritius": "[[ maʊrˈiːtsiʊs ]]",
+      "Tarife": "[[ tarˈiːfə ]]",
+      "Tarifen": "[[ tarˈiːfən ]]",
+      "Tarif": "[[ tarˈiːf ]]",
+      "Service": "[[ zˈœɾvɪs ]]",
       "Mauritier": "[[ maʊrˈiːtsiɐ ]]",
       "Mauritierin": "[[ maʊrˈiːtsiərɪn ]]",
       "Mauritiern": "[[ maʊrˈiːtsiɐn ]]",
@@ -96,6 +100,7 @@
       "SMS"
     ],
     "nicht_trennen": [
+      "Fachleute",
       "Rathaus",
       "Kontrolle",
       "Montag",
@@ -247,6 +252,8 @@
     "Plaine-Verte",
     "Bambous",
     "Mare-aux-Vacoas",
+    "Floréal",
+    "Rivière-des-Anguilles",
     "Tamarind Falls",
     "La Marie",
     "Line Barracks",

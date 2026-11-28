@@ -1,0 +1,4 @@
+-r requirements.txt
+pycairo>=1.26
+qrcode>=7.4
+mido>=1.3
