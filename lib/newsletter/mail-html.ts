@@ -3,7 +3,7 @@
  * in gängigen Mailprogrammen gleich aussieht. Farben aus der Kreol-Farbwelt.
  */
 
-import { IMPRESSUM, SEITEN_NAME, SEITEN_URL } from '@/lib/zeitung/seite';
+import { IMPRESSUM, SEITEN_NAME, SEITEN_URL, YOUTUBE_PLAYLISTS } from '@/lib/zeitung/seite';
 import { meldungText } from '@/lib/zeitung/sprache';
 import { themaUrl } from '@/lib/zeitung/teilen';
 import { TEXTE } from '@/lib/zeitung/texte';
@@ -61,10 +61,20 @@ function wetterZeile(wetter: Wetter, sprache: Sprache): string {
 </td></tr><tr><td style="height:8px;"></td></tr>`;
 }
 
+/** Ganz oben: Knöpfe zur Zeitung und zur Playlist der Video-Sendung in der Sprache des Empfängers. */
+function linkLeiste(sprache: Sprache): string {
+  const m = MAIL_TEXTE[sprache];
+  const knopf = (url: string, text: string, voll: boolean) =>
+    `<a href="${maskiere(url)}" style="display:inline-block;margin:0 8px 8px 0;padding:9px 16px;border-radius:999px;${SANS}font-size:14px;font-weight:700;text-decoration:none;${
+      voll ? `background:${FARBE.gruen};color:#ffffff;` : `background:${FARBE.papier};color:${FARBE.rot};border:1px solid ${FARBE.linie};`
+    }">${maskiere(text)}</a>`;
+  return `<tr><td style="padding:0 0 10px;">${knopf(SEITEN_URL, m.zurZeitung + ' →', true)}${knopf(YOUTUBE_PLAYLISTS[sprache], '▶ ' + m.zurSendung, false)}</td></tr>`;
+}
+
 /** Inhalt einer Sprache (ohne Rahmen, Kopf und Fuß). */
 export function inhaltFuer(sprache: Sprache, d: InhaltDaten): string {
   const m = MAIL_TEXTE[sprache];
-  const teile: string[] = [];
+  const teile: string[] = [linkLeiste(sprache)];
   if (d.einleitung) {
     teile.push(`<tr><td style="padding:4px 0 14px;${SCHRIFT}font-size:16px;line-height:1.55;color:${FARBE.text};">
 <div style="${SANS}font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:${FARBE.gruen};margin-bottom:4px;">${maskiere(m.kurz)}</div>
