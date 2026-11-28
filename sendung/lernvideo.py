@@ -1210,12 +1210,29 @@ SZENEN += SZENEN_WEITER
 
 # ----------------------------------------------------------------- Ton und Zusammenbau
 
+MONATE = ('Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November',
+          'Dezember')
+
+
+def saetze_trennen(inhalt: str) -> list[str]:
+    """Trennt an Satzenden, aber nicht nach einem Datum wie „26. November“."""
+    import re
+
+    teile: list[str] = []
+    for stueck in re.split(r'(?<=[.!?])\s+', inhalt):
+        if teile and re.search(r'\b\d{1,2}\.$', teile[-1]) and stueck.startswith(MONATE):
+            teile[-1] += ' ' + stueck
+        elif stueck.strip():
+            teile.append(stueck)
+    return teile
+
+
 def sprich(sprecher: es.Sprecher, szene: Szene, arbeit: Path) -> Path:
     """Spricht Satz für Satz, merkt sich die Zeiten für Untertitel und Animation, legt VOR/NACH Stille an."""
     import re
 
     rate = sprecher.rate
-    teile = [x for x in re.split(r'(?<=[.!?])\s+', szene.text) if x.strip()]
+    teile = saetze_trennen(szene.text)
     pcm = bytearray(b'\x00\x00' * int(rate * VOR))
     for i, satz in enumerate(teile):
         datei = arbeit / f's{szene.nr}-{i}.wav'
@@ -1247,8 +1264,7 @@ def rendere(szene: Szene, ton: Path, ziel: Path) -> None:
     for n in range(math.ceil(szene.dauer * FPS)):
         t = n / FPS
         bild = szene.zeichne(t, szene)
-        satz = next((st for von, bis, st in szene.saetze if von - 0.15 <= t <= bis + 0.3), '')
-        rahmen(bild, szene.quelle, satz)
+        rahmen(bild, szene.quelle, '')  # Untertitel kommen als SRT-Datei zu YouTube
         # weiche Blende am Anfang und Ende jeder Szene
         blende = min(1.0, t / 0.3, (szene.dauer - t) / 0.3)
         if blende < 1:
@@ -1257,6 +1273,67 @@ def rendere(szene: Szene, ton: Path, ziel: Path) -> None:
     proc.stdin.close()
     if proc.wait() != 0:
         raise RuntimeError(f'ffmpeg für Szene {szene.nr} fehlgeschlagen')
+
+
+def musik_teppich(dauer: float, ziel: Path, arbeit: Path) -> None:
+    """Ruhiger Klangteppich (D-Dur, I–IV–vi–V, 72 BPM): gezupfte Nylon-Gitarre, weiche Fläche, Bass; FluidR3-Soundfont."""
+    import mido
+
+    tpb, bpm = 480, 72
+    sek_takt = 4 * 60 / bpm
+    takte = math.ceil(dauer / sek_takt) + 1
+    mid = mido.MidiFile(ticks_per_beat=tpb)
+    tempo = mido.MidiTrack()
+    tempo.append(mido.MetaMessage('set_tempo', tempo=round(60_000_000 / bpm), time=0))
+    mid.tracks.append(tempo)
+    akkorde = {'D': ['D3', 'A3', 'D4', 'F#4'], 'G': ['G2', 'D3', 'G3', 'B3'], 'Bm': ['B2', 'F#3', 'B3', 'D4'],
+               'A': ['A2', 'E3', 'A3', 'C#4']}
+    folge = ['D', 'G', 'Bm', 'A']
+
+    def note(n: str) -> int:
+        namen = {'C': 0, 'C#': 1, 'D': 2, 'D#': 3, 'E': 4, 'F': 5, 'F#': 6, 'G': 7, 'G#': 8, 'A': 9, 'A#': 10, 'B': 11}
+        return 12 * (int(n[-1]) + 1) + namen[n[:-1]]
+
+    def spur(kanal: int, programm: int, lautst: int, ereignisse: list) -> mido.MidiTrack:
+        tr = mido.MidiTrack()
+        tr.append(mido.Message('program_change', channel=kanal, program=programm, time=0))
+        tr.append(mido.Message('control_change', channel=kanal, control=7, value=lautst, time=0))
+        tr.append(mido.Message('control_change', channel=kanal, control=91, value=70, time=0))
+        jetzt = 0
+        for zeit, msg in sorted(ereignisse, key=lambda e: (e[0], e[1].type == 'note_on')):
+            tr.append(msg.copy(time=zeit - jetzt))
+            jetzt = zeit
+        return tr
+
+    gitarre, flaeche, bass = [], [], []
+    for takt in range(takte):
+        akk = akkorde[folge[takt % 4]]
+        t0 = takt * 4 * tpb
+        muster = [0, 2, 1, 3, 2, 1, 3, 2]  # Achtel-Arpeggio
+        for k, idx in enumerate(muster):
+            n = note(akk[idx])
+            gitarre += [(t0 + k * tpb // 2, mido.Message('note_on', channel=0, note=n, velocity=52 if k else 64)),
+                        (t0 + k * tpb // 2 + tpb, mido.Message('note_off', channel=0, note=n, velocity=0))]
+        for n in akk[1:]:
+            flaeche += [(t0, mido.Message('note_on', channel=1, note=note(n) + 12, velocity=40)),
+                        (t0 + 4 * tpb - 10, mido.Message('note_off', channel=1, note=note(n) + 12, velocity=0))]
+        bass += [(t0, mido.Message('note_on', channel=2, note=note(akk[0]) - 12 if akk[0][-1] == '3' else note(akk[0]),
+                                   velocity=60)),
+                 (t0 + 2 * tpb, mido.Message('note_off', channel=2, note=0, velocity=0))]
+    bass = [(z, m if m.type == 'note_on' else m.copy(note=bass[i - 1][1].note)) for i, (z, m) in enumerate(bass)]
+    mid.tracks += [spur(0, 24, 100, gitarre), spur(1, 89, 70, flaeche), spur(2, 32, 85, bass)]
+    mid.save(str(arbeit / 'teppich.mid'))
+    roh = arbeit / 'teppich-roh.wav'
+    subprocess.run(['fluidsynth', '-ni', '-q', '-g', '0.6', '-r', '48000', '-F', str(roh),
+                    '/usr/share/sounds/sf2/FluidR3_GM.sf2', str(arbeit / 'teppich.mid')], check=True)
+    es.ffmpeg('-i', str(roh), '-t', f'{dauer:.3f}', '-af',
+              f'loudnorm=I=-36:TP=-9:LRA=11,afade=t=in:d=2,afade=t=out:st={max(0.0, dauer - 3):.3f}:d=3',
+              '-ar', '48000', '-ac', '2', str(ziel))
+
+
+def srt_zeit(s: float) -> str:
+    ms = round(s * 1000)
+    return f'{ms // 3_600_000:02d}:{ms // 60_000 % 60:02d}:{ms // 1000 % 60:02d},{ms % 1000:03d}'
 
 
 def main() -> None:
@@ -1270,10 +1347,13 @@ def main() -> None:
     es.lade_franzoesische_namen(a.stimmen)  # Ortsnamen französisch aussprechen, wie in der Sendung
     sprecher = es.Sprecher(a.stimmen / 'de_DE-thorsten-high.onnx', 'de')
     teile = []
+    start = 0.0  # Startzeit der aktuellen Szene im fertigen Video
     if not a.nur or 0 in a.nur:
         vorspann = arbeit / 'vorspann.mp4'
-        es.vorspann_video('de', vorspann)
+        start = es.vorspann_video('de', vorspann)
         teile.append(vorspann)
+    musik_von = start
+    untertitel = []
     for szene in SZENEN:
         if a.nur and szene.nr not in a.nur:
             continue
@@ -1281,18 +1361,34 @@ def main() -> None:
         ziel = arbeit / f'szene{szene.nr}.mp4'
         rendere(szene, ton, ziel)
         teile.append(ziel)
-        print(f'Szene {szene.nr}: {szene.dauer:.1f} s')
+        echte_dauer = es.dauer_von(ziel)
+        untertitel += [(start + von, start + bis, satz) for von, bis, satz in szene.saetze]
+        start += echte_dauer
+        print(f'Szene {szene.nr}: {echte_dauer:.1f} s')
+    musik_bis = start
     if not a.nur or 22 in a.nur:  # Abspann-Folie der Sendung mit Erkennungsmelodie
         abspann = arbeit / 'abspann.mp4'
         es.abspann_video('de', es.dt.date(2026, 11, 28), abspann)
         teile.append(abspann)
     liste = arbeit / 'liste.txt'
     liste.write_text(''.join(f"file '{t}'\n" for t in teile))
-    ziel = a.ausgabe / ('lernvideo-wasser.mp4' if not a.nur else 'lernvideo-wasser-teil.mp4')
+    stamm = 'lernvideo-wasser' if not a.nur else 'lernvideo-wasser-teil'
+    ohne_musik = arbeit / 'ohne-musik.mp4'
     es.ffmpeg('-f', 'concat', '-safe', '0', '-i', str(liste), '-c:v', 'libx264', '-preset', 'medium', '-crf', '18',
               '-pix_fmt', 'yuv420p', '-r', str(FPS), '-c:a', 'aac', '-b:a', '160k', '-ar', '48000', '-ac', '2',
+              str(ohne_musik))
+    teppich = arbeit / 'teppich.wav'
+    musik_teppich(musik_bis - musik_von, teppich, arbeit)
+    ms = round(musik_von * 1000)
+    ziel = a.ausgabe / f'{stamm}.mp4'
+    es.ffmpeg('-i', str(ohne_musik), '-i', str(teppich), '-filter_complex',
+              f'[1:a]adelay={ms}|{ms}[m];[0:a][m]amix=inputs=2:duration=first:normalize=0[a]',
+              '-map', '0:v', '-map', '[a]', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-ar', '48000',
               '-movflags', '+faststart', str(ziel))
-    print(ziel)
+    srt = a.ausgabe / f'{stamm}.de.srt'
+    srt.write_text(''.join(f'{i}\n{srt_zeit(von)} --> {srt_zeit(bis)}\n{satz}\n\n'
+                           for i, (von, bis, satz) in enumerate(untertitel, 1)), encoding='utf-8')
+    print(ziel, srt)
 
 
 if __name__ == '__main__':
