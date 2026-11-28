@@ -147,7 +147,7 @@ class Szene:
 # Szene 1: Rationierung -------------------------------------------------------
 
 ORTE_HOOK = [('Curepipe', -20.3163, 57.5259), ('Vacoas', -20.2981, 57.4783), ('Phoenix', -20.2917, 57.4972),
-             ('Floréal', -20.3020, 57.5050)]
+             ('Floréal', -20.3120, 57.4950)]
 
 
 def insel_pfad(c: cairo.Context, x0: float, y0: float, hoehe: float) -> Callable[[float, float], tuple[float, float]]:
@@ -169,7 +169,7 @@ def insel_pfad(c: cairo.Context, x0: float, y0: float, hoehe: float) -> Callable
 
 
 # Beschriftung je Ort: Endpunkt der Hinweislinie relativ zum Ort
-BESCHRIFTUNG = {'Vacoas': (-190, -70), 'Phoenix': (-150, -170), 'Floréal': (190, -150), 'Curepipe': (190, 40)}
+BESCHRIFTUNG = {'Vacoas': (-190, -70), 'Phoenix': (-120, -170), 'Floréal': (-170, 90), 'Curepipe': (190, 40)}
 
 
 def szene_hook(t: float, s: Szene) -> Image.Image:
@@ -416,6 +416,76 @@ def szene_reservoirs(t: float, s: Szene) -> Image.Image:
     return bild
 
 
+# Szene 4a: Alle sieben künstlich --------------------------------------------
+
+STAUSEEN = [(1885, 'Mare-aux-Vacoas'), (1914, 'La Ferme'), (1929, 'La Nicolière'), (1948, 'Mare Longue'),
+            (1952, 'Piton du Milieu'), (2002, 'Midlands'), (2017, 'Bagatelle')]
+
+
+def damm(c: cairo.Context, x: float, y: float, a: float, farbe=WEISS) -> None:
+    """Damm-Symbol: Trapez-Mauer, links Wasser."""
+    c.set_source_rgba(*WASSER, 0.85 * a)
+    c.rectangle(x - 46, y - 16, 34, 30)
+    c.fill()
+    c.set_source_rgba(*farbe, a)
+    c.move_to(x - 12, y - 30)
+    c.line_to(x + 6, y - 30)
+    c.line_to(x + 26, y + 14)
+    c.line_to(x - 12, y + 14)
+    c.close_path()
+    c.fill()
+
+
+def szene_stauseen(t: float, s: Szene) -> Image.Image:
+    fl, c = leinwand()
+    x0, x1, y = 200, B - 200, 600
+
+    def xpos(jahr: int) -> float:
+        return x0 + (jahr - 1880) / (2020 - 1880) * (x1 - x0)
+
+    linie = phase(t, 0.3, 0.8)
+    c.set_source_rgba(1, 1, 1, 0.8)
+    c.set_line_width(4)
+    c.move_to(x0, y)
+    c.line_to(x0 + (x1 - x0) * linie, y)
+    c.stroke()
+    t_alt = s.satz_start(1) if len(s.saetze) > 1 else 2.5
+    t_neu = s.satz_start(2) if len(s.saetze) > 2 else 6.0
+    for i, (jahr, name) in enumerate(STAUSEEN):
+        p = phase(t, 0.8 + i * 0.25, 0.4)
+        if p <= 0:
+            continue
+        x = xpos(jahr)
+        hervor = (name == 'Mare-aux-Vacoas' and t >= t_alt) or (name == 'Bagatelle' and t >= t_neu)
+        oben = i % 2 == 0
+        c.set_source_rgba(*(ROT if hervor else WEISS), p)
+        c.arc(x, y, 10 if hervor else 7, 0, 2 * math.pi)
+        c.fill()
+        c.set_source_rgba(1, 1, 1, 0.5 * p)
+        c.set_line_width(2)
+        c.move_to(x, y + (-12 if oben else 12))
+        c.line_to(x, y + (-70 if oben else 70))
+        c.stroke()
+        damm(c, x, y + (-118 if oben else 122), p, ROT if hervor else WEISS)
+    bild = zu_pil(fl)
+    text(bild, (B / 2, 220), '7 von 7 künstlich angelegt', es.titel_schrift(84), anker='ma', deckkraft=phase(t, 0, 0.6))
+    for i, (jahr, name) in enumerate(STAUSEEN):
+        p = phase(t, 0.9 + i * 0.25, 0.4)
+        x = xpos(jahr)
+        oben = i % 2 == 0
+        hervor = (name == 'Mare-aux-Vacoas' and t >= t_alt) or (name == 'Bagatelle' and t >= t_neu)
+        farbe = (255, 120, 128) if hervor else es.WEISS
+        if oben:
+            text(bild, (x, y - 268), str(jahr), es.mono(30, True), es.HELLBLAU, 'ma', p)
+            text(bild, (x, y - 232), name, es.titel_schrift(30), farbe, 'ma', p)
+        else:
+            text(bild, (x, y + 160), str(jahr), es.mono(30, True), es.HELLBLAU, 'ma', p)
+            text(bild, (x, y + 196), name, es.titel_schrift(30), farbe, 'ma', p)
+    for jahr in (1900, 1950, 2000):
+        text(bild, (xpos(jahr), y + 14), '', es.mono(20))
+    return bild
+
+
 # Szene 5: Mare-aux-Vacoas ----------------------------------------------------
 
 def szene_mav(t: float, s: Szene) -> Image.Image:
@@ -461,6 +531,9 @@ SZENEN = [
              'Wird es knapp, spüren es alle.', '', szene_sektoren),
     Szene(4, 'Mauritius speichert sein Trinkwasser vor allem in sieben großen Reservoirs. Zusammen fassen sie rund '
              '92 Millionen Kubikmeter.', 'Ministerium für Energie und öffentliche Versorgung', szene_reservoirs),
+    Szene(41, 'Alle sieben sind künstliche Stauseen. Der älteste ist Mare-aux-Vacoas: 1885 entstand dort im Sumpfland '
+              'ein erster, nur einen Meter hoher Damm. Der jüngste ist der Damm von Bagatelle aus dem Jahr 2017.',
+          'Ministerium; Statistics Mauritius (ODE)', szene_stauseen),
     Szene(5, 'Das größte ist Mare-aux-Vacoas mit knapp 26 Millionen Kubikmetern, mehr als ein Viertel der gesamten '
              'Menge.', 'Ministerium für Energie und öffentliche Versorgung', szene_mav),
 ]
