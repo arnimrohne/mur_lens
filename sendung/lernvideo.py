@@ -24,7 +24,62 @@ from PIL import Image, ImageDraw
 import erzeuge_sendung as es
 
 B, H, FPS = 1920, 1080, 25
-STAND = 'Stand: 28. November 2026'
+SPRACHE = 'de'  # wird in main() gesetzt
+STAND = {'de': 'Stand: 28. November 2026', 'en': 'As of 28 November 2026'}
+
+UI_EN = {
+    'GAZET MORISYEN ERKLÄRT': 'GAZET MORISYEN EXPLAINS', 'Quelle': 'Source',
+    '3–8 UHR': '3–8 AM', 'JEDEN ZWEITEN TAG': 'EVERY OTHER DAY',
+    'Warum auf Mauritius': 'Why Mauritius is', 'das Wasser knapp wird': 'running short of water',
+    'Haushalte': 'Households', 'Landwirtschaft': 'Farming', 'Industrie': 'Industry', 'Tourismus': 'Tourism',
+    '7 große Reservoirs': '7 major reservoirs', 'Mio. m³': 'million m³',
+    'SPEICHERVERMÖGEN ZUSAMMEN': 'COMBINED CAPACITY', '7 von 7 künstlich angelegt': 'All 7 are man-made',
+    'ANTEIL AM GESAMTEN SPEICHER': 'SHARE OF TOTAL CAPACITY', 'Pegel': 'Level',
+    'Füllstand der sieben Reservoirs': 'Level of the seven reservoirs', 'Vor einem Jahr': 'A year ago',
+    'Saisonaler Schnitt': 'Seasonal average', '26.11.2026': '26 Nov 2026', 'Nov. 2025': 'Nov 2025',
+    'Nov. 2026': 'Nov 2026', 'Nov. 2029': 'Nov 2029', 'offen': 'open', 'geschlossen': 'closed',
+    'Wasser der CWA im Jahr 2024, in Mio. m³': 'CWA water in 2024, million m³', 'Aufbereitet': 'Treated',
+    'Verkauft': 'Sold', 'Rund 60 % des Wassers bringen kein Geld ein': 'About 60% of the water earns no revenue',
+    'Lecks': 'Leaks', 'Illegale Anschlüsse': 'Illegal connections', 'Abrechnungsfehler': 'Billing errors',
+    'Rechnungshof, Dezember 2025': 'National Audit Office, December 2025', '10 JAHRE': '10 YEARS',
+    'Anteil ohne Einnahmen': 'Share without revenue', 'STUDIE': 'STUDY',
+    'VERLUST DER CWA LAUT MEDIENBERICHT': 'CWA LOSSES, ACCORDING TO MEDIA REPORTS', 'pro': 'per',
+    'Monat': 'month', 'Staatshaushalt': 'State budget', 'Wasserpreise': 'Water tariffs', 'Tarif': 'Tariff',
+    'SEITDEM UNVERÄNDERT': 'NO CHANGE SINCE 2012', 'GRATIS': 'FREE', 'bis 6 m³ im Monat': 'up to 6 m³ a month',
+    'Ein neuer Anschluss': 'A new connection', 'BERECHNET': 'CHARGED', 'TATSÄCHLICHE KOSTEN': 'ACTUAL COST',
+    'Schätzung 2009': '2009 estimate', 'Schätzung 2024': '2024 estimate',
+    'Geschätzte Kosten, Mrd. Rupien': 'Estimated cost, billion rupees',
+    'Damm von Rivière-des-Anguilles': 'Rivière-des-Anguilles dam', 'Ankündigung': 'Announced',
+    'Baubeginn?': 'Construction starts?', 'Fertigstellung geplant': 'Completion planned',
+    'KEIN UNTERZEICHNETER BAUVERTRAG BEKANNT': 'NO SIGNED CONSTRUCTION CONTRACT KNOWN',
+    'Ministerium': 'Ministry', 'setzt auf neue Speicher': 'relies on new storage',
+    'Rechnungshof': 'Audit Office', 'kritisiert die Verluste': 'criticises the losses', 'Fachleute': 'Experts',
+    'Tarife zu niedrig, aber erst besserer Service': 'tariffs too low, but better service first',
+    'tragen die Rationierung': 'bear the rationing', 'Wer will was?': 'Who wants what?',
+    'Regenzeit': 'Rainy season', 'Füllt sie die Reservoirs wieder?': 'Will it refill the reservoirs?',
+    'Tarife': 'Tariffs', 'Steigen sie, und wer wird geschützt?': 'Will they rise, and who is protected?',
+    'Wie schnell wird das Netz dicht?': 'How fast will the network be fixed?', 'Offene Fragen': 'Open questions',
+    'Kurz gesagt': 'In short', 'Zu wenig Regen': 'Too little rain', 'Zu viel Verlust': 'Too much loss',
+    'Projekte, die warten': 'Projects still waiting',
+    'DOSSIER: WASSERVERSORGUNG · STAND 28.11.2026': 'EXPLAINER: WATER SUPPLY · AS OF 28 NOV 2026',
+    'Alle Quellen, Hintergründe und neue Meldungen': 'All sources, background and the latest news',
+    'ZUM DOSSIER': 'READ THE EXPLAINER',
+    'Foto: Diego Delso, CC BY-SA 4.0, Wikimedia Commons': 'Photo: Diego Delso, CC BY-SA 4.0, Wikimedia Commons',
+    'CWA über allAfrica': 'CWA via allAfrica',
+    'Ministerium für Energie und öffentliche Versorgung': 'Ministry of Energy and Public Utilities',
+    'Ministerium; Statistics Mauritius (ODE)': 'Ministry; Statistics Mauritius (ODE)',
+    'Water Resources Commission über ION News': 'Water Resources Commission via ION News',
+    'CWA-Jahresbericht 2024–25': 'CWA Annual Report 2024–25', "NAO, L'Express, Ministerium": "NAO, L'Express, Ministry",
+}
+
+
+def L(deutsch: str) -> str:
+    """Bildtext in der Sprache der Fassung (Deutsch ist der Schlüssel)."""
+    return deutsch if SPRACHE == 'de' else UI_EN.get(deutsch, deutsch)
+
+
+def prozent(wert: float, stellen: int = 0) -> str:
+    return f'{zahl_de(wert, stellen)}{"%" if SPRACHE == "en" else " %"}'
 VOR = 0.5  # Sekunden Bild vor dem ersten Wort
 NACH = 0.7  # Sekunden Bild nach dem letzten Wort
 
@@ -101,7 +156,9 @@ def text(bild: Image.Image, xy, inhalt: str, f, farbe=es.WEISS, anker='la', deck
 
 
 def zahl_de(wert: float, stellen: int = 1) -> str:
-    return f'{wert:,.{stellen}f}'.replace(',', '§').replace('.', ',').replace('§', '.')
+    """Zahl im Format der Fassung: de 92,2 / 1.200, en 92.2 / 1,200."""
+    text = f'{wert:,.{stellen}f}'
+    return text if SPRACHE == 'en' else text.replace(',', '§').replace('.', ',').replace('§', '.')
 
 
 # ----------------------------------------------------------------- Rahmen (Kopf, Quelle, Untertitel)
@@ -110,10 +167,10 @@ def rahmen(bild: Image.Image, quelle: str, untertitel: str) -> None:
     z = ImageDraw.Draw(bild)
     logo = es.logo_weiss(54)
     bild.paste(logo, (64, 44), logo)
-    es.gesperrt(z, (132, 62), 'GAZET MORISYEN ERKLÄRT', es.mono(22, True), es.HELLBLAU, 0.12)
+    es.gesperrt(z, (132, 62), L('GAZET MORISYEN ERKLÄRT'), es.mono(22, True), es.HELLBLAU, 0.12)
     if quelle:
         f = es.mono(20)
-        z.text((B - 64, 62), f'Quelle: {quelle}', font=f, fill=es.HELLBLAU, anchor='ra')
+        z.text((B - 64, 62), f'{L("Quelle")}: {L(quelle)}', font=f, fill=es.HELLBLAU, anchor='ra')
     if untertitel:
         f = es.text_schrift(38)
         zeilen = es.umbrechen(z, untertitel, f, 1500)
@@ -254,8 +311,8 @@ def szene_hook(t: float, s: Szene) -> Image.Image:
         text(bild, (x + dx + (-10 if dx < 0 else 10), y + dy), name, es.titel_schrift(36),
              anker='rm' if dx < 0 else 'lm', deckkraft=p)
     f = es.mono(28, True)
-    text(bild, (rx + 560, 500), '3–8 UHR', f, es.HELLBLAU, 'ma', phase(t, t2 + 0.6, 0.5))
-    text(bild, (rx, 708), 'JEDEN ZWEITEN TAG', f, es.HELLBLAU, 'la', phase(t, t2 + 1.2, 0.5))
+    text(bild, (rx + 560, 500), L('3–8 UHR'), f, es.HELLBLAU, 'ma', phase(t, t2 + 0.6, 0.5))
+    text(bild, (rx, 708), L('JEDEN ZWEITEN TAG'), f, es.HELLBLAU, 'la', phase(t, t2 + 1.2, 0.5))
     return bild
 
 
@@ -283,9 +340,9 @@ def szene_titel(t: float, s: Szene) -> Image.Image:
                 c.stroke()
     bild = zu_pil(fl)
     a = phase(t, 0.9, 0.7)
-    text(bild, (B / 2, 460), 'Warum auf Mauritius', es.titel_schrift(104), anker='ma', deckkraft=a)
-    text(bild, (B / 2, 580), 'das Wasser knapp wird', es.titel_schrift(104), anker='ma', deckkraft=a)
-    text(bild, (B / 2, 740), STAND.upper(), es.mono(30, True), es.HELLBLAU, 'ma', phase(t, 1.6, 0.6))
+    text(bild, (B / 2, 460), L('Warum auf Mauritius'), es.titel_schrift(104), anker='ma', deckkraft=a)
+    text(bild, (B / 2, 580), L('das Wasser knapp wird'), es.titel_schrift(104), anker='ma', deckkraft=a)
+    text(bild, (B / 2, 740), STAND[SPRACHE].upper(), es.mono(30, True), es.HELLBLAU, 'ma', phase(t, 1.6, 0.6))
     return bild
 
 
@@ -376,7 +433,7 @@ def szene_sektoren(t: float, s: Szene) -> Image.Image:
     bild = zu_pil(fl)
     for i, (_, name, sx, sy) in enumerate(SEKTOREN):
         p = phase(t, 0.8 + i * 0.5, 0.5)
-        text(bild, (mx + sx * 470, my + sy * 190 + 70), name, es.titel_schrift(36), anker='ma', deckkraft=p)
+        text(bild, (mx + sx * 470, my + sy * 190 + 70), L(name), es.titel_schrift(36), anker='ma', deckkraft=p)
     return bild
 
 
@@ -429,13 +486,13 @@ def szene_reservoirs(t: float, s: Szene) -> Image.Image:
         runde_box(c, bx, by, bb, bh, 18)
         c.stroke()
     bild = zu_pil(fl)
-    text(bild, (B / 2, 640), '7 große Reservoirs', es.titel_schrift(70), anker='ma',
+    text(bild, (B / 2, 640), L('7 große Reservoirs'), es.titel_schrift(70), anker='ma',
          deckkraft=phase(t, 0.6, 0.5) * (1 - phase(t, t2, 0.4)))
     zaehler = phase(t, t2 + 0.3, 2.2)
     zahl = phase(t, t2 + 0.5, 0.4)
     if zahl > 0:
-        text(bild, (B / 2, 640), f'{zahl_de(92.2 * zaehler)} Mio. m³', es.titel_schrift(110), anker='ma', deckkraft=zahl)
-        text(bild, (B / 2, 780), 'SPEICHERVERMÖGEN ZUSAMMEN', es.mono(26, True), es.HELLBLAU, 'ma', zahl)
+        text(bild, (B / 2, 640), f'{zahl_de(92.2 * zaehler)} {L("Mio. m³")}', es.titel_schrift(110), anker='ma', deckkraft=zahl)
+        text(bild, (B / 2, 780), L('SPEICHERVERMÖGEN ZUSAMMEN'), es.mono(26, True), es.HELLBLAU, 'ma', zahl)
     return bild
 
 
@@ -491,7 +548,7 @@ def szene_stauseen(t: float, s: Szene) -> Image.Image:
         c.stroke()
         damm(c, x, y + (-118 if oben else 122), p, ROT if hervor else WEISS)
     bild = zu_pil(fl)
-    text(bild, (B / 2, 220), '7 von 7 künstlich angelegt', es.titel_schrift(84), anker='ma', deckkraft=phase(t, 0, 0.6))
+    text(bild, (B / 2, 220), L('7 von 7 künstlich angelegt'), es.titel_schrift(84), anker='ma', deckkraft=phase(t, 0, 0.6))
     for i, (jahr, name) in enumerate(STAUSEEN):
         p = phase(t, 0.9 + i * 0.25, 0.4)
         x = xpos(jahr)
@@ -537,10 +594,10 @@ def szene_mav(t: float, s: Szene) -> Image.Image:
     c.stroke()
     bild = zu_pil(fl)
     text(bild, (x + b / 2, y + h + 40), 'Mare-aux-Vacoas', es.titel_schrift(46), anker='ma')
-    text(bild, (x + b / 2, y + h + 104), '25,9 Mio. m³', es.mono(34, True), es.HELLBLAU, 'ma', phase(t, 0.5, 0.5))
-    prozent = round(anteil * 100 * p)
-    text(bild, (kx, ky - 40), f'{prozent} %', es.titel_schrift(96), anker='ma', deckkraft=phase(t, 0.8, 0.4))
-    text(bild, (kx, ky + r + 40), 'ANTEIL AM GESAMTEN SPEICHER', es.mono(26, True), es.HELLBLAU, 'ma',
+    text(bild, (x + b / 2, y + h + 104), f'{zahl_de(25.9)} {L("Mio. m³")}', es.mono(34, True), es.HELLBLAU, 'ma', phase(t, 0.5, 0.5))
+    prozent_wert = round(anteil * 100 * p)
+    text(bild, (kx, ky - 40), prozent(prozent_wert), es.titel_schrift(96), anker='ma', deckkraft=phase(t, 0.8, 0.4))
+    text(bild, (kx, ky + r + 40), L('ANTEIL AM GESAMTEN SPEICHER'), es.mono(26, True), es.HELLBLAU, 'ma',
          phase(t, 1.4, 0.5))
     return bild
 
@@ -596,9 +653,10 @@ def balken_texte(bild: Image.Image, werte: list[tuple[str, float, bool]], lage, 
         if p <= 0:
             continue
         st = stellen if wert % 1 else 0
-        text(bild, (xm, y - 74), f'{zahl_de(wert * p, st)}{einheit}', es.titel_schrift(56),
+        einh = '%' if einheit == ' %' and SPRACHE == 'en' else einheit
+        text(bild, (xm, y - 74), f'{zahl_de(wert * p, st)}{einh}', es.titel_schrift(56),
              (255, 120, 128) if hervor else es.WEISS, 'ma', min(1.0, p * 2))
-        text(bild, (xm, basis + 22), label, es.mono(26, True), es.HELLBLAU, 'ma', min(1.0, p * 2))
+        text(bild, (xm, basis + 22), L(label), es.mono(26, True), es.HELLBLAU, 'ma', min(1.0, p * 2))
 
 
 def ueberschrift(bild: Image.Image, inhalt: str, t: float, y: float = 150) -> None:
@@ -650,7 +708,7 @@ def szene_regen(t: float, s: Szene) -> Image.Image:
     if sa > 0:
         sonne(c, B / 2 + 330, 250, sa, t * 0.3)
     bild = zu_pil(fl)
-    text(bild, (B / 2, by + bh + 30), f'Pegel {round(pegel * 100)} %', es.mono(30, True), es.HELLBLAU, 'ma')
+    text(bild, (B / 2, by + bh + 30), f'{L("Pegel")} {prozent(round(pegel * 100))}', es.mono(30, True), es.HELLBLAU, 'ma')
     return bild
 
 
@@ -661,7 +719,7 @@ def szene_fuellstand(t: float, s: Szene) -> Image.Image:
     fl, c = leinwand()
     lage = balken(c, FUELLSTAND, t, 0.6, 100)
     bild = zu_pil(fl)
-    ueberschrift(bild, 'Füllstand der sieben Reservoirs', t)
+    ueberschrift(bild, L('Füllstand der sieben Reservoirs'), t)
     balken_texte(bild, FUELLSTAND, lage, ' %')
     return bild
 
@@ -684,7 +742,7 @@ def szene_mav_pegel(t: float, s: Szene) -> Image.Image:
         if a < 1:
             bild = Image.blend(szene_mav_pegel(foto_ab - 0.04, s), bild, a)
         z_ = ImageDraw.Draw(bild)
-        z_.text((B - 40, H - 120), 'Foto: Diego Delso, CC BY-SA 4.0, Wikimedia Commons', font=es.mono(22),
+        z_.text((B - 40, H - 120), L('Foto: Diego Delso, CC BY-SA 4.0, Wikimedia Commons'), font=es.mono(22),
                 fill=es.WEISS, anchor='ra', stroke_width=3, stroke_fill=(0, 0, 0))
         return bild
     fl, c = leinwand()
@@ -694,10 +752,10 @@ def szene_mav_pegel(t: float, s: Szene) -> Image.Image:
     behaelter(c, 1080, 300, 280, 380, rechts, phase(t, 0.2, 0.5), ROT if rechts < 0.6 else WASSER)
     bild = zu_pil(fl)
     ueberschrift(bild, 'Mare-aux-Vacoas', t)
-    text(bild, (700, 710), 'Nov. 2025', es.mono(30, True), es.HELLBLAU, 'ma')
-    text(bild, (1220, 710), 'Nov. 2026', es.mono(30, True), es.HELLBLAU, 'ma')
-    text(bild, (700, 230), '74 %', es.titel_schrift(56), anker='ma', deckkraft=phase(t, 0.3, 0.5))
-    text(bild, (1220, 230), f'{round(rechts * 100)} %', es.titel_schrift(56), (255, 120, 128), 'ma',
+    text(bild, (700, 710), L('Nov. 2025'), es.mono(30, True), es.HELLBLAU, 'ma')
+    text(bild, (1220, 710), L('Nov. 2026'), es.mono(30, True), es.HELLBLAU, 'ma')
+    text(bild, (700, 230), prozent(74), es.titel_schrift(56), anker='ma', deckkraft=phase(t, 0.3, 0.5))
+    text(bild, (1220, 230), prozent(round(rechts * 100)), es.titel_schrift(56), (255, 120, 128), 'ma',
          phase(t, 0.5, 0.5))
     return bild
 
@@ -779,7 +837,7 @@ def szene_cwa(t: float, s: Szene) -> Image.Image:
     bild = zu_pil(fl)
     text(bild, (260, 170), 'CWA', es.titel_schrift(110), deckkraft=phase(t, 0, 0.5))
     text(bild, (264, 300), 'CENTRAL WATER AUTHORITY', es.mono(28, True), es.HELLBLAU, 'la', phase(t, 0.3, 0.5))
-    text(bild, (B / 2, y + 120), 'offen' if oeffnung > 0.5 else 'geschlossen', es.mono(34, True), es.WEISS, 'ma')
+    text(bild, (B / 2, y + 120), L('offen') if oeffnung > 0.5 else L('geschlossen'), es.mono(34, True), es.WEISS, 'ma')
     return bild
 
 
@@ -788,12 +846,15 @@ VERKAUF = [('Aufbereitet', 332, False), ('Verkauft', 115, True)]
 
 def szene_verkauf(t: float, s: Szene) -> Image.Image:
     fl, c = leinwand()
-    t2 = s.satz_start(1) if len(s.saetze) > 1 else 1.5
-    werte = [VERKAUF[0]] + ([VERKAUF[1]] if t >= t2 else [])
-    lage = balken(c, werte + [('', 0, False)] * (2 - len(werte)), t, 0.5, 340, x0=560, x1=1360)
+    t1 = s.satz_start(1) if len(s.saetze) > 1 else 1.5  # „2024 hat die CWA 332 … aufbereitet“
+    t2 = s.satz_start(2) if len(s.saetze) > 2 else 4.0  # „Verkauft wurden … 115 …“
+    leer = ('', 0, False)
+    lage1 = balken(c, [VERKAUF[0], leer], t, t1, 340, x0=560, x1=1360)
+    lage2 = balken(c, [leer, VERKAUF[1]], t, t2 - 0.6, 340, x0=560, x1=1360)
     bild = zu_pil(fl)
-    ueberschrift(bild, 'Wasser der CWA im Jahr 2024, in Mio. m³', t)
-    balken_texte(bild, werte, lage[:len(werte)], '', 0)
+    ueberschrift(bild, L('Wasser der CWA im Jahr 2024, in Mio. m³'), t)
+    balken_texte(bild, [VERKAUF[0]], lage1[:1], '', 0)
+    balken_texte(bild, [VERKAUF[1]], lage2[1:], '', 0)
     return bild
 
 
@@ -838,11 +899,11 @@ def szene_verluste(t: float, s: Szene) -> Image.Image:
     c.set_line_width(6)
     c.stroke()
     bild = zu_pil(fl)
-    text(bild, (B / 2, 150), 'Rund 60 % des Wassers bringen kein Geld ein', es.titel_schrift(60), anker='ma',
+    text(bild, (B / 2, 150), L('Rund 60 % des Wassers bringen kein Geld ein'), es.titel_schrift(60), anker='ma',
          deckkraft=phase(t, 0.3, 0.6))
     f = es.mono(24, True)
     for (x, _), name in zip(ziele, ('Lecks', 'Illegale Anschlüsse', 'Abrechnungsfehler')):
-        text(bild, (x, 920), name.upper(), f, es.HELLBLAU, 'ma', a)
+        text(bild, (x, 920), L(name).upper(), f, es.HELLBLAU, 'ma', a)
     text(bild, (1360, 795), '?', es.titel_schrift(48), (255, 120, 128), 'ma', a)
     return bild
 
@@ -877,12 +938,12 @@ def szene_rechnungshof(t: float, s: Szene) -> Image.Image:
         runde_box(c, 1220 + k * 24, 680 - k * 110 - 40 * (1 - q), 330, 90, 10)
         c.fill()
     bild = zu_pil(fl)
-    ueberschrift(bild, 'Rechnungshof, Dezember 2025', t)
-    text(bild, (600, 780), '10 JAHRE', es.mono(28, True), es.HELLBLAU, 'ma', phase(t, 0.5, 0.5))
-    text(bild, (300, 330), 'Anteil ohne Einnahmen', es.titel_schrift(36), deckkraft=phase(t, 0.8, 0.5))
+    ueberschrift(bild, L('Rechnungshof, Dezember 2025'), t)
+    text(bild, (600, 780), L('10 JAHRE'), es.mono(28, True), es.HELLBLAU, 'ma', phase(t, 0.5, 0.5))
+    text(bild, (300, 330), L('Anteil ohne Einnahmen'), es.titel_schrift(36), deckkraft=phase(t, 0.8, 0.5))
     for k in range(4):
         q = phase(t, t2 + k * 0.45, 0.4)
-        text(bild, (1385 + k * 24, 725 - k * 110 - 40 * (1 - q)), 'STUDIE', es.mono(30, True), es.NAVY, 'mm', q)
+        text(bild, (1385 + k * 24, 725 - k * 110 - 40 * (1 - q)), L('STUDIE'), es.mono(30, True), es.NAVY, 'mm', q)
     return bild
 
 
@@ -901,12 +962,12 @@ def szene_kosten(t: float, s: Szene) -> Image.Image:
         c.fill()
     bild = zu_pil(fl)
     wert = 540 * phase(t, 0.3, 2.2)
-    text(bild, (B / 2, 300), f'Rs {round(wert)} Mio.', es.titel_schrift(150), (255, 120, 128), 'ma',
+    text(bild, (B / 2, 300), (f'Rs {round(wert)} Mio.' if SPRACHE == 'de' else f'Rs {round(wert)} million'), es.titel_schrift(150), (255, 120, 128), 'ma',
          phase(t, 0.2, 0.4))
-    text(bild, (B / 2, 520), 'VERLUST DER CWA LAUT MEDIENBERICHT', es.mono(28, True), es.HELLBLAU, 'ma',
+    text(bild, (B / 2, 520), L('VERLUST DER CWA LAUT MEDIENBERICHT'), es.mono(28, True), es.HELLBLAU, 'ma',
          phase(t, 0.6, 0.5))
-    text(bild, (B / 2, 760), 'pro', es.titel_schrift(44), es.NAVY, 'ma', a)
-    text(bild, (B / 2, 810), 'Monat', es.titel_schrift(44), es.NAVY, 'ma', a)
+    text(bild, (B / 2, 760), L('pro'), es.titel_schrift(44), es.NAVY, 'ma', a)
+    text(bild, (B / 2, 810), L('Monat'), es.titel_schrift(44), es.NAVY, 'ma', a)
     return bild
 
 
@@ -940,7 +1001,7 @@ def szene_haushalt(t: float, s: Szene) -> Image.Image:
     c.stroke()
     bild = zu_pil(fl)
     text(bild, (480, 740), 'CWA', es.titel_schrift(48), anker='ma')
-    text(bild, (1410, 800), 'Staatshaushalt', es.titel_schrift(48), anker='ma', deckkraft=phase(t, 0.4, 0.5))
+    text(bild, (1410, 800), L('Staatshaushalt'), es.titel_schrift(48), anker='ma', deckkraft=phase(t, 0.4, 0.5))
     return bild
 
 
@@ -987,11 +1048,11 @@ def szene_tarife(t: float, s: Szene) -> Image.Image:
         runde_box(c, hx - 60, hy - 10, 120, 110, 10)
         c.fill()
     bild = zu_pil(fl)
-    ueberschrift(bild, 'Wasserpreise', t)
-    text(bild, (x0 + 100, y - 118), 'Tarif', es.titel_schrift(36), es.NAVY, 'ma')
+    ueberschrift(bild, L('Wasserpreise'), t)
+    text(bild, (x0 + 100, y - 118), L('Tarif'), es.titel_schrift(36), es.NAVY, 'ma')
     text(bild, (x0, y + 24), '2012', es.mono(30, True), es.HELLBLAU, 'ma')
     text(bild, (x1, y + 24), '2026', es.mono(30, True), es.HELLBLAU, 'ma', phase(t, 1.4, 0.4))
-    text(bild, (680, y + 90), 'SEITDEM UNVERÄNDERT', es.mono(28, True), (255, 120, 128), 'ma', phase(t, 1.6, 0.5))
+    text(bild, (680, y + 90), L('SEITDEM UNVERÄNDERT'), es.mono(28, True), (255, 120, 128), 'ma', phase(t, 1.6, 0.5))
     a = phase(t, t2, 0.6)
     text(bild, (1450, 595), '6 m³', es.titel_schrift(40), es.NAVY, 'mm', a)
     st = phase(t, t2 + 0.8, 0.3)
@@ -999,10 +1060,10 @@ def szene_tarife(t: float, s: Szene) -> Image.Image:
         ebene = Image.new('RGBA', bild.size, (0, 0, 0, 0))
         ze = ImageDraw.Draw(ebene)
         ze.rounded_rectangle([1320, 720, 1580, 800], 12, outline=(255, 120, 128, round(255 * st)), width=6)
-        ze.text((1450, 760), 'GRATIS', font=es.mono(44, True), fill=(255, 120, 128, round(255 * st)), anchor='mm')
+        ze.text((1450, 760), L('GRATIS'), font=es.mono(44, True), fill=(255, 120, 128, round(255 * st)), anchor='mm')
         ebene = ebene.rotate(-8, center=(1450, 760))
         bild.paste(ebene, (0, 0), ebene)
-    text(bild, (1450, 830), 'bis 6 m³ im Monat', es.mono(26, True), es.HELLBLAU, 'ma', st)
+    text(bild, (1450, 830), L('bis 6 m³ im Monat'), es.mono(26, True), es.HELLBLAU, 'ma', st)
     return bild
 
 
@@ -1039,9 +1100,9 @@ def szene_anschluss(t: float, s: Szene) -> Image.Image:
         c.fill()
         c.restore()
     bild = zu_pil(fl)
-    ueberschrift(bild, 'Ein neuer Anschluss', t)
-    text(bild, (1080, 640), 'BERECHNET', es.mono(28, True), es.HELLBLAU, 'ma', klein)
-    text(bild, (1420, 700), 'TATSÄCHLICHE KOSTEN', es.mono(28, True), (255, 120, 128), 'ma', phase(t, 1.6, 0.4))
+    ueberschrift(bild, L('Ein neuer Anschluss'), t)
+    text(bild, (1080, 640), L('BERECHNET'), es.mono(28, True), es.HELLBLAU, 'ma', klein)
+    text(bild, (1420, 700), L('TATSÄCHLICHE KOSTEN'), es.mono(28, True), (255, 120, 128), 'ma', phase(t, 1.6, 0.4))
     return bild
 
 
@@ -1055,16 +1116,18 @@ def szene_damm(t: float, s: Szene) -> Image.Image:
     c.stroke()
     x, y = punkt(57.5528, -20.4867)
     damm(c, x, y, phase(t, 0.4, 0.5), ROT)
-    t2 = s.satz_start(1) if len(s.saetze) > 1 else 3.0
+    t1 = s.satz_start(1) if len(s.saetze) > 1 else 3.0  # „Angekündigt … 2009, 2,6 Milliarden“
+    t2 = s.satz_start(2) if len(s.saetze) > 2 else 6.0  # „2024 … 9,4 Milliarden“
     werte = [('Schätzung 2009', 2.6, False), ('Schätzung 2024', 9.4, True)]
-    lage = balken(c, [werte[0]] + ([werte[1]] if t >= t2 + 2.0 else [('', 0, False)]), t, t2, 10,
-                  x0=900, x1=1700, basis=800, hoehe=470)
+    leer = ('', 0, False)
+    lage1 = balken(c, [werte[0], leer], t, t1, 10, x0=900, x1=1700, basis=800, hoehe=470)
+    lage2 = balken(c, [leer, werte[1]], t, t2 - 0.6, 10, x0=900, x1=1700, basis=800, hoehe=470)
     bild = zu_pil(fl)
     text(bild, (x, y + 40), 'Rivière-des-Anguilles', es.titel_schrift(34), anker='ma', deckkraft=phase(t, 0.6, 0.5))
-    text(bild, (1300, 150), 'Geschätzte Kosten, Mrd. Rupien', es.titel_schrift(50), anker='ma',
-         deckkraft=phase(t, t2, 0.5))
-    sichtbar = [werte[0]] + ([werte[1]] if t >= t2 + 2.0 else [])
-    balken_texte(bild, sichtbar, lage[:len(sichtbar)], '', 1, basis=800)
+    text(bild, (1300, 150), L('Geschätzte Kosten, Mrd. Rupien'), es.titel_schrift(50), anker='ma',
+         deckkraft=phase(t, t1, 0.5))
+    balken_texte(bild, werte[:1], lage1[:1], '', 1, basis=800)
+    balken_texte(bild, werte[1:], lage2[1:], '', 1, basis=800)
     return bild
 
 
@@ -1074,7 +1137,7 @@ def szene_bauzeit(t: float, s: Szene) -> Image.Image:
     punkte = [(2009.0, 'Ankündigung'), (2026.9, 'Baubeginn?'), (2029.9, 'Fertigstellung geplant')]
 
     def xpos(j: float) -> float:
-        return {2009.0: 420, 2026.9: 1060, 2029.9: 1500}[j]
+        return {2009.0: 420, 2026.9: 1040, 2029.9: 1560}[j]
 
     c.set_source_rgba(1, 1, 1, 0.8)
     c.set_line_width(4)
@@ -1099,13 +1162,13 @@ def szene_bauzeit(t: float, s: Szene) -> Image.Image:
         c.arc(xpos(j), y, 14, 0, 2 * math.pi)
         c.fill()
     bild = zu_pil(fl)
-    ueberschrift(bild, 'Damm von Rivière-des-Anguilles', t)
-    for i, ((j, name), datum) in enumerate(zip(punkte, ('2009', 'Nov. 2026', 'Nov. 2029'))):
+    ueberschrift(bild, L('Damm von Rivière-des-Anguilles'), t)
+    for i, ((j, name), datum) in enumerate(zip(punkte, ('2009', L('Nov. 2026'), L('Nov. 2029')))):
         p = phase(t, 0.5 + i * 0.8, 0.4)
         text(bild, (xpos(j), y - 90), datum, es.mono(32, True), es.HELLBLAU, 'ma', p)
-        text(bild, (xpos(j), y + 40), name, es.titel_schrift(40), (255, 120, 128) if i == 1 else es.WEISS, 'ma', p)
+        text(bild, (xpos(j), y + 40), L(name), es.titel_schrift(40), (255, 120, 128) if i == 1 else es.WEISS, 'ma', p)
     t2 = s.satz_start(1) if len(s.saetze) > 1 else 3.0
-    text(bild, (B / 2, 760), 'KEIN UNTERZEICHNETER BAUVERTRAG BEKANNT', es.mono(30, True), (255, 120, 128), 'ma',
+    text(bild, (B / 2, 760), L('KEIN UNTERZEICHNETER BAUVERTRAG BEKANNT'), es.mono(30, True), (255, 120, 128), 'ma',
          phase(t, t2, 0.5))
     return bild
 
@@ -1139,15 +1202,15 @@ def karten(t: float, s: Szene, eintraege: list[tuple[str, str]], titel: str, fra
         x = x0 + i * (b + abstand) + b / 2
         if fragen:
             text(bild, (x, 360), '?', es.titel_schrift(120), (255, 120, 128), 'ma', p)
-        text(bild, (x, 520 if fragen else 360), kopf, es.titel_schrift(44), anker='ma', deckkraft=p)
+        text(bild, (x, 520 if fragen else 360), L(kopf), es.titel_schrift(44), anker='ma', deckkraft=p)
         z = ImageDraw.Draw(bild)
-        for k, zl in enumerate(es.umbrechen(z, zeile, es.text_schrift(34), b - 60)):
+        for k, zl in enumerate(es.umbrechen(z, L(zeile), es.text_schrift(34), b - 60)):
             text(bild, (x, (590 if fragen else 450) + k * 46), zl, es.text_schrift(34), es.HELLBLAU, 'ma', p)
     return bild
 
 
 def szene_akteure(t: float, s: Szene) -> Image.Image:
-    return karten(t, s, AKTEURE, 'Wer will was?')
+    return karten(t, s, AKTEURE, L('Wer will was?'))
 
 
 FRAGEN = [('Regenzeit', 'Füllt sie die Reservoirs wieder?'), ('Tarife', 'Steigen sie, und wer wird geschützt?'),
@@ -1155,7 +1218,7 @@ FRAGEN = [('Regenzeit', 'Füllt sie die Reservoirs wieder?'), ('Tarife', 'Steige
 
 
 def szene_offen(t: float, s: Szene) -> Image.Image:
-    return karten(t, s, FRAGEN, 'Offene Fragen', fragen=True)
+    return karten(t, s, FRAGEN, L('Offene Fragen'), fragen=True)
 
 
 def szene_fazit(t: float, s: Szene) -> Image.Image:
@@ -1186,9 +1249,9 @@ def szene_fazit(t: float, s: Szene) -> Image.Image:
         c.arc(xs[2], 525, 10, 0, 2 * math.pi)
         c.fill()
     bild = zu_pil(fl)
-    ueberschrift(bild, 'Kurz gesagt', t)
+    ueberschrift(bild, L('Kurz gesagt'), t)
     for x, name, p in zip(xs, ('Zu wenig Regen', 'Zu viel Verlust', 'Projekte, die warten'), a):
-        text(bild, (x, 740), name, es.titel_schrift(46), anker='ma', deckkraft=p)
+        text(bild, (x, 740), L(name), es.titel_schrift(46), anker='ma', deckkraft=p)
     return bild
 
 
@@ -1213,16 +1276,16 @@ def szene_ende(t: float, s: Szene) -> Image.Image:
     if a > 0:
         bild.paste(logo, (260, 300), logo)
     text(bild, (440, 330), 'gazet.morisyen.de', es.titel_schrift(96), deckkraft=a)
-    text(bild, (444, 460), 'DOSSIER: WASSERVERSORGUNG · STAND 28.11.2026', es.mono(30, True), es.HELLBLAU, 'la',
+    text(bild, (444, 460), L('DOSSIER: WASSERVERSORGUNG · STAND 28.11.2026'), es.mono(30, True), es.HELLBLAU, 'la',
          phase(t, 0.5, 0.5))
-    text(bild, (444, 520), 'Alle Quellen, Hintergründe und neue Meldungen', es.text_schrift(38), es.WEISS, 'la',
+    text(bild, (444, 520), L('Alle Quellen, Hintergründe und neue Meldungen'), es.text_schrift(38), es.WEISS, 'la',
          phase(t, 0.8, 0.5))
     q = phase(t, 1.0, 0.5)
     if q > 0:
         qr = qr_bild(300)
         ebene = Image.new('RGB', qr.size)
         bild.paste(Image.blend(Image.new('RGB', qr.size, es.NAVY), qr, q), (1380, 280))
-        text(bild, (1530, 600), 'ZUM DOSSIER', es.mono(26, True), es.HELLBLAU, 'ma', q)
+        text(bild, (1530, 600), L('ZUM DOSSIER'), es.mono(26, True), es.HELLBLAU, 'ma', q)
     return bild
 
 
@@ -1273,6 +1336,52 @@ SZENEN_WEITER = [
 
 SZENEN += SZENEN_WEITER
 
+# Englische Fassung: gleiche Satzzahl und Reihenfolge je Szene wie im Deutschen (die Animation folgt den Satzanfängen)
+TEXT_EN = {
+    1: 'In November 2026, Curepipe, Vacoas, Phoenix and Floréal only had running water every other day. And even '
+       'then, only from three to eight in the morning.',
+    2: "Why is water running short on a tropical island? Let's take a look. As of late November 2026.",
+    3: 'The whole island needs water: households, farming, industry and tourism. When it runs short, everyone '
+       'feels it.',
+    4: 'Mauritius stores its drinking water mainly in seven large reservoirs. Together they hold around 92 million '
+       'cubic metres.',
+    41: 'All seven are man-made. The oldest is Mare-aux-Vacoas: in 1885 a first dam, just one metre high, was built '
+        'there on marshy land. The newest is the Bagatelle Dam, completed in 2017.',
+    5: 'The largest is Mare-aux-Vacoas, with almost 26 million cubic metres, more than a quarter of the total.',
+    6: 'The reservoirs are filled by rain. When it fails to come, the levels drop. That is exactly what happened '
+       'in 2026.',
+    7: 'On 26 November, the seven reservoirs were only 44 per cent full. A year earlier it was almost 70 per cent, '
+       'and the seasonal average is around 55.',
+    8: 'At Mare-aux-Vacoas the fall is especially sharp: around 33 per cent in mid-November, compared with 74 a '
+       'year earlier.',
+    9: 'When levels fall, the Central Water Authority, or CWA, restricts supply. Water then only flows at certain '
+       'hours.',
+    10: "But it is not only rain that is missing. In 2024 the CWA treated 332 million cubic metres of water. Only "
+        "115 million of it was sold, just over a third.",
+    11: 'Experts estimate that around 60 per cent of the water brings in no money. It seeps away through old, '
+        'leaking pipes, flows off through illegal connections or is billed incorrectly.',
+    12: 'In December 2025, the National Audit Office found that this share has risen over ten years. And solutions '
+        'keep being put off by yet more studies.',
+    13: 'According to media reports, this costs the CWA around 540 million rupees. Every month.',
+    14: "These losses weigh on the CWA's finances, and ultimately on the state budget.",
+    15: 'At the same time, water tariffs have not been adjusted since 2012. Households using no more than six cubic '
+        'metres a month pay nothing at all.',
+    16: 'The CWA also points out that a new connection costs it many times what it charges for it.',
+    17: 'Great hopes rest on a new dam at Rivière-des-Anguilles in the south. It was announced in 2009, at a cost of '
+        '2.6 billion rupees. By 2024 the estimate had risen to around 9.4 billion.',
+    18: 'According to the energy minister, construction is due to start in November 2026 and finish in 2029. But no '
+        'signed construction contract is known so far.',
+    19: 'Those involved set different priorities. The ministry is betting on new storage. The National Audit Office '
+        'criticises the losses. Experts consider the tariffs too low, but want better service first. And households '
+        'bear the brunt of the rationing.',
+    20: 'Questions remain: Will the rainy season bring enough water? Will tariffs rise, and how will low-income '
+        'households be protected? And how quickly will the leaks be fixed?',
+    21: 'In short: too little rain, too much loss, and projects the island has been waiting on for years.',
+    22: 'For more background, all sources and the latest news on water supply, visit gazet.morisyen.de. And for our '
+        'daily news from Mauritius, stay with us here on our channel. See you soon!',
+}
+URL_SPRECHEN = {'de': 'gazet punkt morisyen punkt D E', 'en': 'gazet dot morisyen dot D E'}
+
 # ----------------------------------------------------------------- Ton und Zusammenbau
 
 MONATE = ('Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November',
@@ -1301,7 +1410,7 @@ def sprich(sprecher: es.Sprecher, szene: Szene, arbeit: Path) -> Path:
     pcm = bytearray(b'\x00\x00' * int(rate * VOR))
     for i, satz in enumerate(teile):
         datei = arbeit / f's{szene.nr}-{i}.wav'
-        sprecher.sprich(satz.replace('gazet.morisyen.de', 'gazet punkt morisyen punkt D E'), datei)
+        sprecher.sprich(satz.replace('gazet.morisyen.de', URL_SPRECHEN[SPRACHE]), datei)
         with wave.open(str(datei)) as w:
             daten = w.readframes(w.getnframes())
         # Sprich() hängt PAUSE_S Stille an; die bleibt als Satzpause
@@ -1406,16 +1515,22 @@ def main() -> None:
     p.add_argument('--stimmen', type=Path, required=True)
     p.add_argument('--ausgabe', type=Path, required=True)
     p.add_argument('--nur', type=int, nargs='*', help='nur diese Szenen (Nummern)')
+    p.add_argument('--sprache', choices=['de', 'en'], default='de')
     a = p.parse_args()
+    global SPRACHE
+    SPRACHE = a.sprache
+    if SPRACHE != 'de':
+        for szene in SZENEN:
+            szene.text = TEXT_EN[szene.nr]
     a.ausgabe.mkdir(parents=True, exist_ok=True)
     arbeit = Path(tempfile.mkdtemp(prefix='lernvideo-'))
     es.lade_franzoesische_namen(a.stimmen)  # Ortsnamen französisch aussprechen, wie in der Sendung
-    sprecher = es.Sprecher(a.stimmen / 'de_DE-thorsten-high.onnx', 'de')
+    sprecher = es.Sprecher(a.stimmen / f'{es.STIMMEN[SPRACHE][0]}.onnx', SPRACHE)
     teile = []
     start = 0.0  # Startzeit der aktuellen Szene im fertigen Video
     if not a.nur or 0 in a.nur:
         vorspann = arbeit / 'vorspann.mp4'
-        start = es.vorspann_video('de', vorspann)
+        start = es.vorspann_video(SPRACHE, vorspann)
         teile.append(vorspann)
     musik_von = start
     untertitel = []
@@ -1433,11 +1548,11 @@ def main() -> None:
     musik_bis = start
     if not a.nur or 22 in a.nur:  # Abspann-Folie der Sendung mit Erkennungsmelodie
         abspann = arbeit / 'abspann.mp4'
-        es.abspann_video('de', es.dt.date(2026, 11, 28), abspann)
+        es.abspann_video(SPRACHE, es.dt.date(2026, 11, 28), abspann)
         teile.append(abspann)
     liste = arbeit / 'liste.txt'
     liste.write_text(''.join(f"file '{t}'\n" for t in teile))
-    stamm = 'lernvideo-wasser' if not a.nur else 'lernvideo-wasser-teil'
+    stamm = ('lernvideo-wasser' if not a.nur else 'lernvideo-wasser-teil') + ('' if SPRACHE == 'de' else f'-{SPRACHE}')
     ohne_musik = arbeit / 'ohne-musik.mp4'
     es.ffmpeg('-f', 'concat', '-safe', '0', '-i', str(liste), '-c:v', 'libx264', '-preset', 'medium', '-crf', '18',
               '-pix_fmt', 'yuv420p', '-r', str(FPS), '-c:a', 'aac', '-b:a', '160k', '-ar', '48000', '-ac', '2',
@@ -1450,7 +1565,7 @@ def main() -> None:
               f'[1:a]adelay={ms}|{ms}[m];[0:a][m]amix=inputs=2:duration=first:normalize=0[a]',
               '-map', '0:v', '-map', '[a]', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-ar', '48000',
               '-movflags', '+faststart', str(ziel))
-    srt = a.ausgabe / f'{stamm}.de.srt'
+    srt = a.ausgabe / f'{stamm}.{SPRACHE}.srt'
     srt.write_text(''.join(f'{i}\n{srt_zeit(von)} --> {srt_zeit(bis)}\n{satz}\n\n'
                            for i, (von, bis, satz) in enumerate(untertitel, 1)), encoding='utf-8')
     print(ziel, srt)
