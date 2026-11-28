@@ -1,5 +1,5 @@
 """
-Lernvideo „Gazet Morisyen erklärt“ – Pilot: Szenen 0–5 des Storyboards „Warum auf Mauritius das Wasser knapp wird“.
+Lernvideo „Gazet Morisyen erklärt“ – alle Szenen des Storyboards „Warum auf Mauritius das Wasser knapp wird“.
 
 Jede Szene ist eine Funktion bild(t, dauer) → Image; Formen zeichnet Cairo (glatte Kanten), Texte Pillow.
 Der Sprechertext kommt von Piper (Sendungsstimme), die Szenenlänge richtet sich nach dem gesprochenen Text.
@@ -539,6 +539,675 @@ SZENEN = [
 ]
 
 
+
+# ----------------------------------------------------------------- Szenen 6–22
+
+def balken(c: cairo.Context, werte: list[tuple[str, float, bool]], t: float, start: float, maximum: float,
+           x0: float = 420, x1: float = 1500, basis: float = 780, hoehe: float = 470) -> list[tuple[float, float, float]]:
+    """Senkrechte Balken, nacheinander wachsend; gibt (x-Mitte, y-Oberkante, Fortschritt) je Balken zurück."""
+    n = len(werte)
+    breite = min(220, (x1 - x0) / n * 0.55)
+    schritt = (x1 - x0) / n
+    lage = []
+    c.set_source_rgba(1, 1, 1, 0.6)
+    c.set_line_width(3)
+    c.move_to(x0 - 30, basis)
+    c.line_to(x1 + 30, basis)
+    c.stroke()
+    for i, (_, wert, hervor) in enumerate(werte):
+        p = phase(t, start + i * 0.6, 0.9)
+        xm = x0 + schritt * (i + 0.5)
+        h = hoehe * wert / maximum * p
+        c.set_source_rgba(*(ROT if hervor else WASSER), 0.95 if p > 0 else 0)
+        runde_box(c, xm - breite / 2, basis - h, breite, h + 0.01, 10)
+        c.fill()
+        c.rectangle(xm - breite / 2, basis - min(h, 10), breite, min(h, 10))
+        c.fill()
+        lage.append((xm, basis - h, p))
+    return lage
+
+
+def balken_texte(bild: Image.Image, werte: list[tuple[str, float, bool]], lage, einheit: str, stellen: int = 1,
+                 basis: float = 780) -> None:
+    for (label, wert, hervor), (xm, y, p) in zip(werte, lage):
+        if p <= 0:
+            continue
+        st = stellen if wert % 1 else 0
+        text(bild, (xm, y - 74), f'{zahl_de(wert * p, st)}{einheit}', es.titel_schrift(56),
+             (255, 120, 128) if hervor else es.WEISS, 'ma', min(1.0, p * 2))
+        text(bild, (xm, basis + 22), label, es.mono(26, True), es.HELLBLAU, 'ma', min(1.0, p * 2))
+
+
+def ueberschrift(bild: Image.Image, inhalt: str, t: float, y: float = 150) -> None:
+    text(bild, (B / 2, y), inhalt, es.titel_schrift(64), anker='ma', deckkraft=phase(t, 0, 0.5))
+
+
+def wolke(c: cairo.Context, x: float, y: float, a: float, farbe=HELL) -> None:
+    c.set_source_rgba(*farbe, a)
+    for dx, dy, r in ((-60, 10, 45), (-10, -20, 62), (50, 0, 50), (90, 20, 34)):
+        c.arc(x + dx, y + dy, r, 0, 2 * math.pi)
+        c.fill()
+    runde_box(c, x - 105, y + 5, 230, 50, 25)
+    c.fill()
+
+
+def sonne(c: cairo.Context, x: float, y: float, a: float, dreh: float = 0) -> None:
+    c.set_source_rgba(1, 0.78, 0.25, a)
+    c.arc(x, y, 50, 0, 2 * math.pi)
+    c.fill()
+    c.set_line_width(7)
+    c.set_line_cap(cairo.LINE_CAP_ROUND)
+    for k in range(10):
+        w = dreh + k / 10 * 2 * math.pi
+        c.move_to(x + math.cos(w) * 68, y + math.sin(w) * 68)
+        c.line_to(x + math.cos(w) * 92, y + math.sin(w) * 92)
+        c.stroke()
+
+
+def szene_regen(t: float, s: Szene) -> Image.Image:
+    fl, c = leinwand()
+    t2 = s.satz_start(1) if len(s.saetze) > 1 else 3.0
+    bx, by, bb, bh = B / 2 - 160, 420, 320, 380
+    if t < t2:
+        pegel = 0.25 + 0.6 * phase(t, 0.6, max(1.0, t2 - 0.8))
+    else:
+        pegel = 0.85 - 0.55 * phase(t, t2 + 0.3, max(1.5, s.dauer - t2 - 1.0))
+    behaelter(c, bx, by, bb, bh, pegel, 1.0)
+    wa = 1 - phase(t, t2, 0.8)
+    if wa > 0:
+        wolke(c, B / 2, 230, wa)
+        for k in range(14):
+            phase_k = ((t * 1.3 + k * 0.37) % 1.0)
+            x = B / 2 - 100 + (k * 53) % 220
+            y = 300 + phase_k * 110
+            c.set_source_rgba(*WASSER, wa * (1 - phase_k))
+            tropfen(c, x, y, 7)
+            c.fill()
+    sa = phase(t, t2, 0.8)
+    if sa > 0:
+        sonne(c, B / 2 + 330, 250, sa, t * 0.3)
+    bild = zu_pil(fl)
+    text(bild, (B / 2, by + bh + 30), f'Pegel {round(pegel * 100)} %', es.mono(30, True), es.HELLBLAU, 'ma')
+    return bild
+
+
+FUELLSTAND = [('Vor einem Jahr', 69.7, False), ('Saisonaler Schnitt', 55.2, False), ('26.11.2026', 44.0, True)]
+
+
+def szene_fuellstand(t: float, s: Szene) -> Image.Image:
+    fl, c = leinwand()
+    lage = balken(c, FUELLSTAND, t, 0.6, 100)
+    bild = zu_pil(fl)
+    ueberschrift(bild, 'Füllstand der sieben Reservoirs', t)
+    balken_texte(bild, FUELLSTAND, lage, ' %')
+    return bild
+
+
+FOTO = HIER_REPO = Path(__file__).resolve().parent.parent / 'public' / 'bilder' / 'wasserversorgung.jpg'
+
+
+def szene_mav_pegel(t: float, s: Szene) -> Image.Image:
+    foto_ab = max(3.6, s.dauer - 3.8)
+    if t >= foto_ab:  # langsamer Zoom auf das Foto, mit Bildnachweis
+        foto = Image.open(FOTO).convert('RGB')
+        z = 1.0 + 0.08 * glatt((t - foto_ab) / max(1.0, s.dauer - foto_ab))
+        hoehe = H * z
+        breite = foto.width * hoehe / foto.height
+        foto = foto.resize((round(breite), round(hoehe)), Image.LANCZOS)
+        x = (foto.width - B) // 2
+        y = (foto.height - H) // 2
+        bild = foto.crop((x, y, x + B, y + H))
+        a = phase(t, foto_ab, 0.5)
+        if a < 1:
+            bild = Image.blend(szene_mav_pegel(foto_ab - 0.04, s), bild, a)
+        z_ = ImageDraw.Draw(bild)
+        z_.text((B - 40, H - 120), 'Foto: Diego Delso, CC BY-SA 4.0, Wikimedia Commons', font=es.mono(22),
+                fill=es.WEISS, anchor='ra', stroke_width=3, stroke_fill=(0, 0, 0))
+        return bild
+    fl, c = leinwand()
+    links = 0.74
+    rechts = 0.74 - 0.41 * phase(t, 0.8, 2.2)
+    behaelter(c, 560, 300, 280, 380, links, phase(t, 0, 0.5))
+    behaelter(c, 1080, 300, 280, 380, rechts, phase(t, 0.2, 0.5), ROT if rechts < 0.6 else WASSER)
+    bild = zu_pil(fl)
+    ueberschrift(bild, 'Mare-aux-Vacoas', t)
+    text(bild, (700, 710), 'Nov. 2025', es.mono(30, True), es.HELLBLAU, 'ma')
+    text(bild, (1220, 710), 'Nov. 2026', es.mono(30, True), es.HELLBLAU, 'ma')
+    text(bild, (700, 230), '74 %', es.titel_schrift(56), anker='ma', deckkraft=phase(t, 0.3, 0.5))
+    text(bild, (1220, 230), f'{round(rechts * 100)} %', es.titel_schrift(56), (255, 120, 128), 'ma',
+         phase(t, 0.5, 0.5))
+    return bild
+
+
+def szene_cwa(t: float, s: Szene) -> Image.Image:
+    fl, c = leinwand()
+    y = 520
+    # Leitung mit Ventil, das im Takt einer Uhr öffnet und schließt
+    c.set_source_rgba(*HELL, phase(t, 0.2, 0.6))
+    runde_box(c, 260, y - 30, 1400, 60, 30)
+    c.fill()
+    offen = (math.sin(t * 2.2) + 1) / 2 > 0.5
+    c.set_source_rgba(*(WASSER if offen else ROT), 1)
+    runde_box(c, B / 2 - 50, y - 90, 100, 180, 16)
+    c.fill()
+    c.set_source_rgba(1, 1, 1, 1)
+    c.set_line_width(10)
+    c.move_to(B / 2 - 70, y - 130)
+    c.line_to(B / 2 + 70, y - 130)
+    c.stroke()
+    if offen:
+        for k in range(5):
+            xk = B / 2 + 80 + ((t * 300 + k * 140) % 700)
+            c.set_source_rgba(*WASSER, 0.9)
+            tropfen(c, xk, y + 8, 12)
+            c.fill()
+    # kleine Uhr
+    ux, uy, r = 1500, 280, 90
+    c.set_source_rgba(1, 1, 1, 0.9)
+    c.set_line_width(5)
+    c.arc(ux, uy, r, 0, 2 * math.pi)
+    c.stroke()
+    w = t * 1.1 - math.pi / 2
+    c.move_to(ux, uy)
+    c.line_to(ux + math.cos(w) * (r - 20), uy + math.sin(w) * (r - 20))
+    c.stroke()
+    bild = zu_pil(fl)
+    text(bild, (400, 230), 'CWA', es.titel_schrift(120), deckkraft=phase(t, 0, 0.5))
+    text(bild, (404, 370), 'CENTRAL WATER AUTHORITY', es.mono(28, True), es.HELLBLAU, 'la', phase(t, 0.3, 0.5))
+    text(bild, (B / 2, y + 140), 'AUF' if offen else 'ZU', es.mono(40, True), es.WEISS, 'ma')
+    return bild
+
+
+VERKAUF = [('Aufbereitet', 332, False), ('Verkauft', 115, True)]
+
+
+def szene_verkauf(t: float, s: Szene) -> Image.Image:
+    fl, c = leinwand()
+    t2 = s.satz_start(1) if len(s.saetze) > 1 else 1.5
+    werte = [VERKAUF[0]] + ([VERKAUF[1]] if t >= t2 else [])
+    lage = balken(c, werte + [('', 0, False)] * (2 - len(werte)), t, 0.5, 340, x0=560, x1=1360)
+    bild = zu_pil(fl)
+    ueberschrift(bild, 'Wasser der CWA im Jahr 2024, in Mio. m³', t)
+    balken_texte(bild, werte, lage[:len(werte)], '', 0)
+    return bild
+
+
+def szene_verluste(t: float, s: Szene) -> Image.Image:
+    fl, c = leinwand()
+    t2 = s.satz_start(1) if len(s.saetze) > 1 else 3.0
+    ziele = [(560, 760), (B / 2, 760), (1360, 760)]
+    for i in range(10):
+        x0, y0 = 330 + i * 140, 360
+        verlust = i >= 4
+        p = phase(t, t2 + (i - 4) * 0.35, 1.2) if verlust else 0
+        if verlust:
+            zx, zy = ziele[(i - 4) % 3]
+            x, y = x0 + (zx - x0) * p, y0 + (zy - 60 - y0) * p
+        else:
+            x, y = x0, y0
+        farbe = GRAU if verlust and phase(t, 0.6 + i * 0.1, 0.5) > 0.5 else WASSER
+        c.set_source_rgba(*farbe, phase(t, i * 0.08, 0.4) * (1 - 0.5 * p))
+        tropfen(c, x, y, 34)
+        c.fill()
+    a = phase(t, t2, 0.6)
+    # Riss im Rohr
+    c.set_source_rgba(*HELL, a)
+    runde_box(c, 470, 790, 180, 40, 20)
+    c.fill()
+    c.set_source_rgba(*ROT, a)
+    c.set_line_width(5)
+    c.move_to(555, 785)
+    c.line_to(565, 805)
+    c.line_to(550, 818)
+    c.line_to(562, 835)
+    c.stroke()
+    # Abzweig
+    c.set_source_rgba(*HELL, a)
+    runde_box(c, B / 2 - 90, 790, 180, 40, 20)
+    c.fill()
+    runde_box(c, B / 2 + 20, 830, 40, 70, 12)
+    c.fill()
+    # Zähler
+    c.set_source_rgba(*HELL, a)
+    c.arc(1360, 820, 52, 0, 2 * math.pi)
+    c.set_line_width(6)
+    c.stroke()
+    bild = zu_pil(fl)
+    text(bild, (B / 2, 150), 'Rund 60 % des Wassers bringen kein Geld ein', es.titel_schrift(60), anker='ma',
+         deckkraft=phase(t, 0.3, 0.6))
+    f = es.mono(24, True)
+    for (x, _), name in zip(ziele, ('Lecks', 'Illegale Anschlüsse', 'Abrechnungsfehler')):
+        text(bild, (x, 920), name.upper(), f, es.HELLBLAU, 'ma', a)
+    text(bild, (1360, 795), '?', es.titel_schrift(48), (255, 120, 128), 'ma', a)
+    return bild
+
+
+def szene_rechnungshof(t: float, s: Szene) -> Image.Image:
+    fl, c = leinwand()
+    p = phase(t, 0.5, 1.6)
+    c.set_source_rgba(*ROT, 1)
+    c.set_line_width(10)
+    c.set_line_cap(cairo.LINE_CAP_ROUND)
+    x0, y0, x1, y1 = 260, 720, 960, 330
+    c.move_to(x0, y0)
+    c.line_to(x0 + (x1 - x0) * p, y0 + (y1 - y0) * p)
+    c.stroke()
+    if p > 0.95:
+        c.move_to(x1, y1)
+        c.line_to(x1 - 50, y1 + 5)
+        c.move_to(x1, y1)
+        c.line_to(x1 - 20, y1 + 48)
+        c.stroke()
+    c.set_source_rgba(1, 1, 1, 0.6)
+    c.set_line_width(3)
+    c.move_to(240, 760)
+    c.line_to(1000, 760)
+    c.stroke()
+    t2 = s.satz_start(1) if len(s.saetze) > 1 else 3.0
+    for k in range(4):
+        q = phase(t, t2 + k * 0.45, 0.4)
+        if q <= 0:
+            continue
+        c.set_source_rgba(*HELL, q)
+        runde_box(c, 1220 + k * 24, 680 - k * 110 - 40 * (1 - q), 330, 90, 10)
+        c.fill()
+    bild = zu_pil(fl)
+    ueberschrift(bild, 'Rechnungshof, Dezember 2025', t)
+    text(bild, (600, 780), '10 JAHRE', es.mono(28, True), es.HELLBLAU, 'ma', phase(t, 0.5, 0.5))
+    text(bild, (300, 330), 'Anteil ohne Einnahmen', es.titel_schrift(36), deckkraft=phase(t, 0.8, 0.5))
+    for k in range(4):
+        q = phase(t, t2 + k * 0.45, 0.4)
+        text(bild, (1385 + k * 24, 725 - k * 110 - 40 * (1 - q)), 'STUDIE', es.mono(30, True), es.NAVY, 'mm', q)
+    return bild
+
+
+def szene_kosten(t: float, s: Szene) -> Image.Image:
+    fl, c = leinwand()
+    t2 = s.satz_start(1) if len(s.saetze) > 1 else 3.0
+    a = phase(t, t2, 0.5)
+    if a > 0:
+        c.set_source_rgba(1, 1, 1, a)
+        runde_box(c, B / 2 - 130, 640, 260, 230, 18)
+        c.fill()
+        c.set_source_rgba(*ROT, a)
+        runde_box(c, B / 2 - 130, 640, 260, 60, 18)
+        c.fill()
+        c.rectangle(B / 2 - 130, 670, 260, 30)
+        c.fill()
+    bild = zu_pil(fl)
+    wert = 540 * phase(t, 0.3, 2.2)
+    text(bild, (B / 2, 300), f'Rs {round(wert)} Mio.', es.titel_schrift(150), (255, 120, 128), 'ma',
+         phase(t, 0.2, 0.4))
+    text(bild, (B / 2, 520), 'VERLUST DER CWA LAUT MEDIENBERICHT', es.mono(28, True), es.HELLBLAU, 'ma',
+         phase(t, 0.6, 0.5))
+    text(bild, (B / 2, 760), 'pro', es.titel_schrift(44), es.NAVY, 'ma', a)
+    text(bild, (B / 2, 810), 'Monat', es.titel_schrift(44), es.NAVY, 'ma', a)
+    return bild
+
+
+def kasse(c: cairo.Context, x: float, y: float, b: float, h: float, stand: float, a: float) -> None:
+    c.set_source_rgba(1, 1, 1, a)
+    c.set_line_width(5)
+    runde_box(c, x, y, b, h, 16)
+    c.stroke()
+    c.set_source_rgba(1, 0.78, 0.25, 0.9 * a)
+    c.rectangle(x + 12, y + h - 12 - (h - 24) * stand, b - 24, (h - 24) * stand)
+    c.fill()
+
+
+def szene_haushalt(t: float, s: Szene) -> Image.Image:
+    fl, c = leinwand()
+    sinkt = phase(t, 0.8, 3.5)
+    kasse(c, 330, 330, 300, 380, 0.8 - 0.5 * sinkt, phase(t, 0, 0.5))
+    kasse(c, 1200, 260, 420, 520, 0.8 - 0.2 * phase(t, 1.6, 3.0), phase(t, 0.4, 0.5))
+    a = phase(t, 0.8, 0.6)
+    c.set_source_rgba(*ROT, a)
+    c.set_line_width(8)
+    c.set_dash([24, 16], -t * 80)
+    c.move_to(660, 520)
+    c.line_to(1160, 520)
+    c.stroke()
+    c.set_dash([])
+    c.move_to(1160, 520)
+    c.line_to(1120, 495)
+    c.move_to(1160, 520)
+    c.line_to(1120, 545)
+    c.stroke()
+    bild = zu_pil(fl)
+    text(bild, (480, 740), 'CWA', es.titel_schrift(48), anker='ma')
+    text(bild, (1410, 800), 'Staatshaushalt', es.titel_schrift(48), anker='ma', deckkraft=phase(t, 0.4, 0.5))
+    return bild
+
+
+def szene_tarife(t: float, s: Szene) -> Image.Image:
+    fl, c = leinwand()
+    t2 = s.satz_start(1) if len(s.saetze) > 1 else 3.5
+    x0, x1, y = 260, 1100, 520
+    c.set_source_rgba(1, 1, 1, 0.8)
+    c.set_line_width(4)
+    c.move_to(x0, y)
+    c.line_to(x0 + (x1 - x0) * phase(t, 0.2, 1.4), y)
+    c.stroke()
+    # Preisschild bei 2012, Eis zieht auf
+    c.set_source_rgba(*HELL, 1)
+    c.move_to(x0 + 20, y - 150)
+    c.line_to(x0 + 170, y - 150)
+    c.line_to(x0 + 210, y - 105)
+    c.line_to(x0 + 170, y - 60)
+    c.line_to(x0 + 20, y - 60)
+    c.close_path()
+    c.fill()
+    eis = phase(t, 1.2, 1.5)
+    c.set_source_rgba(0.75, 0.9, 1, 0.55 * eis)
+    c.set_line_width(4)
+    for k in range(6):
+        cx, cy = x0 + 40 + k * 28, y - 105 + (k % 2) * 18
+        for w in range(3):
+            ang = w * math.pi / 3
+            c.move_to(cx - math.cos(ang) * 14 * eis, cy - math.sin(ang) * 14 * eis)
+            c.line_to(cx + math.cos(ang) * 14 * eis, cy + math.sin(ang) * 14 * eis)
+        c.stroke()
+    a = phase(t, t2, 0.6)
+    if a > 0:  # Haus mit Würfel 6 m³ und Stempel gratis
+        hx, hy = 1450, 560
+        c.set_source_rgba(1, 1, 1, a)
+        c.set_line_width(8)
+        c.move_to(hx - 130, hy - 40)
+        c.line_to(hx, hy - 160)
+        c.line_to(hx + 130, hy - 40)
+        c.stroke()
+        c.rectangle(hx - 100, hy - 50, 200, 170)
+        c.stroke()
+        c.set_source_rgba(*WASSER, a)
+        runde_box(c, hx - 60, hy - 10, 120, 110, 10)
+        c.fill()
+    bild = zu_pil(fl)
+    ueberschrift(bild, 'Wasserpreise', t)
+    text(bild, (x0 + 100, y - 118), 'Tarif', es.titel_schrift(36), es.NAVY, 'ma')
+    text(bild, (x0, y + 24), '2012', es.mono(30, True), es.HELLBLAU, 'ma')
+    text(bild, (x1, y + 24), '2026', es.mono(30, True), es.HELLBLAU, 'ma', phase(t, 1.4, 0.4))
+    text(bild, (680, y + 90), 'SEITDEM UNVERÄNDERT', es.mono(28, True), (255, 120, 128), 'ma', phase(t, 1.6, 0.5))
+    a = phase(t, t2, 0.6)
+    text(bild, (1450, 595), '6 m³', es.titel_schrift(40), es.NAVY, 'mm', a)
+    st = phase(t, t2 + 0.8, 0.3)
+    if st > 0:
+        ebene = Image.new('RGBA', bild.size, (0, 0, 0, 0))
+        ze = ImageDraw.Draw(ebene)
+        ze.rounded_rectangle([1320, 720, 1580, 800], 12, outline=(255, 120, 128, round(255 * st)), width=6)
+        ze.text((1450, 760), 'GRATIS', font=es.mono(44, True), fill=(255, 120, 128, round(255 * st)), anchor='mm')
+        ebene = ebene.rotate(-8, center=(1450, 760))
+        bild.paste(ebene, (0, 0), ebene)
+    text(bild, (1450, 830), 'bis 6 m³ im Monat', es.mono(26, True), es.HELLBLAU, 'ma', st)
+    return bild
+
+
+def szene_anschluss(t: float, s: Szene) -> Image.Image:
+    fl, c = leinwand()
+    c.set_source_rgba(*HELL, phase(t, 0, 0.5))
+    runde_box(c, 260, 600, 600, 50, 25)
+    c.fill()
+    runde_box(c, 780, 420, 50, 230, 20)
+    c.fill()
+    c.set_source_rgba(1, 1, 1, phase(t, 0.3, 0.5))
+    c.set_line_width(8)
+    c.move_to(700, 420)
+    c.line_to(805, 330)
+    c.line_to(910, 420)
+    c.stroke()
+    c.rectangle(725, 410, 160, 120)
+    c.stroke()
+    klein = phase(t, 0.8, 0.5)
+    gross = phase(t, 1.6, 1.6)
+    for (x, sk, a, farbe) in ((1080, 1.0, klein, HELL), (1420, 1.0 + 1.2 * gross, phase(t, 1.6, 0.4), ROT)):
+        if a <= 0:
+            continue
+        c.save()
+        c.translate(x, 520)
+        c.scale(sk, sk)
+        c.set_source_rgba(*farbe, a)
+        c.move_to(-70, -40)
+        c.line_to(40, -40)
+        c.line_to(75, 0)
+        c.line_to(40, 40)
+        c.line_to(-70, 40)
+        c.close_path()
+        c.fill()
+        c.restore()
+    bild = zu_pil(fl)
+    ueberschrift(bild, 'Ein neuer Anschluss', t)
+    text(bild, (1080, 640), 'BERECHNET', es.mono(28, True), es.HELLBLAU, 'ma', klein)
+    text(bild, (1420, 700), 'TATSÄCHLICHE KOSTEN', es.mono(28, True), (255, 120, 128), 'ma', phase(t, 1.6, 0.4))
+    return bild
+
+
+def szene_damm(t: float, s: Szene) -> Image.Image:
+    fl, c = leinwand()
+    punkt = insel_pfad(c, 160, 200, 680)
+    c.set_source_rgba(1, 1, 1, 0.08)
+    c.fill_preserve()
+    c.set_source_rgba(1, 1, 1, 0.9)
+    c.set_line_width(4)
+    c.stroke()
+    x, y = punkt(57.5528, -20.4867)
+    damm(c, x, y, phase(t, 0.4, 0.5), ROT)
+    t2 = s.satz_start(1) if len(s.saetze) > 1 else 3.0
+    werte = [('Schätzung 2009', 2.6, False), ('Schätzung 2024', 9.4, True)]
+    lage = balken(c, [werte[0]] + ([werte[1]] if t >= t2 + 2.0 else [('', 0, False)]), t, t2, 10,
+                  x0=900, x1=1700, basis=800, hoehe=470)
+    bild = zu_pil(fl)
+    text(bild, (x, y + 40), 'Rivière-des-Anguilles', es.titel_schrift(34), anker='ma', deckkraft=phase(t, 0.6, 0.5))
+    text(bild, (1300, 150), 'Geschätzte Kosten, Mrd. Rupien', es.titel_schrift(50), anker='ma',
+         deckkraft=phase(t, t2, 0.5))
+    sichtbar = [werte[0]] + ([werte[1]] if t >= t2 + 2.0 else [])
+    balken_texte(bild, sichtbar, lage[:len(sichtbar)], '', 1, basis=800)
+    return bild
+
+
+def szene_bauzeit(t: float, s: Szene) -> Image.Image:
+    fl, c = leinwand()
+    x0, x1, y = 260, 1660, 540
+    punkte = [(2009.0, 'Ankündigung'), (2026.9, 'Baubeginn?'), (2029.9, 'Fertigstellung geplant')]
+
+    def xpos(j: float) -> float:
+        return {2009.0: 420, 2026.9: 1060, 2029.9: 1500}[j]
+
+    c.set_source_rgba(1, 1, 1, 0.8)
+    c.set_line_width(4)
+    c.move_to(x0, y)
+    c.line_to(700, y)
+    c.move_to(760, y)
+    c.line_to(xpos(2026.9), y)
+    c.stroke()
+    for dx in (700, 730):  # Bruchzeichen: die Achse ist zwischen 2009 und 2026 verkürzt
+        c.move_to(dx - 8, y + 18)
+        c.line_to(dx + 22, y - 18)
+        c.stroke()
+    c.set_dash([14, 12])
+    c.move_to(xpos(2026.9), y)
+    c.line_to(x1, y)
+    c.stroke()
+    c.set_dash([])
+    for i, (j, _) in enumerate(punkte):
+        p = phase(t, 0.4 + i * 0.8, 0.4)
+        blink = 0.5 + 0.5 * math.sin(t * 6) if i == 1 else 1
+        c.set_source_rgba(*(ROT if i == 1 else WEISS), p * blink)
+        c.arc(xpos(j), y, 14, 0, 2 * math.pi)
+        c.fill()
+    bild = zu_pil(fl)
+    ueberschrift(bild, 'Damm von Rivière-des-Anguilles', t)
+    for i, ((j, name), datum) in enumerate(zip(punkte, ('2009', 'Nov. 2026', 'Nov. 2029'))):
+        p = phase(t, 0.5 + i * 0.8, 0.4)
+        text(bild, (xpos(j), y - 90), datum, es.mono(32, True), es.HELLBLAU, 'ma', p)
+        text(bild, (xpos(j), y + 40), name, es.titel_schrift(40), (255, 120, 128) if i == 1 else es.WEISS, 'ma', p)
+    t2 = s.satz_start(1) if len(s.saetze) > 1 else 3.0
+    text(bild, (B / 2, 760), 'KEIN UNTERZEICHNETER BAUVERTRAG BEKANNT', es.mono(30, True), (255, 120, 128), 'ma',
+         phase(t, t2, 0.5))
+    return bild
+
+
+AKTEURE = [('Ministerium', 'setzt auf neue Speicher'), ('Rechnungshof', 'kritisiert die Verluste'),
+           ('Fachleute', 'Tarife zu niedrig, aber erst besserer Service'), ('Haushalte', 'tragen die Rationierung')]
+
+
+def karten(t: float, s: Szene, eintraege: list[tuple[str, str]], titel: str, fragen: bool = False) -> Image.Image:
+    fl, c = leinwand()
+    n = len(eintraege)
+    b, abstand = (380 if n == 4 else 480), 40
+    x0 = (B - (n * b + (n - 1) * abstand)) / 2
+    starts = [s.satz_start(i + 1) if i + 1 < len(s.saetze) else 0.8 + i * 1.5 for i in range(n)]
+    if fragen:
+        starts = [s.satz_start(i) if i < len(s.saetze) else 0.8 + i * 1.5 for i in range(n)]
+    for i in range(n):
+        p = phase(t, starts[i] - 0.2, 0.5)
+        if p <= 0:
+            continue
+        c.set_source_rgba(1, 1, 1, 0.1 * p)
+        runde_box(c, x0 + i * (b + abstand), 300 + 40 * (1 - p), b, 460, 20)
+        c.fill()
+        c.set_source_rgba(*(ROT if fragen else WASSER), p)
+        runde_box(c, x0 + i * (b + abstand), 300 + 40 * (1 - p), b, 12, 6)
+        c.fill()
+    bild = zu_pil(fl)
+    ueberschrift(bild, titel, t)
+    for i, (kopf, zeile) in enumerate(eintraege):
+        p = phase(t, starts[i] - 0.2, 0.5)
+        x = x0 + i * (b + abstand) + b / 2
+        if fragen:
+            text(bild, (x, 360), '?', es.titel_schrift(120), (255, 120, 128), 'ma', p)
+        text(bild, (x, 520 if fragen else 360), kopf, es.titel_schrift(44), anker='ma', deckkraft=p)
+        z = ImageDraw.Draw(bild)
+        for k, zl in enumerate(es.umbrechen(z, zeile, es.text_schrift(34), b - 60)):
+            text(bild, (x, (590 if fragen else 450) + k * 46), zl, es.text_schrift(34), es.HELLBLAU, 'ma', p)
+    return bild
+
+
+def szene_akteure(t: float, s: Szene) -> Image.Image:
+    return karten(t, s, AKTEURE, 'Wer will was?')
+
+
+FRAGEN = [('Regenzeit', 'Füllt sie die Reservoirs wieder?'), ('Tarife', 'Steigen sie, und wer wird geschützt?'),
+          ('Lecks', 'Wie schnell wird das Netz dicht?')]
+
+
+def szene_offen(t: float, s: Szene) -> Image.Image:
+    return karten(t, s, FRAGEN, 'Offene Fragen', fragen=True)
+
+
+def szene_fazit(t: float, s: Szene) -> Image.Image:
+    fl, c = leinwand()
+    xs = [480, B / 2, 1440]
+    a = [phase(t, 0.3 + i * 0.6, 0.5) for i in range(3)]
+    if a[0] > 0:
+        sonne(c, xs[0], 330, a[0], t * 0.3)
+        behaelter(c, xs[0] - 90, 470, 180, 220, 0.15, a[0], ROT)
+    if a[1] > 0:
+        c.set_source_rgba(*HELL, a[1])
+        runde_box(c, xs[1] - 150, 450, 300, 60, 30)
+        c.fill()
+        zyklus = (t % 1.2) / 1.2
+        c.set_source_rgba(*WASSER, a[1] * (1 - zyklus))
+        tropfen(c, xs[1], 540 + 120 * zyklus, 16)
+        c.fill()
+    if a[2] > 0:
+        c.set_source_rgba(1, 0.78, 0.25, a[2])
+        c.move_to(xs[2], 330)
+        c.line_to(xs[2] + 130, 560)
+        c.line_to(xs[2] - 130, 560)
+        c.close_path()
+        c.fill()
+        c.set_source_rgba(*NAVY, a[2])
+        c.rectangle(xs[2] - 8, 410, 16, 90)
+        c.fill()
+        c.arc(xs[2], 525, 10, 0, 2 * math.pi)
+        c.fill()
+    bild = zu_pil(fl)
+    ueberschrift(bild, 'Kurz gesagt', t)
+    for x, name, p in zip(xs, ('Zu wenig Regen', 'Zu viel Verlust', 'Projekte, die warten'), a):
+        text(bild, (x, 740), name, es.titel_schrift(46), anker='ma', deckkraft=p)
+    return bild
+
+
+DOSSIER_URL = 'https://gazet.morisyen.de/dossier/wasserversorgung'
+
+
+def qr_bild(groesse: int) -> Image.Image:
+    import qrcode
+
+    qr = qrcode.QRCode(border=2, box_size=10)
+    qr.add_data(DOSSIER_URL)
+    qr.make(fit=True)
+    return qr.make_image(fill_color='#0d203e', back_color='white').convert('RGB').resize((groesse, groesse),
+                                                                                       Image.NEAREST)
+
+
+def szene_ende(t: float, s: Szene) -> Image.Image:
+    fl, c = leinwand()
+    bild = zu_pil(fl)
+    logo = es.logo_weiss(150)
+    a = phase(t, 0, 0.6)
+    if a > 0:
+        bild.paste(logo, (260, 300), logo)
+    text(bild, (440, 330), 'gazet.morisyen.de', es.titel_schrift(96), deckkraft=a)
+    text(bild, (444, 460), 'DOSSIER: WASSERVERSORGUNG · STAND 28.11.2026', es.mono(30, True), es.HELLBLAU, 'la',
+         phase(t, 0.5, 0.5))
+    text(bild, (444, 520), 'Alle Quellen, Hintergründe und neue Meldungen', es.text_schrift(38), es.WEISS, 'la',
+         phase(t, 0.8, 0.5))
+    q = phase(t, 1.0, 0.5)
+    if q > 0:
+        qr = qr_bild(300)
+        ebene = Image.new('RGB', qr.size)
+        bild.paste(Image.blend(Image.new('RGB', qr.size, es.NAVY), qr, q), (1380, 280))
+        text(bild, (1530, 600), 'ZUM DOSSIER', es.mono(26, True), es.HELLBLAU, 'ma', q)
+    return bild
+
+
+SZENEN_WEITER = [
+    Szene(6, 'Gefüllt werden die Reservoirs vom Regen. Bleibt er aus, sinken die Pegel. Genau das ist 2026 passiert.',
+          '', szene_regen),
+    Szene(7, 'Am 26. November waren die sieben Reservoirs nur noch zu 44 Prozent gefüllt. Ein Jahr zuvor waren es '
+             'fast 70 Prozent, im Schnitt dieser Jahreszeit rund 55.', 'Water Resources Commission über ION News',
+          szene_fuellstand),
+    Szene(8, 'Bei Mare-aux-Vacoas ist der Rückgang besonders deutlich: Mitte November rund 33 Prozent, ein Jahr zuvor '
+             '74.', 'allAfrica / L\'Express', szene_mav_pegel),
+    Szene(9, 'Sinken die Pegel, schränkt die Central Water Authority, kurz CWA, die Versorgung ein. Dann fließt das '
+             'Wasser nur noch zu bestimmten Stunden.', '', szene_cwa),
+    Szene(10, 'Doch es fehlt nicht nur Regen. 2024 hat die CWA 332 Millionen Kubikmeter Wasser aufbereitet. Verkauft '
+              'wurden davon nur 115 Millionen, also gut ein Drittel.', 'Statistics Mauritius', szene_verkauf),
+    Szene(11, 'Fachleute schätzen: Rund 60 Prozent des Wassers bringen kein Geld ein. Es versickert in alten, '
+              'undichten Leitungen, fließt über illegale Anschlüsse ab oder wird falsch abgerechnet.', 'L\'Express',
+          szene_verluste),
+    Szene(12, 'Der Rechnungshof hat im Dezember 2025 festgestellt: Dieser Anteil ist über zehn Jahre gestiegen. Und '
+              'Lösungen werden immer wieder durch neue Studien aufgeschoben.', 'National Audit Office',
+          szene_rechnungshof),
+    Szene(13, 'Das kostet die CWA nach Medienberichten rund 540 Millionen Rupien. Jeden Monat.', 'newsmoris',
+          szene_kosten),
+    Szene(14, 'Diese Verluste belasten die Finanzen der CWA und damit am Ende auch den Staatshaushalt.', '',
+          szene_haushalt),
+    Szene(15, 'Gleichzeitig wurden die Wasserpreise seit 2012 nicht mehr angepasst. Wer höchstens sechs Kubikmeter im '
+              'Monat verbraucht, zahlt gar nichts.', 'CWA-Jahresbericht 2024–25', szene_tarife),
+    Szene(16, 'Die CWA weist außerdem darauf hin: Ein neuer Anschluss kostet sie ein Vielfaches dessen, was sie dafür '
+              'berechnet.', 'CWA-Jahresbericht 2024–25', szene_anschluss),
+    Szene(17, 'Große Hoffnung ruht auf einem neuen Damm bei Rivière-des-Anguilles im Süden. Angekündigt wurde er 2009, '
+              'für 2,6 Milliarden Rupien. 2024 lag die Schätzung bei rund 9,4 Milliarden.', 'National Audit Office',
+          szene_damm),
+    Szene(18, 'Laut Energieminister soll der Bau im November 2026 beginnen und 2029 fertig sein. Ein unterzeichneter '
+              'Bauvertrag ist bisher aber nicht bekannt.', 'Maurice Info', szene_bauzeit),
+    Szene(19, 'Die Beteiligten setzen unterschiedliche Schwerpunkte. Das Ministerium baut auf neue Speicher. Der '
+              'Rechnungshof kritisiert die Verluste. Fachleute halten die Tarife für zu niedrig, wollen aber zuerst '
+              'besseren Service. Und die Haushalte tragen die Folgen der Rationierung.',
+          'NAO, L\'Express, Ministerium', szene_akteure),
+    Szene(20, 'Offen bleibt: Bringt die Regenzeit genug Wasser? Werden die Tarife steigen, und wie werden Haushalte '
+              'mit wenig Geld geschützt? Und wie schnell werden die Lecks gestopft?', '', szene_offen),
+    Szene(21, 'Kurz gesagt: zu wenig Regen, zu viel Verlust und Projekte, auf die die Insel seit Jahren wartet.', '',
+          szene_fazit),
+    Szene(22, 'Mehr Hintergründe, alle Quellen und die neuesten Meldungen zur Wasserversorgung finden Sie auf '
+              'gazet.morisyen.de. Und unsere täglichen Nachrichten aus Mauritius gibt es hier auf unserem Kanal. '
+              'Bis bald!', '', szene_ende),
+]
+
+
+SZENEN += SZENEN_WEITER
+
 # ----------------------------------------------------------------- Ton und Zusammenbau
 
 def sprich(sprecher: es.Sprecher, szene: Szene, arbeit: Path) -> Path:
@@ -550,7 +1219,7 @@ def sprich(sprecher: es.Sprecher, szene: Szene, arbeit: Path) -> Path:
     pcm = bytearray(b'\x00\x00' * int(rate * VOR))
     for i, satz in enumerate(teile):
         datei = arbeit / f's{szene.nr}-{i}.wav'
-        sprecher.sprich(satz, datei)
+        sprecher.sprich(satz.replace('gazet.morisyen.de', 'gazet punkt morisyen punkt D E'), datei)
         with wave.open(str(datei)) as w:
             daten = w.readframes(w.getnframes())
         # Sprich() hängt PAUSE_S Stille an; die bleibt als Satzpause
@@ -601,7 +1270,7 @@ def main() -> None:
     es.lade_franzoesische_namen(a.stimmen)  # Ortsnamen französisch aussprechen, wie in der Sendung
     sprecher = es.Sprecher(a.stimmen / 'de_DE-thorsten-high.onnx', 'de')
     teile = []
-    if not a.nur:
+    if not a.nur or 0 in a.nur:
         vorspann = arbeit / 'vorspann.mp4'
         es.vorspann_video('de', vorspann)
         teile.append(vorspann)
@@ -613,9 +1282,13 @@ def main() -> None:
         rendere(szene, ton, ziel)
         teile.append(ziel)
         print(f'Szene {szene.nr}: {szene.dauer:.1f} s')
+    if not a.nur or 22 in a.nur:  # Abspann-Folie der Sendung mit Erkennungsmelodie
+        abspann = arbeit / 'abspann.mp4'
+        es.abspann_video('de', es.dt.date(2026, 11, 28), abspann)
+        teile.append(abspann)
     liste = arbeit / 'liste.txt'
     liste.write_text(''.join(f"file '{t}'\n" for t in teile))
-    ziel = a.ausgabe / 'lernvideo-wasser-pilot.mp4'
+    ziel = a.ausgabe / ('lernvideo-wasser.mp4' if not a.nur else 'lernvideo-wasser-teil.mp4')
     es.ffmpeg('-f', 'concat', '-safe', '0', '-i', str(liste), '-c:v', 'libx264', '-preset', 'medium', '-crf', '18',
               '-pix_fmt', 'yuv420p', '-r', str(FPS), '-c:a', 'aac', '-b:a', '160k', '-ar', '48000', '-ac', '2',
               '-movflags', '+faststart', str(ziel))

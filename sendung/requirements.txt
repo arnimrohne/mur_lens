@@ -6,3 +6,4 @@ google-auth>=2.30,<3
 compound-split==1.0.2
 numpy>=1.26,<3
 pycairo>=1.26
+qrcode>=7.4
