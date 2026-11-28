@@ -1,11 +1,11 @@
 {
  "schema": 1,
- "stand": "2026-11-28T01:35:00+04:00",
+ "stand": "2026-11-28T21:08:50+04:00",
  "dossiers": [
   {
    "id": "wasserversorgung",
    "rubrik": "umwelt",
-   "stand": "2026-11-27T23:30:00+04:00",
+   "stand": "2026-11-28T21:08:50+04:00",
    "titel": {
     "de": "Wasserversorgung auf Mauritius",
     "fr": "L'approvisionnement en eau à Maurice",
@@ -36,11 +36,29 @@
     "en": "Water is essential for households, farming, industry and tourism. When the reservoirs run low, the Central Water Authority (CWA) restricts supply: in November 2026, Vacoas, Phoenix, Curepipe and Floréal received water only every other day, from 3 am to 8 am.\n\nNetwork losses also weigh on the CWA's finances and thus on the state budget. According to media reports, they cost it around 540 million rupees a month."
    },
    "entwicklung": {
-    "de": "Die Füllstände hängen stark vom Regen ab. In der Trockenzeit 2026 fielen sie deutlich unter das Niveau des Vorjahres: Mare-aux-Vacoas, das größte Reservoir, lag Mitte November bei rund 33 Prozent, ein Jahr zuvor bei 74 Prozent.\n\nHinzu kommen strukturelle Probleme. Ein großer Teil des Leitungsnetzes ist alt und undicht. Der Rechnungshof stellt fest, dass der Anteil des Wassers ohne Einnahmen über zehn Jahre gestiegen ist und heute bei etwa 60 Prozent liegt. Die Tarife wurden seit 2012 nicht mehr angepasst. Neue Speicher kommen nur langsam voran: Der Damm von Rivière-des-Anguilles wurde 2009 angekündigt und ist bis heute nicht gebaut.",
-    "fr": "Le niveau des réservoirs dépend fortement de la pluie. Pendant la saison sèche 2026, il est tombé nettement sous celui de l'année précédente : Mare-aux-Vacoas, le plus grand réservoir, était à environ 33 % à la mi-novembre, contre 74 % un an plus tôt.\n\nS'y ajoutent des problèmes structurels. Une grande partie du réseau est vétuste et fuit. Le Bureau de l'audit constate que la part de l'eau non facturée a augmenté en dix ans et atteint aujourd'hui environ 60 %. Les tarifs n'ont pas été révisés depuis 2012. Les nouvelles capacités de stockage avancent lentement : le barrage de Rivière-des-Anguilles, annoncé en 2009, n'est toujours pas construit.",
-    "en": "Reservoir levels depend heavily on rainfall. During the 2026 dry season they fell well below the previous year's levels: Mare-aux-Vacoas, the largest reservoir, stood at around 33 per cent in mid-November, against 74 per cent a year earlier.\n\nThere are structural problems too. Much of the pipe network is old and leaking. The National Audit Office finds that the share of water earning no revenue has risen over ten years and now stands at about 60 per cent. Tariffs have not been revised since 2012. New storage is slow to arrive: the Rivière-des-Anguilles dam was announced in 2009 and has still not been built."
+    "de": "Alle sieben großen Reservoirs sind künstliche Stauseen. Der älteste ist Mare-aux-Vacoas: 1885 entstand dort im Sumpfland ein erster, nur einen Meter hoher Damm, der später mehrmals erhöht wurde. Es folgten La Ferme (1914), La Nicolière (1929), Mare Longue (1948), Piton du Milieu (1952) und Midlands (2002); der jüngste ist der Damm von Bagatelle (2017).\n\nDie Füllstände hängen stark vom Regen ab. In der Trockenzeit 2026 fielen sie deutlich unter das Niveau des Vorjahres: Mare-aux-Vacoas, das größte Reservoir, lag Mitte November bei rund 33 Prozent, ein Jahr zuvor bei 74 Prozent.\n\nHinzu kommen strukturelle Probleme. Ein großer Teil des Leitungsnetzes ist alt und undicht. Der Rechnungshof stellt fest, dass der Anteil des Wassers ohne Einnahmen über zehn Jahre gestiegen ist und heute bei etwa 60 Prozent liegt. Die Tarife wurden seit 2012 nicht mehr angepasst. Neue Speicher kommen nur langsam voran: Der Damm von Rivière-des-Anguilles wurde 2009 angekündigt und ist bis heute nicht gebaut.",
+    "fr": "Les sept grands réservoirs sont tous des lacs artificiels formés par des barrages. Le plus ancien est Mare-aux-Vacoas : en 1885, un premier barrage d'un mètre de haut y est construit dans une zone marécageuse, puis rehaussé à plusieurs reprises. Suivent La Ferme (1914), La Nicolière (1929), Mare Longue (1948), Piton du Milieu (1952) et Midlands (2002) ; le plus récent est le barrage de Bagatelle (2017).\n\nLe niveau des réservoirs dépend fortement de la pluie. Pendant la saison sèche 2026, il est tombé nettement sous celui de l'année précédente : Mare-aux-Vacoas, le plus grand réservoir, était à environ 33 % à la mi-novembre, contre 74 % un an plus tôt.\n\nS'y ajoutent des problèmes structurels. Une grande partie du réseau est vétuste et fuit. Le Bureau de l'audit constate que la part de l'eau non facturée a augmenté en dix ans et atteint aujourd'hui environ 60 %. Les tarifs n'ont pas été révisés depuis 2012. Les nouvelles capacités de stockage avancent lentement : le barrage de Rivière-des-Anguilles, annoncé en 2009, n'est toujours pas construit.",
+    "en": "All seven major reservoirs are man-made, formed by dams. The oldest is Mare-aux-Vacoas: in 1885 a first dam just one metre high was built there on marshy land and later raised several times. La Ferme (1914), La Nicolière (1929), Mare Longue (1948), Piton du Milieu (1952) and Midlands (2002) followed; the newest is the Bagatelle Dam (2017).\n\nReservoir levels depend heavily on rainfall. During the 2026 dry season they fell well below the previous year's levels: Mare-aux-Vacoas, the largest reservoir, stood at around 33 per cent in mid-November, against 74 per cent a year earlier.\n\nThere are structural problems too. Much of the pipe network is old and leaking. The National Audit Office finds that the share of water earning no revenue has risen over ten years and now stands at about 60 per cent. Tariffs have not been revised since 2012. New storage is slow to arrive: the Rivière-des-Anguilles dam was announced in 2009 and has still not been built."
    },
    "chronik": [
+    {
+     "datum": "1885",
+     "text": {
+      "de": "In Mare-aux-Vacoas entsteht im Sumpfland ein erster, ein Meter hoher Damm: der Beginn des ältesten Reservoirs der Insel.",
+      "fr": "À Mare-aux-Vacoas, un premier barrage d'un mètre de haut est construit dans une zone marécageuse : c'est le début du plus ancien réservoir de l'île.",
+      "en": "At Mare-aux-Vacoas a first dam, one metre high, is built on marshy land, the start of the island's oldest reservoir."
+     },
+     "quelle": "https://publicutilities.govmu.org/Pages/Water%20Sector/WRU.aspx"
+    },
+    {
+     "datum": "2002",
+     "text": {
+      "de": "Der Midlands-Damm wird fertiggestellt; er dient als Puffer für das Reservoir La Nicolière.",
+      "fr": "Le barrage de Midlands est achevé ; il sert de réserve tampon pour le réservoir de La Nicolière.",
+      "en": "The Midlands Dam is completed as buffer storage for La Nicolière reservoir."
+     },
+     "quelle": "https://publicutilities.govmu.org/Pages/Water%20Sector/WRU.aspx"
+    },
     {
      "datum": "2009",
      "text": {
@@ -58,6 +76,15 @@
       "en": "Last revision of water tariffs by the CWA."
      },
      "quelle": "https://cwa.govmu.org/cwa/wp-content/uploads/2026/09/CWA_Annual-Report-2024-2025.pdf"
+    },
+    {
+     "datum": "2017",
+     "text": {
+      "de": "Der Damm von Bagatelle wird fertiggestellt, das jüngste der sieben großen Reservoirs, vor allem für Trinkwasser.",
+      "fr": "Le barrage de Bagatelle est achevé ; c'est le plus récent des sept grands réservoirs, destiné surtout à l'eau potable.",
+      "en": "The Bagatelle Dam is completed, the newest of the seven major reservoirs, mainly for drinking water."
+     },
+     "quelle": "https://ode.govmu.org/water-reservoirs"
     },
     {
      "datum": "2024",
@@ -448,6 +475,10 @@
     {
      "name": "newsmoris",
      "url": "https://newsmoris.com/cwa-loses-60-of-supply-amid-mounting-financial-deficits/"
+    },
+    {
+     "name": "Statistics Mauritius über ODE – Water Reservoirs",
+     "url": "https://ode.govmu.org/water-reservoirs"
     }
    ]
   },
