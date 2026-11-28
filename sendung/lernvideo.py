@@ -356,7 +356,7 @@ def szene_sektoren(t: float, s: Szene) -> Image.Image:
     c.set_source_rgba(*WASSER, a)
     tropfen(c, mx, my + 40, 70 * (0.6 + 0.4 * a))
     c.fill()
-    t2 = min(s.satz_start(1), 4.0)
+    t2 = s.satz_start(1) if len(s.saetze) > 1 else 4.0  # rot erst bei „Wird es knapp …“
     for i, (art, _, sx, sy) in enumerate(SEKTOREN):
         p = phase(t, 0.6 + i * 0.5, 0.5)
         if p <= 0:
@@ -402,17 +402,40 @@ def szene_reservoirs(t: float, s: Szene) -> Image.Image:
     fl, c = leinwand()
     b, h, abstand = 150, 300, 48
     x0 = (B - (7 * b + 6 * abstand)) / 2
+    t2 = s.satz_start(1) if len(s.saetze) > 1 else 4.0  # „Zusammen fassen sie …“
+    m = phase(t, t2, 1.4)  # 0 = sieben Behälter, 1 = ein gemeinsames Becken
+    bx, by, bb, bh = (B - 1100) / 2, 250, 1100, 340
     for i in range(7):
         a = phase(t, 0.2 + i * 0.15, 0.4)
         f = phase(t, 0.6 + i * 0.15, 1.4)
-        behaelter(c, x0 + i * (b + abstand), 280, b, h, f, a)
+        x = x0 + i * (b + abstand)
+        rx, ry, rb, rh = x + (bx - x) * m, 280 + (by - 280) * m, b + (bb - b) * m, h + (bh - h) * m
+        if f > 0:
+            c.set_source_rgba(*WASSER, a)
+            c.save()
+            runde_box(c, rx, ry, rb, rh, 14)
+            c.clip()
+            c.rectangle(rx, ry + rh * (1 - f), rb, rh * f)
+            c.fill()
+            c.restore()
+        if m < 1:
+            c.set_source_rgba(1, 1, 1, a * (1 - m))
+            c.set_line_width(4)
+            runde_box(c, rx, ry, rb, rh, 14)
+            c.stroke()
+    if m > 0:
+        c.set_source_rgba(1, 1, 1, m)
+        c.set_line_width(5)
+        runde_box(c, bx, by, bb, bh, 18)
+        c.stroke()
     bild = zu_pil(fl)
-    zaehler = phase(t, 1.0, max(2.0, s.satz_start(1) + 1.6 - 1.0))
-    sichtbar = phase(t, 0.9, 0.4)
-    wert = 92.2 * zaehler
-    text(bild, (B / 2, 640), f'{zahl_de(wert)} Mio. m³', es.titel_schrift(110), anker='ma', deckkraft=sichtbar)
-    text(bild, (B / 2, 780), 'SPEICHERVERMÖGEN DER SIEBEN GROSSEN RESERVOIRS', es.mono(26, True), es.HELLBLAU, 'ma',
-         sichtbar)
+    text(bild, (B / 2, 640), '7 große Reservoirs', es.titel_schrift(70), anker='ma',
+         deckkraft=phase(t, 0.6, 0.5) * (1 - phase(t, t2, 0.4)))
+    zaehler = phase(t, t2 + 0.3, 2.2)
+    zahl = phase(t, t2 + 0.5, 0.4)
+    if zahl > 0:
+        text(bild, (B / 2, 640), f'{zahl_de(92.2 * zaehler)} Mio. m³', es.titel_schrift(110), anker='ma', deckkraft=zahl)
+        text(bild, (B / 2, 780), 'SPEICHERVERMÖGEN ZUSAMMEN', es.mono(26, True), es.HELLBLAU, 'ma', zahl)
     return bild
 
 
@@ -679,42 +702,84 @@ def szene_mav_pegel(t: float, s: Szene) -> Image.Image:
     return bild
 
 
+def schieber_oeffnung(t: float) -> float:
+    """Takt von 4 s: 1,6 s offen, 0,6 s schließen, 1,2 s zu, 0,6 s öffnen (0 = zu, 1 = offen)."""
+    z = t % 4.0
+    if z < 1.6:
+        return 1.0
+    if z < 2.2:
+        return 1 - glatt((z - 1.6) / 0.6)
+    if z < 3.4:
+        return 0.0
+    return glatt((z - 3.4) / 0.6)
+
+
 def szene_cwa(t: float, s: Szene) -> Image.Image:
     fl, c = leinwand()
-    y = 520
-    # Leitung mit Ventil, das im Takt einer Uhr öffnet und schließt
-    c.set_source_rgba(*HELL, phase(t, 0.2, 0.6))
-    runde_box(c, 260, y - 30, 1400, 60, 30)
+    y, dicke = 580, 80
+    links, rechts, mitte = 240, 1680, B / 2
+    oeffnung = schieber_oeffnung(max(0.0, t - 0.8)) if t > 0.8 else 1.0
+    # Rohr
+    c.set_source_rgba(*HELL, 1)
+    runde_box(c, links, y - dicke / 2 - 10, rechts - links, dicke + 20, 20)
     c.fill()
-    offen = (math.sin(t * 2.2) + 1) / 2 > 0.5
-    c.set_source_rgba(*(WASSER if offen else ROT), 1)
-    runde_box(c, B / 2 - 50, y - 90, 100, 180, 16)
+    # Wasser links: immer
+    c.set_source_rgba(*WASSER_TIEF, 1)
+    c.rectangle(links + 10, y - dicke / 2, mitte - 40 - links - 10, dicke)
     c.fill()
+    # Wasser rechts: nur bei offenem Schieber, läuft aus, wenn er schließt
+    c.set_source_rgba(*WASSER_TIEF, oeffnung)
+    c.rectangle(mitte + 40, y - dicke / 2, rechts - 10 - mitte - 40, dicke)
+    c.fill()
+    # Fließstreifen
+    c.set_line_width(6)
+    c.set_line_cap(cairo.LINE_CAP_ROUND)
+    for k in range(9):
+        x = links + 30 + ((t * 220 + k * 90) % (mitte - 80 - links))
+        c.set_source_rgba(*WASSER, 0.9)
+        c.move_to(x, y)
+        c.line_to(x + 40, y)
+        c.stroke()
+        if oeffnung > 0.05:
+            x2 = mitte + 60 + ((t * 220 * oeffnung + k * 90) % (rechts - 100 - mitte - 60))
+            c.set_source_rgba(*WASSER, 0.9 * oeffnung)
+            c.move_to(x2, y)
+            c.line_to(x2 + 40, y)
+            c.stroke()
+    # Gehäuse des Schiebers
+    c.set_source_rgba(*GRAU, 1)
+    runde_box(c, mitte - 60, y - dicke / 2 - 150, 120, dicke + 190, 16)
+    c.fill()
+    # Schieberplatte: oben = offen, unten = zu
+    platte_y = y - dicke / 2 - 10 - (dicke + 10) * oeffnung
+    c.set_source_rgba(*ROT, 1)
+    runde_box(c, mitte - 34, platte_y, 68, dicke + 20, 8)
+    c.fill()
+    # Spindel und Handrad (dreht sich, während der Schieber fährt)
+    spindel_oben = y - dicke / 2 - 230
     c.set_source_rgba(1, 1, 1, 1)
     c.set_line_width(10)
-    c.move_to(B / 2 - 70, y - 130)
-    c.line_to(B / 2 + 70, y - 130)
+    c.move_to(mitte, platte_y)
+    c.line_to(mitte, spindel_oben)
     c.stroke()
-    if offen:
-        for k in range(5):
-            xk = B / 2 + 80 + ((t * 300 + k * 140) % 700)
-            c.set_source_rgba(*WASSER, 0.9)
-            tropfen(c, xk, y + 8, 12)
-            c.fill()
-    # kleine Uhr
-    ux, uy, r = 1500, 280, 90
-    c.set_source_rgba(1, 1, 1, 0.9)
-    c.set_line_width(5)
-    c.arc(ux, uy, r, 0, 2 * math.pi)
+    winkel = -oeffnung * 4 * math.pi
+    r = 90
+    c.set_line_width(12)
+    c.save()
+    c.translate(mitte, spindel_oben)
+    c.scale(1, 0.32)  # Rad schräg von vorn
+    c.arc(0, 0, r, 0, 2 * math.pi)
     c.stroke()
-    w = t * 1.1 - math.pi / 2
-    c.move_to(ux, uy)
-    c.line_to(ux + math.cos(w) * (r - 20), uy + math.sin(w) * (r - 20))
-    c.stroke()
+    for k in range(4):
+        w = winkel + k * math.pi / 2
+        c.move_to(0, 0)
+        c.line_to(math.cos(w) * r, math.sin(w) * r)
+        c.stroke()
+    c.restore()
     bild = zu_pil(fl)
-    text(bild, (400, 230), 'CWA', es.titel_schrift(120), deckkraft=phase(t, 0, 0.5))
-    text(bild, (404, 370), 'CENTRAL WATER AUTHORITY', es.mono(28, True), es.HELLBLAU, 'la', phase(t, 0.3, 0.5))
-    text(bild, (B / 2, y + 140), 'AUF' if offen else 'ZU', es.mono(40, True), es.WEISS, 'ma')
+    text(bild, (260, 170), 'CWA', es.titel_schrift(110), deckkraft=phase(t, 0, 0.5))
+    text(bild, (264, 300), 'CENTRAL WATER AUTHORITY', es.mono(28, True), es.HELLBLAU, 'la', phase(t, 0.3, 0.5))
+    text(bild, (B / 2, y + 120), 'offen' if oeffnung > 0.5 else 'geschlossen', es.mono(34, True), es.WEISS, 'ma')
     return bild
 
 
