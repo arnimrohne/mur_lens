@@ -1,7 +1,7 @@
 {
  "schema": 1,
- "stand": "2026-11-28T09:00:00+04:00",
- "laeufe": 8,
+ "stand": "2026-11-28T13:00:00+04:00",
+ "laeufe": 9,
  "topics": [
   {
    "id": "3g-abschaltung",
@@ -73,7 +73,7 @@
    "aktualisiert": "2026-11-25T12:00:00+04:00",
    "erstellt": "2026-11-25T12:00:00+04:00",
    "rubrik": "wirtschaft",
-   "status": "aktiv",
+   "status": "archiv",
    "titel": "46 öffentliche Ausschreibungen in Arbeit",
    "updates": [
     {
@@ -260,7 +260,7 @@
    "aktualisiert": "2026-11-25T12:00:00+04:00",
    "erstellt": "2026-11-25T12:00:00+04:00",
    "rubrik": "alltag",
-   "status": "aktiv",
+   "status": "archiv",
    "titel": "Neue Busfahrpläne im Westen ab 1. Dezember",
    "updates": [
     {
@@ -516,7 +516,7 @@
    "aktualisiert": "2026-11-25T12:00:00+04:00",
    "erstellt": "2026-11-25T12:00:00+04:00",
    "rubrik": "wirtschaft",
-   "status": "aktiv",
+   "status": "archiv",
    "titel": "Corsair feiert 20 Jahre Mauritius",
    "updates": [
     {
@@ -609,7 +609,7 @@
    "aktualisiert": "2026-11-25T12:00:00+04:00",
    "erstellt": "2026-11-25T12:00:00+04:00",
    "rubrik": "soziales",
-   "status": "aktiv",
+   "status": "archiv",
    "titel": "Eine Woche Wohn-Programm für 200 Jugendliche",
    "updates": [
     {
@@ -904,7 +904,7 @@
    "aktualisiert": "2026-11-25T12:00:00+04:00",
    "erstellt": "2026-11-25T12:00:00+04:00",
    "rubrik": "alltag",
-   "status": "aktiv",
+   "status": "archiv",
    "titel": "150 Jahre Holy Trinity in Rose-Hill",
    "updates": [
     {
@@ -1260,7 +1260,7 @@
    "aktualisiert": "2026-11-25T12:00:00+04:00",
    "erstellt": "2026-11-25T12:00:00+04:00",
    "rubrik": "wirtschaft",
-   "status": "aktiv",
+   "status": "archiv",
    "titel": "MyT: Schnelleres Glasfaser-Internet ohne Aufpreis",
    "updates": [
     {
@@ -1454,7 +1454,7 @@
    "aktualisiert": "2026-11-25T12:00:00+04:00",
    "erstellt": "2026-11-25T12:00:00+04:00",
    "rubrik": "politik",
-   "status": "aktiv",
+   "status": "archiv",
    "titel": "Ölsuche im Meer: Abkommen mit den Seychellen",
    "updates": [
     {
@@ -1490,7 +1490,7 @@
    "aktualisiert": "2026-11-25T12:00:00+04:00",
    "erstellt": "2026-11-25T12:00:00+04:00",
    "rubrik": "sport",
-   "status": "aktiv",
+   "status": "archiv",
    "titel": "Fußball: Super League am 3. Spieltag",
    "updates": [
     {
@@ -1890,7 +1890,7 @@
    "aktualisiert": "2026-11-25T12:00:00+04:00",
    "erstellt": "2026-11-13T12:00:00+04:00",
    "rubrik": "soziales",
-   "status": "aktiv",
+   "status": "archiv",
    "titel": "World Knits: Was wird aus 450 Familien?",
    "updates": [
     {
@@ -1942,12 +1942,60 @@
   {
    "id": "compensation-salariale-2027",
    "rubrik": "wirtschaft",
-   "titel": "Lohnkompensation 2027: Vorschläge bis 4. Dezember",
+   "titel": "Lohnkompensation 2027: Regierung dämpft Erwartungen",
    "status": "aktiv",
    "erstellt": "2026-11-27T12:00:00+04:00",
-   "aktualisiert": "2026-11-27T12:00:00+04:00",
+   "aktualisiert": "2026-11-28T12:00:00+04:00",
    "warTop": false,
    "updates": [
+    {
+     "zeit": "2026-11-28T12:00:00+04:00",
+     "nurDatum": true,
+     "titel": "Lohnkompensation 2027: Regierung dämpft Erwartungen",
+     "text": "Premierminister Ramgoolam erwartet keine übertriebene Lohnkompensation. Arbeitsminister Reza Uteem hält es für verfrüht, schon jetzt einen Betrag zu nennen. Einige Gewerkschaften stellen die Inflationszahlen von Statistics Mauritius infrage.\n\nDie Angaben stammen aus der Berichterstattung von Défi Media.",
+     "quellen": [
+      {
+       "name": "Défi Media",
+       "url": "https://defimedia.info/"
+      }
+     ],
+     "i18n": {
+      "fr": {
+       "titel": "Compensation salariale 2027 : le gouvernement tempère les attentes",
+       "text": "Le Premier ministre Ramgoolam ne s’attend pas à une compensation salariale exagérée. Le ministre du Travail, Reza Uteem, juge prématuré d’avancer un montant à ce stade. Certains syndicats contestent les chiffres d’inflation de Statistics Mauritius.\n\nLes informations proviennent de la couverture de Défi Media."
+      },
+      "en": {
+       "titel": "2027 wage compensation: government tempers expectations",
+       "text": "Prime Minister Ramgoolam does not expect an exaggerated wage compensation. Labour Minister Reza Uteem says it would be premature to name an amount at this stage. Some unions dispute the inflation figures published by Statistics Mauritius.\n\nThe information comes from Défi Media’s coverage."
+      }
+     },
+     "sendung": {
+      "de": {
+       "sprechtext": "Zur Lohnkompensation 2027 äußert sich die Regierung zurückhaltend. Premierminister Ramgoolam erwartet keine übertriebene Kompensation. Arbeitsminister Reza Uteem hält es für verfrüht, schon jetzt einen Betrag zu nennen. Zuvor hatten die Gewerkschaften bis zu 1.700 Rupien gefordert.",
+       "stichpunkte": [
+        "Ramgoolam: keine übertriebene Kompensation",
+        "Uteem: Betrag jetzt verfrüht",
+        "Gewerkschaften zweifeln an Inflationszahlen"
+       ]
+      },
+      "fr": {
+       "sprechtext": "Sur la compensation salariale 2027, le gouvernement reste prudent. Le Premier ministre Ramgoolam ne s’attend pas à une compensation exagérée. Le ministre du Travail Reza Uteem juge prématuré d’avancer un montant. Auparavant, les syndicats avaient réclamé jusqu’à 1 700 roupies.",
+       "stichpunkte": [
+        "Ramgoolam : pas de compensation exagérée",
+        "Uteem : montant jugé prématuré",
+        "Syndicats contestent les chiffres d’inflation"
+       ]
+      },
+      "en": {
+       "sprechtext": "On the 2027 wage compensation, the government is cautious. Prime Minister Ramgoolam does not expect an exaggerated compensation. Labour Minister Reza Uteem says naming an amount now would be premature. Earlier, the unions had asked for up to Rs 1,700.",
+       "stichpunkte": [
+        "Ramgoolam: no exaggerated compensation",
+        "Uteem: naming an amount is premature",
+        "Unions dispute inflation figures"
+       ]
+      }
+     }
+    },
     {
      "zeit": "2026-11-27T12:00:00+04:00",
      "nurDatum": true,
@@ -2286,6 +2334,66 @@
      }
     }
    ]
+  },
+  {
+   "id": "rentenreform",
+   "rubrik": "soziales",
+   "titel": "Rentenreform: Kabinett billigt zentrale Rentenverwaltung",
+   "status": "aktiv",
+   "erstellt": "2026-11-28T12:00:00+04:00",
+   "aktualisiert": "2026-11-28T12:00:00+04:00",
+   "warTop": false,
+   "updates": [
+    {
+     "zeit": "2026-11-28T12:00:00+04:00",
+     "nurDatum": true,
+     "titel": "Rentenreform: Kabinett billigt zentrale Rentenverwaltung",
+     "text": "Der Ministerrat hat die Einrichtung eines zentralen Rentenverwaltungsbüros gebilligt. Zugleich hat die Expertenkommission ihren Abschlussbericht zur Rentenreform vorgelegt.\n\nDie Angaben stammen aus der Berichterstattung von lexpress-nahen Quellen und Defi Media.",
+     "quellen": [
+      {
+       "name": "ionnews",
+       "url": "https://ionnews.mu/"
+      },
+      {
+       "name": "Défi Media",
+       "url": "https://defimedia.info/"
+      }
+     ],
+     "i18n": {
+      "fr": {
+       "titel": "Réforme des pensions : le Conseil des ministres valide une administration centrale",
+       "text": "Le Conseil des ministres a validé la création d’un Central Pensions Administration Bureau. La commission d’experts a remis son rapport final sur la réforme des pensions.\n\nLes informations proviennent de la couverture d’ionnews et de Défi Media."
+      },
+      "en": {
+       "titel": "Pension reform: Cabinet approves central administration",
+       "text": "The Council of Ministers has approved the creation of a Central Pensions Administration Bureau. The expert commission has submitted its final report on pension reform.\n\nThe information comes from coverage by ionnews and Défi Media."
+      }
+     },
+     "sendung": {
+      "de": {
+       "sprechtext": "Bei der Rentenreform gibt es einen Schritt nach vorn. Der Ministerrat hat die Einrichtung eines zentralen Rentenverwaltungsbüros gebilligt. Zugleich hat die Expertenkommission ihren Abschlussbericht vorgelegt.",
+       "stichpunkte": [
+        "Kabinett billigt zentrale Rentenverwaltung",
+        "Expertenkommission legt Abschlussbericht vor"
+       ]
+      },
+      "fr": {
+       "sprechtext": "La réforme des pensions franchit une étape. Le Conseil des ministres a validé la création d’un bureau central d’administration des pensions. La commission d’experts a présenté son rapport final.",
+       "stichpunkte": [
+        "Conseil des ministres valide le bureau central",
+        "Rapport final de la commission d’experts"
+       ]
+      },
+      "en": {
+       "sprechtext": "The pension reform takes a step forward. The Council of Ministers has approved a central pensions administration bureau. The expert commission has presented its final report.",
+       "stichpunkte": [
+        "Cabinet approves central pensions bureau",
+        "Expert commission presents final report"
+       ]
+      }
+     }
+    }
+   ]
   }
  ],
  "videos": [
@@ -2471,9 +2579,9 @@
   }
  ],
  "einleitung": {
-  "zeit": "2026-11-28T09:00:00+04:00",
-  "de": "Auf Mauritius ist das Virus der Maul- und Klauenseuche nachgewiesen worden. Die Regierung will bei Firmenliquidationen die Lohnforderungen von Beschäftigten vor den Gläubigern bedienen.",
-  "fr": "Le virus de la fièvre aphteuse a été confirmé à Maurice. Le gouvernement veut que les salaires dus aux travailleurs passent avant les créanciers en cas de liquidation.",
-  "en": "The foot-and-mouth disease virus has been confirmed in Mauritius. The government wants wages owed to workers to be paid before creditors in company liquidations."
+  "zeit": "2026-11-28T13:00:00+04:00",
+  "de": "Die Wasserreserven der Insel sind am 26. November nur noch zu 44 Prozent gefüllt. Bei der Lohnkompensation 2027 dämpft die Regierung die Erwartungen, und der Ministerrat hat eine zentrale Rentenverwaltung gebilligt.",
+  "fr": "Au 26 novembre, les réservoirs de l’île ne sont remplis qu’à 44 %. Sur la compensation salariale 2027, le gouvernement tempère les attentes, et le Conseil des ministres a validé une administration centrale des pensions.",
+  "en": "On 26 November the island’s reservoirs were only 44% full. On the 2027 wage compensation the government is tempering expectations, and the Council of Ministers has approved a central pensions administration."
  }
 }
