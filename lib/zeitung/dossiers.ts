@@ -4,6 +4,11 @@ export function dossierPfad(id: string): string {
   return `/dossier/${encodeURIComponent(id)}`;
 }
 
+/** Link zu einem Dossier: mit Lernvideo direkt zum Video (#video). */
+export function dossierZiel(dossier: Dossier): string {
+  return dossier.video ? `${dossierPfad(dossier.id)}#video` : dossierPfad(dossier.id);
+}
+
 export const DOSSIERS_PFAD = '/dossiers';
 
 /** Dossier eines Themas: thema.dossier, sonst ein Dossier, das das Thema ausdrücklich führt. */

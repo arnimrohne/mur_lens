@@ -2,7 +2,7 @@
 
 import { useDossiers } from './dossier-kontext';
 import { TeilenKnopf } from './teilen-knopf';
-import { dossierFuerThema, dossierPfad } from '@/lib/zeitung/dossiers';
+import { dossierFuerThema, dossierZiel } from '@/lib/zeitung/dossiers';
 import { useKachelKarussell } from '@/hooks/use-kachel-karussell';
 import { meldungText, meldungZeit } from '@/lib/zeitung/sprache';
 import { themaPfad } from '@/lib/zeitung/teilen';
@@ -75,8 +75,10 @@ function TopKachel({ thema, sprache, texte, aktuell }: TopKachelProps) {
       </h3>
       <p>{anriss}</p>
       {dossier && (
-        <a className="gz-kachel-dossier" href={dossierPfad(dossier.id)}>
-          <span className="gz-dossier-marke">{texte.hintergrund}</span> {dossier.titel[sprache]} →
+        <a className={dossier.video ? 'gz-kachel-dossier gz-mit-video' : 'gz-kachel-dossier'} href={dossierZiel(dossier)}>
+          {dossier.video && <span className="gz-play-knopf" aria-hidden="true" />}
+          <span className="gz-dossier-marke">{dossier.video ? texte.hintergrundVideo : texte.hintergrund}</span>{' '}
+          {dossier.titel[sprache]} →
         </a>
       )}
       <div className="gz-kachel-fuss">

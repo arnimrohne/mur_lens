@@ -54,6 +54,7 @@ export interface OberflaechenTexte {
   dossierAbschnitte: { kurz: string; warum: string; chronik: string; entwicklung: string; akteure: string; zahlen: string; offen: string; aktuell: string; quellen: string };
   dossierStand: (datum: string) => string;
   dossierVideo: string;
+  hintergrundVideo: string;
   dossierVideoStart: string;
   dossierVideoHinweis: string;
   dossierVideoDatenschutz: string;
@@ -140,6 +141,7 @@ const de: OberflaechenTexte = {
   dossierAbschnitte: { kurz: 'Kurz erklärt', warum: 'Warum es wichtig ist', chronik: 'Chronik', entwicklung: 'Entwicklung und Ursachen', akteure: 'Wer will was', zahlen: 'Zahlen und Fakten', offen: 'Offene Fragen', aktuell: 'Aktuelle Meldungen', quellen: 'Quellen' },
   dossierStand: (datum) => `Stand: ${datum}`,
   dossierVideo: 'Im Video erklärt',
+  hintergrundVideo: 'Video & Hintergrund',
   dossierVideoStart: 'Video abspielen',
   dossierVideoHinweis: 'Beim Abspielen wird das Video von YouTube geladen. Dabei werden Daten an YouTube übertragen.',
   dossierVideoDatenschutz: 'Datenschutz',
@@ -226,6 +228,7 @@ const fr: OberflaechenTexte = {
   dossierAbschnitte: { kurz: 'En bref', warum: 'Pourquoi c\'est important', chronik: 'Chronologie', entwicklung: 'Évolution et causes', akteure: 'Qui veut quoi', zahlen: 'Chiffres clés', offen: 'Questions ouvertes', aktuell: 'Actualités', quellen: 'Sources' },
   dossierStand: (datum) => `Mis à jour : ${datum}`,
   dossierVideo: 'En vidéo',
+  hintergrundVideo: 'Vidéo et contexte',
   dossierVideoStart: 'Lire la vidéo',
   dossierVideoHinweis: 'En lançant la lecture, la vidéo est chargée depuis YouTube. Des données sont alors transmises à YouTube.',
   dossierVideoDatenschutz: 'Confidentialité',
@@ -312,6 +315,7 @@ const en: OberflaechenTexte = {
   dossierAbschnitte: { kurz: 'In short', warum: 'Why it matters', chronik: 'Timeline', entwicklung: 'Trends and causes', akteure: 'Who wants what', zahlen: 'Facts and figures', offen: 'Open questions', aktuell: 'Latest news', quellen: 'Sources' },
   dossierStand: (datum) => `Updated: ${datum}`,
   dossierVideo: 'Explained in a video',
+  hintergrundVideo: 'Video & background',
   dossierVideoStart: 'Play video',
   dossierVideoHinweis: 'When you press play, the video is loaded from YouTube and data is sent to YouTube.',
   dossierVideoDatenschutz: 'Privacy',

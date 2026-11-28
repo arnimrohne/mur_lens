@@ -21,7 +21,7 @@ export function DossierVideoBlock({ video, sprache, texte }: { video: DossierVid
   const abspielen = laeuft === id;
 
   return (
-    <section className="gz-dossier-abschnitt gz-dossier-video" aria-labelledby="h-dossier-video">
+    <section id="video" className="gz-dossier-abschnitt gz-dossier-video" aria-labelledby="h-dossier-video">
       <h2 id="h-dossier-video">{texte.dossierVideo}</h2>
       <div className="gz-dossier-video-flaeche">
         {abspielen ? (

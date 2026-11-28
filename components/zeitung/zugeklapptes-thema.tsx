@@ -2,7 +2,7 @@
 
 import { useDossiers } from './dossier-kontext';
 import { ThemenKarte } from './themen-karte';
-import { dossierFuerThema, dossierPfad } from '@/lib/zeitung/dossiers';
+import { dossierFuerThema, dossierZiel } from '@/lib/zeitung/dossiers';
 import { meldungText, meldungZeit } from '@/lib/zeitung/sprache';
 import type { OberflaechenTexte } from '@/lib/zeitung/texte';
 import type { Sprache, Thema } from '@/lib/zeitung/types';
@@ -31,11 +31,12 @@ export function ZugeklapptesThema({ thema, sprache, texte, jetzt }: Zugeklapptes
           {dossier && (
             <a
               className="gz-marke gz-marke-dossier"
-              href={dossierPfad(dossier.id)}
+              href={dossierZiel(dossier)}
               title={dossier.titel[sprache]}
-              aria-label={`${texte.hintergrund}: ${dossier.titel[sprache]}`}
+              aria-label={`${dossier.video ? texte.hintergrundVideo : texte.hintergrund}: ${dossier.titel[sprache]}`}
             >
-              {texte.hintergrund}
+              {dossier.video && <span className="gz-play-mini" aria-hidden="true" />}
+              {dossier.video ? texte.hintergrundVideo : texte.hintergrund}
             </a>
           )}
         </span>
