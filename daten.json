@@ -1,7 +1,7 @@
 {
  "schema": 1,
- "stand": "2026-11-28T05:00:00+04:00",
- "laeufe": 7,
+ "stand": "2026-11-28T09:00:00+04:00",
+ "laeufe": 8,
  "topics": [
   {
    "id": "3g-abschaltung",
@@ -2160,6 +2160,132 @@
      }
     }
    ]
+  },
+  {
+   "id": "fieber-aphteuse",
+   "rubrik": "umwelt",
+   "titel": "Fieber aphteuse: Virus nachgewiesen, Tests bei 30 Rindern negativ",
+   "status": "aktiv",
+   "erstellt": "2026-11-28T12:00:00+04:00",
+   "aktualisiert": "2026-11-28T12:00:00+04:00",
+   "warTop": false,
+   "updates": [
+    {
+     "zeit": "2026-11-28T12:00:00+04:00",
+     "nurDatum": true,
+     "titel": "Fieber aphteuse: Virus nachgewiesen, Tests bei 30 Rindern negativ",
+     "text": "Das Vorhandensein des Maul- und Klauenseuche-Virus auf Mauritius ist bestätigt worden. Bei 30 Rindern in Quarantäne fielen die Tests negativ aus.\n\nProben wurden nach Frankreich und Botswana geschickt, um den Stamm des Virus zu bestimmen.",
+     "quellen": [
+      {
+       "name": "Défi Media",
+       "url": "https://defimedia.info/"
+      },
+      {
+       "name": "MBC",
+       "url": "https://www.mbc.mu/"
+      }
+     ],
+     "i18n": {
+      "fr": {
+       "titel": "Fièvre aphteuse : virus confirmé, tests négatifs chez 30 bovins",
+       "text": "La présence du virus de la fièvre aphteuse à Maurice est confirmée. Les tests menés sur 30 bovins placés en quarantaine sont négatifs.\n\nDes échantillons ont été envoyés en France et au Botswana afin d’identifier la souche du virus."
+      },
+      "en": {
+       "titel": "Foot-and-mouth disease: virus confirmed, tests negative in 30 cattle",
+       "text": "The presence of the foot-and-mouth disease virus in Mauritius has been confirmed. Tests on 30 cattle in quarantine came back negative.\n\nSamples have been sent to France and Botswana to identify the strain of the virus."
+      }
+     },
+     "sendung": {
+      "de": {
+       "sprechtext": "Auf Mauritius ist das Virus der Maul- und Klauenseuche nachgewiesen worden. Bei 30 Rindern in Quarantäne waren die Tests negativ. Proben wurden nach Frankreich und Botswana geschickt, um die Virusvariante zu bestimmen.",
+       "stichpunkte": [
+        "Maul- und Klauenseuche auf Mauritius bestätigt",
+        "Tests bei 30 Rindern in Quarantäne negativ",
+        "Proben in Frankreich und Botswana untersucht"
+       ]
+      },
+      "fr": {
+       "sprechtext": "La présence du virus de la fièvre aphteuse est confirmée à Maurice. Les tests sur 30 bovins placés en quarantaine sont négatifs. Des échantillons ont été envoyés en France et au Botswana pour identifier la souche.",
+       "stichpunkte": [
+        "Fièvre aphteuse confirmée à Maurice",
+        "Tests négatifs sur 30 bovins en quarantaine",
+        "Échantillons analysés en France et au Botswana"
+       ]
+      },
+      "en": {
+       "sprechtext": "The foot-and-mouth disease virus has been confirmed in Mauritius. Tests on 30 cattle in quarantine came back negative. Samples have been sent to France and Botswana to identify the strain.",
+       "stichpunkte": [
+        "Foot-and-mouth disease confirmed in Mauritius",
+        "Tests negative in 30 cattle in quarantine",
+        "Samples analysed in France and Botswana"
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "lohnschulden-liquidation",
+   "rubrik": "wirtschaft",
+   "titel": "Firmenliquidation: Lohnforderungen sollen vor Gläubigern stehen",
+   "status": "aktiv",
+   "erstellt": "2026-11-28T12:00:00+04:00",
+   "aktualisiert": "2026-11-28T12:00:00+04:00",
+   "warTop": false,
+   "updates": [
+    {
+     "zeit": "2026-11-28T12:00:00+04:00",
+     "nurDatum": true,
+     "titel": "Firmenliquidation: Lohnforderungen sollen vor Gläubigern stehen",
+     "text": "Die Regierung will, dass Lohnforderungen von Beschäftigten bei der Liquidation von Unternehmen vor den Forderungen der Gläubiger bedient werden. Dafür sollen zwei Gesetze reformiert werden.\n\nDie Angaben stammen aus der Berichterstattung von Défi Media und News Moris.",
+     "quellen": [
+      {
+       "name": "Défi Media",
+       "url": "https://defimedia.info/"
+      },
+      {
+       "name": "News Moris",
+       "url": "https://newsmoris.com/"
+      }
+     ],
+     "i18n": {
+      "fr": {
+       "titel": "Entreprises en liquidation : les salaires dus avant les créanciers",
+       "text": "Le gouvernement veut que les sommes dues aux travailleurs soient payées avant les créanciers lors de la liquidation d’une entreprise. Deux lois doivent pour cela être réformées.\n\nLes informations proviennent de la couverture de Défi Media et de News Moris."
+      },
+      "en": {
+       "titel": "Companies in liquidation: worker pay to come before creditors",
+       "text": "The government wants wages owed to workers to be paid before creditors when a company is liquidated. Two laws are to be reformed for this.\n\nThe information comes from coverage by Défi Media and News Moris."
+      }
+     },
+     "sendung": {
+      "de": {
+       "sprechtext": "Bei der Liquidation von Unternehmen sollen Lohnforderungen der Beschäftigten künftig vor den Gläubigern bedient werden. Die Regierung plant dafür die Reform von zwei Gesetzen. Ziel ist, die Auszahlungen der Beschäftigten besser abzusichern.",
+       "stichpunkte": [
+        "Lohnforderungen vor Gläubigern bei Liquidation",
+        "Zwei Gesetze sollen reformiert werden",
+        "Schutz der Auszahlungen für Beschäftigte"
+       ]
+      },
+      "fr": {
+       "sprechtext": "Lors de la liquidation d’une entreprise, les salaires dus aux travailleurs doivent passer avant les créanciers. Le gouvernement prévoit de réformer deux lois pour cela. L’objectif est de mieux protéger les sommes dues aux salariés.",
+       "stichpunkte": [
+        "Salaires avant les créanciers en cas de liquidation",
+        "Deux lois à réformer",
+        "Meilleure protection des salariés"
+       ]
+      },
+      "en": {
+       "sprechtext": "When a company is liquidated, wages owed to workers are to be paid before creditors. The government plans to reform two laws for this. The aim is to better protect what employees are owed.",
+       "stichpunkte": [
+        "Wages before creditors in liquidation",
+        "Two laws to be reformed",
+        "Better protection for employees"
+       ]
+      }
+     }
+    }
+   ]
   }
  ],
  "videos": [
@@ -2345,9 +2471,9 @@
   }
  ],
  "einleitung": {
-  "zeit": "2026-11-28T05:00:00+04:00",
-  "de": "Die Wasserreserven der Insel sind am 26. November nur noch zu 44 Prozent gefüllt. Zu Chagos stellt Pravind Jugnauth die Rolle von Sir Geoffrey Cox infrage.",
-  "fr": "Au 26 novembre, les réservoirs de l’île ne sont remplis qu’à 44 %. Sur Chagos, Pravind Jugnauth remet en question le rôle de Sir Geoffrey Cox.",
-  "en": "On 26 November the island’s reservoirs were only 44% full. On Chagos, Pravind Jugnauth questions the role of Sir Geoffrey Cox."
+  "zeit": "2026-11-28T09:00:00+04:00",
+  "de": "Auf Mauritius ist das Virus der Maul- und Klauenseuche nachgewiesen worden. Die Regierung will bei Firmenliquidationen die Lohnforderungen von Beschäftigten vor den Gläubigern bedienen.",
+  "fr": "Le virus de la fièvre aphteuse a été confirmé à Maurice. Le gouvernement veut que les salaires dus aux travailleurs passent avant les créanciers en cas de liquidation.",
+  "en": "The foot-and-mouth disease virus has been confirmed in Mauritius. The government wants wages owed to workers to be paid before creditors in company liquidations."
  }
 }
