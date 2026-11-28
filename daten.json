@@ -1,7 +1,7 @@
 {
  "schema": 1,
- "stand": "2026-11-28T17:00:00+04:00",
- "laeufe": 10,
+ "stand": "2026-11-28T22:00:00+04:00",
+ "laeufe": 11,
  "topics": [
   {
    "id": "3g-abschaltung",
@@ -2453,6 +2453,128 @@
      }
     }
    ]
+  },
+  {
+   "id": "plastik-verantwortung",
+   "rubrik": "umwelt",
+   "titel": "Plastik: Hersteller und Importeure sollen für Abfall haften",
+   "status": "aktiv",
+   "erstellt": "2026-11-28T12:00:00+04:00",
+   "aktualisiert": "2026-11-28T12:00:00+04:00",
+   "warTop": false,
+   "updates": [
+    {
+     "zeit": "2026-11-28T12:00:00+04:00",
+     "nurDatum": true,
+     "titel": "Plastik: Hersteller und Importeure sollen für Abfall haften",
+     "text": "Auf Mauritius sollen Hersteller und Importeure von Plastik bald für die Abfallbewirtschaftung verantwortlich sein.\n\nDie Angaben stammen aus der Berichterstattung des MBC.",
+     "quellen": [
+      {
+       "name": "MBC",
+       "url": "https://www.mbc.mu/"
+      }
+     ],
+     "i18n": {
+      "fr": {
+       "titel": "Plastique : producteurs et importateurs bientôt responsables des déchets",
+       "text": "Les producteurs et importateurs de plastique doivent bientôt être responsables de la gestion des déchets à Maurice.\n\nLes informations proviennent de la couverture du MBC."
+      },
+      "en": {
+       "titel": "Plastic: producers and importers to be liable for waste",
+       "text": "Plastic producers and importers in Mauritius are to become responsible for waste management soon.\n\nThe information comes from MBC coverage."
+      }
+     },
+     "sendung": {
+      "de": {
+       "sprechtext": "Auf Mauritius sollen Hersteller und Importeure von Plastik bald für die Abfallbewirtschaftung verantwortlich sein. Die Regelung betrifft also die Seite, die das Plastik auf den Markt bringt.",
+       "stichpunkte": [
+        "Hersteller und Importeure von Plastik betroffen",
+        "Verantwortung für die Abfallbewirtschaftung",
+        "Regelung soll bald gelten"
+       ]
+      },
+      "fr": {
+       "sprechtext": "À Maurice, les producteurs et importateurs de plastique doivent bientôt être responsables de la gestion des déchets. La règle concerne donc ceux qui mettent le plastique sur le marché.",
+       "stichpunkte": [
+        "Producteurs et importateurs de plastique concernés",
+        "Responsabilité pour la gestion des déchets",
+        "Règle bientôt en vigueur"
+       ]
+      },
+      "en": {
+       "sprechtext": "In Mauritius, plastic producers and importers are set to become responsible for waste management soon. The rule therefore concerns those who put plastic on the market.",
+       "stichpunkte": [
+        "Plastic producers and importers affected",
+        "Responsibility for waste management",
+        "Rule to take effect soon"
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "sonderurlaub-jahresende",
+   "rubrik": "alltag",
+   "titel": "Sonderurlaub zum Jahresende: einheitliche Regelung für die Hochschulen",
+   "status": "aktiv",
+   "erstellt": "2026-11-28T12:00:00+04:00",
+   "aktualisiert": "2026-11-28T12:00:00+04:00",
+   "warTop": false,
+   "updates": [
+    {
+     "zeit": "2026-11-28T12:00:00+04:00",
+     "nurDatum": true,
+     "titel": "Sonderurlaub zum Jahresende: einheitliche Regelung für die Hochschulen",
+     "text": "Für die öffentlichen Einrichtungen der höheren Bildung wird ein einheitlicher Sonderurlaub zum Jahresende eingeführt.\n\nLaut Défi Media liegt er zwischen dem 28. Dezember und dem 8. Januar.",
+     "quellen": [
+      {
+       "name": "ionnews",
+       "url": "https://ionnews.mu/"
+      },
+      {
+       "name": "Défi Media",
+       "url": "https://defimedia.info/"
+      }
+     ],
+     "i18n": {
+      "fr": {
+       "titel": "Fin d’année : congé spécial harmonisé dans l’enseignement supérieur public",
+       "text": "Un congé spécial harmonisé est prévu pour les établissements publics d’enseignement supérieur en fin d’année.\n\nSelon Défi Media, il court du 28 décembre au 8 janvier."
+      },
+      "en": {
+       "titel": "Year-end special leave: harmonised rules for public higher education",
+       "text": "A harmonised special leave is planned for public higher-education institutions at the end of the year.\n\nAccording to Défi Media, it runs from 28 December to 8 January."
+      }
+     },
+     "sendung": {
+      "de": {
+       "sprechtext": "Für die öffentlichen Hochschulen auf Mauritius gibt es einen einheitlichen Sonderurlaub zum Jahresende. Er liegt laut Défi Media zwischen dem 28. Dezember und dem 8. Januar. Damit gelten für die Einrichtungen dieselben Zeiten.",
+       "stichpunkte": [
+        "Sonderurlaub für öffentliche Hochschulen",
+        "Vom 28. Dezember bis 8. Januar",
+        "Einheitliche Regelung für alle Einrichtungen"
+       ]
+      },
+      "fr": {
+       "sprechtext": "Les établissements publics d’enseignement supérieur de Maurice auront un congé spécial harmonisé en fin d’année. Selon Défi Media, il court du 28 décembre au 8 janvier. Les mêmes dates s’appliquent ainsi à tous les établissements.",
+       "stichpunkte": [
+        "Congé spécial pour l’enseignement supérieur public",
+        "Du 28 décembre au 8 janvier",
+        "Dates identiques pour tous les établissements"
+       ]
+      },
+      "en": {
+       "sprechtext": "Public higher-education institutions in Mauritius will have a harmonised special leave at the end of the year. According to Défi Media, it runs from 28 December to 8 January. The same dates therefore apply to all institutions.",
+       "stichpunkte": [
+        "Special leave for public higher education",
+        "From 28 December to 8 January",
+        "Same dates for all institutions"
+       ]
+      }
+     }
+    }
+   ]
   }
  ],
  "videos": [
@@ -2638,9 +2760,9 @@
   }
  ],
  "einleitung": {
-  "zeit": "2026-11-28T17:00:00+04:00",
-  "de": "Die Wasserreserven der Insel sind am 26. November nur noch zu 44 Prozent gefüllt. Die öffentlichen Schulden liegen bei 700,6 Milliarden Rupien und steigen weiter.",
-  "fr": "Au 26 novembre, les réservoirs de l’île ne sont remplis qu’à 44 %. La dette publique atteint 700,6 milliards de roupies et continue de croître.",
-  "en": "On 26 November the island’s reservoirs were only 44% full. Public debt stands at Rs 700.6 billion and continues to rise."
+  "zeit": "2026-11-28T22:00:00+04:00",
+  "de": "Die Wasserreserven der Insel sind am 26. November nur noch zu 44 Prozent gefüllt. Die öffentlichen Schulden liegen bei 700,6 Milliarden Rupien. Für die öffentlichen Hochschulen gilt zum Jahresende ein einheitlicher Sonderurlaub.",
+  "fr": "Au 26 novembre, les réservoirs de l’île ne sont remplis qu’à 44 %. La dette publique atteint 700,6 milliards de roupies. Les établissements publics d’enseignement supérieur auront un congé spécial harmonisé en fin d’année.",
+  "en": "On 26 November the island’s reservoirs were only 44% full. Public debt stands at Rs 700.6 billion. Public higher-education institutions will have a harmonised special leave at the end of the year."
  }
 }
